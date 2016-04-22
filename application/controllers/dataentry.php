@@ -10,6 +10,7 @@ class dataentry extends CI_Controller
 {
     public function index()
     {
-    $this->load->view('DataEntry');
+        $data['content'] = $this->load->view('pages/DataEntry','', true);
+        $this->load->view('page_template', $data);
     }
 }
