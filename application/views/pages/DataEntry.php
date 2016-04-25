@@ -11,10 +11,10 @@
                 </div>
             </div>
         </div>
-        <hr/>
+
         <div class="row">
             <div class="col-md-6">
-                <div class="well">
+                <div class="well-sm well">
                     <div class="form-group">
                         <label>Mobile 1</label>
                         <input type="text" class="form-control">
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="well">
+                <div class="well-sm well">
                     <div class="form-group">
                         <label>Name</label>
                         <input type="text" class="form-control">
@@ -62,10 +62,10 @@
                 </div>
             </div>
         </div>
-        <hr/>
+
         <div class="row">
             <div class="col-md-6">
-                <div class="well">
+                <div class="well-sm well">
                     <div class="form-group">
                         <label>Latitude</label>
                         <input type="text" class="form-control">
@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="well">
+                <div class="well-sm well">
                     <div class="form-group">
                         <label>Establishment Location: City:</label>
                         <input type="text" class="form-control">
@@ -106,11 +106,11 @@
                 </div>
             </div>
         </div>
-        <hr/>
+
         <div class="row">
             <div class="col-md-12">
-                <div class="well">
-                    <h4>Serves: </h4>
+                <div class="well-sm well">
+                    <b>Serves: </b>
                     <?php foreach ($serves as $ser) {
                         ?>
                         <label class="checkbox-inline">
@@ -122,10 +122,10 @@
                 </div>
             </div>
         </div>
-        <hr/>
+
         <div class="row">
             <div class="col-md-6">
-                <div class="well">
+                <div class="well-sm well">
                     <table class="table table-bordered">
                         <tr>
                             <th>
@@ -183,7 +183,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="well">
+                <div class="well-sm well">
                     <table class="table table-bordered">
                         <tr>
                             <th colspan="2">
@@ -206,10 +206,177 @@
                 </div>
             </div>
         </div>
-        <hr/>
+
         <div class="row">
             <div class="col-md-12">
+                <div class="well-sm well">
+                    <b> Facilities :</b>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="serves[]"
+                               value="1">Yes
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="serves[]"
+                               value="1">Two Wheeler
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="serves[]"
+                               value="1">Four Wheeler
+                    </label>
+                </div>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well-sm well">
+                   <b> Establishment Type:</b>
+                    <?php foreach ($establishment_types as $est) {
+                        ?>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="serves[]" value="<?php echo $est->type_id ?>"><?php echo $est->type ?>
+                        </label>
+                        <?php
+                    } ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well-sm well">
+                    <b> Facilities :</b>
+                    <?php foreach ($facilities as $fac) {
+                        ?>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="serves[]" value="<?php echo $fac->facilities_id ?>"><?php echo $fac->facility ?>
+                        </label>
+                        <?php
+                    } ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well-sm well">
+                    <b> Offers: </b>
+                    <label class="checkbox-inline">
+                        <input type="radio" name="serves[]" value="yes"> Yes
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="radio" name="serves[]" value="yes"> No
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="radio" name="serves[]" value="yes"> Occasional
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well-sm well">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>
+
+                            </th>
+                            <th>
+                               Start Time
+                            </th>
+                            <th>
+                                End Time
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>if same all weeks</td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>Sunday</td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>Monday</td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>Thursday</td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>Friday</td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                        </tr>
+
+                        <tr>
+                            <td>Saturday</td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well-sm well">
+                    <b> Cousins by Country :</b>
+                    <?php foreach ($cousins as $Cousin) {
+                        ?>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="serves[]" value="<?php echo $Cousin->cousin_id ?>"><?php echo $Cousin->cousin ?>
+                        </label>
+                        <?php
+                    } ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well-sm well">
+                    <b> Cousins by Food :</b>
+                    <?php foreach ($foods as $food) {
+                        ?>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="serves[]" value="<?php echo $food->food_id?>"><?php echo $food->food ?>
+                        </label>
+                        <?php
+                    } ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well-sm well">
+                    <b> Popular Dish:</b>
+                    <?php foreach ($pop_dishes as $pop) {
+                        ?>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="serves[]" value="<?php echo $pop->pop_dishes_id ?>"><?php echo $pop->pop_dishes ?>
+                        </label>
+                        <?php
+                    } ?>
+                </div>
             </div>
         </div>
     </form>
