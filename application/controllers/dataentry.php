@@ -8,9 +8,18 @@
  */
 class dataentry extends CI_Controller
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('master');
+    }
+
     public function index()
     {
-        $data['content'] = $this->load->view('pages/DataEntry','', true);
+        $dt['serves'] = $this->master->getServes();
+        $dt['estimate_cost_topic']=$this->master->getEstimate_cost_topic();
+        $data['content'] = $this->load->view('pages/DataEntry', $dt, true);
         $this->load->view('page_template', $data);
     }
 }
