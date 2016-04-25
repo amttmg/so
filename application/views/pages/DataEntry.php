@@ -17,33 +17,39 @@
                 <div class="well-sm well">
                     <div class="form-group">
                         <label>Mobile 1</label>
-                        <input type="text" class="form-control">
+                        <input type="text" name="res_mobile1" value="<?php echo set_value('res_mobile1') ?>" class="form-control">
+                        <?php echo form_error('res_mobile1'); ?>
                     </div>
                     <div class="form-group">
                         <label>Mobile 2</label>
-                        <input type="text" class="form-control">
+                        <input name="res_mobile2" value="<?php echo set_value('res_mobile2') ?>" type="text" class="form-control">
+                        <?php echo form_error('res_mobile2'); ?>
                     </div>
                     <div class="form-group">
                         <label>Land line1</label>
-                        <input type="text" class="form-control">
+                        <input type="text" name="res_landline1" value="<?php echo set_value('res_landline1') ?>"  class="form-control">
+                        <?php echo form_error('res_landline1'); ?>
                     </div>
                     <div class="form-group">
                         <label>Land line2</label>
-                        <input type="text" class="form-control">
+                        <input type="text" name="res_landline2" value="<?php echo set_value('res_landline2') ?>"  class="form-control">
+                        <?php echo form_error('res_landline2'); ?>
                     </div>
                 </div>
                 <div class="well-sm well">
                     <div class="form-group">
                         <label>Latitude</label>
-                        <input type="text" class="form-control">
+                        <input type="text" name="res_lat" value="<?php echo set_value('res_lat') ?>"  class="form-control">
+                        <?php echo form_error('res_lat'); ?>
                     </div>
                     <div class="form-group">
                         <label>Longitude</label>
-                        <input type="text" class="form-control">
+                        <input type="text" name="res_lon" value="<?php echo set_value('res_lon') ?>"  class="form-control">
+                        <?php echo form_error('res_lon'); ?>
                     </div>
                     <div class="form-group">
                         <label>Present in google Map</label>
-                        <input type="checkbox">
+                        <input type="checkbox" name="res_map" value="<?php echo set_checkbox('res_map') ?>">
                     </div>
 
                 </div>

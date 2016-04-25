@@ -10,6 +10,13 @@ class restaurant extends CI_Model
 {
     function add()
     {
+        $this->db->trans_start();
 
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE)
+        {
+
+        }
     }
 }
