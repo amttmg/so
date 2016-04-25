@@ -13,6 +13,7 @@ class dataentry extends CI_Controller
     {
         parent::__construct();
         $this->load->model('master');
+        $this->load->model('restaurant');
     }
 
     public function index()
@@ -26,5 +27,8 @@ class dataentry extends CI_Controller
         $dt['pop_dishes']=$this->master->getPop_dishes();
         $data['content'] = $this->load->view('pages/DataEntry', $dt, true);
         $this->load->view('page_template', $data);
+    }
+    public function insert(){
+
     }
 }

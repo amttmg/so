@@ -6,7 +6,7 @@
                 <div class="form-horizontal">
                     <div class="form-group">
                         <label>Restaurant Name</label>
-                        <textarea class="form-control"></textarea>
+                        <textarea name="res_name" class="form-control"></textarea>
                     </div>
                 </div>
             </div>
@@ -31,6 +31,21 @@
                         <label>Land line2</label>
                         <input type="text" class="form-control">
                     </div>
+                </div>
+                <div class="well-sm well">
+                    <div class="form-group">
+                        <label>Latitude</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Longitude</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Present in google Map</label>
+                        <input type="checkbox">
+                    </div>
+
                 </div>
             </div>
             <div class="col-md-6">
@@ -60,28 +75,6 @@
                         <input type="text" class="form-control">
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="well-sm well">
-                    <div class="form-group">
-                        <label>Latitude</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Longitude</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Present in google Map</label>
-                        <input type="checkbox">
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-md-6">
                 <div class="well-sm well">
                     <div class="form-group">
                         <label>Establishment Location: City:</label>
@@ -377,6 +370,23 @@
                         <?php
                     } ?>
                 </div>
+            </div>
+        </div>
+
+        <div class="row" style="padding: 15px">
+            <div class="col-md-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label>Remarks</label>
+                        <textarea class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
             </div>
         </div>
     </form>
