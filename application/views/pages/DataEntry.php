@@ -340,9 +340,6 @@
                                 Cost(Lunch, dinner or breakfast) for two
                             </th>
                         </tr>
-                        <?php
-                        print_r($estimate_cost_topic);
-                        ?>
                         <?php foreach ($estimate_cost_topic as $topic) {
                             ?>
                             <tr>
@@ -390,7 +387,7 @@
                     <?php foreach ($establishment_types as $est) {
                         ?>
                         <label class="checkbox-inline">
-                            <input type="checkbox" name="serves[]"
+                            <input type="checkbox" name="establishment_type[]"
                                    value="<?php echo $est->type_id ?>"><?php echo $est->type ?>
                         </label>
                         <?php
@@ -407,7 +404,7 @@
                     <?php foreach ($facilities as $fac) {
                         ?>
                         <label class="checkbox-inline">
-                            <input type="checkbox" name="serves[]"
+                            <input type="checkbox" name="facilities[]"
                                    value="<?php echo $fac->facilities_id ?>"><?php echo $fac->facility ?>
                         </label>
                         <?php

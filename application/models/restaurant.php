@@ -106,5 +106,28 @@ class restaurant extends CI_Model
             'res_id' => $res_id,
         );
         $this->db->insert('tbl_owners', $newtbl_owners);
+
+        $establishment_type = $this->input->post('establishment_type');
+        if (is_array($establishment_type)) {
+            foreach ($establishment_type as $est_type) {
+                $newtbl_res_estd_type= array(
+                    'type_id'=> $est_type,
+                    'res_id'=> $res_id,
+                    'status'=> 1,
+                );
+                $this->db->insert('tbl_res_estd_type', $newtbl_res_estd_type);
+            }
+        }
+        $facilities = $this->input->post('facilities');
+        if (is_array($facilities)) {
+            foreach ($facilities as $fac) {
+                $newtbl_res_facility= array(
+                    'facility_id'=> $fac,
+                    'res_id'=> $res_id,
+                    'status'=> 1,
+                );
+                $this->db->insert('tbl_res_facility', $newtbl_res_facility);
+            }
+        }
     }
 }
