@@ -110,10 +110,10 @@ class restaurant extends CI_Model
         $establishment_type = $this->input->post('establishment_type');
         if (is_array($establishment_type)) {
             foreach ($establishment_type as $est_type) {
-                $newtbl_res_estd_type= array(
-                    'type_id'=> $est_type,
-                    'res_id'=> $res_id,
-                    'status'=> 1,
+                $newtbl_res_estd_type = array(
+                    'type_id' => $est_type,
+                    'res_id' => $res_id,
+                    'status' => 1,
                 );
                 $this->db->insert('tbl_res_estd_type', $newtbl_res_estd_type);
             }
@@ -121,12 +121,26 @@ class restaurant extends CI_Model
         $facilities = $this->input->post('facilities');
         if (is_array($facilities)) {
             foreach ($facilities as $fac) {
-                $newtbl_res_facility= array(
-                    'facility_id'=> $fac,
-                    'res_id'=> $res_id,
-                    'status'=> 1,
+                $newtbl_res_facility = array(
+                    'facility_id' => $fac,
+                    'res_id' => $res_id,
+                    'status' => 1,
                 );
                 $this->db->insert('tbl_res_facility', $newtbl_res_facility);
+            }
+        }
+
+        $happyhours = $this->input->post('happyhours');
+        if (is_array($happyhours)) {
+            foreach ($happyhours as $day => $hours) {
+                $newtbl_happy_hours = array(
+                    'res_id' => $res_id,
+                    'day' => $day,
+                    'start_time' => $hours['start'],
+                    'end_time' => $hours['end'],
+                    'status' => 1,
+                );
+                $this->db->insert('tbl_happy_hours', $newtbl_happy_hours);
             }
         }
     }

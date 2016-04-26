@@ -448,44 +448,44 @@
                         </tr>
                         <tr>
                             <td>if same all weeks</td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input  type="text" class="form-control"></td>
                             <td><input type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Sunday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="happyhours[1][start]" type="text" class="form-control"></td>
+                            <td><input name="happyhours[1][end]" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Monday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="happyhours[2][start]" type="text" class="form-control"></td>
+                            <td><input name="happyhours[2][end]" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Tuesday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="happyhours[3][start]" type="text" class="form-control"></td>
+                            <td><input name="happyhours[3][end]" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Wednesday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="happyhours[4][start]" type="text" class="form-control"></td>
+                            <td><input name="happyhours[4][end]" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Thursday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="happyhours[5][start]" type="text" class="form-control"></td>
+                            <td><input name="happyhours[5][end]" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Friday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="happyhours[6][start]" type="text" class="form-control"></td>
+                            <td><input name="happyhours[6][end]" type="text" class="form-control"></td>
                         </tr>
 
                         <tr>
                             <td>Saturday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="happyhours[7][start]" type="text" class="form-control"></td>
+                            <td><input name="happyhours[7][end]" type="text" class="form-control"></td>
                         </tr>
                     </table>
                 </div>
