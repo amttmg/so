@@ -13,7 +13,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <textarea name="res_name" class="form-control"><?php echo set_value('res_name') ?></textarea>
+                            <textarea name="res_name"
+                                      class="form-control"><?php echo set_value('res_name') ?></textarea>
                             <?php echo form_error('res_name'); ?>
                         </td>
                     </tr>
@@ -289,44 +290,44 @@
                         </tr>
                         <tr>
                             <td>if same all weeks</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input id="open_time_all" type="text" class="form-control"></td>
+                            <td><input id="close_time_all" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Sunday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="servtime[1][open]" type="text" class="form-control"></td>
+                            <td><input name="servtime[1][close]" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Monday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="servtime[2][open]" type="text" class="form-control"></td>
+                            <td><input name="servtime[2][close]" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Tuesday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="servtime[3][open]" type="text" class="form-control"></td>
+                            <td><input name="servtime[3][close]" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Wednesday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="servtime[4][open]" type="text" class="form-control"></td>
+                            <td><input name="servtime[4][close]" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Thursday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="servtime[5][open]" type="text" class="form-control"></td>
+                            <td><input name="servtime[5][close]" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Friday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="servtime[6][open]" type="text" class="form-control"></td>
+                            <td><input name="servtime[6][close]" type="text" class="form-control"></td>
                         </tr>
 
                         <tr>
                             <td>Saturday</td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
+                            <td><input name="servtime[7][open]" type="text" class="form-control"></td>
+                            <td><input name="servtime[7][close]" type="text" class="form-control"></td>
                         </tr>
                     </table>
                 </div>
@@ -339,6 +340,9 @@
                                 Cost(Lunch, dinner or breakfast) for two
                             </th>
                         </tr>
+                        <?php
+                        print_r($estimate_cost_topic);
+                        ?>
                         <?php foreach ($estimate_cost_topic as $topic) {
                             ?>
                             <tr>
@@ -346,7 +350,7 @@
                                     <?php echo $topic->topic ?>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="estimate_cost_topic[<?php echo $topic->topic_id ?>]" class="form-control">
                                 </td>
                             </tr>
                             <?php

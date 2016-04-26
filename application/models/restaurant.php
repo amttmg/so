@@ -52,13 +52,59 @@ class restaurant extends CI_Model
         $res_id = $this->db->insert_id();
 
         $serves = $this->input->post('serves');
-        foreach ($serves as $val) {
-            $newtbl_serves = array(
-                'res_id' => $res_id,
-                'serves_id' => $val,
-                'status' => 1,
-            );
-            $this->db->insert('tbl_res_serves', $newtbl_serves);
+        if (is_array($serves)) {
+            foreach ($serves as $val) {
+                $newtbl_serves = array(
+                    'res_id' => $res_id,
+                    'serves_id' => $val,
+                    'status' => 1,
+                );
+                $this->db->insert('tbl_res_serves', $newtbl_serves);
+            }
         }
+
+        $srv_time = $this->input->post('servtime');
+        if (is_array($srv_time)) {
+            foreach ($srv_time as $day => $serv) {
+                $newtbl_service_time = array(
+                    'res_id' => $res_id,
+                    'day' => $day,
+                    'opening_time' => $serv['open'],
+                    'closing_time' => $serv['close'],
+                    'status' => 1,
+                );
+                $this->db->insert('tbl_service_time', $newtbl_service_time);
+            }
+        }
+        $estimate_cost_topic = $this->input->post('estimate_cost_topic');
+        if (is_array($estimate_cost_topic)) {
+            foreach ($estimate_cost_topic as $topic_id => $val) {
+                $newtbl_res_estimate_cost = array(
+                    'res_id' => $res_id,
+                    'topic_id' => $topic_id,
+                    'cost' => $val,
+                    'status' => 1,
+                );
+                $this->db->insert('tbl_res_estimate_cost', $newtbl_res_estimate_cost);
+            }
+        }
+//Owners
+        $name = $this->input->post('owners_name');
+        $designation = $this->input->post('owners_designation');
+        $mobile1 = $this->input->post('owners_mobile1');
+        $mobile2 = $this->input->post('owners_mobile2');
+        $landline1 = $this->input->post('owners_landline1');
+        $landline2 = $this->input->post('owners_landline2');
+
+        $newtbl_owners = array(
+            'name' => $name,
+            'designation' => $designation,
+            'mobile1' => $mobile1,
+            'mobile2' => $mobile2,
+            'landline1' => $landline1,
+            'landline2' => $landline2,
+            'res_id' => $res_id,
+        );
+        $this->db->insert('tbl_owners', $newtbl_owners);
     }
 }
