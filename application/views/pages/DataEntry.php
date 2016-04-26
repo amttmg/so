@@ -1,5 +1,5 @@
 <div class="container" style="background-color: #f0f0f0">
-    <form method="post" action="<?php echo base_url('dataentry/insert') ?>">
+    <form method="post" action="<?php echo base_url('index.php/dataentry/insert') ?>">
         <div class="row header" style="background-color:#1b6d85; color: white; box-shadow: 0px 2px 5px #888888;">
             <div class="col-md-12">
                 <h2 class="text-center">SCOOT OUT DATA ENTRY FORM</h2></p>
@@ -13,7 +13,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <textarea name="res_name" class="form-control"></textarea>
+                            <textarea name="res_name" class="form-control"><?php echo set_value('res_name') ?></textarea>
+                            <?php echo form_error('res_name'); ?>
                         </td>
                     </tr>
                 </table>
@@ -32,7 +33,8 @@
                                 Mobile 1
                             </td>
                             <td>
-                                <input maxlength="10" type="number"  name="res_mobile1" value="<?php echo set_value('res_mobile1') ?>"
+                                <input maxlength="10" type="number" name="res_mobile1"
+                                       value="<?php echo set_value('res_mobile1') ?>"
                                        class="form-control phone">
                                 <?php echo form_error('res_mobile1'); ?>
                             </td>
@@ -67,6 +69,26 @@
                                 <?php echo form_error('res_landline2'); ?>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                Website
+                            </td>
+                            <td>
+                                <input type="text" name="res_website" value="<?php echo set_value('res_website') ?>"
+                                       class="form-control">
+                                <?php echo form_error('res_website'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Email
+                            </td>
+                            <td>
+                                <input type="text" name="res_email" value="<?php echo set_value('res_email') ?>"
+                                       class="form-control">
+                                <?php echo form_error('res_email'); ?>
+                            </td>
+                        </tr>
                     </table>
 
                 </div>
@@ -98,7 +120,7 @@
                                 Present in google Map
                             </td>
                             <td>
-                                <input type="checkbox" name="res_map" value="<?php echo set_checkbox('res_map') ?>">
+                                <input type="checkbox" name="res_map" value="1">
                                 <?php echo form_error('res_map'); ?>
                             </td>
                         </tr>
@@ -114,9 +136,9 @@
                                 Name
                             </td>
                             <td>
-                                <input type="text" name="owners_name" value="<?php echo set_value('res_lat') ?>"
+                                <input type="text" name="owners_name" value="<?php echo set_value('owners_name') ?>"
                                        class="form-control">
-                                <?php echo form_error('res_lat'); ?>
+                                <?php echo form_error('owners_name'); ?>
                             </td>
                         </tr>
                         <tr>
@@ -245,6 +267,7 @@
                         </label>
                         <?php
                     } ?>
+                    <?php echo form_error('serves'); ?>
                 </div>
             </div>
         </div>
@@ -338,17 +361,17 @@
                 <div class="well-sm well">
                     <b> Parking :</b>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="serves[]"
+                        <input type="checkbox" name="res_parking"
                                value="1">Yes
                     </label>
                     <hr/>
 
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="serves[]"
+                        <input type="checkbox" name="res_parking2"
                                value="1">Two Wheeler
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="serves[]"
+                        <input type="checkbox" name="res_parking4"
                                value="1">Four Wheeler
                     </label>
                 </div>
@@ -524,7 +547,7 @@
                 <div class="form-horizontal">
                     <div class="form-group">
                         <label>Remarks</label>
-                        <textarea class="form-control"></textarea>
+                        <textarea name="res_remarks" class="form-control"></textarea>
                     </div>
                 </div>
             </div>
@@ -541,6 +564,10 @@
     hr {
         margin-top: 5px;
         margin-bottom: 5px;
+    }
+
+    .error {
+        color: red;
     }
 </style>
 
