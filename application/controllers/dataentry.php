@@ -51,8 +51,8 @@ class dataentry extends CI_Controller
 
 
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-       // $this->form_validation->run() == FALSE
-        if (1==2) {
+        //
+        if ($this->form_validation->run() == FALSE) {
             $dt['serves'] = $this->master->getServes();
             $dt['estimate_cost_topic'] = $this->master->getEstimate_cost_topic();
             $dt['establishment_types'] = $this->master->getEstablishment_type();
@@ -69,8 +69,13 @@ class dataentry extends CI_Controller
             $this->db->trans_complete();
 
             if ($this->db->trans_status() === FALSE) {
-
+                $this->db->trans_rollback();
+                $this->session->set_flashdata('flashError', 'Sorry Data is not inserted due to Somthing is wrong');
+            } else {
+                $this->db->trans_commit();
+                $this->session->set_flashdata('flashSuccess', 'Data Successfully Inserted');
             }
+            redirect('dataentry');
         }
 
     }

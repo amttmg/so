@@ -5,6 +5,22 @@
                 <h2 class="text-center">SCOOT OUT DATA ENTRY FORM</h2></p>
             </div>
         </div>
+        <? if ($this->session->flashdata('flashSuccess')): ?>
+            <div class="alert alert-success" style="margin-top: 10px">
+                <b>
+                    <i class="glyphicon glyphicon-ok"></i> <?php echo $this->session->flashdata('flashSuccess') ?>
+                </b>
+            </div>
+        <? endif ?>
+        <? if ($this->session->flashdata('flashError')): ?>
+        <div class="alert alert-danger" style="margin-top: 10px">
+            <b>
+                <i class="glyphicon glyphicon-remove"></i> <?php echo $this->session->flashdata('flashError') ?>
+            </b>
+        </div>
+        <? endif ?>
+
+
         <div class="row" style="margin-top: 15px">
             <div class="col-md-12">
                 <table class="table table-bordered">
@@ -347,7 +363,8 @@
                                     <?php echo $topic->topic ?>
                                 </td>
                                 <td>
-                                    <input type="text" name="estimate_cost_topic[<?php echo $topic->topic_id ?>]" class="form-control">
+                                    <input type="text" name="estimate_cost_topic[<?php echo $topic->topic_id ?>]"
+                                           class="form-control">
                                 </td>
                             </tr>
                             <?php
@@ -448,7 +465,7 @@
                         </tr>
                         <tr>
                             <td>if same all weeks</td>
-                            <td><input  type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
                             <td><input type="text" class="form-control"></td>
                         </tr>
                         <tr>
@@ -500,7 +517,7 @@
                     <?php foreach ($cousins as $Cousin) {
                         ?>
                         <label class="checkbox-inline">
-                            <input type="checkbox" name="serves[]"
+                            <input type="checkbox" name="cousins[]"
                                    value="<?php echo $Cousin->cousin_id ?>"><?php echo $Cousin->cousin ?>
                         </label>
                         <?php
@@ -517,7 +534,7 @@
                     <?php foreach ($foods as $food) {
                         ?>
                         <label class="checkbox-inline">
-                            <input type="checkbox" name="serves[]"
+                            <input type="checkbox" name="foods[]"
                                    value="<?php echo $food->food_id ?>"><?php echo $food->food ?>
                         </label>
                         <?php
@@ -534,7 +551,7 @@
                     <?php foreach ($pop_dishes as $pop) {
                         ?>
                         <label class="checkbox-inline">
-                            <input type="checkbox" name="serves[]"
+                            <input type="checkbox" name="pop_dishes[]"
                                    value="<?php echo $pop->pop_dishes_id ?>"><?php echo $pop->pop_dishes ?>
                         </label>
                         <?php

@@ -143,5 +143,38 @@ class restaurant extends CI_Model
                 $this->db->insert('tbl_happy_hours', $newtbl_happy_hours);
             }
         }
+        $cousins = $this->input->post('cousins');
+        if (is_array($cousins)) {
+            foreach ($cousins as $cousin) {
+                $newtbl_res_cousins= array(
+                    'res_id'=> $res_id,
+                    'cousin_id'=> $cousin,
+                    'status'=> 1,
+                );
+                $this->db->insert('tbl_res_cousins', $newtbl_res_cousins);
+            }
+        }
+        $foods = $this->input->post('foods');
+        if (is_array($foods)) {
+            foreach ($foods as $food) {
+                $newtbl_res_foods= array(
+                    'res_id'=> $res_id,
+                    'food_id'=> $food,
+                    'status'=> 1,
+                );
+                $this->db->insert('tbl_res_foods', $newtbl_res_foods);
+            }
+        }
+        $pop_dishes = $this->input->post('pop_dishes');
+        if (is_array($pop_dishes)) {
+            foreach ($pop_dishes as $dishes) {
+                $newtbl_res_pop_dishes= array(
+                    'res_id'=> $res_id,
+                    'pop_dishes_id'=> $dishes,
+                    'status'=> 1,
+                );
+                $this->db->insert('tbl_res_pop_dishes', $newtbl_res_pop_dishes);
+            }
+        }
     }
 }
