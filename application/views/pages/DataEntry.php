@@ -5,20 +5,20 @@
                 <h2 class="text-center">SCOOT OUT DATA ENTRY FORM</h2></p>
             </div>
         </div>
-        <? if ($this->session->flashdata('flashSuccess')): ?>
+        <?php if ($this->session->flashdata('flashSuccess')): ?>
             <div class="alert alert-success" style="margin-top: 10px">
                 <b>
                     <i class="glyphicon glyphicon-ok"></i> <?php echo $this->session->flashdata('flashSuccess') ?>
                 </b>
             </div>
-        <? endif ?>
-        <? if ($this->session->flashdata('flashError')): ?>
+        <?php endif ?>
+        <?php if ($this->session->flashdata('flashError')): ?>
         <div class="alert alert-danger" style="margin-top: 10px">
             <b>
                 <i class="glyphicon glyphicon-remove"></i> <?php echo $this->session->flashdata('flashError') ?>
             </b>
         </div>
-        <? endif ?>
+        <?php endif ?>
 
 
         <div class="row" style="margin-top: 15px">
