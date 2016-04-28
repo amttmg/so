@@ -249,8 +249,11 @@
                                 City
                             </td>
                             <td>
-                                <input type="text" name="est_city" value="<?php echo set_value('est_city') ?>"
+                                <input list="est_city" id="city_suggest" name="est_city" value="<?php echo set_value('est_city') ?>"
                                        class="form-control">
+                                       <datalist id="est_city">
+                                           
+                                       </datalist>
                                 <?php echo form_error('est_city'); ?>
                             </td>
                         </tr>
@@ -617,7 +620,7 @@
     }
 </style>
 
-<div class="modal fade" id="modal-addServe">
+<div class="modal fade" id="modal-addserve">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -638,8 +641,33 @@
     $(document).ready(function() {
         
         $('#btn_addServe').click(function() {
-            $('#modal-addServe').modal('show');
+            $('#modal-addserve').modal('show');
         });    
+
+        $('#city_suggest').keyup(function() {
+            $.ajax({
+                url: '<?php echo(site_url("place/suggest")) ?>',
+                type: 'POST',
+                dataType:'html',
+                data: $(this).val(),
+                success:function(data)
+                {
+                   
+                    $('datalist').empty();
+                    $('datalist').append(data);
+                }
+            })
+            .done(function() {
+                console.log("success");
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+            
+        });
     });
 
     $('#open_time_all').change(function () {
@@ -664,6 +692,8 @@
 
     function insertIntoServe(form_id,button_id,serve_id)
     {
+        disable_button(button_id,'Saving');
+
         $.ajax({
             url: '<?php echo(site_url("serve/add")) ?>',
             dataType:'json',
@@ -673,16 +703,40 @@
                 console.log(data);
                     if (data.status===true)
                     {
-                        $('#'+serve_id).append('');
+                        enable_button(button_id,'Add New');
+
+                        var temp_checkbox='<label class="checkbox-inline">';
+                            temp_checkbox+='<input type="checkbox" name="serves[]" value="'+data.serves_id+'">'+data.serves_name+'</label>';
+                      
+                        $('#'+serve_id).append(temp_checkbox);s
                     };
             }
         })
         
         .fail(function() {
-            console.log("error");
+
+            enable_button(button_id,'Add New');
         });
-      
-        
     }
+
+    function disable_button (id,text='')
+    {
+        $('#'+id).prop('disabled', true);
+        if (text!='')
+         {
+            $('#'+id).text(text+'...........');
+         };
+    }
+
+    function enable_button (id,text='')
+    {
+        $('#'+id).prop('disabled', false);
+        if (text!='')
+         {
+            $('#'+id).text(text);
+         };
+    }
+
+
 </script>
 
