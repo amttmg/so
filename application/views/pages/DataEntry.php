@@ -708,6 +708,30 @@
     </div>
 </div>
 
+<div class="modal fade" id="mdl_cousin">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add new cousin</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST" id="cousin_form">
+                    <div class="form-group">
+                        <label for="">Cousin</label>
+                        <input type="text" name="cousin_name" class="form-control" id="" placeholder="Input field">
+                    </div>
+                  
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn_cousinsave" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     $(document).ready(function() {
 
@@ -731,8 +755,16 @@
           insertIntoFacilitis('facility_form','btn_facilitysave','btn_facilities')
        });
 
+       $('#btn_cousinsave').click(function() {
+
+          insertIntoCousins('cousin_form','btn_cousinsave','btn_addCousin');
+       });
+
 /*==============================================================*/
-        
+        $('#btn_addCousin').click(function() 
+        {
+            $('#mdl_cousin').modal('show');
+        });
         $('#btn_facilities').click(function() 
         {
             $('#mdl_facility').modal('show');
@@ -805,7 +837,7 @@
             success:function(data)
             {
                 
-                        enable_button(button_id,'Add New');
+                        enable_button(button_id,'Save');
                         var temp_checkbox='<label class="checkbox-inline">';
                             temp_checkbox+='<input type="checkbox" name="serves[]" value="'+data.serves_id+'">'+data.serves_name+'</label>';
                             
@@ -835,7 +867,7 @@
             {
                 console.log(data);
                     
-                        enable_button(button_id,'Add New');
+                        enable_button(button_id,'Save');
 
                         var temp_checkbox='<label class="checkbox-inline">';
                             temp_checkbox+='<input type="checkbox" name="establishment_type[]" value="'+data.type_id+'">'+data.type+'</label>';
@@ -864,7 +896,7 @@
             {
                         console.log(data);
                     
-                        enable_button(button_id,'Add New');
+                        enable_button(button_id,'Save');
 
                         var temp_checkbox='<label class="checkbox-inline">';
                             temp_checkbox+='<input type="checkbox" name="facility[]" value="'+data.facilities_id+'">'+data.facility+'</label>';
@@ -888,19 +920,19 @@
         $.ajax({
             url: '<?php echo(site_url("Cousin/add")) ?>',
             dataType:'json',
+            type:'post',
             data:$('#'+form_id).serialize(),
             success:function(data)
             {
                 console.log(data);
-                    if (data.status===true)
-                    {
-                        enable_button(button_id,'Add New');
+                    
+                        enable_button(button_id,'Save');
 
                         var temp_checkbox='<label class="checkbox-inline">';
                             temp_checkbox+='<input type="checkbox" name="cousins[]" value="'+data.cousin_id+'">'+data.cousin+'</label>';
-                      
-                        $('#'+cousin_id).append(temp_checkbox);
-                    };
+                        
+                        $(temp_checkbox).insertBefore('#'+cousin_id);
+                        $('#mdl_cousin').modal('hide');
             }
         })
         

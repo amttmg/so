@@ -6,7 +6,7 @@ class Cousin extends CI_Controller {
 	public function add()
 	{
 		$data=array(
-			'serves_name'=>$this->input->post('cousin')
+			'cousin'=>$this->input->post('cousin_name')
 			);
 		$this->db->insert('tbl_cousins',$data);
 
