@@ -304,19 +304,22 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well-sm well" id="serve_checkbox">
+                <div class="well-sm well">
                     <b>Serves: </b>
-                    <?php foreach ($serves as $ser) {
-                        ?>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" name="serves[]"
-                                   value="<?php echo $ser->serves_id ?>"><?php echo $ser->serves_name ?>
-                        </label>
-                        <?php
-                    } ?>
-                    <?php echo form_error('serves'); ?>
-                    <button type="button" id="btn_addServe" class="btn btn-info"><i class="fa fa-plus fa"></i> Add New</button>
+                    <div id="serve_checkbox">
+                        <?php foreach ($serves as $ser) {
+                            ?>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="serves[]"
+                                       value="<?php echo $ser->serves_id ?>"><?php echo $ser->serves_name ?>
+                            </label>
+                            <?php
+                        } ?>
+                        <?php echo form_error('serves'); ?>
+                        <button type="button" id="btn_addServe" class="btn btn-info"><i class="fa fa-plus fa"></i>   Add New</button>
+                    </div>
                 </div>
+
             </div>
         </div>
 
@@ -402,8 +405,8 @@
 
                         } ?>
                         <tr>
-                            <td class="text-bold">
-                                Total
+                            <td>
+                                <b>Total</b>
                             </td>
                             <td>
                                <input type="number" class="form-control" disabled="" name="total" id="total" value="0">
@@ -638,14 +641,20 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Modal title</h4>
+                <h4 class="modal-title">Add Serve</h4>
             </div>
             <div class="modal-body">
-                
+                <form action="" id="serve_form">
+
+                    <div class="form-group">
+                        <label for="">label</label>
+                        <input type="text" name="serve_name" class="form-control" placeholder="Input serve type">
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
+                <button type="button" id="btn_servesave" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -658,6 +667,10 @@
        $('.estimate_cost_topic').keyup(function() {
 
           total();
+       });
+
+       $('#btn_servesave').click(function() {
+          insertIntoServe('serve_form','btn_servesave','serve_checkbox');
        });
         
         $('#btn_addServe').click(function() {
@@ -717,19 +730,19 @@
         $.ajax({
             url: '<?php echo(site_url("serve/add")) ?>',
             dataType:'json',
+            type:'post',
             data:$('#'+form_id).serialize(),
             success:function(data)
             {
-                console.log(data);
-                    if (data.status===true)
-                    {
+                
                         enable_button(button_id,'Add New');
-
                         var temp_checkbox='<label class="checkbox-inline">';
                             temp_checkbox+='<input type="checkbox" name="serves[]" value="'+data.serves_id+'">'+data.serves_name+'</label>';
-                      
-                        $('#'+serve_id).append(temp_checkbox);
-                    };
+                            
+                        $(temp_checkbox).insertBefore('#btn_addServe');
+                        $('#mdl-addserve').modal('hide');
+
+                    
             }
         })
         
