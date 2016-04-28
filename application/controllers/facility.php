@@ -6,7 +6,7 @@ class Facility extends CI_Controller {
 	public function add()
 	{
 		$data=array(
-			'serves_name'=>$this->input->post('facility')
+			'facility'=>$this->input->post('facility_name')
 			);
 		$this->db->insert('tbl_facilities',$data);
 

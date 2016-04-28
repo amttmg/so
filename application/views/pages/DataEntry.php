@@ -659,6 +659,55 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="mdl_establishmentType">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add new establishment type</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST"  id="estd_typeform">
+                    <div class="form-group">
+                        <label for="">Establishment Type</label>
+                        <input type="text" name="estd_type" class="form-control" placeholder="Input field">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn_estdtypesave" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mdl_facility">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add new facility</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST" role="" id="facility_form">
+                    
+                    <div class="form-group">
+                        <label for="">Facility</label>
+                        <input type="text" name="facility_name" class="form-control" id="" placeholder="Input field">
+                    </div>
+        
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn_facilitysave" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     $(document).ready(function() {
 
@@ -671,6 +720,27 @@
 
        $('#btn_servesave').click(function() {
           insertIntoServe('serve_form','btn_servesave','serve_checkbox');
+       });
+
+       $('#btn_estdtypesave').click(function() {
+           insertIntoEstType('estd_typeform','btn_estdtypesave','btn_establishmentType')
+       });
+
+       $('#btn_facilitysave').click(function() 
+       {
+          insertIntoFacilitis('facility_form','btn_facilitysave','btn_facilities')
+       });
+
+/*==============================================================*/
+        
+        $('#btn_facilities').click(function() 
+        {
+            $('#mdl_facility').modal('show');
+        });
+
+       $('#btn_establishmentType').click(function() {
+
+           $('#mdl_establishmentType').modal('show');
        });
         
         $('#btn_addServe').click(function() {
@@ -748,7 +818,7 @@
         
         .fail(function() {
 
-            enable_button(button_id,'Add New');
+            enable_button(button_id,'Save');
         });
     }
 
@@ -759,25 +829,25 @@
         $.ajax({
             url: '<?php echo(site_url("establishment_type/add")) ?>',
             dataType:'json',
+            type:'post',
             data:$('#'+form_id).serialize(),
             success:function(data)
             {
                 console.log(data);
-                    if (data.status===true)
-                    {
+                    
                         enable_button(button_id,'Add New');
 
                         var temp_checkbox='<label class="checkbox-inline">';
                             temp_checkbox+='<input type="checkbox" name="establishment_type[]" value="'+data.type_id+'">'+data.type+'</label>';
-                      
-                        $('#'+estd_typeid).append(temp_checkbox);
-                    };
+                        
+                        $(temp_checkbox).insertBefore('#'+estd_typeid);
+                        $('#mdl_establishmentType').modal('hide');
             }
         })
         
         .fail(function() {
 
-            enable_button(button_id,'Add New');
+            enable_button(button_id,'Save');
         });
     }
 
@@ -788,25 +858,26 @@
         $.ajax({
             url: '<?php echo(site_url("facility/add")) ?>',
             dataType:'json',
+            type:'post',
             data:$('#'+form_id).serialize(),
             success:function(data)
             {
-                console.log(data);
-                    if (data.status===true)
-                    {
+                        console.log(data);
+                    
                         enable_button(button_id,'Add New');
 
                         var temp_checkbox='<label class="checkbox-inline">';
                             temp_checkbox+='<input type="checkbox" name="facility[]" value="'+data.facilities_id+'">'+data.facility+'</label>';
                       
-                        $('#'+facility_id).append(temp_checkbox);
-                    };
+                       $(temp_checkbox).insertBefore('#'+facility_id);
+                        $('#mdl_facility').modal('hide');
+                   
             }
         })
         
         .fail(function() {
 
-            enable_button(button_id,'Add New');
+            enable_button(button_id,'Save');
         });
     }
 

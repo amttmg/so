@@ -6,7 +6,7 @@ class Establishment_type extends CI_Controller {
 	public function add()
 	{
 		$data=array(
-			'serves_name'=>$this->input->post('type')
+			'type'=>$this->input->post('estd_type')
 			);
 		$this->db->insert('establishment_type',$data);
 
