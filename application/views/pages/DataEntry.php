@@ -50,10 +50,14 @@
                                 Mobile 1
                             </td>
                             <td>
-                                <input maxlength="10" type="number" name="res_mobile1"
-                                       value="<?php echo set_value('res_mobile1') ?>"
-                                       class="form-control phone">
-                                <?php echo form_error('res_mobile1'); ?>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">98</span>
+                                    <input maxlength="8" oninput="maxLengthCheck(this)" type="number" class="form-control" name="res_mobile1"
+                                           value="<?php echo set_value('res_mobile1') ?>"
+                                           >
+                                     </div>
+                                    <?php echo form_error('res_mobile1'); ?>
+                              
                             </td>
                         </tr>
                         <tr>
@@ -61,8 +65,11 @@
                                 Mobile 2
                             </td>
                             <td>
-                                <input name="res_mobile2" value="<?php echo set_value('res_mobile2') ?>" type="text"
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">98</span>
+                                    <input name="res_mobile2" type="number" maxlength="8" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_mobile2') ?>" type="text"
                                        class="form-control phone">
+                                </div>
                                 <?php echo form_error('res_mobile2'); ?>
                             </td>
                         </tr>
@@ -71,8 +78,11 @@
                                 Land line1
                             </td>
                             <td>
-                                <input type="text" name="res_landline1" value="<?php echo set_value('res_landline1') ?>"
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">09</span>
+                                    <input type="number" name="res_landline1" maxlength="10" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_landline1') ?>"
                                        class="form-control">
+                                   </div>
                                 <?php echo form_error('res_landline1'); ?>
                             </td>
                         </tr>
@@ -81,8 +91,11 @@
                                 Land line2
                             </td>
                             <td>
-                                <input type="text" name="res_landline2" value="<?php echo set_value('res_landline2') ?>"
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">09</span>
+                                    <input type="number" name="res_landline2" maxlength="10" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_landline2') ?>"
                                        class="form-control">
+                                </div>
                                 <?php echo form_error('res_landline2'); ?>
                             </td>
                         </tr>
@@ -91,8 +104,11 @@
                                 Website
                             </td>
                             <td>
-                                <input type="text" name="res_website" value="<?php echo set_value('res_website') ?>"
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">www.</span>
+                                    <input type="text" name="res_website" value="<?php echo set_value('res_website') ?>"
                                        class="form-control">
+                                   </div>
                                 <?php echo form_error('res_website'); ?>
                             </td>
                         </tr>
@@ -173,9 +189,11 @@
                                 Mobile 1
                             </td>
                             <td>
-                                <input type="text" name="owners_mobile1"
-                                       value="<?php echo set_value('owners_mobile1') ?>"
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">98</span>
+                                    <input type="text" name="owners_mobile1" maxlength="8" oninput="maxLengthCheck(this)" value="<?php echo set_value('owners_mobile1') ?>"
                                        class="form-control">
+                                </div>
                                 <?php echo form_error('owners_mobile1'); ?>
                             </td>
                         </tr>
@@ -184,9 +202,12 @@
                                 Mobile 2
                             </td>
                             <td>
-                                <input type="text" name="owners_mobile2"
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">98</span>
+                                    <input type="text" name="owners_mobile2" maxlength="8" oninput="maxLengthCheck(this)"
                                        value="<?php echo set_value('owners_mobile2') ?>"
                                        class="form-control">
+                                </div>
                                 <?php echo form_error('owners_mobile2'); ?>
                             </td>
                         </tr>
@@ -195,9 +216,12 @@
                                 Land line1
                             </td>
                             <td>
-                                <input type="text" name="owners_landline1"
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">09</span>
+                                    <input type="text" name="owners_landline1" maxlength="8" oninput="maxLengthCheck(this)"
                                        value="<?php echo set_value('owners_landline1') ?>"
                                        class="form-control">
+                                </div>
                                 <?php echo form_error('owners_landline1'); ?>
                             </td>
                         </tr>
@@ -206,9 +230,12 @@
                                 Land line2
                             </td>
                             <td>
-                                <input type="text" name="owners_landline2"
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">09</span>
+                                    <input type="text" name="owners_landline2" maxlength="8" oninput="maxLengthCheck(this)"
                                        value="<?php echo set_value('owners_landline2') ?>"
                                        class="form-control">
+                                </div>
                                 <?php echo form_error('owners_landline2'); ?>
                             </td>
                         </tr>
@@ -274,7 +301,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well-sm well">
+                <div class="well-sm well" id="serve_checkbox">
                     <b>Serves: </b>
                     <?php foreach ($serves as $ser) {
                         ?>
@@ -285,6 +312,7 @@
                         <?php
                     } ?>
                     <?php echo form_error('serves'); ?>
+                    <button type="button" id="btn_addServe" class="btn btn-info"><i class="fa fa-plus fa"></i> Add New</button>
                 </div>
             </div>
         </div>
@@ -588,7 +616,32 @@
         color: red;
     }
 </style>
+
+<div class="modal fade" id="modal-addServe">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
+    $(document).ready(function() {
+        
+        $('#btn_addServe').click(function() {
+            $('#modal-addServe').modal('show');
+        });    
+    });
+
     $('#open_time_all').change(function () {
         $('.open_time').val($(this).val());
     })
@@ -602,5 +655,34 @@
     $('#end_time_all').change(function () {
         $('.end_time').val($(this).val());
     })
+
+    function maxLengthCheck(object)
+    {
+        if (object.value.length > object.maxLength)
+        object.value = object.value.slice(0, object.maxLength)
+    }
+
+    function insertIntoServe(form_id,button_id,serve_id)
+    {
+        $.ajax({
+            url: '<?php echo(site_url("serve/add")) ?>',
+            dataType:'json',
+            data:$('#'+form_id).serialize(),
+            success:function(data)
+            {
+                console.log(data);
+                    if (data.status===true)
+                    {
+                        $('#'+serve_id).append('');
+                    };
+            }
+        })
+        
+        .fail(function() {
+            console.log("error");
+        });
+      
+        
+    }
 </script>
 
