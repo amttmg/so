@@ -394,12 +394,21 @@
                                     <?php echo $topic->topic ?>
                                 </td>
                                 <td>
-                                    <input type="text" name="estimate_cost_topic[<?php echo $topic->topic_id ?>]"
-                                           class="form-control">
+                                    <input type="number" name="estimate_cost_topic[<?php echo $topic->topic_id ?>]"
+                                           class="estimate_cost_topic form-control">
                                 </td>
                             </tr>
                             <?php
+
                         } ?>
+                        <tr>
+                            <td class="text-bold">
+                                Total
+                            </td>
+                            <td>
+                               <input type="number" class="form-control" disabled="" name="total" id="total" value="0">
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -440,13 +449,14 @@
                         </label>
                         <?php
                     } ?>
+                    <button type="button" id="btn_establishmentType" class="btn btn-info"> Add New</button>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well-sm well">
+                <div class="well-sm well" id="facility_checkbox">
                     <b> Facilities :</b>
                     <hr/>
                     <?php foreach ($facilities as $fac) {
@@ -457,6 +467,7 @@
                         </label>
                         <?php
                     } ?>
+                    <button type="button" id="btn_facilities" class="btn btn-info"> Add New</button>
                 </div>
             </div>
         </div>
@@ -553,6 +564,7 @@
                         </label>
                         <?php
                     } ?>
+                    <button type="button" id="btn_addCousin" class="btn btn-info"><i class="fa fa-plus fa"></i> Add New</button>
                 </div>
             </div>
         </div>
@@ -587,6 +599,7 @@
                         </label>
                         <?php
                     } ?>
+                    <button type="button" id="btn_addPopDish" class="btn btn-info"><i class="fa fa-plus fa"></i> Add New</button>
                 </div>
             </div>
         </div>
@@ -620,7 +633,7 @@
     }
 </style>
 
-<div class="modal fade" id="modal-addserve">
+<div class="modal fade" id="mdl-addserve">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -639,9 +652,16 @@
 </div>
 <script>
     $(document).ready(function() {
+
+        total();
+
+       $('.estimate_cost_topic').keyup(function() {
+
+          total();
+       });
         
         $('#btn_addServe').click(function() {
-            $('#modal-addserve').modal('show');
+            $('#mdl-addserve').modal('show');
         });    
 
         $('#city_suggest').keyup(function() {
@@ -653,8 +673,8 @@
                 success:function(data)
                 {
                    
-                    $('datalist').empty();
-                    $('datalist').append(data);
+                    $('#est_city').empty();
+                    $('#est_city').append(data);
                 }
             })
             .done(function() {
@@ -708,7 +728,123 @@
                         var temp_checkbox='<label class="checkbox-inline">';
                             temp_checkbox+='<input type="checkbox" name="serves[]" value="'+data.serves_id+'">'+data.serves_name+'</label>';
                       
-                        $('#'+serve_id).append(temp_checkbox);s
+                        $('#'+serve_id).append(temp_checkbox);
+                    };
+            }
+        })
+        
+        .fail(function() {
+
+            enable_button(button_id,'Add New');
+        });
+    }
+
+    function insertIntoEstType(form_id,button_id,estd_typeid)
+    {
+        disable_button(button_id,'Saving');
+
+        $.ajax({
+            url: '<?php echo(site_url("establishment_type/add")) ?>',
+            dataType:'json',
+            data:$('#'+form_id).serialize(),
+            success:function(data)
+            {
+                console.log(data);
+                    if (data.status===true)
+                    {
+                        enable_button(button_id,'Add New');
+
+                        var temp_checkbox='<label class="checkbox-inline">';
+                            temp_checkbox+='<input type="checkbox" name="establishment_type[]" value="'+data.type_id+'">'+data.type+'</label>';
+                      
+                        $('#'+estd_typeid).append(temp_checkbox);
+                    };
+            }
+        })
+        
+        .fail(function() {
+
+            enable_button(button_id,'Add New');
+        });
+    }
+
+    function insertIntoFacilitis(form_id,button_id,facility_id)
+    {
+        disable_button(button_id,'Saving');
+
+        $.ajax({
+            url: '<?php echo(site_url("facility/add")) ?>',
+            dataType:'json',
+            data:$('#'+form_id).serialize(),
+            success:function(data)
+            {
+                console.log(data);
+                    if (data.status===true)
+                    {
+                        enable_button(button_id,'Add New');
+
+                        var temp_checkbox='<label class="checkbox-inline">';
+                            temp_checkbox+='<input type="checkbox" name="facility[]" value="'+data.facilities_id+'">'+data.facility+'</label>';
+                      
+                        $('#'+facility_id).append(temp_checkbox);
+                    };
+            }
+        })
+        
+        .fail(function() {
+
+            enable_button(button_id,'Add New');
+        });
+    }
+
+    function insertIntoCousins(form_id,button_id,cousin_id)
+    {
+        disable_button(button_id,'Saving');
+
+        $.ajax({
+            url: '<?php echo(site_url("Cousin/add")) ?>',
+            dataType:'json',
+            data:$('#'+form_id).serialize(),
+            success:function(data)
+            {
+                console.log(data);
+                    if (data.status===true)
+                    {
+                        enable_button(button_id,'Add New');
+
+                        var temp_checkbox='<label class="checkbox-inline">';
+                            temp_checkbox+='<input type="checkbox" name="cousins[]" value="'+data.cousin_id+'">'+data.cousin+'</label>';
+                      
+                        $('#'+cousin_id).append(temp_checkbox);
+                    };
+            }
+        })
+        
+        .fail(function() {
+
+            enable_button(button_id,'Add New');
+        });
+    }
+
+    function insertIntoPopularDish(form_id,button_id,dish_id)
+    {
+        disable_button(button_id,'Saving');
+
+        $.ajax({
+            url: '<?php echo(site_url("Cousin/add")) ?>',
+            dataType:'json',
+            data:$('#'+form_id).serialize(),
+            success:function(data)
+            {
+                console.log(data);
+                    if (data.status===true)
+                    {
+                        enable_button(button_id,'Add New');
+
+                        var temp_checkbox='<label class="checkbox-inline">';
+                            temp_checkbox+='<input type="checkbox" name="pop_dishes[]" value="'+data.pop_dishes_id+'">'+data.pop_dishes+'</label>';
+                      
+                        $('#'+dish_id).append(temp_checkbox);
                     };
             }
         })
@@ -735,6 +871,21 @@
          {
             $('#'+id).text(text);
          };
+    }
+
+    function total()
+    {
+        var temp=0;
+        $('input[name^="estimate_cost_topic"]').each(function() {
+            var val=$(this).val();
+            if (val) 
+            {
+                 temp=temp+parseFloat(val);
+            };
+           
+        });
+        $('#total').val(temp.toFixed(2));
+        
     }
 
 
