@@ -883,7 +883,9 @@
                         temp_checkbox+='<input type="checkbox" name="serves[]" value="'+data.data.serves_id+'">'+data.data.serves_name+'</label>';
                         
                     $(temp_checkbox).insertBefore('#btn_addServe');
+                    $('#'+form_id)[0].reset();
                     $('#mdl-addserve').modal('hide');
+
                 }
                 else
                 {
@@ -920,10 +922,12 @@
                     enable_button(button_id,'Save');
 
                     var temp_checkbox='<label class="checkbox-inline">';
-                        temp_checkbox+='<input type="checkbox" name="establishment_type[]" value="'+data.type_id+'">'+data.type+'</label>';
+                        temp_checkbox+='<input type="checkbox" name="establishment_type[]" value="'+data.data.type_id+'">'+data.data.type+'</label>';
                     
                     $(temp_checkbox).insertBefore('#'+estd_typeid);
+                    $('#'+from_id)[0].reset();
                     $('#mdl_establishmentType').modal('hide');
+                    
                 }
                 else
                 {
@@ -962,10 +966,12 @@
                     enable_button(button_id,'Save');
 
                     var temp_checkbox='<label class="checkbox-inline">';
-                        temp_checkbox+='<input type="checkbox" name="facility[]" value="'+data.facilities_id+'">'+data.facility+'</label>';
+                        temp_checkbox+='<input type="checkbox" name="facility[]" value="'+data.data.facilities_id+'">'+data.data.facility+'</label>';
                   
                     $(temp_checkbox).insertBefore('#'+facility_id);
+                    $('#'+form_id)[0].reset();
                     $('#mdl_facility').modal('hide');
+                    
                 }
                 else
                 {
@@ -997,14 +1003,27 @@
             success:function(data)
             {
                 console.log(data);
+                if (data.status==true)
+                {
+                    enable_button(button_id,'Save');
+                    var temp_checkbox='<label class="checkbox-inline">';
+                        temp_checkbox+='<input type="checkbox" name="cousins[]" value="'+data.data.cousin_id+'">'+data.data.cousin+'</label>';
                     
-                        enable_button(button_id,'Save');
+                    $(temp_checkbox).insertBefore('#'+cousin_id);
+                     $('#'+form_id)[0].reset();
+                    $('#mdl_cousin').modal('hide');
+                   
+                }
+                else
+                {
+                    $.each(data, function(index, val) {
+                             $('#'+form_id+' #'+val.error_string).next().html(val.input_error);
+                            $('#'+form_id+' #'+val.error_string).parent().parent().addClass('has-error');
+                        });
 
-                        var temp_checkbox='<label class="checkbox-inline">';
-                            temp_checkbox+='<input type="checkbox" name="cousins[]" value="'+data.cousin_id+'">'+data.cousin+'</label>';
-                        
-                        $(temp_checkbox).insertBefore('#'+cousin_id);
-                        $('#mdl_cousin').modal('hide');
+                    enable_button(button_id,'Save');
+                }
+               
             }
         })
         
@@ -1025,15 +1044,27 @@
             data:$('#'+form_id).serialize(),
             success:function(data)
             {
-                console.log(data);
-                   
-                enable_button(button_id,'Save');
+               if (data.status==true)
+                {
+                    enable_button(button_id,'Save');
 
-                var temp_checkbox='<label class="checkbox-inline">';
-                    temp_checkbox+='<input type="checkbox" name="pop_dishes[]" value="'+data.pop_dishes_id+'">'+data.pop_dishes+'</label>';
+                    var temp_checkbox='<label class="checkbox-inline">';
+                        temp_checkbox+='<input type="checkbox" name="pop_dishes[]" value="'+data.data.pop_dishes_id+'">'+data.data.pop_dishes+'</label>';
+                    
+                    $(temp_checkbox).insertBefore('#'+dish_id);
+                    $('#'+form_id)[0].reset();
+                    $('#mdl_populardish').modal('hide');
+                }
+                else
+                {
+                     $.each(data, function(index, val) {
+                             $('#'+form_id+' #'+val.error_string).next().html(val.input_error);
+                            $('#'+form_id+' #'+val.error_string).parent().parent().addClass('has-error');
+                        });
+
+                    enable_button(button_id,'Save');
+                }
                 
-                $(temp_checkbox).insertBefore('#'+dish_id);
-                $('#mdl_populardish').modal('hide');
                     
             }
         })
