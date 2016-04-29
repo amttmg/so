@@ -925,7 +925,7 @@
                         temp_checkbox+='<input type="checkbox" name="establishment_type[]" value="'+data.data.type_id+'">'+data.data.type+'</label>';
                     
                     $(temp_checkbox).insertBefore('#'+estd_typeid);
-                    $('#'+from_id)[0].reset();
+                    $('#'+form_id)[0].reset();
                     $('#mdl_establishmentType').modal('hide');
                     
                 }
