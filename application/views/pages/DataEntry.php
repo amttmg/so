@@ -648,7 +648,8 @@
 
                     <div class="form-group">
                         <label for="">label</label>
-                        <input type="text" name="serve_name" class="form-control" placeholder="Input serve type">
+                        <input type="text" name="serve_name" id="serve_name" class="form-control" placeholder="Input Serve Type">
+                        <span></span>
                     </div>
                 </form>
             </div>
@@ -671,7 +672,8 @@
                 <form action="" method="POST"  id="estd_typeform">
                     <div class="form-group">
                         <label for="">Establishment Type</label>
-                        <input type="text" name="estd_type" class="form-control" placeholder="Input field">
+                        <input type="text" name="estd_type" id="estd_type" class="form-control" placeholder="Input Establishment Type">
+                        <span></span>
                     </div>
                 </form>
             </div>
@@ -695,7 +697,8 @@
                     
                     <div class="form-group">
                         <label for="">Facility</label>
-                        <input type="text" name="facility_name" class="form-control" id="" placeholder="Input field">
+                        <input type="text" name="facility_name" id="facility_name" class="form-control" id="" placeholder="Input Facility">
+                        <span></span>
                     </div>
         
                 </form>
@@ -719,13 +722,38 @@
                 <form action="" method="POST" id="cousin_form">
                     <div class="form-group">
                         <label for="">Cousin</label>
-                        <input type="text" name="cousin_name" class="form-control" id="" placeholder="Input field">
+                        <input type="text" name="cousin_name" class="form-control" id="cousin_name" placeholder="Cousin Name">
+                        <span></span>
                     </div>
                   
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" id="btn_cousinsave" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mdl_populardish">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add new popular dish</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST" id="popdishform">
+                    <div class="form-group">
+                        <label for="">Dish</label>
+                        <input type="text" name="dish_name" class="form-control" id="dish_name" placeholder="Dish Name">
+                        <span></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn_popDishSave" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -760,11 +788,22 @@
           insertIntoCousins('cousin_form','btn_cousinsave','btn_addCousin');
        });
 
+       $('#btn_popDishSave').click(function() 
+       {
+           insertIntoPopularDish('popdishform','btn_popDishSave','btn_addPopDish')
+       });
 /*==============================================================*/
+
+        $('#btn_addPopDish').click(function() {
+
+            $('#mdl_populardish').modal('show');
+        });
+
         $('#btn_addCousin').click(function() 
         {
             $('#mdl_cousin').modal('show');
         });
+
         $('#btn_facilities').click(function() 
         {
             $('#mdl_facility').modal('show');
@@ -778,7 +817,7 @@
         $('#btn_addServe').click(function() {
             $('#mdl-addserve').modal('show');
         });    
-
+/*=================================================================================*/
         $('#city_suggest').keyup(function() {
             $.ajax({
                 url: '<?php echo(site_url("place/suggest")) ?>',
@@ -804,7 +843,7 @@
             
         });
     });
-
+/*=============================================================================*/
     $('#open_time_all').change(function () {
         $('.open_time').val($(this).val());
     })
@@ -818,7 +857,7 @@
     $('#end_time_all').change(function () {
         $('.end_time').val($(this).val());
     })
-
+/*================================================================================*/
     function maxLengthCheck(object)
     {
         if (object.value.length > object.maxLength)
@@ -836,15 +875,25 @@
             data:$('#'+form_id).serialize(),
             success:function(data)
             {
-                
-                        enable_button(button_id,'Save');
-                        var temp_checkbox='<label class="checkbox-inline">';
-                            temp_checkbox+='<input type="checkbox" name="serves[]" value="'+data.serves_id+'">'+data.serves_name+'</label>';
-                            
-                        $(temp_checkbox).insertBefore('#btn_addServe');
-                        $('#mdl-addserve').modal('hide');
+                console.log(data);
+                if(data.status===true)
+                {
+                    enable_button(button_id,'Save');
+                    var temp_checkbox='<label class="checkbox-inline">';
+                        temp_checkbox+='<input type="checkbox" name="serves[]" value="'+data.data.serves_id+'">'+data.data.serves_name+'</label>';
+                        
+                    $(temp_checkbox).insertBefore('#btn_addServe');
+                    $('#mdl-addserve').modal('hide');
+                }
+                else
+                {
+                        $.each(data, function(index, val) {
+                             $('#'+form_id+' #'+val.error_string).next().html(val.input_error);
+                            $('#'+form_id+' #'+val.error_string).parent().parent().addClass('has-error');
+                        });
 
-                    
+                    enable_button(button_id,'Save');
+                }     
             }
         })
         
@@ -866,14 +915,26 @@
             success:function(data)
             {
                 console.log(data);
-                    
-                        enable_button(button_id,'Save');
+                if (data.status==true) 
+                {
+                    enable_button(button_id,'Save');
 
-                        var temp_checkbox='<label class="checkbox-inline">';
-                            temp_checkbox+='<input type="checkbox" name="establishment_type[]" value="'+data.type_id+'">'+data.type+'</label>';
-                        
-                        $(temp_checkbox).insertBefore('#'+estd_typeid);
-                        $('#mdl_establishmentType').modal('hide');
+                    var temp_checkbox='<label class="checkbox-inline">';
+                        temp_checkbox+='<input type="checkbox" name="establishment_type[]" value="'+data.type_id+'">'+data.type+'</label>';
+                    
+                    $(temp_checkbox).insertBefore('#'+estd_typeid);
+                    $('#mdl_establishmentType').modal('hide');
+                }
+                else
+                {
+                     $.each(data, function(index, val) {
+                             $('#'+form_id+' #'+val.error_string).next().html(val.input_error);
+                            $('#'+form_id+' #'+val.error_string).parent().parent().addClass('has-error');
+                        });
+
+                    enable_button(button_id,'Save');
+                }
+                
             }
         })
         
@@ -894,16 +955,27 @@
             data:$('#'+form_id).serialize(),
             success:function(data)
             {
-                        console.log(data);
-                    
-                        enable_button(button_id,'Save');
+                console.log(data);
+                if (data.status==true) 
+                {
 
-                        var temp_checkbox='<label class="checkbox-inline">';
-                            temp_checkbox+='<input type="checkbox" name="facility[]" value="'+data.facilities_id+'">'+data.facility+'</label>';
-                      
-                       $(temp_checkbox).insertBefore('#'+facility_id);
-                        $('#mdl_facility').modal('hide');
-                   
+                    enable_button(button_id,'Save');
+
+                    var temp_checkbox='<label class="checkbox-inline">';
+                        temp_checkbox+='<input type="checkbox" name="facility[]" value="'+data.facilities_id+'">'+data.facility+'</label>';
+                  
+                    $(temp_checkbox).insertBefore('#'+facility_id);
+                    $('#mdl_facility').modal('hide');
+                }
+                else
+                {
+                     $.each(data, function(index, val) {
+                             $('#'+form_id+' #'+val.error_string).next().html(val.input_error);
+                            $('#'+form_id+' #'+val.error_string).parent().parent().addClass('has-error');
+                        });
+
+                    enable_button(button_id,'Save');
+                }
             }
         })
         
@@ -947,27 +1019,28 @@
         disable_button(button_id,'Saving');
 
         $.ajax({
-            url: '<?php echo(site_url("Cousin/add")) ?>',
+            url: '<?php echo(site_url("pop_dish/add")) ?>',
             dataType:'json',
+            type:'post',
             data:$('#'+form_id).serialize(),
             success:function(data)
             {
                 console.log(data);
-                    if (data.status===true)
-                    {
-                        enable_button(button_id,'Add New');
+                   
+                enable_button(button_id,'Save');
 
-                        var temp_checkbox='<label class="checkbox-inline">';
-                            temp_checkbox+='<input type="checkbox" name="pop_dishes[]" value="'+data.pop_dishes_id+'">'+data.pop_dishes+'</label>';
-                      
-                        $('#'+dish_id).append(temp_checkbox);
-                    };
+                var temp_checkbox='<label class="checkbox-inline">';
+                    temp_checkbox+='<input type="checkbox" name="pop_dishes[]" value="'+data.pop_dishes_id+'">'+data.pop_dishes+'</label>';
+                
+                $(temp_checkbox).insertBefore('#'+dish_id);
+                $('#mdl_populardish').modal('hide');
+                    
             }
         })
         
         .fail(function() {
 
-            enable_button(button_id,'Add New');
+            enable_button(button_id,'Save');
         });
     }
 

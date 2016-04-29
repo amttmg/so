@@ -6,7 +6,7 @@ class Pop_dish extends CI_Controller {
 	public function add()
 	{
 		$data=array(
-			'serves_name'=>$this->input->post('pop_dishes')
+			'pop_dishes'=>$this->input->post('dish_name')
 			);
 		$this->db->insert('tbl_pop_dishes',$data);
 
