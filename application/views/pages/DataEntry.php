@@ -133,8 +133,11 @@
                                 Latitude
                             </td>
                             <td>
-                                <input type="text" name="res_lat" value="<?php echo set_value('res_lat') ?>"
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">28.</span>
+                                    <input type="text" name="res_lat" value="<?php echo set_value('res_lat') ?>"
                                        class="form-control">
+                                </div>
                                 <?php echo form_error('res_lat'); ?>
                             </td>
                         </tr>
@@ -143,8 +146,11 @@
                                 Longitude
                             </td>
                             <td>
-                                <input type="text" name="res_lon" value="<?php echo set_value('res_lon') ?>"
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">84.</span>
+                                    <input type="text" name="res_lon" value="<?php echo set_value('res_lon') ?>"
                                        class="form-control">
+                                </div>
                                 <?php echo form_error('res_lon'); ?>
                             </td>
                         </tr>
