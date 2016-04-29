@@ -346,8 +346,8 @@
                         </tr>
                         <tr>
                             <td>if same all weeks</td>
-                            <td><input id="open_time_all" type="text" class="form-control"></td>
-                            <td><input id="close_time_all" type="text" class="form-control"></td>
+                            <td><input id="open_time_all" type="time" class="form-control"></td>
+                            <td><input id="close_time_all" type="time" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Sunday</td>
@@ -516,8 +516,8 @@
                         </tr>
                         <tr>
                             <td>if same all weeks</td>
-                            <td><input type="text" class="form-control" id="start_time_all"></td>
-                            <td><input type="text" class="form-control" id="end_time_all"></td>
+                            <td><input type="time" class="form-control" id="start_time_all"></td>
+                            <td><input type="time" class="form-control" id="end_time_all"></td>
                         </tr>
                         <tr>
                             <td>Sunday</td>

@@ -9,6 +9,7 @@ class Establishment_type extends CI_Controller {
 		$master['status'] = True;
 		$data             = array();
 		$master           = array();
+		
         $this->form_validation->set_rules('estd_type', 'Establishment Type', 'trim|required|max_length[65]|is_unique[establishment_type.type]');
         $this->form_validation->set_error_delimiters('<p class="text-danger">', '</>');
 		
