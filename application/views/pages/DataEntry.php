@@ -351,39 +351,39 @@
                         </tr>
                         <tr>
                             <td>Sunday</td>
-                            <td><input name="servtime[1][open]" type="text" class="form-control open_time"></td>
-                            <td><input name="servtime[1][close]" type="text" class="form-control close_time"></td>
+                            <td><input name="servtime[1][open]" type="time" class="form-control open_time"></td>
+                            <td><input name="servtime[1][close]" type="time" class="form-control close_time"></td>
                         </tr>
                         <tr>
                             <td>Monday</td>
-                            <td><input name="servtime[2][open]" type="text" class="form-control open_time"></td>
-                            <td><input name="servtime[2][close]" type="text" class="form-control close_time"></td>
+                            <td><input name="servtime[2][open]" type="time" class="form-control open_time"></td>
+                            <td><input name="servtime[2][close]" type="time" class="form-control close_time"></td>
                         </tr>
                         <tr>
                             <td>Tuesday</td>
-                            <td><input name="servtime[3][open]" type="text" class="form-control open_time"></td>
-                            <td><input name="servtime[3][close]" type="text" class="form-control close_time"></td>
+                            <td><input name="servtime[3][open]" type="time" class="form-control open_time"></td>
+                            <td><input name="servtime[3][close]" type="time" class="form-control close_time"></td>
                         </tr>
                         <tr>
                             <td>Wednesday</td>
-                            <td><input name="servtime[4][open]" type="text" class="form-control open_time"></td>
-                            <td><input name="servtime[4][close]" type="text" class="form-control close_time"></td>
+                            <td><input name="servtime[4][open]" type="time" class="form-control open_time"></td>
+                            <td><input name="servtime[4][close]" type="time" class="form-control close_time"></td>
                         </tr>
                         <tr>
                             <td>Thursday</td>
-                            <td><input name="servtime[5][open]" type="text" class="form-control open_time"></td>
-                            <td><input name="servtime[5][close]" type="text" class="form-control close_time"></td>
+                            <td><input name="servtime[5][open]" type="time" class="form-control open_time"></td>
+                            <td><input name="servtime[5][close]" type="time" class="form-control close_time"></td>
                         </tr>
                         <tr>
                             <td>Friday</td>
-                            <td><input name="servtime[6][open]" type="text" class="form-control open_time"></td>
-                            <td><input name="servtime[6][close]" type="text" class="form-control close_time"></td>
+                            <td><input name="servtime[6][open]" type="time" class="form-control open_time"></td>
+                            <td><input name="servtime[6][close]" type="time" class="form-control close_time"></td>
                         </tr>
 
                         <tr>
                             <td>Saturday</td>
-                            <td><input name="servtime[7][open]" type="text" class="form-control open_time"></td>
-                            <td><input name="servtime[7][close]" type="text" class="form-control close_time"></td>
+                            <td><input name="servtime[7][open]" type="time" class="form-control open_time"></td>
+                            <td><input name="servtime[7][close]" type="time" class="form-control close_time"></td>
                         </tr>
                     </table>
                 </div>
@@ -521,39 +521,39 @@
                         </tr>
                         <tr>
                             <td>Sunday</td>
-                            <td><input name="happyhours[1][start]" type="text" class="form-control start_time"></td>
-                            <td><input name="happyhours[1][end]" type="text" class="form-control end_time"></td>
+                            <td><input name="happyhours[1][start]" type="time" class="form-control start_time"></td>
+                            <td><input name="happyhours[1][end]" type="time" class="form-control end_time"></td>
                         </tr>
                         <tr>
                             <td>Monday</td>
-                            <td><input name="happyhours[2][start]" type="text" class="form-control start_time"></td>
-                            <td><input name="happyhours[2][end]" type="text" class="form-control end_time"></td>
+                            <td><input name="happyhours[2][start]" type="time" class="form-control start_time"></td>
+                            <td><input name="happyhours[2][end]" type="time" class="form-control end_time"></td>
                         </tr>
                         <tr>
                             <td>Tuesday</td>
-                            <td><input name="happyhours[3][start]" type="text" class="form-control start_time"></td>
-                            <td><input name="happyhours[3][end]" type="text" class="form-control end_time"></td>
+                            <td><input name="happyhours[3][start]" type="time" class="form-control start_time"></td>
+                            <td><input name="happyhours[3][end]" type="time" class="form-control end_time"></td>
                         </tr>
                         <tr>
                             <td>Wednesday</td>
-                            <td><input name="happyhours[4][start]" type="text" class="form-control start_time"></td>
-                            <td><input name="happyhours[4][end]" type="text" class="form-control end_time"></td>
+                            <td><input name="happyhours[4][start]" type="time" class="form-control start_time"></td>
+                            <td><input name="happyhours[4][end]" type="time" class="form-control end_time"></td>
                         </tr>
                         <tr>
                             <td>Thursday</td>
-                            <td><input name="happyhours[5][start]" type="text" class="form-control start_time"></td>
-                            <td><input name="happyhours[5][end]" type="text" class="form-control end_time"></td>
+                            <td><input name="happyhours[5][start]" type="time" class="form-control start_time"></td>
+                            <td><input name="happyhours[5][end]" type="time" class="form-control end_time"></td>
                         </tr>
                         <tr>
                             <td>Friday</td>
-                            <td><input name="happyhours[6][start]" type="text" class="form-control start_time"></td>
-                            <td><input name="happyhours[6][end]" type="text" class="form-control end_time"></td>
+                            <td><input name="happyhours[6][start]" type="time" class="form-control start_time"></td>
+                            <td><input name="happyhours[6][end]" type="time" class="form-control end_time"></td>
                         </tr>
 
                         <tr>
                             <td>Saturday</td>
-                            <td><input name="happyhours[7][start]" type="text" class="form-control start_time"></td>
-                            <td><input name="happyhours[7][end]" type="text" class="form-control end_time"></td>
+                            <td><input name="happyhours[7][start]" type="time" class="form-control start_time"></td>
+                            <td><input name="happyhours[7][end]" type="time" class="form-control end_time"></td>
                         </tr>
                     </table>
                 </div>
