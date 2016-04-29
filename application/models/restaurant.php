@@ -8,6 +8,8 @@
  */
 class restaurant extends CI_Model
 {
+    var $table_name='tbl_restaurants';
+
     function add()
     {
         $res_name = $this->input->post('res_name');
@@ -177,4 +179,47 @@ class restaurant extends CI_Model
             }
         }
     }
+
+    public function getAll($order_by='',$json=false)
+    {
+        if ($order_by=='') 
+        {
+            $this->db->order_by('res_id','desc');
+        }
+        else
+        {
+            $this->db->order_by($order_by[0],$order_by[1]);
+        }
+
+        $this->db->from($this->table_name);
+        $result_data= $this->db->get()->result();
+
+        if ($json==true)
+        {
+           return json_encode($result_data);
+        }
+        else
+        {
+            return $result_data;
+        }
+    }
+
+    public function getBy($data,$json=false)
+    {
+         $this->db->from($this->table_name);
+         $this->db->where($data[0],$data[1]);
+        
+        $result_data=$this->db->get()->result();
+        if ($json==false) 
+        {
+            return $result_data;
+        }
+        else
+        {
+            return json_encode($result_data);
+        }
+
+       
+    }
+
 }
