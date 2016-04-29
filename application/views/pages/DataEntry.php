@@ -311,7 +311,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well-sm well">
-                    <b>Serves: </b>
+                    <b>Serves: </b><button type="button" id="btn_addServe" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus fa"></i>   Add New</button>
                     <div id="serve_checkbox">
                         <?php foreach ($serves as $ser) {
                             ?>
@@ -322,7 +322,7 @@
                             <?php
                         } ?>
                         <?php echo form_error('serves'); ?>
-                        <button type="button" id="btn_addServe" class="btn btn-info"><i class="fa fa-plus fa"></i>   Add New</button>
+                        
                     </div>
                 </div>
 
@@ -448,7 +448,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well-sm well">
-                    <b> Establishment Type:</b>
+                    <b> Establishment Type:</b> <span class="pull-right"><button type="button" id="btn_establishmentType" class="btn btn-sm btn-info"> Add New</button></span>
                     <hr/>
                     <?php foreach ($establishment_types as $est) {
                         ?>
@@ -458,7 +458,7 @@
                         </label>
                         <?php
                     } ?>
-                    <button type="button" id="btn_establishmentType" class="btn btn-info"> Add New</button>
+                   
                 </div>
             </div>
         </div>
@@ -466,7 +466,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well-sm well" id="facility_checkbox">
-                    <b> Facilities :</b>
+                    <b> Facilities :</b><span class="pull-right"><button type="button" id="btn_facilities" class="btn btn-sm btn-info"> Add New</button></span>
                     <hr/>
                     <?php foreach ($facilities as $fac) {
                         ?>
@@ -476,7 +476,7 @@
                         </label>
                         <?php
                     } ?>
-                    <button type="button" id="btn_facilities" class="btn btn-info"> Add New</button>
+                    
                 </div>
             </div>
         </div>
@@ -563,7 +563,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well-sm well">
-                    <b> Cousins by Country :</b>
+                    <b> Cousins by Country :</b><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
                     <hr/>
                     <?php foreach ($cousins as $Cousin) {
                         ?>
@@ -573,7 +573,7 @@
                         </label>
                         <?php
                     } ?>
-                    <button type="button" id="btn_addCousin" class="btn btn-info"><i class="fa fa-plus fa"></i> Add New</button>
+                    
                 </div>
             </div>
         </div>
@@ -598,7 +598,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well-sm well">
-                    <b> Popular Dish:</b>
+                    <b> Popular Dish:</b><span class="pull-right"> <button type="button" id="btn_addPopDish" class="btn btn-sm btn-info"><i class="fa fa-plus fa"></i> Add New</button></span>
                     <hr/>
                     <?php foreach ($pop_dishes as $pop) {
                         ?>
@@ -608,7 +608,7 @@
                         </label>
                         <?php
                     } ?>
-                    <button type="button" id="btn_addPopDish" class="btn btn-info"><i class="fa fa-plus fa"></i> Add New</button>
+                   
                 </div>
             </div>
         </div>
