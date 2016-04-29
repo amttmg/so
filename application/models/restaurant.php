@@ -14,10 +14,10 @@ class restaurant extends CI_Model
         $area = $this->input->post('est_area');
         $street = $this->input->post('est_street');
         $landmark = $this->input->post('est_landmark');
-        $mobile1 = $this->input->post('res_mobile1');
-        $mobile2 = $this->input->post('res_mobile2');
-        $landline1 = $this->input->post('res_landline1');
-        $landline2 = $this->input->post('res_landline2');
+        $mobile1 = '98'.$this->input->post('res_mobile1');
+        $mobile2 = '98'.$this->input->post('res_mobile2');
+        $landline1 = '01'.$this->input->post('res_landline1');
+        $landline2 = '01'.$this->input->post('res_landline2');
         $lat = $this->input->post('res_lat');
         $lon = $this->input->post('res_lon');
         $google_map = $this->input->post('res_map');
@@ -91,10 +91,10 @@ class restaurant extends CI_Model
 //Owners
         $name = $this->input->post('owners_name');
         $designation = $this->input->post('owners_designation');
-        $mobile1 = $this->input->post('owners_mobile1');
-        $mobile2 = $this->input->post('owners_mobile2');
-        $landline1 = $this->input->post('owners_landline1');
-        $landline2 = $this->input->post('owners_landline2');
+        $mobile1 = '98'.$this->input->post('owners_mobile1');
+        $mobile2 = '98'.$this->input->post('owners_mobile2');
+        $landline1 = '01'.$this->input->post('owners_landline1');
+        $landline2 = '01'.$this->input->post('owners_landline2');
 
         $newtbl_owners = array(
             'name' => $name,
