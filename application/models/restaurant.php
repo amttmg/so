@@ -209,7 +209,7 @@ class restaurant extends CI_Model
          $this->db->from($this->table_name);
          $this->db->where($data[0],$data[1]);
         
-        $result_data=$this->db->get()->result();
+        $result_data=$this->db->get()->row();
         if ($json==false) 
         {
             return $result_data;

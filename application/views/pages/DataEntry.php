@@ -447,7 +447,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well-sm well">
+                <div class="well-sm well" id="estd_checkbox">
                     <b> Establishment Type:</b> <span class="pull-right"><button type="button" id="btn_establishmentType" class="btn btn-sm btn-info"> Add New</button></span>
                     <hr/>
                     <?php foreach ($establishment_types as $est) {
@@ -562,7 +562,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well-sm well">
+                <div class="well-sm well" id="cousin_checkbox">
                     <b> Cousins by Country :</b><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
                     <hr/>
                     <?php foreach ($cousins as $Cousin) {
@@ -597,7 +597,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well-sm well">
+                <div class="well-sm well" id="populardish_checkbox">
                     <b> Popular Dish:</b><span class="pull-right"> <button type="button" id="btn_addPopDish" class="btn btn-sm btn-info"><i class="fa fa-plus fa"></i> Add New</button></span>
                     <hr/>
                     <?php foreach ($pop_dishes as $pop) {
@@ -888,7 +888,7 @@
                     var temp_checkbox='<label class="checkbox-inline">';
                         temp_checkbox+='<input type="checkbox" name="serves[]" value="'+data.data.serves_id+'">'+data.data.serves_name+'</label>';
                         
-                    $(temp_checkbox).insertBefore('#btn_addServe');
+                    $('#serve_checkbox').append(temp_checkbox);
                     $('#'+form_id)[0].reset();
                     $('#mdl-addserve').modal('hide');
 
@@ -930,7 +930,7 @@
                     var temp_checkbox='<label class="checkbox-inline">';
                         temp_checkbox+='<input type="checkbox" name="establishment_type[]" value="'+data.data.type_id+'">'+data.data.type+'</label>';
                     
-                    $(temp_checkbox).insertBefore('#'+estd_typeid);
+                    $('#estd_checkbox').append(temp_checkbox);
                     $('#'+form_id)[0].reset();
                     $('#mdl_establishmentType').modal('hide');
                     
@@ -974,7 +974,7 @@
                     var temp_checkbox='<label class="checkbox-inline">';
                         temp_checkbox+='<input type="checkbox" name="facility[]" value="'+data.data.facilities_id+'">'+data.data.facility+'</label>';
                   
-                    $(temp_checkbox).insertBefore('#'+facility_id);
+                    $('#facility_checkbox').append(temp_checkbox);
                     $('#'+form_id)[0].reset();
                     $('#mdl_facility').modal('hide');
                     
@@ -1015,7 +1015,7 @@
                     var temp_checkbox='<label class="checkbox-inline">';
                         temp_checkbox+='<input type="checkbox" name="cousins[]" value="'+data.data.cousin_id+'">'+data.data.cousin+'</label>';
                     
-                    $(temp_checkbox).insertBefore('#'+cousin_id);
+                    $('#cousin_checkbox').append(temp_checkbox);
                      $('#'+form_id)[0].reset();
                     $('#mdl_cousin').modal('hide');
                    
@@ -1057,7 +1057,7 @@
                     var temp_checkbox='<label class="checkbox-inline">';
                         temp_checkbox+='<input type="checkbox" name="pop_dishes[]" value="'+data.data.pop_dishes_id+'">'+data.data.pop_dishes+'</label>';
                     
-                    $(temp_checkbox).insertBefore('#'+dish_id);
+                    $('#populardish_checkbox').append(temp_checkbox);
                     $('#'+form_id)[0].reset();
                     $('#mdl_populardish').modal('hide');
                 }
