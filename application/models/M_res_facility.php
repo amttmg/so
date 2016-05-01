@@ -9,8 +9,9 @@ class M_res_facility extends CI_Model {
 
      public function getBy($data,$order_by='',$json=false)
     {
-        $this->db->from($this->table_name);
-        $this->db->where($data[0],$data[1]);
+        $this->db->select('f.*,rf.res_id');
+        $this->db->from('tbl_facilities as f');
+        $this->db->join('(select * from tbl_res_facility where tbl_res_facility.res_id='.$data[1].' ) as rf','rf.facility_id=f.facilities_id','left');
         if ($order_by) 
         {
         	 $this->db->order_by($order_by[0],$order_by[1]);
@@ -27,6 +28,28 @@ class M_res_facility extends CI_Model {
 
        
     }
+
+     public function update_res_facility($res_id,$facility_id,$status)
+    {
+        if ($status) 
+        {
+            $insert_data=array(
+                'res_id'=>$res_id,
+                'facility_id'=>$facility_id,
+                'status'=>1
+                );
+          $this->db->insert('tbl_res_facility',$insert_data);
+        }
+        else
+        {
+            $this->db->where('facility_id',$facility_id);
+            $this->db->where('res_id',$res_id);
+           $this->db->delete('tbl_res_facility');
+        }
+        return true;
+        
+    }
+
 
 
 	

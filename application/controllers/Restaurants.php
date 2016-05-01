@@ -17,6 +17,7 @@ class Restaurants extends CI_Controller {
 		$this->load->model('M_happy_hour','happy_hour');
 		$this->load->model('M_res_estimate_cost','res_estimate_cost');
 		$this->load->model('m_owner','owner');
+		$this->load->model('m_res_facility','res_facility');
 	}
 
 	public function index()
@@ -42,8 +43,7 @@ class Restaurants extends CI_Controller {
 		$data['happy_hours']=$this->happy_hour->getBy(array('res_id',$restaurant_id));
 		$data['res_costs']=$this->res_estimate_cost->getBy(array('res_id',$restaurant_id));
 		$data['owners']=$this->owner->getBy(array('res_id',$restaurant_id));
-
-		//print_r($data['serves']);
+		$data['facilities']=$this->res_facility->getBy(array('res_id',$restaurant_id));
 		$data['content'] = $this->load->view('pages/restaurant/details',$data, true);
         $this->load->view('page_template', $data);
 	}

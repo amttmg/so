@@ -290,47 +290,58 @@
                                 Closing Time
                             </th>
                         </tr>
-                        <tr>
-                            <td>if same all weeks</td>
-                            <td><input id="open_time_all" type="time" class="form-control"></td>
-                            <td><input id="close_time_all" type="time" class="form-control"></td>
-                        </tr>
-                        <tr>
-                            <td>Sunday</td>
-                            <td><input name="servtime[1][open]" type="time" class="form-control open_time"></td>
-                            <td><input name="servtime[1][close]" type="time" class="form-control close_time"></td>
-                        </tr>
-                        <tr>
-                            <td>Monday</td>
-                            <td><input name="servtime[2][open]" type="time" class="form-control open_time"></td>
-                            <td><input name="servtime[2][close]" type="time" class="form-control close_time"></td>
-                        </tr>
-                        <tr>
-                            <td>Tuesday</td>
-                            <td><input name="servtime[3][open]" type="time" class="form-control open_time"></td>
-                            <td><input name="servtime[3][close]" type="time" class="form-control close_time"></td>
-                        </tr>
-                        <tr>
-                            <td>Wednesday</td>
-                            <td><input name="servtime[4][open]" type="time" class="form-control open_time"></td>
-                            <td><input name="servtime[4][close]" type="time" class="form-control close_time"></td>
-                        </tr>
-                        <tr>
-                            <td>Thursday</td>
-                            <td><input name="servtime[5][open]" type="time" class="form-control open_time"></td>
-                            <td><input name="servtime[5][close]" type="time" class="form-control close_time"></td>
-                        </tr>
-                        <tr>
-                            <td>Friday</td>
-                            <td><input name="servtime[6][open]" type="time" class="form-control open_time"></td>
-                            <td><input name="servtime[6][close]" type="time" class="form-control close_time"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Saturday</td>
-                            <td><input name="servtime[7][open]" type="time" class="form-control open_time"></td>
-                            <td><input name="servtime[7][close]" type="time" class="form-control close_time"></td>
-                        </tr>
+                        
+                        <?php foreach ($service_time as $st): ?>
+                            <?php if ($st->day==1): ?>
+                                <tr>
+                                    <td>Sunday</td>
+                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
+                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                </tr>
+                            <?php endif ?>
+                            <?php if ($st->day==2): ?>
+                                <tr>
+                                    <td>Monday</td>
+                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
+                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                </tr>
+                            <?php endif ?>
+                            <?php if ($st->day==2): ?>
+                                <tr>
+                                    <td>Tuesday</td>
+                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
+                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                </tr>
+                            <?php endif ?>
+                            <?php if ($st->day==2): ?>
+                                <tr>
+                                    <td>Wednesday</td>
+                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
+                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                </tr>
+                            <?php endif ?>
+                            <?php if ($st->day==2): ?>
+                                <tr>
+                                    <td>Thursday</td>
+                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
+                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                </tr>
+                            <?php endif ?>
+                            <?php if ($st->day==2): ?>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
+                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                </tr>
+                            <?php endif ?>
+                            <?php if ($st->day==2): ?>
+                                <tr>
+                                    <td>Saturday</td>
+                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
+                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                </tr>
+                            <?php endif ?>
+                        <?php endforeach ?>
                     </table>
                 </div>
             </div>
@@ -342,28 +353,27 @@
                                 Cost(Lunch, dinner or breakfast) for two
                             </th>
                         </tr>
-                        <?php foreach ($estimate_cost_topic as $topic) {
+                        <?php foreach ($res_costs as $topic) {
                             ?>
                             <tr>
                                 <td>
                                     <?php echo $topic->topic ?>
                                 </td>
                                 <td>
-                                    <input type="number" name="estimate_cost_topic[<?php echo $topic->topic_id ?>]"
-                                           class="estimate_cost_topic form-control">
+                                    <?php echo($topic->cost) ?>
                                 </td>
                             </tr>
                             <?php
 
                         } ?>
-                        <tr>
+                        <!-- <tr>
                             <td>
                                 <b>Total</b>
                             </td>
                             <td>
                                <input type="number" class="form-control" disabled="" name="total" id="total" value="0">
                             </td>
-                        </tr>
+                        </tr> -->
                     </table>
                 </div>
             </div>
@@ -420,14 +430,22 @@
                 <div class="well-sm well" id="facility_checkbox">
                     <b> Facilities :</b><span class="pull-right"><button type="button" id="btn_facilities" class="btn btn-sm btn-info"> Add New</button></span>
                     <hr/>
-                    <?php foreach ($facilities as $fac) {
-                        ?>
+
+                    <?php foreach ($facilities as $fac): ?>
                         <label class="checkbox-inline">
-                            <input type="checkbox" name="facilities[]"
-                                   value="<?php echo $fac->facilities_id ?>"><?php echo $fac->facility ?>
-                        </label>
-                        <?php
-                    } ?>
+                         <?php 
+                            $data = array(
+                                'name'        => 'facilities[]',
+                                'class'          => 'facility',
+                                'value'       =>$fac->facilities_id ,
+                                'checked'     => $fac->res_id?TRUE:FALSE
+                                );
+
+                               ?>
+                            <?php echo form_checkbox($data); ?><?php echo $fac->facility ?>
+                            </label>
+                    <?php endforeach ?>
+                   
                     
                 </div>
             </div>
@@ -466,47 +484,41 @@
                                 End Time
                             </th>
                         </tr>
-                        <tr>
-                            <td>if same all weeks</td>
-                            <td><input type="time" class="form-control" id="start_time_all"></td>
-                            <td><input type="time" class="form-control" id="end_time_all"></td>
-                        </tr>
-                        <tr>
-                            <td>Sunday</td>
-                            <td><input name="happyhours[1][start]" type="time" class="form-control start_time"></td>
-                            <td><input name="happyhours[1][end]" type="time" class="form-control end_time"></td>
-                        </tr>
-                        <tr>
-                            <td>Monday</td>
-                            <td><input name="happyhours[2][start]" type="time" class="form-control start_time"></td>
-                            <td><input name="happyhours[2][end]" type="time" class="form-control end_time"></td>
-                        </tr>
-                        <tr>
-                            <td>Tuesday</td>
-                            <td><input name="happyhours[3][start]" type="time" class="form-control start_time"></td>
-                            <td><input name="happyhours[3][end]" type="time" class="form-control end_time"></td>
-                        </tr>
-                        <tr>
-                            <td>Wednesday</td>
-                            <td><input name="happyhours[4][start]" type="time" class="form-control start_time"></td>
-                            <td><input name="happyhours[4][end]" type="time" class="form-control end_time"></td>
-                        </tr>
-                        <tr>
-                            <td>Thursday</td>
-                            <td><input name="happyhours[5][start]" type="time" class="form-control start_time"></td>
-                            <td><input name="happyhours[5][end]" type="time" class="form-control end_time"></td>
-                        </tr>
-                        <tr>
-                            <td>Friday</td>
-                            <td><input name="happyhours[6][start]" type="time" class="form-control start_time"></td>
-                            <td><input name="happyhours[6][end]" type="time" class="form-control end_time"></td>
-                        </tr>
-
-                        <tr>
-                            <td>Saturday</td>
-                            <td><input name="happyhours[7][start]" type="time" class="form-control start_time"></td>
-                            <td><input name="happyhours[7][end]" type="time" class="form-control end_time"></td>
-                        </tr>
+                       
+                         <?php foreach ($happy_hours as $hh): ?>
+                            
+                                <tr>
+                                    <td><?php switch ($hh->day) {
+                                        case '1':
+                                            echo("sunday");
+                                            break;
+                                        case '2':
+                                            echo("Monday");
+                                            break;
+                                        case '3':
+                                            echo("Tuesday");
+                                            break;
+                                        case '4':
+                                            echo('Wednesday');
+                                            break;
+                                        case '5':
+                                            echo('Thursday');
+                                            break;
+                                        case '6':
+                                            echo('Friday');
+                                            break;
+                                        case '7':
+                                            echo('Saturday');
+                                            break;
+                                    } ?>
+                                    </td>
+                                    <td><?php echo($hh->start_time?$hh->start_time:'-- -- --') ?></td>
+                                    <td><?php echo($hh->end_time?$hh->end_time:'-- -- --') ?></td>
+                                </tr>
+                          
+                            
+                            
+                        <?php endforeach ?>
                     </table>
                 </div>
             </div>
@@ -746,6 +758,19 @@
             if ($(this).is(':checked')) 
             {
                 update_res_estd_type(res_id,$(this).val(),1);
+            }
+        })
+
+        $('body').on('change','.facility',function(){
+            
+           var res_id='<?php echo($this->uri->segment(3)) ?>';
+           if (!$(this).is(':checked')) 
+           {
+                update_res_facility(res_id,$(this).val(),0);
+            }
+            if ($(this).is(':checked')) 
+            {
+                update_res_facility(res_id,$(this).val(),1);
             }
         })
 
@@ -1118,6 +1143,21 @@
     {
          $.ajax({
             url: '<?php echo(site_url("serve/update_res_serves")) ?>/'+res_id+'/'+serve_id+'/'+status,
+            type: 'POST',
+            dataType: 'json'
+        })
+        .done(function(data) {
+            console.log(data);
+        })
+        .fail(function() {
+            console.log("error");
+        });
+    }
+
+    function update_res_facility (res_id,facility_id,status) 
+    {
+         $.ajax({
+            url: '<?php echo(site_url("facility/update_res_facility")) ?>/'+res_id+'/'+facility_id+'/'+status,
             type: 'POST',
             dataType: 'json'
         })
