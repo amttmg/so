@@ -8,6 +8,7 @@ class M_res_estimate_cost extends CI_Model {
      public function getBy($data,$json=false)
     {
         $this->db->from($this->table_name);
+        $this->db->join('estimate_cost_topic','estimate_cost_topic.topic_id=tbl_res_estimate_cost.topic_id');
         $this->db->where($data[0],$data[1]);
         
         $result_data=$this->db->get()->result();

@@ -53,6 +53,21 @@ class Facility extends CI_Controller {
 		
 	}
 
+	public function update_res_facility($res_id,$facility_id,$status)
+	{
+		$this->load->model('m_res_facility','res_facility');
+		$data=array();
+		if ($this->res_facility->update_res_facility($res_id,$facility_id,$status)==true) 
+		{
+			$data['status']=true;
+		}
+		else
+		{
+			$data['status']=false;
+		}
+		echo(json_encode($data));
+	}
+
 }
 
 /* End of file facility.php */
