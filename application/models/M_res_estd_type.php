@@ -6,10 +6,12 @@ class M_res_estd_type extends CI_Model {
 	var $table_name='tbl_res_estd_type';
     
      public function getBy($data,$json=false)
-    {
-        $this->db->from($this->table_name);
-        $this->db->join('establishment_type','establishment_type.type_id=tbl_res_estd_type.type_id');
-        $this->db->where($data[0],$data[1]);
+    {   
+        $this->db->select('et.type_id,et.type,reset.res_id');
+        $this->db->from('establishment_type as et');
+        $this->db->join( '(select * from tbl_res_estd_type where tbl_res_estd_type.res_id='.$data[1].' ) as reset','reset.type_id=et.type_id','left');
+        //$this->db->join('establishment_type','establishment_type.type_id=tbl_res_estd_type.type_id');
+        //$this->db->where($data[0],$data[1]);
         
         $result_data=$this->db->get()->result();
         if ($json==false) 
@@ -24,6 +26,26 @@ class M_res_estd_type extends CI_Model {
        
     }
 
+    public function update_res_estdtype($res_id,$estd_id,$status)
+    {
+        if ($status) 
+        {
+            $insert_data=array(
+                'res_id'=>$res_id,
+                'type_id'=>$estd_id,
+                'status'=>1
+                );
+          $this->db->insert('tbl_res_estd_type',$insert_data);
+        }
+        else
+        {
+           $this->db->where('type_id',$estd_id);
+           $this->db->where('res_id',$res_id);
+           $this->db->delete('tbl_res_estd_type');
+        }
+        return true;
+        
+    }
 	
 
 }

@@ -57,6 +57,21 @@ class Serve extends CI_Controller {
 
 	}
 
+	public function update_res_serves($res_id,$serve_id,$status)
+	{
+		$this->load->model('m_res_serve','res_serve');
+		$data=array();
+		if ($this->res_serve->update_res_serves($res_id,$serve_id,$status)==true) 
+		{
+			$data['status']=true;
+		}
+		else
+		{
+			$data['status']=false;
+		}
+		echo(json_encode($data));
+	}
+
 }
 
 /* End of file Serve.php */
