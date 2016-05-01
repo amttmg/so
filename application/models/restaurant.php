@@ -8,18 +8,20 @@
  */
 class restaurant extends CI_Model
 {
+    var $table_name='tbl_restaurants';
+
     function add()
     {
         $res_name = $this->input->post('res_name');
         $area = $this->input->post('est_area');
         $street = $this->input->post('est_street');
         $landmark = $this->input->post('est_landmark');
-        $mobile1 = $this->input->post('res_mobile1');
-        $mobile2 = $this->input->post('res_mobile2');
-        $landline1 = $this->input->post('res_landline1');
-        $landline2 = $this->input->post('res_landline2');
-        $lat = $this->input->post('res_lat');
-        $lon = $this->input->post('res_lon');
+        $mobile1 = '98'.$this->input->post('res_mobile1');
+        $mobile2 = '98'.$this->input->post('res_mobile2');
+        $landline1 = '01'.$this->input->post('res_landline1');
+        $landline2 = '01'.$this->input->post('res_landline2');
+        $lat = '28.'.$this->input->post('res_lat');
+        $lon = '84.'.$this->input->post('res_lon');
         $google_map = $this->input->post('res_map');
         $website = $this->input->post('res_website');
         $email = $this->input->post('res_email');
@@ -91,10 +93,10 @@ class restaurant extends CI_Model
 //Owners
         $name = $this->input->post('owners_name');
         $designation = $this->input->post('owners_designation');
-        $mobile1 = $this->input->post('owners_mobile1');
-        $mobile2 = $this->input->post('owners_mobile2');
-        $landline1 = $this->input->post('owners_landline1');
-        $landline2 = $this->input->post('owners_landline2');
+        $mobile1 = '98'.$this->input->post('owners_mobile1');
+        $mobile2 = '98'.$this->input->post('owners_mobile2');
+        $landline1 = '01'.$this->input->post('owners_landline1');
+        $landline2 = '01'.$this->input->post('owners_landline2');
 
         $newtbl_owners = array(
             'name' => $name,
@@ -177,4 +179,47 @@ class restaurant extends CI_Model
             }
         }
     }
+
+    public function getAll($order_by='',$json=false)
+    {
+        if ($order_by=='') 
+        {
+            $this->db->order_by('res_id','desc');
+        }
+        else
+        {
+            $this->db->order_by($order_by[0],$order_by[1]);
+        }
+
+        $this->db->from($this->table_name);
+        $result_data= $this->db->get()->result();
+
+        if ($json==true)
+        {
+           return json_encode($result_data);
+        }
+        else
+        {
+            return $result_data;
+        }
+    }
+
+    public function getBy($data,$json=false)
+    {
+         $this->db->from($this->table_name);
+         $this->db->where($data[0],$data[1]);
+        
+        $result_data=$this->db->get()->result();
+        if ($json==false) 
+        {
+            return $result_data;
+        }
+        else
+        {
+            return json_encode($result_data);
+        }
+
+       
+    }
+
 }
