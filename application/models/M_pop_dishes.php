@@ -7,9 +7,9 @@ class M_pop_dishes extends CI_Model {
 
      public function getBy($data,$json=false)
     {
-        $this->db->from($this->table_name);
-        $this->db->where($data[0],$data[1]);
-        
+        $this->db->select('pd.*,rfd.res_id');
+        $this->db->from('tbl_pop_dishes as pd');
+        $this->db->join('(select * from tbl_res_pop_dishes where tbl_res_pop_dishes.res_id='.$data[1].' ) as rpd','rpd.pop_dishes_id=pd.pop_dishes_id','left');
         $result_data=$this->db->get()->result();
         if ($json==false) 
         {

@@ -8,9 +8,9 @@ class M_res_cousin extends CI_Model {
 
      public function getBy($data,$json=false)
     {
-        $this->db->from($this->table_name);
-        $this->db->join('tbl_cousins','tbl_cousins.cousin_id=tbl_res_cousins.cousin_id');
-        $this->db->where($data[0],$data[1]);
+        $this->db->select('c.*,rc.res_id');
+        $this->db->from('tbl_cousins as c');
+        $this->db->join('(select * from tbl_res_cousins where tbl_res_cousins.res_id='.$data[1].' ) as rc','rc.cousin_id=c.cousin_id','left');
         $result_data=$this->db->get()->result();
         if ($json==false) 
         {

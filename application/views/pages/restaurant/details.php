@@ -529,15 +529,20 @@
                 <div class="well-sm well" id="cousin_checkbox">
                     <b> Cousins by Country :</b><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
                     <hr/>
-                    <?php foreach ($cousins as $Cousin) {
-                        ?>
+                    <?php foreach ($cousins as $Cousin): ?>
                         <label class="checkbox-inline">
-                            <input type="checkbox" name="cousins[]"
-                                   value="<?php echo $Cousin->cousin_id ?>"><?php echo $Cousin->cousin ?>
-                        </label>
-                        <?php
-                    } ?>
-                    
+                         <?php 
+                            $data = array(
+                                'name'        => 'cousins[]',
+                                'class'          => 'cousins',
+                                'value'       =>$Cousin->cousin_id ,
+                                'checked'     => $Cousin->res_id?TRUE:FALSE
+                                );
+
+                               ?>
+                            <?php echo form_checkbox($data); ?><?php echo $Cousin->cousin ?>
+                            </label>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>
@@ -547,14 +552,20 @@
                 <div class="well-sm well">
                     <b> Cousins by Food :</b>
                     <hr/>
-                    <?php foreach ($foods as $food) {
-                        ?>
+                     <?php foreach ($foods as $food): ?>
                         <label class="checkbox-inline">
-                            <input type="checkbox" name="foods[]"
-                                   value="<?php echo $food->food_id ?>"><?php echo $food->food ?>
-                        </label>
-                        <?php
-                    } ?>
+                         <?php 
+                            $data = array(
+                                'name'        => 'foods[]',
+                                'class'          => 'foods',
+                                'value'       =>$food->food_id  ,
+                                'checked'     => $food->res_id?TRUE:FALSE
+                                );
+
+                               ?>
+                            <?php echo form_checkbox($data); ?><?php echo $food->food ?>
+                            </label>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>
@@ -564,15 +575,20 @@
                 <div class="well-sm well" id="populardish_checkbox">
                     <b> Popular Dish:</b><span class="pull-right"> <button type="button" id="btn_addPopDish" class="btn btn-sm btn-info"><i class="fa fa-plus fa"></i> Add New</button></span>
                     <hr/>
-                    <?php foreach ($pop_dishes as $pop) {
-                        ?>
+                     <?php foreach ($pop_dishes as $pop): ?>
                         <label class="checkbox-inline">
-                            <input type="checkbox" name="pop_dishes[]"
-                                   value="<?php echo $pop->pop_dishes_id ?>"><?php echo $pop->pop_dishes ?>
-                        </label>
-                        <?php
-                    } ?>
-                   
+                         <?php 
+                            $data = array(
+                                'name'        => 'pop_dishes[]',
+                                'class'          => 'pop_dishes',
+                                'value'       =>$pop->pop_dishes_id ,
+                                'checked'     => $pop->res_id?TRUE:FALSE
+                                );
+
+                               ?>
+                            <?php echo form_checkbox($data); ?><?php echo $pop->pop_dishes ?>
+                            </label>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>
