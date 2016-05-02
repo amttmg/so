@@ -43,7 +43,7 @@
                         <tr>
                             <th colspan="2">Establishment's Contact Number 
                             <div class="pull-right">
-                                <button type="button" class="btn btn-xs btn-primary">Edit</button>
+                                <button type="button" id="btn-estdcontactedit" class="btn btn-xs btn-primary">Edit</button>
                             </div>
                             </th>
                         </tr>
@@ -102,7 +102,7 @@
                     <table class="table table-bordered">
                         <th colspan="2">Map(Coordinates)
                             <div class="pull-right">
-                                <button type="button" class="btn btn-xs btn-primary">Edit</button>
+                                <button type="button" id="btn-editmapcoordinate" class="btn btn-xs btn-primary">Edit</button>
                             </div>
                         </th>
                         <tr>
@@ -138,7 +138,7 @@
                     <table class="table table-bordered">
                         <th colspan="2">Owner's or manager Restaurant Number
                             <div class="pull-right">
-                                <button type="button" class="btn btn-xs btn-primary">Edit</button>
+                                <button type="button" id="btn-editrmnumber" class="btn btn-xs btn-primary">Edit</button>
                             </div>
                         </th>
                         <tr>
@@ -746,9 +746,278 @@
     </div>
 </div>
 
+<div class="modal fade" id="mdl-estdcontact">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Edit Establishment's Contact Number</h4>
+            </div>
+            <div class="modal-body">
+                <div class="well-sm well">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th colspan="2">Establishment's Contact Number</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mobile 1
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">98</span>
+                                    <input maxlength="8" oninput="maxLengthCheck(this)" type="number" class="form-control" name="res_mobile1"
+                                           value="<?php echo set_value('res_mobile1') ?>"
+                                           >
+                                     </div>
+                                    <?php echo form_error('res_mobile1'); ?>
+                              
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mobile 2
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">98</span>
+                                    <input name="res_mobile2" type="number" maxlength="8" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_mobile2') ?>" type="text"
+                                       class="form-control phone">
+                                </div>
+                                <?php echo form_error('res_mobile2'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Land line1
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">01</span>
+                                    <input type="number" name="res_landline1" maxlength="10" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_landline1') ?>"
+                                       class="form-control">
+                                   </div>
+                                <?php echo form_error('res_landline1'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Land line2
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">01</span>
+                                    <input type="number" name="res_landline2" maxlength="10" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_landline2') ?>"
+                                       class="form-control">
+                                </div>
+                                <?php echo form_error('res_landline2'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Website
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">www.</span>
+                                    <input type="text" name="res_website" value="<?php echo set_value('res_website') ?>"
+                                       class="form-control">
+                                   </div>
+                                <?php echo form_error('res_website'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Email
+                            </td>
+                            <td>
+                                <input type="text" name="res_email" value="<?php echo set_value('res_email') ?>"
+                                       class="form-control">
+                                <?php echo form_error('res_email'); ?>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mdl-mrnumber">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Edit Owner's or manager Restaurant Number</h4>
+            </div>
+            <div class="modal-body">
+                <div class="well-sm well">
+                    <table class="table table-bordered">
+                        <th colspan="2">Owner's or manager Restaurant Number</th>
+                        <tr>
+                            <td>
+                                Name
+                            </td>
+                            <td>
+                                <input type="text" name="owners_name" value="<?php echo set_value('owners_name') ?>"
+                                       class="form-control">
+                                <?php echo form_error('owners_name'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Designation
+                            </td>
+                            <td>
+                                <input type="text" name="owners_designation"
+                                       value="<?php echo set_value('owners_designation') ?>" class="form-control">
+                                <?php echo form_error('owners_designation'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mobile 1
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">98</span>
+                                    <input type="text" name="owners_mobile1" maxlength="8" oninput="maxLengthCheck(this)" value="<?php echo set_value('owners_mobile1') ?>"
+                                       class="form-control">
+                                </div>
+                                <?php echo form_error('owners_mobile1'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mobile 2
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">98</span>
+                                    <input type="text" name="owners_mobile2" maxlength="8" oninput="maxLengthCheck(this)"
+                                       value="<?php echo set_value('owners_mobile2') ?>"
+                                       class="form-control">
+                                </div>
+                                <?php echo form_error('owners_mobile2'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Land line1
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">01</span>
+                                    <input type="text" name="owners_landline1" maxlength="8" oninput="maxLengthCheck(this)"
+                                       value="<?php echo set_value('owners_landline1') ?>"
+                                       class="form-control">
+                                </div>
+                                <?php echo form_error('owners_landline1'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Land line2
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">01</span>
+                                    <input type="text" name="owners_landline2" maxlength="8" oninput="maxLengthCheck(this)"
+                                       value="<?php echo set_value('owners_landline2') ?>"
+                                       class="form-control">
+                                </div>
+                                <?php echo form_error('owners_landline2'); ?>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-mapcoordinate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Edit Map(Coordinates)</h4>
+            </div>
+            <div class="modal-body">
+                 <div class="well-sm well">
+                    <table class="table table-bordered">
+                        <th colspan="2">Map(Coordinates)</th>
+                        <tr>
+                            <td>
+                                Latitude
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">28.</span>
+                                    <input type="text" name="res_lat" value="<?php echo set_value('res_lat') ?>"
+                                       class="form-control">
+                                </div>
+                                <?php echo form_error('res_lat'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Longitude
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">84.</span>
+                                    <input type="text" name="res_lon" value="<?php echo set_value('res_lon') ?>"
+                                       class="form-control">
+                                </div>
+                                <?php echo form_error('res_lon'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Present in google Map
+                            </td>
+                            <td>
+                                <input type="checkbox" name="res_map" value="1">
+                                <?php echo form_error('res_map'); ?>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     $(document).ready(function() {
 
+
+        $('#btn-estdcontactedit').click(function() {
+            
+            $('#mdl-estdcontact').modal('show');
+        });
+
+        $('#btn-editrmnumber').click(function() {
+            $('#mdl-mrnumber').modal('show');
+        });
+
+        $('#btn-editmapcoordinate').click(function() {
+            $('#modal-mapcoordinate').modal('show');
+        });
+/*===============================================================================*/
         $('body').on('change','.serves',function() {
 
             var res_id='<?php echo($this->uri->segment(3)) ?>';
@@ -909,7 +1178,7 @@
                 {
                     enable_button(button_id,'Save');
                     var temp_checkbox='<label class="checkbox-inline">';
-                        temp_checkbox+='<input type="checkbox" name="serves[]" value="'+data.data.serves_id+'">'+data.data.serves_name+'</label>';
+                        temp_checkbox+='<input type="checkbox" name="serves[]" class="serves" value="'+data.data.serves_id+'">'+data.data.serves_name+'</label>';
                         
                     $('#serve_checkbox').append(temp_checkbox);
                     $('#'+form_id)[0].reset();
