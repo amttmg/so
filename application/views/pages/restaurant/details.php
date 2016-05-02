@@ -755,6 +755,7 @@
             </div>
             <div class="modal-body">
                 <div class="well-sm well">
+                  <form id="form-establishment">
                     <table class="table table-bordered">
                         <tr>
                             <th colspan="2">Establishment's Contact Number</th>
@@ -767,8 +768,9 @@
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">98</span>
                                     <input maxlength="8" oninput="maxLengthCheck(this)" type="number" class="form-control" name="res_mobile1"
-                                           value="<?php echo set_value('res_mobile1') ?>"
+                                           value="<?php echo set_value('res_mobile1') ?>" id="res_mobile1"
                                            >
+                                           <span></span>
                                      </div>
                                     <?php echo form_error('res_mobile1'); ?>
                               
@@ -780,9 +782,10 @@
                             </td>
                             <td>
                                 <div class="form-group input-group">
-                                    <span class="input-group-addon">98</span>
+                                    <span class="input-group-addon ">98</span>
                                     <input name="res_mobile2" type="number" maxlength="8" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_mobile2') ?>" type="text"
-                                       class="form-control phone">
+                                       class="form-control phone" id="res_mobile2">
+                                       <span></span>
                                 </div>
                                 <?php echo form_error('res_mobile2'); ?>
                             </td>
@@ -794,8 +797,9 @@
                             <td>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">01</span>
-                                    <input type="number" name="res_landline1" maxlength="10" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_landline1') ?>"
+                                    <input type="number" name="res_landline1" id="res_landline1" maxlength="10" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_landline1') ?>"
                                        class="form-control">
+                                       <span></span>
                                    </div>
                                 <?php echo form_error('res_landline1'); ?>
                             </td>
@@ -807,8 +811,9 @@
                             <td>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">01</span>
-                                    <input type="number" name="res_landline2" maxlength="10" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_landline2') ?>"
+                                    <input type="number" name="res_landline2" id="res_landline2" maxlength="10" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_landline2') ?>"
                                        class="form-control">
+                                    <span></span>
                                 </div>
                                 <?php echo form_error('res_landline2'); ?>
                             </td>
@@ -820,8 +825,9 @@
                             <td>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">www.</span>
-                                    <input type="text" name="res_website" value="<?php echo set_value('res_website') ?>"
+                                    <input type="text" name="res_website" id="res_website" value="<?php echo set_value('res_website') ?>"
                                        class="form-control">
+                                       <span></span>
                                    </div>
                                 <?php echo form_error('res_website'); ?>
                             </td>
@@ -831,17 +837,20 @@
                                 Email
                             </td>
                             <td>
-                                <input type="text" name="res_email" value="<?php echo set_value('res_email') ?>"
-                                       class="form-control">
+                                <div class="form-group">
+                                    <span></span>
+                                    <input type="text" name="res_email" id="res_email" value="<?php echo set_value('res_email') ?>" class="form-control">
+                                       <span></span>
+                                </div>
                                 <?php echo form_error('res_email'); ?>
                             </td>
                         </tr>
                     </table>
-
+                </form>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" id="btn-updateEstdNumber" class="btn btn-primary">Update</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -1004,10 +1013,74 @@
 <script>
     $(document).ready(function() {
 
+    var res_id='<?php echo($this->uri->segment(3)) ?>';
 
+/* ==============================================================================*/
+        $('#btn-updateEstdNumber').click(function() 
+        {
+          $(this).text('Updating...........');
+          $(this).prop('disabled',true);
+          $.ajax({
+              url: '<?php echo(site_url("restaurants/update_estd_contact")) ?>/'+res_id,
+              type: 'POST',
+              dataType: 'json',
+              data:$('#form-establishment').serialize()
+          })
+          .done(function(data) {
+              if (data.status==true) {
+                location.reload();
+
+                }else{
+
+                        $.each(data, function(index, val) {
+                            $('#form-establishment'+' #'+val.error_string).next().html(val.input_error);
+                            $('#form-establishment'+' #'+val.error_string).parent().addClass('has-error');
+                        });
+
+
+                }
+          })
+          .always(function(){
+            $('#btn-updateEstdNumber').text('Update');
+            $('#btn-updateEstdNumber').prop('disabled',false);
+          })
+          .fail(function() {
+              console.log("error");
+          });
+          
+        });
+/*=======================================================================================*/
         $('#btn-estdcontactedit').click(function() {
+            $(this).text('please wait.......');
+            $.ajax({
+                url: '<?php echo(site_url("restaurants/view_estdcontact")) ?>/'+res_id,
+                dataType: 'json'
+            })
+            .done(function(data) {
+                if (data) 
+                {
+                    $('#mdl-estdcontact').modal('show');
+                   
+                    $('#form-establishment #res_mobile1').val(data.mobile1);
+                    $('#form-establishment #res_mobile2').val(data.mobile2);
+                    $('#form-establishment #res_landline1').val(data.landline1);
+                    $('#form-establishment #res_landline2').val(data.landline2);
+                    $('#form-establishment #res_website').val(data.website);
+                    $('#form-establishment #res_email').val(data.email);
+
+                }
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                $('#btn-estdcontactedit').text('Edit');
+            });
             
-            $('#mdl-estdcontact').modal('show');
+           
+           
+            
+
         });
 
         $('#btn-editrmnumber').click(function() {
@@ -1020,7 +1093,7 @@
 /*===============================================================================*/
         $('body').on('change','.serves',function() {
 
-            var res_id='<?php echo($this->uri->segment(3)) ?>';
+           
            if (!$(this).is(':checked')) 
            {
                 

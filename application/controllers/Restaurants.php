@@ -48,6 +48,56 @@ class Restaurants extends CI_Controller {
         $this->load->view('page_template', $data);
 	}
 
+	public function update_estd_contact($id)
+	{
+
+		$this->load->library('form_validation');
+		$master['status'] = True;
+		$data             = array();
+		$master           = array();
+        $this->form_validation->set_rules('res_mobile1', 'Mobile', 'trim|required|max_length[12]');
+        $this->form_validation->set_rules('res_mobile2', 'Mobile', 'trim|max_length[12]');
+        $this->form_validation->set_rules('res_landline1', 'fieldlabel', 'trim|required|max_length[12]');
+        $this->form_validation->set_rules('res_landline2', 'fieldlabel', 'trim|max_length[12]');
+		if ($this->form_validation->run() == True) 
+		{
+			
+			$data=array(
+				'mobile1'=>$this->input->post('res_mobile1'),
+				'mobile2'=>$this->input->post('res_mobile2'),
+				'landline1'=>$this->input->post('res_landline1'),
+				'landline2'=>$this->input->post('res_landline2'),
+				'website'=>$this->input->post('res_website'),
+				'email'=>$this->input->post('res_email')
+				);
+			$this->db->where('res_id',$id);
+			$this->db->update('tbl_restaurants',$data);
+
+			$master['status']  = True;
+			$master['message'] ="successfully update data";
+		} 
+		else 
+		{
+			$master['status'] = false;
+            foreach ($_POST as $key => $value) 
+            {
+				if (form_error($key) != '') 
+                {
+					$data['error_string'] = $key;
+					$data['input_error']  = form_error($key);
+					array_push($master, $data);
+                }
+            }
+		}
+		echo(json_encode($master));
+
+	}
+
+	public function view_estdcontact($id)
+	{
+		echo $this->res->getBy(array('res_id',$id),true);
+	}
+
 }
 
 /* End of file restaurant.php */

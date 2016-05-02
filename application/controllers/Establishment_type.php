@@ -49,6 +49,7 @@ class Establishment_type extends CI_Controller {
 		
 	}
 
+
 	public function update_res_estdtype($res_id,$estd_id,$status)
 	{
 		$this->load->model('m_res_estd_type','est_type');
