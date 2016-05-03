@@ -68,7 +68,7 @@
                                 Land line1
                             </td>
                             <td>
-                                <?php echo($restaurants->landline1) ?>
+                                <?php echo('01'.$restaurants->landline1) ?>
                             </td>
                         </tr>
                         <tr>
@@ -76,7 +76,7 @@
                                 Land line2
                             </td>
                             <td>
-                                <?php echo($restaurants->landline2) ?>
+                                <?php echo('01'.$restaurants->landline2) ?>
                             </td>
                         </tr>
                         <tr>
@@ -84,7 +84,7 @@
                                 Website
                             </td>
                             <td>
-                                <?php echo($restaurants->website) ?>
+                                <?php echo('www.'.$restaurants->website) ?>
                             </td>
                         </tr>
                         <tr>
@@ -110,7 +110,7 @@
                                 Latitude
                             </td>
                             <td>
-                                <?php echo($restaurants->lat) ?>
+                                <?php echo('27.'.$restaurants->lat) ?>
                             </td>
                         </tr>
                         <tr>
@@ -118,7 +118,7 @@
                                 Longitude
                             </td>
                             <td>
-                                <?php echo($restaurants->lon) ?>
+                                <?php echo('85.'.$restaurants->lon) ?>
                             </td>
                         </tr>
                         <tr>

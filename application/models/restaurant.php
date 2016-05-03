@@ -18,10 +18,10 @@ class restaurant extends CI_Model
         $landmark = $this->input->post('est_landmark');
         $mobile1 = $this->input->post('res_mobile1');
         $mobile2 = $this->input->post('res_mobile2');
-        $landline1 = '01'.$this->input->post('res_landline1');
-        $landline2 = '01'.$this->input->post('res_landline2');
-        $lat = '28.'.$this->input->post('res_lat');
-        $lon = '84.'.$this->input->post('res_lon');
+        $landline1 = $this->input->post('res_landline1');
+        $landline2 = $this->input->post('res_landline2');
+        $lat = $this->input->post('res_lat');
+        $lon = $this->input->post('res_lon');
         $google_map = $this->input->post('res_map');
         $website = $this->input->post('res_website');
         $email = $this->input->post('res_email');
@@ -52,6 +52,7 @@ class restaurant extends CI_Model
 
         $this->db->insert('tbl_restaurants', $newtbl_restaurants);
         $res_id = $this->db->insert_id();
+
 
         $serves = $this->input->post('serves');
         if (is_array($serves)) {
@@ -93,21 +94,26 @@ class restaurant extends CI_Model
 //Owners
         $name = $this->input->post('owners_name');
         $designation = $this->input->post('owners_designation');
-        $mobile1 = '98'.$this->input->post('owners_mobile1');
-        $mobile2 = '98'.$this->input->post('owners_mobile2');
-        $landline1 = '01'.$this->input->post('owners_landline1');
-        $landline2 = '01'.$this->input->post('owners_landline2');
+        $mobile1 = $this->input->post('owners_mobile1');
+        $mobile2 = $this->input->post('owners_mobile2');
+        $landline1 = $this->input->post('owners_landline1');
+        $landline2 = $this->input->post('owners_landline2');
+        
+        foreach ($name as $key => $value) {
 
-        $newtbl_owners = array(
-            'name' => $name,
-            'designation' => $designation,
-            'mobile1' => $mobile1,
-            'mobile2' => $mobile2,
-            'landline1' => $landline1,
-            'landline2' => $landline2,
-            'res_id' => $res_id,
-        );
-        $this->db->insert('tbl_owners', $newtbl_owners);
+            $newtbl_owners = array(
+                'name' => $name[$key],
+                'designation' => $designation[$key],
+                'mobile1' => $mobile1[$key],
+                'mobile2' => $mobile2[$key],
+                'landline1' => $landline1[$key],
+                'landline2' => $landline2[$key],
+                'res_id' => $res_id,
+            );
+            $this->db->insert('tbl_owners', $newtbl_owners);
+           
+        }
+        
 
         $establishment_type = $this->input->post('establishment_type');
         if (is_array($establishment_type)) {

@@ -134,9 +134,8 @@
                                 Name
                             </td>
                             <td>
-                                <input type="text" name="owners_name" value="<?php echo set_value('owners_name') ?>"
-                                       class="form-control">
-                                <?php echo form_error('owners_name'); ?>
+                                <input type="text" name="owners_name[]" class="form-control">
+                               
                             </td>
                         </tr>
                         <tr>
@@ -144,9 +143,8 @@
                                 Designation
                             </td>
                             <td>
-                                <input type="text" name="owners_designation"
-                                       value="<?php echo set_value('owners_designation') ?>" class="form-control">
-                                <?php echo form_error('owners_designation'); ?>
+                                <input type="text" name="owners_designation[]" class="form-control">
+                               
                             </td>
                         </tr>
                         <tr>
@@ -155,10 +153,9 @@
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <input type="text" name="owners_mobile1" maxlength="10" oninput="maxLengthCheck(this)" value="<?php echo set_value('owners_mobile1') ?>"
-                                       class="form-control">
+                                    <input type="text" name="owners_mobile1[]" maxlength="10" oninput="maxLengthCheck(this)" class="form-control">
                                 </div>
-                                <?php echo form_error('owners_mobile1'); ?>
+                               
                             </td>
                         </tr>
                         <tr>
@@ -167,11 +164,9 @@
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <input type="text" name="owners_mobile2" maxlength="10" oninput="maxLengthCheck(this)"
-                                       value="<?php echo set_value('owners_mobile2') ?>"
-                                       class="form-control">
+                                    <input type="text" name="owners_mobile2[]" maxlength="10" oninput="maxLengthCheck(this)" class="form-control">
                                 </div>
-                                <?php echo form_error('owners_mobile2'); ?>
+                               
                             </td>
                         </tr>
                         <tr>
@@ -181,11 +176,9 @@
                             <td>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">01</span>
-                                    <input type="text" name="owners_landline1" maxlength="8" oninput="maxLengthCheck(this)"
-                                       value="<?php echo set_value('owners_landline1') ?>"
-                                       class="form-control">
+                                    <input type="text" name="owners_landline1[]" maxlength="8" oninput="maxLengthCheck(this)"  class="form-control">
                                 </div>
-                                <?php echo form_error('owners_landline1'); ?>
+                                
                             </td>
                         </tr>
                         <tr>
@@ -195,11 +188,9 @@
                             <td>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">01</span>
-                                    <input type="text" name="owners_landline2" maxlength="8" oninput="maxLengthCheck(this)"
-                                       value="<?php echo set_value('owners_landline2') ?>"
-                                       class="form-control">
+                                    <input type="text" name="owners_landline2[]" maxlength="8" oninput="maxLengthCheck(this)" class="form-control">
                                 </div>
-                                <?php echo form_error('owners_landline2'); ?>
+                                
                             </td>
                         </tr>
                     </table>

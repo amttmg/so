@@ -31,18 +31,17 @@ class dataentry extends CI_Controller
 
     public function insert()
     {
-        print_r($_POST);
-        die();
+
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('res_name', 'Restaurent Name', 'required');
         $this->form_validation->set_rules('res_mobile1', 'Mobile Number', 'required');
         $this->form_validation->set_rules('res_landline1', 'Land Line Number', 'required');
-        $this->form_validation->set_rules('owners_name', 'Owners Name', 'required');
+       /* $this->form_validation->set_rules('owners_name', 'Owners Name', 'required');
         $this->form_validation->set_rules('owners_designation', 'Designation', 'required');
         $this->form_validation->set_rules('owners_mobile1', 'Mobile', 'required');
-        $this->form_validation->set_rules('owners_landline1', 'Landline', 'required');
+        $this->form_validation->set_rules('owners_landline1', 'Landline', 'required');*/
 
         $this->form_validation->set_rules('res_lat', 'Latitude', 'required');
         $this->form_validation->set_rules('res_lon', 'Longitude', 'required');
@@ -66,6 +65,7 @@ class dataentry extends CI_Controller
             $this->load->view('page_template', $data);
         } else {
             $this->db->trans_start();
+
             $this->restaurant->add();
 
             $this->db->trans_complete();
