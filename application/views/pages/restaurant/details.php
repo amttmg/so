@@ -195,7 +195,7 @@
                     <table class="table table-bordered">
                         <th colspan="2">Establishment Location
                             <div class="pull-right">
-                                <button type="button" class="btn btn-xs btn-primary">Edit</button>
+                                <button type="button" id="btn-editEstablismentLocation" class="btn btn-xs btn-primary">Edit</button>
                             </div>
                         </th>
                         <tr>
@@ -765,8 +765,7 @@
                                 Mobile 1
                             </td>
                             <td>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">98</span>
+                                <div class="form-group">
                                     <input maxlength="8" oninput="maxLengthCheck(this)" type="number" class="form-control" name="res_mobile1"
                                            value="<?php echo set_value('res_mobile1') ?>" id="res_mobile1"
                                            >
@@ -781,8 +780,7 @@
                                 Mobile 2
                             </td>
                             <td>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon ">98</span>
+                                <div class="form-group">
                                     <input name="res_mobile2" type="number" maxlength="8" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_mobile2') ?>" type="text"
                                        class="form-control phone" id="res_mobile2">
                                        <span></span>
@@ -1020,10 +1018,157 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="mdl-establishmentLocation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Edit Establishment Location</h4>
+            </div>
+            <div class="modal-body">
+                <form id="form-estdLocation">
+                    <div class="well-sm well">
+                        <table class="table table-bordered">
+                            <th colspan="2">Establishment Location</th>
+                            <tr>
+                                <td>
+                                    City
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input list="est_city" id="city_suggest" name="est_city" value="<?php echo set_value('est_city') ?>"
+                                           class="form-control">
+                                           <span></span>
+                                    </div>
+                                           <datalist id="est_city">
+                                               
+                                           </datalist>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Area
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" name="est_area" id="est_area" value="<?php echo set_value('est_area') ?>" class="form-control">
+                                        <span></span>
+                                    </div>
+                                   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Street
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" name="est_street" id="est_street" value="<?php echo set_value('est_street') ?>"
+                                           class="form-control">
+                                        <span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Landmark
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" name="est_landmark" id="est_landmark" value="<?php echo set_value('est_landmark') ?>"
+                                           class="form-control">
+                                        <span></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Others(Building's Name)
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" name="est_other" id="est_other" value="<?php echo set_value('est_other') ?>"
+                                           class="form-control">
+                                        <span></span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn-updateEstdLocation" class="btn btn-primary">Update </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     $(document).ready(function() {
 
     var res_id='<?php echo($this->uri->segment(3)) ?>';
+
+    $('#btn-editEstablismentLocation').click(function() {
+        $(this).text('Please wait.....');
+        $.ajax({
+            url: '<?php echo(site_url("restaurants/view_estdcontact")) ?>/'+res_id,
+            dataType: 'json'
+          
+        })
+        .done(function(data) {
+            $('#mdl-establishmentLocation').modal('show');
+            $('#est_city').val(data.area);
+            $('#est_area').val(data.area);
+            $('#est_street').val(data.street);
+            $('#est_landmark').val(data.landmark);
+            $('#est_other').val(data.other);
+           
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            $('#btn-editEstablismentLocation').text('Edit');
+        });
+        
+        
+    });
+/*=============================================================================*/
+        $('#btn-updateMapCoordinate').click(function() {
+            $(this).prop('disabled',true);
+            $(this).text('Updating.........');
+
+            $.ajax({
+                url: '<?php echo(site_url("restaurants/update_coordinate")) ?>/'+res_id,
+                type: 'POST',
+                dataType: 'json',
+                data: $('#form-mapCoordinates').serialize()
+            })
+            .done(function(data) {
+                if (data.status==true) {
+                  location.reload();
+
+                }else{
+                        $('#btn-updateMapCoordinate').prop('disabled',false);
+                        $.each(data, function(index, val) {
+                            $('#form-mapCoordinates'+' #'+val.error_string).next().html(val.input_error);
+                            $('#form-mapCoordinates'+' #'+val.error_string).parent().addClass('has-error');
+                        });
+
+
+                }
+            })
+            .fail(function() {
+                console.log("error");
+                $('#btn-updateMapCoordinate').prop('disabled',false);
+            })
+            .always(function() {
+                
+            });
+            
+        });
 /*==================================================================================*/
         $('#btn-updateOwnerManagerResNumber').click(function() {
             $(this).text('Updating.....');

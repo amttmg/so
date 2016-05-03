@@ -16,8 +16,8 @@ class restaurant extends CI_Model
         $area = $this->input->post('est_area');
         $street = $this->input->post('est_street');
         $landmark = $this->input->post('est_landmark');
-        $mobile1 = '98'.$this->input->post('res_mobile1');
-        $mobile2 = '98'.$this->input->post('res_mobile2');
+        $mobile1 = $this->input->post('res_mobile1');
+        $mobile2 = $this->input->post('res_mobile2');
         $landline1 = '01'.$this->input->post('res_landline1');
         $landline2 = '01'.$this->input->post('res_landline2');
         $lat = '28.'.$this->input->post('res_lat');

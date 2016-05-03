@@ -93,6 +93,43 @@ class Restaurants extends CI_Controller {
 
 	}
 
+	public function update_coordinate($id)
+	{
+		$this->load->library('form_validation');
+		$master['status'] = True;
+		$data             = array();
+		$master           = array();
+        $this->form_validation->set_rules('res_lat', 'Latitude', 'trim|required|max_length[30]');
+        $this->form_validation->set_rules('res_lon', 'Longitude', 'trim|required|max_length[30]');
+		if ($this->form_validation->run() == True) 
+		{
+			
+			$data=array(
+				'lat'=>$this->input->post('res_lat'),
+				'lon'=>$this->input->post('res_lon')
+				);
+			$this->db->where('res_id',$id);
+			$this->db->update('tbl_restaurants',$data);
+
+			$master['status']  = True;
+			$master['message'] ="successfully update data";
+		} 
+		else 
+		{
+			$master['status'] = false;
+            foreach ($_POST as $key => $value) 
+            {
+				if (form_error($key) != '') 
+                {
+					$data['error_string'] = $key;
+					$data['input_error']  = form_error($key);
+					array_push($master, $data);
+                }
+            }
+		}
+		echo(json_encode($master));
+	}
+
 	public function view_estdcontact($id)
 	{
 		echo $this->res->getBy(array('res_id',$id),true);
@@ -101,6 +138,11 @@ class Restaurants extends CI_Controller {
 	public function view_owners($id)
 	{
 		echo $this->owner->getBy(array('res_id',$id),true);
+	}
+
+	public function owner_entryform()
+	{
+		$this->load->view('pages/restaurant/_ownerEntryForm');
 	}
 
 }

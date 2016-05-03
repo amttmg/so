@@ -31,6 +31,8 @@ class dataentry extends CI_Controller
 
     public function insert()
     {
+        print_r($_POST);
+        die();
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
 
