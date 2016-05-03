@@ -241,8 +241,15 @@
                                 Present in google Map
                             </td>
                             <td>
-                                <input type="checkbox" name="res_map" value="1">
-                                <?php echo form_error('res_map'); ?>
+                                <div class="form-group">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="google_map" id="googlemapyes" value="1" >Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="google_map" id="googlemapno" value="0" checked="">No
+                                    </label>
+                                    
+                                </div>
                             </td>
                         </tr>
                     </table>
@@ -349,43 +356,51 @@
                         <tr>
                             <td>if same all weeks</td>
                             <td><input id="open_time_all" type="time" class="form-control"></td>
-                            <td><input id="close_time_all" type="time" class="form-control"></td>
+                            <td><input id="close_time_all" type="time" class="form-control"> </td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Sunday</td>
                             <td><input name="servtime[1][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[1][close]" type="time" class="form-control close_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Monday</td>
                             <td><input name="servtime[2][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[2][close]" type="time" class="form-control close_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Tuesday</td>
                             <td><input name="servtime[3][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[3][close]" type="time" class="form-control close_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Wednesday</td>
                             <td><input name="servtime[4][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[4][close]" type="time" class="form-control close_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Thursday</td>
                             <td><input name="servtime[5][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[5][close]" type="time" class="form-control close_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Friday</td>
                             <td><input name="servtime[6][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[6][close]" type="time" class="form-control close_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
                         </tr>
 
                         <tr>
                             <td>Saturday</td>
                             <td><input name="servtime[7][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[7][close]" type="time" class="form-control close_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
                         </tr>
                     </table>
                 </div>
@@ -771,8 +786,17 @@
 <script>
     $(document).ready(function() {
 
-
-        $('#btn-addMoreOwner').click(function() {
+        $('.addservetime').click(function() {
+          var temp='<br/>'+$(this).closest('tr').find('td').eq(1).html();
+          var temp2='<br/>'+$(this).closest('tr').find('td').eq(2).html();
+          $(this).closest('tr').find('td').eq(1).append(temp);
+          $(this).closest('tr').find('td').eq(2).append(temp2);
+          $(this).hide('slow', function() {
+              
+          });
+        });
+/*=============================================================================
+*/        $('#btn-addMoreOwner').click(function() {
             $(this).text('Please wait.....');
             $.ajax({
                 url: '<?php echo(site_url("restaurants/owner_entryform")) ?>',
