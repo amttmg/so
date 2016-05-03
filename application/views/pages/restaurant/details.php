@@ -874,8 +874,9 @@
                                 Name
                             </td>
                             <td>
-                                <input type="text" name="owners_name" value="<?php echo set_value('owners_name') ?>"
+                                <input type="text" name="owners_name" id="owners_name" value="<?php echo set_value('owners_name') ?>"
                                        class="form-control">
+                                       <span></span>
                                 <?php echo form_error('owners_name'); ?>
                             </td>
                         </tr>
@@ -884,8 +885,9 @@
                                 Designation
                             </td>
                             <td>
-                                <input type="text" name="owners_designation"
+                                <input type="text" name="owners_designation" id="owners_designation"
                                        value="<?php echo set_value('owners_designation') ?>" class="form-control">
+                                <span></span>
                                 <?php echo form_error('owners_designation'); ?>
                             </td>
                         </tr>
@@ -896,8 +898,9 @@
                             <td>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">98</span>
-                                    <input type="text" name="owners_mobile1" maxlength="8" oninput="maxLengthCheck(this)" value="<?php echo set_value('owners_mobile1') ?>"
+                                    <input type="text" name="owners_mobile1" id="owners_mobile1" maxlength="8" oninput="maxLengthCheck(this)" value="<?php echo set_value('owners_mobile1') ?>"
                                        class="form-control">
+                                    <span></span>
                                 </div>
                                 <?php echo form_error('owners_mobile1'); ?>
                             </td>
@@ -909,9 +912,10 @@
                             <td>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">98</span>
-                                    <input type="text" name="owners_mobile2" maxlength="8" oninput="maxLengthCheck(this)"
+                                    <input type="text" name="owners_mobile2" id="owners_mobile2" maxlength="8" oninput="maxLengthCheck(this)"
                                        value="<?php echo set_value('owners_mobile2') ?>"
                                        class="form-control">
+                                       <span></span>
                                 </div>
                                 <?php echo form_error('owners_mobile2'); ?>
                             </td>
@@ -923,9 +927,10 @@
                             <td>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">01</span>
-                                    <input type="text" name="owners_landline1" maxlength="8" oninput="maxLengthCheck(this)"
+                                    <input type="text" name="owners_landline1" id="owners_landline1" maxlength="8" oninput="maxLengthCheck(this)"
                                        value="<?php echo set_value('owners_landline1') ?>"
                                        class="form-control">
+                                       <span></span>
                                 </div>
                                 <?php echo form_error('owners_landline1'); ?>
                             </td>
@@ -937,9 +942,10 @@
                             <td>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">01</span>
-                                    <input type="text" name="owners_landline2" maxlength="8" oninput="maxLengthCheck(this)"
+                                    <input type="text" name="owners_landline2" id="owners_landline2" maxlength="8" oninput="maxLengthCheck(this)"
                                        value="<?php echo set_value('owners_landline2') ?>"
                                        class="form-control">
+                                       <span></span>
                                 </div>
                                 <?php echo form_error('owners_landline2'); ?>
                             </td>
@@ -965,6 +971,7 @@
             </div>
             <div class="modal-body">
                  <div class="well-sm well">
+                 <form id="form-mapCoordinates">
                     <table class="table table-bordered">
                         <th colspan="2">Map(Coordinates)</th>
                         <tr>
@@ -974,8 +981,9 @@
                             <td>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">28.</span>
-                                    <input type="text" name="res_lat" value="<?php echo set_value('res_lat') ?>"
+                                    <input type="text" name="res_lat" id="res_lat" value="<?php echo set_value('res_lat') ?>"
                                        class="form-control">
+                                       <span></span>
                                 </div>
                                 <?php echo form_error('res_lat'); ?>
                             </td>
@@ -987,8 +995,9 @@
                             <td>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">84.</span>
-                                    <input type="text" name="res_lon" value="<?php echo set_value('res_lon') ?>"
+                                    <input type="text" name="res_lon" id="res_lon" value="<?php echo set_value('res_lon') ?>"
                                        class="form-control">
+                                       <span></span>
                                 </div>
                                 <?php echo form_error('res_lon'); ?>
                             </td>
@@ -1003,10 +1012,11 @@
                             </td>
                         </tr>
                     </table>
+                </form>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" id="btn-updateMapCoordinate" class="btn btn-primary">Update</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -1016,6 +1026,40 @@
     $(document).ready(function() {
 
     var res_id='<?php echo($this->uri->segment(3)) ?>';
+/*==================================================================================*/
+        $('#btn-updateOwnerManagerResNumber').click(function() {
+            $(this).text('Updating.....');
+            $(this).prop('disabled',true);
+            $.ajax({
+                url: '<?php echo(site_url("owner/update")) ?>/'+res_id,
+                type: 'POST',
+                dataType: 'json',
+                data:$('#form-ownerManagerResNumber').serialize()
+            })
+            .done(function(data) {
+                 if (data.status==true) {
+                  location.reload();
+
+                }else{
+
+                        $.each(data, function(index, val) {
+                            $('#form-establishment'+' #'+val.error_string).next().html(val.input_error);
+                            //$('#form-establishment'+' #'+val.error_string).parent().addClass('has-error');
+                        });
+
+
+                }
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                $(this).text('Update');
+                $(this).prop('disabled',false);
+            });
+            
+            
+        });
 
 /* ==============================================================================*/
         $('#btn-updateEstdNumber').click(function() 
@@ -1085,12 +1129,58 @@
 
         });
 
+/*====================================================================================*/
+       /* restaurants manager edit contact model*/
+
         $('#btn-editrmnumber').click(function() {
-            $('#mdl-mrnumber').modal('show');
+            $(this).text('please wait......');
+            $.ajax({
+                url: '<?php echo(site_url("restaurants/view_owners")) ?>/'+res_id,
+                dataType: 'json'
+            
+            })
+            .done(function(data) {
+
+               $('#mdl-mrnumber').modal('show');
+
+               $('#owners_name').val(data[0].name);
+               $('#owners_designation').val(data[0].designation);
+               $('#owners_mobile1').val(data[0].mobile1);
+               $('#owners_mobile2').val(data[0].mobile2);
+               $('#owners_landline1').val(data[0].landline1);
+               $('#owners_landline2').val(data[0].landline2);
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                $('#btn-editrmnumber').text('Edit');
+            });
+            
+           
         });
 
         $('#btn-editmapcoordinate').click(function() {
-            $('#modal-mapcoordinate').modal('show');
+            $(this).text('Please wait....');
+            $.ajax({
+                url: '<?php echo(site_url("restaurants/view_estdcontact")) ?>/'+res_id,
+                dataType: 'json'
+               
+            })
+            .done(function(data) {
+
+                $('#modal-mapcoordinate').modal('show');
+                $('#form-mapCoordinates #res_lat').val(data.lat);
+                $('#form-mapCoordinates #res_lon').val(data.lon);
+            })
+            .fail(function() {
+                console.log(data);
+            })
+            .always(function() {
+                $('#btn-editmapcoordinate').text('Edit');
+            });
+            
+           
         });
 /*===============================================================================*/
         $('body').on('change','.serves',function() {

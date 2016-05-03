@@ -98,6 +98,11 @@ class Restaurants extends CI_Controller {
 		echo $this->res->getBy(array('res_id',$id),true);
 	}
 
+	public function view_owners($id)
+	{
+		echo $this->owner->getBy(array('res_id',$id),true);
+	}
+
 }
 
 /* End of file restaurant.php */
