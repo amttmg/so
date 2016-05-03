@@ -866,6 +866,7 @@
             </div>
             <div class="modal-body">
                 <div class="well-sm well">
+                <form id="form-ownerManagerResNumber">
                     <table class="table table-bordered">
                         <th colspan="2">Owner's or manager Restaurant Number</th>
                         <tr>
@@ -944,10 +945,11 @@
                             </td>
                         </tr>
                     </table>
+                </form>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" id="btn-updateOwnerManagerResNumber" class="btn btn-primary">Update</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
