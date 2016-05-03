@@ -246,7 +246,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well-sm well">
-                    <b>Serves: </b><button type="button" id="btn_addServe" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus fa"></i>   Add New</button>
+                    <b>Serves: </b> <span id="msg-serveswait" class="text-success" style="display:none">  </span><button type="button" id="btn_addServe" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus fa"></i>   Add New</button>
                     <div id="serve_checkbox">
                         <?php foreach ($serves as $ser) {
                             ?>
@@ -404,7 +404,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well-sm well" id="estd_checkbox">
-                    <b> Establishment Type:</b> <span class="pull-right"><button type="button" id="btn_establishmentType" class="btn btn-sm btn-info"> Add New</button></span>
+                    <b> Establishment Type:</b> <span id="msg-estdTypeWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_establishmentType" class="btn btn-sm btn-info"> Add New</button></span>
                     <hr/>
                     <?php foreach ($est_type as $est): ?>
                         <label class="checkbox-inline">
@@ -428,7 +428,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well-sm well" id="facility_checkbox">
-                    <b> Facilities :</b><span class="pull-right"><button type="button" id="btn_facilities" class="btn btn-sm btn-info"> Add New</button></span>
+                    <b> Facilities :</b><span id="msg-facilityWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_facilities" class="btn btn-sm btn-info"> Add New</button></span>
                     <hr/>
 
                     <?php foreach ($facilities as $fac): ?>
@@ -527,7 +527,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well-sm well" id="cousin_checkbox">
-                    <b> Cousins by Country :</b><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
+                    <b> Cousins by Country :</b><span id="msg-cousinByCountryWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
                     <hr/>
                     <?php foreach ($cousins as $Cousin): ?>
                         <label class="checkbox-inline">
@@ -573,7 +573,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well-sm well" id="populardish_checkbox">
-                    <b> Popular Dish:</b><span class="pull-right"> <button type="button" id="btn_addPopDish" class="btn btn-sm btn-info"><i class="fa fa-plus fa"></i> Add New</button></span>
+                    <b> Popular Dish:</b><span id="msg-popDishWait" class="text-success" style="display:none">  </span><span class="pull-right"> <button type="button" id="btn_addPopDish" class="btn btn-sm btn-info"><i class="fa fa-plus fa"></i> Add New</button></span>
                     <hr/>
                      <?php foreach ($pop_dishes as $pop): ?>
                         <label class="checkbox-inline">
@@ -896,8 +896,7 @@
                                 Mobile 1
                             </td>
                             <td>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">98</span>
+                                <div class="form-group">
                                     <input type="text" name="owners_mobile1" id="owners_mobile1" maxlength="8" oninput="maxLengthCheck(this)" value="<?php echo set_value('owners_mobile1') ?>"
                                        class="form-control">
                                     <span></span>
@@ -910,8 +909,7 @@
                                 Mobile 2
                             </td>
                             <td>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">98</span>
+                                <div class="form-group">
                                     <input type="text" name="owners_mobile2" id="owners_mobile2" maxlength="8" oninput="maxLengthCheck(this)"
                                        value="<?php echo set_value('owners_mobile2') ?>"
                                        class="form-control">
@@ -1043,8 +1041,8 @@
                 }else{
 
                         $.each(data, function(index, val) {
-                            $('#form-establishment'+' #'+val.error_string).next().html(val.input_error);
-                            //$('#form-establishment'+' #'+val.error_string).parent().addClass('has-error');
+                            $('#form-ownerManagerResNumber'+' #'+val.error_string).next().html(val.input_error);
+                            $('#form-ownerManagerResNumber'+' #'+val.error_string).parent().addClass('has-error');
                         });
 
 
@@ -1054,8 +1052,8 @@
                 console.log("error");
             })
             .always(function() {
-                $(this).text('Update');
-                $(this).prop('disabled',false);
+                $('#btn-updateOwnerManagerResNumber').text('Update');
+                $('#btn-updateOwnerManagerResNumber').prop('disabled',false);
             });
             
             
@@ -1574,14 +1572,24 @@
 
     function update_res_estd_type (res_id,estd_id,status) 
     {
-        
+        $('.estd_type').prop('disabled',true);
+        $('#msg-estdTypeWait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
+        $('#msg-estdTypeWait').show();
         $.ajax({
             url: '<?php echo(site_url("establishment_type/update_res_estdtype")) ?>/'+res_id+'/'+estd_id+'/'+status,
             type: 'POST',
             dataType: 'json'
         })
         .done(function(data) {
+            $('#msg-estdTypeWait').html('Update Successfully !!');
+            setTimeout(function() {
+                $('#msg-estdTypeWait').hide();
+                $('.estd_type').prop('disabled',false);
+            }, 1000); 
             console.log(data);
+        })
+        .always(function(){
+
         })
         .fail(function() {
             console.log("error");
@@ -1591,12 +1599,23 @@
 
     function update_res_serve (res_id,serve_id,status) 
     {
+        $('.serves').prop('disabled',true);
+        $('#msg-serveswait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
+        $('#msg-serveswait').show();
          $.ajax({
             url: '<?php echo(site_url("serve/update_res_serves")) ?>/'+res_id+'/'+serve_id+'/'+status,
             type: 'POST',
             dataType: 'json'
         })
         .done(function(data) {
+
+            $('#msg-serveswait').html('Update Successfully !!');
+
+            setTimeout(function() {
+                $('#msg-serveswait').hide();
+                $('.serves').prop('disabled',false);
+            }, 1000);
+           
             console.log(data);
         })
         .fail(function() {
@@ -1606,12 +1625,21 @@
 
     function update_res_facility (res_id,facility_id,status) 
     {
+        $('.facility').prop('disabled',true);
+        $('#msg-facilityWait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
+        $('#msg-facilityWait').show();
          $.ajax({
             url: '<?php echo(site_url("facility/update_res_facility")) ?>/'+res_id+'/'+facility_id+'/'+status,
             type: 'POST',
             dataType: 'json'
         })
         .done(function(data) {
+            $('#msg-facilityWait').html('Update Successfully !!');
+
+            setTimeout(function() {
+                $('#msg-facilityWait').hide();
+                $('.facility').prop('disabled',false);
+            }, 1000);
             console.log(data);
         })
         .fail(function() {
