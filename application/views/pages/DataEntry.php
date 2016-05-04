@@ -410,10 +410,14 @@
             </div>
             <div class="col-md-6">
                 <div class="well-sm well">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="tbl-costTopic">
                         <tr>
                             <th colspan="2">
                                 Cost(Lunch, dinner or breakfast) for two
+                                <span class="pull-right"><button type="button" id="btn_costForTwo" class="btn btn-sm btn-info"> Add New</button></span>
+                                <div class="clearfix">
+                                
+                                </div>
                             </th>
                         </tr>
                         <?php foreach ($estimate_cost_topic as $topic) {
@@ -808,8 +812,42 @@
     </div>
 </div>
 
+
+
+<div class="modal fade" id="mdl-costTopic">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add new cost topic</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST" id="form-costTopic">
+                    <div class="form-group">
+                        <label for="">Cost topic</label>
+                        <input type="text" name="cost_topic" class="form-control" id="cost_topic" placeholder="Input Cost Topic">
+                        <span></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn-saveCostTopic" class="btn btn-primary">Save</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     $(document).ready(function() {
+
+        $('#btn-saveCostTopic').click(function() {
+            add_costTopic ('btn-saveCostTopic','tbl-costTopic');
+        });
+        $('#btn_costForTwo').click(function() {
+            $('#mdl-costTopic').modal('show');
+
+        });
+/*===============================================================================*/
         $('.addhappyhrs').click(function() {
 
               var temp= $(this).closest('tr').find('td').eq(1).html();
@@ -932,7 +970,7 @@
 /*=======================================================================*/
         total();
 
-       $('.estimate_cost_topic').keyup(function() {
+       $('body').on('keyup','.estimate_cost_topic',function() {
 
           total();
        });
@@ -1272,6 +1310,50 @@
            
         });
         $('#total').val(temp.toFixed(2));
+        
+    }
+
+    function add_costTopic (button_id,table_name='') 
+    {
+        disable_button(button_id,'Saving..........');
+        $.ajax({
+            url: '<?php echo(site_url("cost_topic/add")) ?>',
+            type: 'POST',
+            dataType: 'json',
+            data: $('#form-costTopic').serialize(),
+        })
+        .done(function(data) {
+
+            if (data.status==true)
+                {
+                   
+                    $('#form-costTopic')[0].reset();
+                    $('#mdl-costTopic').modal('hide');
+                    var temp="<tr><td>"+data.data[0].topic+"</td>";
+                    temp+='<td><input type="number" name="estimate_cost_topic['+data.data[0].topic_id+']" class="estimate_cost_topic form-control" ></td></tr>';
+                    
+                   $('#'+table_name).find('tr:last').prev().after(temp);
+                   enable_button(button_id,'Save');
+                }
+                else
+                {
+                     $.each(data, function(index, val) {
+                             $('#form-costTopic'+' #'+val.error_string).next().html(val.input_error);
+                            $('#form-costTopic'+' #'+val.error_string).parent().parent().addClass('has-error');
+                        });
+
+                    enable_button(button_id,'Save');
+                }
+            console.log("success");
+        })
+        .fail(function() {
+             enable_button(button_id,'Save');
+            console.log("error");
+        })
+        .always(function() {
+
+            console.log("complete");
+        });
         
     }
 
