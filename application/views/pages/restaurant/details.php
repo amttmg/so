@@ -1192,6 +1192,41 @@
 
     var res_id='<?php echo($this->uri->segment(3)) ?>';
 
+    $('#btn-updateEstdLocation').click(function() {
+        $(this).text('Updating..........');
+        $(this).prop('disabled',true);
+        $.ajax({
+            url: '<?php echo(site_url("restaurants/update_estd_location")) ?>/'+res_id,
+            type: 'POST',
+            dataType: 'json',
+            data: $('#form-estdLocation').serialize(),
+        })
+        .done(function(data) {
+
+            if (data.status==true) {
+                location.reload();
+
+                }else{
+
+                        $.each(data, function(index, val) {
+                            $('#form-estdLocation'+' #'+val.error_string).next().html(val.input_error);
+                            $('#form-estdLocation'+' #'+val.error_string).parent().addClass('has-error');
+                        });
+
+
+                }
+            
+        })
+        .fail(function() {
+            $('#btn-updateEstdLocation').text('Update');
+            $('#btn-updateEstdLocation').prop('disabled',false);
+        })
+        .always(function() {
+            console.log("complete");
+        });
+        
+    });
+/*========================================================================*/
     $('#btn-editEstablismentLocation').click(function() {
         $(this).text('Please wait.....');
         $.ajax({

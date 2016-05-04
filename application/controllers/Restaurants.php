@@ -130,6 +130,48 @@ class Restaurants extends CI_Controller {
 		echo(json_encode($master));
 	}
 
+	public function update_estd_location($id)
+	{
+		$this->load->library('form_validation');
+		$master['status'] = True;
+		$data             = array();
+		$master           = array();
+        $this->form_validation->set_rules('est_city', 'Establishment City', 'trim|max_length[30]');
+        $this->form_validation->set_rules('est_area', 'Establishment Area', 'trim|max_length[30]');
+        $this->form_validation->set_rules('est_street', 'Establishment Street', 'trim|max_length[30]');
+        $this->form_validation->set_rules('est_landmark', 'Establishment Landmark', 'trim|max_length[30]');
+        $this->form_validation->set_rules('est_other', 'Establishment Other', 'trim|max_length[30]');
+		if ($this->form_validation->run() == True) 
+		{
+			
+			$data=array(
+				'area'=>$this->input->post('est_area'),
+				'street'=>$this->input->post('est_street'),
+				'landmark'=>$this->input->post('est_landmark'),
+				'other'=>$this->input->post('est_other')
+				);
+			$this->db->where('res_id',$id);
+			$this->db->update('tbl_restaurants',$data);
+
+			$master['status']  = True;
+			$master['message'] ="successfully update data";
+		} 
+		else 
+		{
+			$master['status'] = false;
+            foreach ($_POST as $key => $value) 
+            {
+				if (form_error($key) != '') 
+                {
+					$data['error_string'] = $key;
+					$data['input_error']  = form_error($key);
+					array_push($master, $data);
+                }
+            }
+		}
+		echo(json_encode($master));
+	}
+
 	public function view_estdcontact($id)
 	{
 		echo $this->res->getBy(array('res_id',$id),true);
