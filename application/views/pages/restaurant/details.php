@@ -246,7 +246,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well-sm well">
-                    <b>Serves: </b> <span id="msg-serveswait" class="text-success" style="display:none">  </span><button type="button" id="btn_addServe" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus fa"></i>   Add New</button>
+                    <b>Serves: </b> <span id="msg-serveswait" class="text-success " style="display:none">  </span><button type="button" id="btn_addServe" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus fa"></i>   Add New</button>
                     <div id="serve_checkbox">
                         <?php foreach ($serves as $ser) {
                             ?>
@@ -292,53 +292,124 @@
                         </tr>
                         
                         <?php foreach ($service_time as $st): ?>
-                            <?php if ($st->day==1): ?>
+                           
+                            <?php if ($st['first']->day==1): ?>
                                 <tr>
                                     <td>Sunday</td>
-                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
-                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                    <td>
+                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                        <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
+                                    <td>
+                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                        <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
                                 </tr>
                             <?php endif ?>
-                            <?php if ($st->day==2): ?>
+                            <?php if ($st['first']->day==2): ?>
                                 <tr>
                                     <td>Monday</td>
-                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
-                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                    <td>
+                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                        <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
+                                    <td>
+                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                        <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
                                 </tr>
                             <?php endif ?>
-                            <?php if ($st->day==2): ?>
+                            <?php if ($st['first']->day==3): ?>
                                 <tr>
                                     <td>Tuesday</td>
-                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
-                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                    <td>
+                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                        <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
+                                    <td>
+                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                         <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
                                 </tr>
                             <?php endif ?>
-                            <?php if ($st->day==2): ?>
+                            <?php if ($st['first']->day==4): ?>
                                 <tr>
                                     <td>Wednesday</td>
-                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
-                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                    <td>
+                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                        <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
+                                    <td>
+                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                         <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
                                 </tr>
                             <?php endif ?>
-                            <?php if ($st->day==2): ?>
+                            <?php if ($st['first']->day==5): ?>
                                 <tr>
                                     <td>Thursday</td>
-                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
-                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                    <td>
+                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                        <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
+                                    <td>
+                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                         <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
                                 </tr>
                             <?php endif ?>
-                            <?php if ($st->day==2): ?>
+                            <?php if ($st['first']->day==6): ?>
                                 <tr>
                                     <td>Friday</td>
-                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
-                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                    <td>
+                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                        <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
+                                    <td>
+                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                         <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
                                 </tr>
                             <?php endif ?>
-                            <?php if ($st->day==2): ?>
+                            <?php if ($st['first']->day==7): ?>
                                 <tr>
                                     <td>Saturday</td>
-                                    <td><?php echo($st->opening_time?$st->opening_time:'-- -- --') ?></td>
-                                    <td><?php echo($st->closing_time?$st->closing_time:'-- -- --') ?></td>
+                                    <td>
+                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                        <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
+                                    <td>
+                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                         <?php if ($st['second']): ?>
+                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
                                 </tr>
                             <?php endif ?>
                         <?php endforeach ?>
@@ -488,7 +559,7 @@
                          <?php foreach ($happy_hours as $hh): ?>
                             
                                 <tr>
-                                    <td><?php switch ($hh->day) {
+                                    <td><?php switch ($hh['first']->day) {
                                         case '1':
                                             echo("sunday");
                                             break;
@@ -512,8 +583,18 @@
                                             break;
                                     } ?>
                                     </td>
-                                    <td><?php echo($hh->start_time?$hh->start_time:'-- -- --') ?></td>
-                                    <td><?php echo($hh->end_time?$hh->end_time:'-- -- --') ?></td>
+                                    <td>
+                                        <?php echo($hh['first']->start_time?$hh['first']->start_time:'-- -- --') ?>
+                                        <?php if ($hh['second']): ?>
+                                            <br/><br/><?php echo($hh['second']->start_time?$hh['second']->start_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
+                                    <td>
+                                        <?php echo($hh['first']->end_time?$hh['first']->end_time:'-- -- --') ?>
+                                        <?php if ($hh['second']): ?>
+                                            <br/><br/><?php echo($hh['second']->end_time?$hh['second']->end_time:'-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
                                 </tr>
                           
                             

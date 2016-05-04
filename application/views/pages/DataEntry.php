@@ -321,6 +321,9 @@
             <div class="col-md-12">
                 <div class="well-sm well">
                     <b>Serves: </b><button type="button" id="btn_addServe" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus fa"></i>   Add New</button>
+                    <div class="clearfix">
+                    
+                    </div>
                     <div id="serve_checkbox">
                         <?php foreach ($serves as $ser) {
                             ?>
@@ -357,50 +360,50 @@
                             <td>if same all weeks</td>
                             <td><input id="open_time_all" type="time" class="form-control"></td>
                             <td><input id="close_time_all" type="time" class="form-control"> </td>
-                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
+                           
                         </tr>
                         <tr>
                             <td>Sunday</td>
                             <td><input name="servtime[1][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[1][close]" type="time" class="form-control close_time"></td>
-                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime" data-position="1">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Monday</td>
                             <td><input name="servtime[2][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[2][close]" type="time" class="form-control close_time"></td>
-                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
+                            <td><button type="button" class="btn btn-xs btn-primary  addservetime" data-position="2">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Tuesday</td>
                             <td><input name="servtime[3][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[3][close]" type="time" class="form-control close_time"></td>
-                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime" data-position="3">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Wednesday</td>
                             <td><input name="servtime[4][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[4][close]" type="time" class="form-control close_time"></td>
-                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime" data-position="4">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Thursday</td>
                             <td><input name="servtime[5][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[5][close]" type="time" class="form-control close_time"></td>
-                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime" data-position="5">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Friday</td>
                             <td><input name="servtime[6][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[6][close]" type="time" class="form-control close_time"></td>
-                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime" data-position="6">New Time</button></td>
                         </tr>
 
                         <tr>
                             <td>Saturday</td>
                             <td><input name="servtime[7][open]" type="time" class="form-control open_time"></td>
                             <td><input name="servtime[7][close]" type="time" class="form-control close_time"></td>
-                            <td><button type="button" class="btn btn-xs btn-primary addservetime">New Time</button></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addservetime" data-position="7">New Time</button></td>
                         </tr>
                     </table>
                 </div>
@@ -466,6 +469,9 @@
             <div class="col-md-12">
                 <div class="well-sm well" id="estd_checkbox">
                     <b> Establishment Type:</b> <span class="pull-right"><button type="button" id="btn_establishmentType" class="btn btn-sm btn-info"> Add New</button></span>
+                    <div class="clearfix">
+                    
+                    </div>
                     <hr/>
                     <?php foreach ($establishment_types as $est) {
                         ?>
@@ -484,6 +490,9 @@
             <div class="col-md-12">
                 <div class="well-sm well" id="facility_checkbox">
                     <b> Facilities :</b><span class="pull-right"><button type="button" id="btn_facilities" class="btn btn-sm btn-info"> Add New</button></span>
+                    <div class="clearfix">
+                    
+                    </div>
                     <hr/>
                     <?php foreach ($facilities as $fac) {
                         ?>
@@ -540,37 +549,44 @@
                             <td>Sunday</td>
                             <td><input name="happyhours[1][start]" type="time" class="form-control start_time"></td>
                             <td><input name="happyhours[1][end]" type="time" class="form-control end_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="1">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Monday</td>
                             <td><input name="happyhours[2][start]" type="time" class="form-control start_time"></td>
                             <td><input name="happyhours[2][end]" type="time" class="form-control end_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="2">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Tuesday</td>
                             <td><input name="happyhours[3][start]" type="time" class="form-control start_time"></td>
                             <td><input name="happyhours[3][end]" type="time" class="form-control end_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="3">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Wednesday</td>
                             <td><input name="happyhours[4][start]" type="time" class="form-control start_time"></td>
                             <td><input name="happyhours[4][end]" type="time" class="form-control end_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="4">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Thursday</td>
                             <td><input name="happyhours[5][start]" type="time" class="form-control start_time"></td>
                             <td><input name="happyhours[5][end]" type="time" class="form-control end_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="5">New Time</button></td>
                         </tr>
                         <tr>
                             <td>Friday</td>
                             <td><input name="happyhours[6][start]" type="time" class="form-control start_time"></td>
                             <td><input name="happyhours[6][end]" type="time" class="form-control end_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="6">New Time</button></td>
                         </tr>
 
                         <tr>
                             <td>Saturday</td>
                             <td><input name="happyhours[7][start]" type="time" class="form-control start_time"></td>
                             <td><input name="happyhours[7][end]" type="time" class="form-control end_time"></td>
+                            <td><button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="7">New Time</button></td>
                         </tr>
                     </table>
                 </div>
@@ -581,6 +597,9 @@
             <div class="col-md-12">
                 <div class="well-sm well" id="cousin_checkbox">
                     <b> Cousins by Country :</b><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
+                    <div class="clearfix">
+                    
+                    </div>
                     <hr/>
                     <?php foreach ($cousins as $Cousin) {
                         ?>
@@ -599,6 +618,9 @@
             <div class="col-md-12">
                 <div class="well-sm well">
                     <b> Cousins by Food :</b>
+                    <div class="clearfix">
+                    
+                    </div>
                     <hr/>
                     <?php foreach ($foods as $food) {
                         ?>
@@ -616,6 +638,9 @@
             <div class="col-md-12">
                 <div class="well-sm well" id="populardish_checkbox">
                     <b> Popular Dish:</b><span class="pull-right"> <button type="button" id="btn_addPopDish" class="btn btn-sm btn-info"><i class="fa fa-plus fa"></i> Add New</button></span>
+                    <div class="clearfix">
+                    
+                    </div>
                     <hr/>
                     <?php foreach ($pop_dishes as $pop) {
                         ?>
@@ -785,15 +810,101 @@
 
 <script>
     $(document).ready(function() {
+        $('.addhappyhrs').click(function() {
 
+              var temp= $(this).closest('tr').find('td').eq(1).html();
+              var temp2=$(this).closest('tr').find('td').eq(2).html();
+              if($(this).data('position')===1)
+              {
+                 temp=$(temp).attr('name', 'happyhours1[1][start]');
+                 temp2=$(temp2).attr('name', 'happyhours1[1][end]');
+              }
+              if($(this).data('position')===2)
+              {
+                 temp=$(temp).attr('name', 'happyhours1[2][start]');
+                 temp2=$(temp2).attr('name', 'happyhours1[2][end]');
+              }
+              if($(this).data('position')===3)
+              {
+                 temp=$(temp).attr('name', 'happyhours1[3][start]');
+                 temp2=$(temp2).attr('name', 'happyhours1[3][end]');
+              }
+              if($(this).data('position')===4)
+              {
+                 temp=$(temp).attr('name', 'happyhours1[4][start]');
+                 temp2=$(temp2).attr('name', 'happyhours1[4][end]');
+              }
+              if($(this).data('position')===5)
+              {
+                 temp=$(temp).attr('name', 'happyhours1[5][start]');
+                 temp2=$(temp2).attr('name', 'happyhours1[5][end]');
+              }
+              if($(this).data('position')===6)
+              {
+                 temp=$(temp).attr('name', 'happyhours1[6][start]');
+                 temp2=$(temp2).attr('name', 'happyhours1[6][end]');
+              }
+              if($(this).data('position')===7)
+              {
+                 temp=$(temp).attr('name', 'happyhours1[7][start]');
+                 temp2=$(temp2).attr('name', 'happyhours1[7][end]');
+              }
+           
+                $(this).closest('tr').find('td').eq(1).append('<br/>')
+                                                      .append(temp);
+                $(this).closest('tr').find('td').eq(2).append('<br/>')
+                                                      .append(temp2);
+          
+                $(this).hide('slow', function() {
+                });
+        });
+/*======================================================================================*/
         $('.addservetime').click(function() {
-          var temp='<br/>'+$(this).closest('tr').find('td').eq(1).html();
-          var temp2='<br/>'+$(this).closest('tr').find('td').eq(2).html();
-          $(this).closest('tr').find('td').eq(1).append(temp);
-          $(this).closest('tr').find('td').eq(2).append(temp2);
-          $(this).hide('slow', function() {
-              
-          });
+              var temp= $(this).closest('tr').find('td').eq(1).html();
+              var temp2=$(this).closest('tr').find('td').eq(2).html();
+              if($(this).data('position')===1)
+              {
+                 temp=$(temp).attr('name', 'servtime1[1][open]');
+                 temp2=$(temp2).attr('name', 'servtime1[1][close]');
+              }
+              if($(this).data('position')===2)
+              {
+                 temp=$(temp).attr('name', 'servtime1[2][open]');
+                 temp2=$(temp2).attr('name', 'servtime1[2][close]');
+              }
+              if($(this).data('position')===3)
+              {
+                 temp=$(temp).attr('name', 'servtime1[3][open]');
+                 temp2=$(temp2).attr('name', 'servtime1[3][close]');
+              }
+              if($(this).data('position')===4)
+              {
+                 temp=$(temp).attr('name', 'servtime1[4][open]');
+                 temp2=$(temp2).attr('name', 'servtime1[4][close]');
+              }
+              if($(this).data('position')===5)
+              {
+                 temp=$(temp).attr('name', 'servtime1[5][open]');
+                 temp2=$(temp2).attr('name', 'servtime1[5][close]');
+              }
+              if($(this).data('position')===6)
+              {
+                 temp=$(temp).attr('name', 'servtime1[6][open]');
+                 temp2=$(temp2).attr('name', 'servtime1[6][close]');
+              }
+              if($(this).data('position')===7)
+              {
+                 temp=$(temp).attr('name', 'servtime1[7][open]');
+                 temp2=$(temp2).attr('name', 'servtime1[7][close]');
+              }
+           
+                $(this).closest('tr').find('td').eq(1).append('<br/>')
+                                                      .append(temp);
+                $(this).closest('tr').find('td').eq(2).append('<br/>')
+                                                      .append(temp2);
+          
+                $(this).hide('slow', function() {
+                });
         });
 /*=============================================================================
 */        $('#btn-addMoreOwner').click(function() {
@@ -806,6 +917,9 @@
             .done(function(data) {
               $('#btn-addMoreOwner').text('Add More owner');
               $('#containerOwner').html(data);
+              $('#btn-addMoreOwner').hide('slow', function() {
+                  
+              });
             })
             .fail(function() {
                 console.log("error");

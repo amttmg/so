@@ -13,7 +13,21 @@ class M_happy_hour extends CI_Model {
         $result_data=$this->db->get()->result();
         if ($json==false) 
         {
-            return $result_data;
+            $master=array();
+            foreach ($result_data as $time) 
+            {
+                $data1=array();
+
+                $data1['first']=$time;
+                $this->db->where('position',2);
+                $this->db->where($data[0],$data[1]);
+                $this->db->where('day',$time->day);
+                $second_result=$this->db->get($this->table_name)->row();
+                $data1['second']=$second_result;
+                array_push($master, $data1);
+            }
+
+            return $master;
         }
         else
         {
