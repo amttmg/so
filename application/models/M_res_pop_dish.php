@@ -25,6 +25,26 @@ class M_res_pop_dish extends CI_Model {
        
     }
 
+    public function update_res_popdish($res_id,$dish_id,$status)
+    {
+        if ($status) 
+        {
+            $insert_data=array(
+                'res_id'=>$res_id,
+                'pop_dishes_id'=>$dish_id,
+                'status'=>1
+                );
+          $this->db->insert('tbl_res_pop_dishes',$insert_data);
+        }
+        else
+        {
+            $this->db->where('res_pop_dishes',$dish_id);
+            $this->db->where('res_id',$res_id);
+           $this->db->delete('tbl_res_pop_dishes');
+        }
+        return true;
+    }
+
 	
 
 }

@@ -24,6 +24,27 @@ class M_res_cousin extends CI_Model {
        
     }
 
+    public function update_res_cousin($res_id,$cousin_id,$status)
+    {
+        if ($status) 
+        {
+            $insert_data=array(
+                'res_id'=>$res_id,
+                'cousin_id'=>$cousin_id,
+                'status'=>1
+                );
+          $this->db->insert('tbl_res_cousins',$insert_data);
+        }
+        else
+        {
+            $this->db->where('res_cousin_id',$cousin_id);
+            $this->db->where('res_id',$res_id);
+           $this->db->delete('tbl_res_cousins');
+        }
+        return true;
+        
+    }
+
 	
 
 }

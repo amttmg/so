@@ -48,6 +48,22 @@ class Pop_dish extends CI_Controller {
 		
 	}
 
+	public function update_res_popdish($res_id,$dish_id,$status)
+	{
+		$this->load->model('m_res_pop_dish','res_popdish');
+		$data=array();
+		if ($this->res_popdish->update_res_popdish($res_id,$dish_id,$status)==true) 
+		{
+			$data['status']=true;
+		}
+		else
+		{
+			$data['status']=false;
+		}
+		echo(json_encode($data));
+
+	}
+
 }
 
 /* End of file pop_dish.php */

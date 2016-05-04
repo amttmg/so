@@ -23,6 +23,26 @@ class M_res_cousinsbyfood extends CI_Model {
 
        
     }
+
+    public function update_res_cousinbyfood($res_id,$cousin_id,$status)
+    {
+        if ($status) 
+        {
+            $insert_data=array(
+                'res_id'=>$res_id,
+                'food_id'=>$cousin_id,
+                'status'=>1
+                );
+          $this->db->insert('tbl_res_foods',$insert_data);
+        }
+        else
+        {
+            $this->db->where('res_food_id',$cousin_id);
+            $this->db->where('res_id',$res_id);
+           $this->db->delete('tbl_res_foods');
+        }
+        return true;
+    }
 	
 
 }

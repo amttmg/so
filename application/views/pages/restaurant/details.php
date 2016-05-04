@@ -632,6 +632,7 @@
             <div class="col-md-12">
                 <div class="well-sm well">
                     <b> Cousins by Food :</b>
+                    <span id="msg-cousinByFoodWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
                     <hr/>
                      <?php foreach ($foods as $food): ?>
                         <label class="checkbox-inline">
@@ -1407,6 +1408,43 @@
            
         });
 /*===============================================================================*/
+        $('body').on('change','.pop_dishes',function(){
+            
+            if (!$(this).is(':checked')) 
+            {
+                
+               update_res_popdishes(res_id,$(this).val(),0);
+            }
+            if ($(this).is(':checked')) 
+            {
+                update_res_popdishes(res_id,$(this).val(),1);
+            }
+        });
+
+        $('body').on('change','.foods',function(){
+           
+           if (!$(this).is(':checked')) 
+            {
+                
+               update_res_cousinbyfood(res_id,$(this).val(),0);
+            }
+            if ($(this).is(':checked')) 
+            {
+                update_res_cousinbyfood(res_id,$(this).val(),1);
+            }
+        });
+        $('body').on('change','.cousins',function(){
+            if (!$(this).is(':checked')) 
+            {
+                
+                update_res_cousin(res_id,$(this).val(),0);
+            }
+            if ($(this).is(':checked')) 
+            {
+                update_res_cousin(res_id,$(this).val(),1);
+            }
+        });
+
         $('body').on('change','.serves',function() {
 
            
@@ -1865,6 +1903,78 @@
             setTimeout(function() {
                 $('#msg-facilityWait').hide();
                 $('.facility').prop('disabled',false);
+            }, 1000);
+            console.log(data);
+        })
+        .fail(function() {
+            console.log("error");
+        });
+    }
+
+    function update_res_cousin(res_id,cousin_id,status)
+    {
+        $('.cousins').prop('disabled',true);
+        $('#msg-cousinByCountryWait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
+        $('#msg-cousinByCountryWait').show();
+         $.ajax({
+            url: '<?php echo(site_url("cousin/update_res_cousin")) ?>/'+res_id+'/'+cousin_id+'/'+status,
+            type: 'POST',
+            dataType: 'json'
+        })
+        .done(function(data) {
+            $('#msg-cousinByCountryWait').html('Update Successfully !!');
+
+            setTimeout(function() {
+                $('#msg-cousinByCountryWait').hide();
+                $('.cousins').prop('disabled',false);
+            }, 1000);
+            console.log(data);
+        })
+        .fail(function() {
+            console.log("error");
+        });
+    }
+
+    function update_res_cousinbyfood(res_id,cousin_id,status) 
+    {
+        $('.foods').prop('disabled',true);
+        $('#msg-cousinByFoodWait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
+        $('#msg-cousinByFoodWait').show();
+         $.ajax({
+            url: '<?php echo(site_url("cousin/update_res_cousinbyfood")) ?>/'+res_id+'/'+cousin_id+'/'+status,
+            type: 'POST',
+            dataType: 'json'
+        })
+        .done(function(data) {
+            $('#msg-cousinByFoodWait').html('Update Successfully !!');
+
+            setTimeout(function() {
+                $('#msg-cousinByFoodWait').hide();
+                $('.foods').prop('disabled',false);
+            }, 1000);
+            console.log(data);
+        })
+        .fail(function() {
+            console.log("error");
+        });
+    }
+
+    function update_res_popdishes(res_id,dish_id,status) 
+    {
+        $('.pop_dishes').prop('disabled',true);
+        $('#msg-popDishWait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
+        $('#msg-popDishWait').show();
+         $.ajax({
+            url: '<?php echo(site_url("pop_dish/update_res_popdish")) ?>/'+res_id+'/'+dish_id+'/'+status,
+            type: 'POST',
+            dataType: 'json'
+        })
+        .done(function(data) {
+            $('#msg-popDishWait').html('Update Successfully !!');
+
+            setTimeout(function() {
+                $('#msg-popDishWait').hide();
+                $('.pop_dishes').prop('disabled',false);
             }, 1000);
             console.log(data);
         })
