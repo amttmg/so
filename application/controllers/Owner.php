@@ -36,6 +36,7 @@ class Owner extends CI_Controller {
 
 			$master['status']  = True;
 			$master['message'] ="successfully update data";
+			$this->session->set_flashdata('flashSuccess', 'Update Succcessfully !');
 		} 
 		else 
 		{
@@ -50,6 +51,7 @@ class Owner extends CI_Controller {
                 }
             }
 		}
+
 		echo(json_encode($master));
 	}
 

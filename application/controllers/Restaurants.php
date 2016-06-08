@@ -75,6 +75,7 @@ class Restaurants extends CI_Controller {
 
 			$master['status']  = True;
 			$master['message'] ="successfully update data";
+			$this->session->set_flashdata('flashSuccess', 'Update Succcessfully !');
 		} 
 		else 
 		{
@@ -114,6 +115,7 @@ class Restaurants extends CI_Controller {
 
 			$master['status']  = True;
 			$master['message'] ="successfully update data";
+			$this->session->set_flashdata('flashSuccess', 'Update Succcessfully !');
 		} 
 		else 
 		{
@@ -128,6 +130,7 @@ class Restaurants extends CI_Controller {
                 }
             }
 		}
+		
 		echo(json_encode($master));
 	}
 
@@ -146,6 +149,7 @@ class Restaurants extends CI_Controller {
 		{
 			
 			$data=array(
+				'city'=>$this->input->post('est_city'),
 				'area'=>$this->input->post('est_area'),
 				'street'=>$this->input->post('est_street'),
 				'landmark'=>$this->input->post('est_landmark'),
@@ -156,6 +160,7 @@ class Restaurants extends CI_Controller {
 
 			$master['status']  = True;
 			$master['message'] ="successfully update data";
+			$this->session->set_flashdata('flashSuccess', 'Update Succcessfully !');
 		} 
 		else 
 		{
@@ -170,6 +175,7 @@ class Restaurants extends CI_Controller {
                 }
             }
 		}
+		
 		echo(json_encode($master));
 	}
 

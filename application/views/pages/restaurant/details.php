@@ -68,7 +68,7 @@
                                 Land line1
                             </td>
                             <td>
-                                <?php echo('01'.$restaurants->landline1) ?>
+                                <?php echo($restaurants->landline1?'01'.$restaurants->landline1:'') ?>
                             </td>
                         </tr>
                         <tr>
@@ -76,7 +76,7 @@
                                 Land line2
                             </td>
                             <td>
-                                <?php echo('01'.$restaurants->landline2) ?>
+                                <?php echo($restaurants->landline2?'01'.$restaurants->landline2:'') ?>
                             </td>
                         </tr>
                         <tr>
@@ -180,7 +180,7 @@
                                 Land line1
                             </td>
                             <td>
-                                <?php echo($owners[0]->landline1) ?>
+                                <?php echo($owners[0]->landline1?'01'.$owners[0]->landline1:'') ?>
                             </td>
                         </tr>
                         <tr>
@@ -188,7 +188,7 @@
                                 Land line2
                             </td>
                             <td>
-                                <?php echo($owners[0]->landline2) ?>
+                                <?php echo($owners[0]->landline2?'01'.$owners[0]->landline2:'') ?>
                             </td>
                         </tr>
                     </table>
@@ -205,7 +205,7 @@
                                 City
                             </td>
                             <td>
-                                
+                                <?php echo($restaurants->city) ?>
                             </td>
                         </tr>
                         <tr>
@@ -1130,8 +1130,7 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input list="est_city" id="city_suggest" name="est_city" value="<?php echo set_value('est_city') ?>"
-                                           class="form-control">
+                                        <input list="est_city" id="city_suggest" name="est_city" value="" class="form-control">
                                            <span></span>
                                     </div>
                                            <datalist id="est_city">
@@ -1218,6 +1217,7 @@
         .done(function(data) {
 
             if (data.status==true) {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
                 location.reload();
 
                 }else{
@@ -1250,8 +1250,8 @@
         })
         .done(function(data) {
             $('#mdl-establishmentLocation').modal('show');
-            $('#est_city').val(data.area);
-            $('#est_area').val(data.area);
+            $('#city_suggest').val(data.city);
+            $('#area_suggest').val(data.area);
             $('#est_street').val(data.street);
             $('#est_landmark').val(data.landmark);
             $('#est_other').val(data.other);
@@ -1279,6 +1279,7 @@
             })
             .done(function(data) {
                 if (data.status==true) {
+                  $("html, body").animate({ scrollTop: 0 }, "slow");
                   location.reload();
 
                 }else{
@@ -1312,6 +1313,7 @@
             })
             .done(function(data) {
                  if (data.status==true) {
+                  $("html, body").animate({ scrollTop: 0 }, "slow");
                   location.reload();
 
                 }else{
@@ -1348,6 +1350,7 @@
           })
           .done(function(data) {
               if (data.status==true) {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
                 location.reload();
 
                 }else{

@@ -23,6 +23,26 @@ class Place extends CI_Controller {
 		}
 	}
 
+	public function city_suggest()
+	{
+		if ($this->input->is_ajax_request()) 
+		{
+			$this->db->like('city');
+			$data=$this->db->get('tbl_restaurants');
+			$temp='';
+			//print_r($data->result());
+			if ($data->num_rows() > 0) 
+			{
+				foreach ($data->result() as $res) 
+				{
+					$temp.='<option value="'.$res->city.'"></option>';
+				}
+			}
+			echo($temp);
+			
+		}
+	}
+
 }
 
 /* End of file place.php */
