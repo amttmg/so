@@ -126,8 +126,10 @@
                                 Present in google Map
                             </td>
                             <td>
-                                <input type="checkbox" name="res_map" value="1">
-                                <?php echo form_error('res_map'); ?>
+                                <!-- <input type="checkbox" name="res_map" value="1"> -->
+                               
+                                <?php echo($restaurants->google_map?"Yes":"No") ?>
+
                             </td>
                         </tr>
                     </table>
@@ -977,7 +979,7 @@
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <input type="text" name="owners_mobile1" id="owners_mobile1" maxlength="8" oninput="maxLengthCheck(this)" value="<?php echo set_value('owners_mobile1') ?>"
+                                    <input type="number" name="owners_mobile1" id="owners_mobile1" maxlength="8" oninput="maxLengthCheck(this)" value="<?php echo set_value('owners_mobile1') ?>"
                                        class="form-control">
                                     <span></span>
                                 </div>
@@ -990,7 +992,7 @@
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <input type="text" name="owners_mobile2" id="owners_mobile2" maxlength="8" oninput="maxLengthCheck(this)"
+                                    <input type="number" name="owners_mobile2" id="owners_mobile2" maxlength="8" oninput="maxLengthCheck(this)"
                                        value="<?php echo set_value('owners_mobile2') ?>"
                                        class="form-control">
                                        <span></span>
@@ -1005,7 +1007,7 @@
                             <td>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">01</span>
-                                    <input type="text" name="owners_landline1" id="owners_landline1" maxlength="8" oninput="maxLengthCheck(this)"
+                                    <input type="number" name="owners_landline1" id="owners_landline1" maxlength="8" oninput="maxLengthCheck(this)"
                                        value="<?php echo set_value('owners_landline1') ?>"
                                        class="form-control">
                                        <span></span>
@@ -1020,7 +1022,7 @@
                             <td>
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">01</span>
-                                    <input type="text" name="owners_landline2" id="owners_landline2" maxlength="8" oninput="maxLengthCheck(this)"
+                                    <input type="number" name="owners_landline2" id="owners_landline2" maxlength="8" oninput="maxLengthCheck(this)"
                                        value="<?php echo set_value('owners_landline2') ?>"
                                        class="form-control">
                                        <span></span>
@@ -1085,7 +1087,16 @@
                                 Present in google Map
                             </td>
                             <td>
-                                <input type="checkbox" name="res_map" value="1">
+                                <!-- <input type="checkbox" name="res_map" value="1"> -->
+                                <div class="form-group">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="res_map" id="map_yes" value="1" >Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="res_map" id="map_no" value="0">No
+                                    </label>
+                                    
+                                </div>
                                 <?php echo form_error('res_map'); ?>
                             </td>
                         </tr>
@@ -1135,9 +1146,12 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input type="text" name="est_area" id="est_area" value="<?php echo set_value('est_area') ?>" class="form-control">
+                                        <input list="est_area" name="est_area" id="area_suggest" value="<?php echo set_value('est_area') ?>" class="form-control">
                                         <span></span>
                                     </div>
+                                    <datalist id="est_area">
+                                               
+                                    </datalist>
                                    
                                 </td>
                             </tr>
@@ -1432,6 +1446,15 @@
                 $('#modal-mapcoordinate').modal('show');
                 $('#form-mapCoordinates #res_lat').val(data.lat);
                 $('#form-mapCoordinates #res_lon').val(data.lon);
+                
+                if (data.google_map==='1')
+                {
+                    $('#form-mapCoordinates #map_yes').prop('checked',true);
+                }
+                else
+                {
+                    $('#form-mapCoordinates #map_no').prop('checked',true);
+                }
             })
             .fail(function() {
                 console.log(data);
@@ -1589,6 +1612,31 @@
                    
                     $('#est_city').empty();
                     $('#est_city').append(data);
+                }
+            })
+            .done(function() {
+                console.log("success");
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+            
+        });
+
+        $('#area_suggest').keyup(function() {
+            $.ajax({
+                url: '<?php echo(site_url("place/suggest")) ?>',
+                type: 'POST',
+                dataType:'html',
+                data: $(this).val(),
+                success:function(data)
+                {
+                   
+                    $('#est_area').empty();
+                    $('#est_area').append(data);
                 }
             })
             .done(function() {

@@ -16,6 +16,10 @@ class M_res_serve extends CI_Model {
         {
         	 $this->db->order_by($order_by[0],$order_by[1]);
         }
+        else
+        {
+            $this->db->order_by('s.serves_name');
+        }
         $result_data=$this->db->get()->result();
         if ($json==false) 
         {

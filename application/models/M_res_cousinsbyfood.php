@@ -10,7 +10,7 @@ class M_res_cousinsbyfood extends CI_Model {
         $this->db->select('f.*,rf.res_id');
         $this->db->from('tbl_food as f');
         $this->db->join('(select * from tbl_res_foods where tbl_res_foods.res_id='.$data[1].' ) as rf','rf.food_id=f.food_id','left');
-        
+        $this->db->order_by('f.food','asc');
         $result_data=$this->db->get()->result();
         if ($json==false) 
         {
@@ -37,7 +37,7 @@ class M_res_cousinsbyfood extends CI_Model {
         }
         else
         {
-            $this->db->where('res_food_id',$cousin_id);
+            $this->db->where('food_id',$cousin_id);
             $this->db->where('res_id',$res_id);
            $this->db->delete('tbl_res_foods');
         }

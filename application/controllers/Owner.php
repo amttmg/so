@@ -18,7 +18,7 @@ class Owner extends CI_Controller {
         $this->form_validation->set_rules('owners_name', 'Owner Name', 'trim|required|max_length[65]');
         $this->form_validation->set_rules('owners_mobile1', 'Mobile', 'trim|required|max_length[12]');
         $this->form_validation->set_rules('owners_mobile2', 'Mobile', 'trim|max_length[12]');
-        $this->form_validation->set_rules('owners_landline1', 'fieldlabel', 'trim|required|max_length[12]');
+        $this->form_validation->set_rules('owners_landline1', 'fieldlabel', 'trim|max_length[12]');
         $this->form_validation->set_rules('owners_landline2', 'fieldlabel', 'trim|max_length[12]');
 		if ($this->form_validation->run() == True) 
 		{

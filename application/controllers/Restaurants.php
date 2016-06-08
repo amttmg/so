@@ -106,7 +106,8 @@ class Restaurants extends CI_Controller {
 			
 			$data=array(
 				'lat'=>$this->input->post('res_lat'),
-				'lon'=>$this->input->post('res_lon')
+				'lon'=>$this->input->post('res_lon'),
+				'google_map'=>$this->input->post('res_map')
 				);
 			$this->db->where('res_id',$id);
 			$this->db->update('tbl_restaurants',$data);
