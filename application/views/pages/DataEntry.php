@@ -277,8 +277,11 @@
                                 Area
                             </td>
                             <td>
-                                <input type="text" name="est_area" value="<?php echo set_value('est_area') ?>"
+                                <input list="est_area" name="est_area" id="area_suggest" value="<?php echo set_value('est_area') ?>"
                                        class="form-control">
+                                <datalist id="est_area">
+                                           
+                                </datalist>
                                 <?php echo form_error('est_area'); ?>
                             </td>
                         </tr>
@@ -344,6 +347,8 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="well-sm well">
+                    <b>Happy Hours</b>
+                    <br/>
                     <table class="table table-bordered">
                         <tr>
                             <th>
@@ -452,17 +457,20 @@
                 <div class="well-sm well">
                     <b> Parking :</b>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="res_parking"
+                        <input type="radio" id="parking_yes" class="parking" name="res_parking"
                                value="1">Yes
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="radio" id="parking_no" class="parking" name="res_parking" value="0" checked>No
                     </label>
                     <hr/>
 
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="res_parking2"
+                        <input type="checkbox" class="parking_options" name="res_parking2"
                                value="1">Two Wheeler
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="res_parking4"
+                        <input type="checkbox" class="parking_options" name="res_parking4"
                                value="1">Four Wheeler
                     </label>
                 </div>
@@ -838,7 +846,12 @@
     </div>
 </div>
 <script>
+parking_check(); 
     $(document).ready(function() {
+
+        $('.parking').click(function() {
+            parking_check();
+        });
 
         $('#btn-saveCostTopic').click(function() {
             add_costTopic ('btn-saveCostTopic','tbl-costTopic');
@@ -1047,6 +1060,32 @@
             });
             
         });
+/*=======================================================================================*/
+        $('#area_suggest').keyup(function() {
+            $.ajax({
+                url: '<?php echo(site_url("place/suggest")) ?>',
+                type: 'POST',
+                dataType:'html',
+                data: $(this).val(),
+                success:function(data)
+                {
+                   
+                    $('#est_area').empty();
+                    $('#est_area').append(data);
+                }
+            })
+            .done(function() {
+                console.log("success");
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+            
+        });
+
     });
 /*=============================================================================*/
     $('#open_time_all').change(function () {
@@ -1355,6 +1394,20 @@
             console.log("complete");
         });
         
+    }
+
+    function parking_check() 
+    {
+        if ($('#parking_yes').is(':checked'))
+        {
+            $('.parking_options').parent('label').show();
+        }
+        else
+        {
+            $('.parking_options').prop('checked',false);
+            $('.parking_options').parent('label').hide();
+           
+        }
     }
 
 
