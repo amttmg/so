@@ -230,6 +230,7 @@ class restaurant extends CI_Model
         }
 
         $this->db->from($this->table_name);
+        $this->db->where('status',1);
         $result_data= $this->db->get()->result();
 
         if ($json==true)
@@ -246,7 +247,7 @@ class restaurant extends CI_Model
     {
          $this->db->from($this->table_name);
          $this->db->where($data[0],$data[1]);
-        
+         $this->db->where('status',1);
         $result_data=$this->db->get()->row();
         if ($json==false) 
         {
@@ -258,6 +259,12 @@ class restaurant extends CI_Model
         }
 
        
+    }
+
+    public function delete($res_id)
+    {
+        $this->db->where('res_id',$res_id);
+        $this->db->update($this->table_name,array('status'=>0));
     }
 
 }

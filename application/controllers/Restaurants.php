@@ -198,6 +198,12 @@ class Restaurants extends CI_Controller {
 		$this->load->view('pages/restaurant/_ownerEntryForm');
 	}
 
+	public function delete($res_id)
+	{
+		$this->res->delete($res_id);
+		redirect('restaurants','refresh');
+	}
+
 }
 
 /* End of file restaurant.php */
