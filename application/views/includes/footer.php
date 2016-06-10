@@ -1,4 +1,4 @@
-<!-- Bootstrap 3.3.5 -->
+
 <script src="http://localhost:81/rb/template/bootstrap/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>

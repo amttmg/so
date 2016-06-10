@@ -6,6 +6,10 @@ class Restaurants extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if (!$this->so->user_logged_in()) 
+		{
+			redirect('login','refresh');
+		}
 		$this->load->model('restaurant','res');
 		$this->load->model('m_pop_dishes','pop_dish');
 		$this->load->model('m_res_pop_dish','res_pop_dish');
@@ -23,8 +27,8 @@ class Restaurants extends CI_Controller {
 	public function index()
 	{
 		$data['restaurants']=$this->res->getAll(array('res_name','asc'));
-		$data['content'] = $this->load->view('pages/restaurant/index',$data, true);
-        $this->load->view('page_template', $data);
+		//$data['content'] = $this->load->view('pages/restaurant/index',$data, true);
+        $this->load->_render_page('pages/restaurant/index', $data);
 	}
 
 	public function details($restaurant_id='')
@@ -44,8 +48,8 @@ class Restaurants extends CI_Controller {
 		$data['res_costs']=$this->res_estimate_cost->getBy(array('res_id',$restaurant_id));
 		$data['owners']=$this->owner->getBy(array('res_id',$restaurant_id));
 		$data['facilities']=$this->res_facility->getBy(array('res_id',$restaurant_id));
-		$data['content'] = $this->load->view('pages/restaurant/details',$data, true);
-        $this->load->view('page_template', $data);
+		//$data['content'] = $this->load->view('pages/restaurant/details',$data, true);
+        $this->load->_render_page('pages/restaurant/details', $data);
 	}
 
 	public function update_estd_contact($id)

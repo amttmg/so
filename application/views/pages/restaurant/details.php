@@ -1,10 +1,5 @@
-<div class="container" style="background-color: #f0f0f0">
+<!-- <div class="container" style="background-color: #f0f0f0"> -->
     <form method="post" action="<?php echo base_url('index.php/dataentry/insert') ?>">
-        <div class="row header" style="background-color:#1b6d85; color: white; box-shadow: 0px 2px 5px #888888;">
-            <div class="col-md-12">
-                <h2 class="text-center">SCOOT OUT DATA ENTRY FORM</h2></p>
-            </div>
-        </div>
         <?php if ($this->session->flashdata('flashSuccess')): ?>
             <div class="alert alert-success" style="margin-top: 10px">
                 <b>
@@ -694,7 +689,7 @@
             </div>
         </div>
     </form>
-</div>
+<!-- </div> -->
 <style>
     hr {
         margin-top: 5px;
