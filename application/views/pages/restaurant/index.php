@@ -27,7 +27,16 @@
 							<td><?php echo($restaurant->street) ?></td>
 							<td><?php echo($restaurant->landmark) ?></td>
 							<td>
-								<a class="btn btn-sm btn-primary" href="<?php echo(site_url('restaurants/details/'.$restaurant->res_id)) ?>" role="button">View Details</a>
+								<div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="<?php echo(site_url('restaurants/details/'.$restaurant->res_id)) ?>">Details</a>
+                                        </li>
+                                    </ul>
+                                </div>
 							</td>
 							</tr>
 						<?php endforeach ?>
