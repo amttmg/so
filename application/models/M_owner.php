@@ -5,11 +5,11 @@ class M_owner extends CI_Model {
 
 	var $table_name='tbl_owners';
     
-     public function getBy($data,$json=false)
+     public function getAll($data,$json=false)
     {
         $this->db->from($this->table_name);
         $this->db->where($data[0],$data[1]);
-        
+        $this->db->where('is_deleted',0);
         $result_data=$this->db->get()->result();
         if ($json==false) 
         {
@@ -21,6 +21,15 @@ class M_owner extends CI_Model {
         }
 
        
+    }
+
+    public function owner_belogns_to_restaurants($res_id,$owner_id)
+    {
+         $this->db->from($this->table_name);
+         $this->db->where('res_id',$res_id);
+         $this->db->where('owner_id',$owner_id);
+        $result_data=$this->db->get()->row();
+        return json_encode($result_data);
     }
 
 	

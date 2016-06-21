@@ -9,7 +9,14 @@
 class restaurant extends CI_Model
 {
     var $table_name='tbl_restaurants';
-
+    var $current_time='';
+    var $user_id='';
+    public function __construct()
+    {
+        parent::__construct();
+        $this->current_time=getCurrentDateTime();
+        $this->user_id=$this->session->userdata('userid');
+    }
     function add()
     {
         $res_name = $this->input->post('res_name');
@@ -48,6 +55,8 @@ class restaurant extends CI_Model
             'parking' => $parking,
             'parking_two' => $parking_two,
             'parking_four' => $parking_four,
+            'created_at'=>$this->current_time,
+            'user_id'=>$this->user_id
         );
 
         $this->db->insert('tbl_restaurants', $newtbl_restaurants);

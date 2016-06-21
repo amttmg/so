@@ -1,4 +1,10 @@
 <h1></h1>
+<?php if ($this->session->flashdata('message')): ?>
+	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<?php echo($this->session->flashdata('message')) ?>
+	</div>
+<?php endif ?>
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<div class="panel panel-default">
@@ -10,7 +16,7 @@
 					<thead>
 						<tr>
 							<th>Sn.</th>
-							<th>Restauran Name</th>
+							<th>Restaurant Name</th>
 							<th>Area</th>
 							<th>Street</th>
 							<th>Landmark</th>
@@ -29,7 +35,7 @@
 							<td>
 								<div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        Actions
+                                        Action
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu pull-right" role="menu">

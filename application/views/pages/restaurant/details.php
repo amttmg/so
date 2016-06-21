@@ -1,694 +1,713 @@
 <!-- <div class="container" style="background-color: #f0f0f0"> -->
-    <form method="post" action="<?php echo base_url('index.php/dataentry/insert') ?>">
-        <?php if ($this->session->flashdata('flashSuccess')): ?>
-            <div class="alert alert-success" style="margin-top: 10px">
-                <b>
-                    <i class="glyphicon glyphicon-ok"></i> <?php echo $this->session->flashdata('flashSuccess') ?>
-                </b>
-            </div>
-        <?php endif ?>
-        <?php if ($this->session->flashdata('flashError')): ?>
-            <div class="alert alert-danger" style="margin-top: 10px">
-                <b>
-                    <i class="glyphicon glyphicon-remove"></i> <?php echo $this->session->flashdata('flashError') ?>
-                </b>
-            </div>
-        <?php endif ?>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form method="post" action="<?php echo base_url('index.php/dataentry/insert') ?>">
+            <?php if ($this->session->flashdata('flashSuccess')): ?>
+                <div class="alert alert-success" style="margin-top: 10px">
+                    <b>
+                        <i class="glyphicon glyphicon-ok"></i> <?php echo $this->session->flashdata('flashSuccess') ?>
+                    </b>
+                </div>
+            <?php endif ?>
+            <?php if ($this->session->flashdata('flashError')): ?>
+                <div class="alert alert-danger" style="margin-top: 10px">
+                    <b>
+                        <i class="glyphicon glyphicon-remove"></i> <?php echo $this->session->flashdata('flashError') ?>
+                    </b>
+                </div>
+            <?php endif ?>
 
 
-        <div class="row" style="margin-top: 15px">
-            <div class="col-md-12">
-                <table class="table table-bordered">
-                    <tr>
-                        <th>Restaurant Name</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h1><?php echo($restaurants->res_name) ?></h1>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="well-sm well">
+            <div class="row" style="margin-top: 15px">
+                <div class="col-md-12">
                     <table class="table table-bordered">
                         <tr>
-                            <th colspan="2">Establishment's Contact Number 
-                            <div class="pull-right">
-                                <button type="button" id="btn-estdcontactedit" class="btn btn-xs btn-primary">Edit</button>
-                            </div>
+                            <th>Restaurant Name</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h1><?php echo($restaurants->res_name) ?></h1>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="well-sm well">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th colspan="2">Establishment's Contact Number 
+                                <div class="pull-right">
+                                    <button type="button" id="btn-estdcontactedit" class="btn btn-xs btn-primary">Edit</button>
+                                </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Mobile 1
+                                </td>
+                                <td>
+                                    <?php echo($restaurants->mobile1) ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Mobile 2
+                                </td>
+                                <td>
+                                    <?php echo($restaurants->mobile2) ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Land line1
+                                </td>
+                                <td>
+                                    <?php echo($restaurants->landline1?'01'.$restaurants->landline1:'') ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Land line2
+                                </td>
+                                <td>
+                                    <?php echo($restaurants->landline2?'01'.$restaurants->landline2:'') ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Website
+                                </td>
+                                <td>
+                                    <?php echo($restaurants->website?'www.'.$restaurants->website:'') ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Email
+                                </td>
+                                <td>
+                                    <?php echo($restaurants->email) ?>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div class="well-sm well">
+                        <table class="table table-bordered">
+                            <th colspan="2">Map(Coordinates)
+                                <div class="pull-right">
+                                    <button type="button" id="btn-editmapcoordinate" class="btn btn-xs btn-primary">Edit</button>
+                                </div>
                             </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                Mobile 1
-                            </td>
-                            <td>
-                                <?php echo($restaurants->mobile1) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Mobile 2
-                            </td>
-                            <td>
-                                <?php echo($restaurants->mobile2) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Land line1
-                            </td>
-                            <td>
-                                <?php echo($restaurants->landline1?'01'.$restaurants->landline1:'') ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Land line2
-                            </td>
-                            <td>
-                                <?php echo($restaurants->landline2?'01'.$restaurants->landline2:'') ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Website
-                            </td>
-                            <td>
-                                <?php echo('www.'.$restaurants->website) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Email
-                            </td>
-                            <td>
-                                <?php echo($restaurants->email) ?>
-                            </td>
-                        </tr>
-                    </table>
+                            <tr>
+                                <td>
+                                    Latitude
+                                </td>
+                                <td>
+                                    <?php echo('27.'.$restaurants->lat) ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Longitude
+                                </td>
+                                <td>
+                                    <?php echo('85.'.$restaurants->lon) ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Present in google Map
+                                </td>
+                                <td>
+                                    <!-- <input type="checkbox" name="res_map" value="1"> -->
+                                   
+                                    <?php echo($restaurants->google_map?"Yes":"No") ?>
 
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                <div class="well-sm well">
-                    <table class="table table-bordered">
-                        <th colspan="2">Map(Coordinates)
-                            <div class="pull-right">
-                                <button type="button" id="btn-editmapcoordinate" class="btn btn-xs btn-primary">Edit</button>
-                            </div>
-                        </th>
-                        <tr>
-                            <td>
-                                Latitude
-                            </td>
-                            <td>
-                                <?php echo('27.'.$restaurants->lat) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Longitude
-                            </td>
-                            <td>
-                                <?php echo('85.'.$restaurants->lon) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Present in google Map
-                            </td>
-                            <td>
-                                <!-- <input type="checkbox" name="res_map" value="1"> -->
-                               
-                                <?php echo($restaurants->google_map?"Yes":"No") ?>
-
-                            </td>
-                        </tr>
-                    </table>
+                <div class="col-md-6">
+                    <div class="well-sm well">
+                        <table class="table table-bordered">
+                            <th colspan="2">Owner's or manager Restaurant Number
+                                <div class="pull-right">
+                                    <button type="button" id="btn-addOwner"  class="btn btn-xs btn-primary"><span class="fa fa-plus"></span>&nbsp&nbspAdd</button>
+                                </div>
+                            </th>
+                            <tr>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Desinition</th>
+                                            <th>Mobile no.</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       
+                                            <?php foreach ($owners as $owner): ?>
+                                                <tr>
+                                                <td>
+                                                    <?php echo($owner->name); ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo($owner->designation) ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo($owner->mobile1) ?>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                            Action
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu pull-right" role="menu">
+                                                            <li>
+                                                                <a href="#" class="btn-ownerEdit" data-partnerid="<?php echo $owner->owner_id ?>"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="<?php echo(site_url('owner/delete/'.$this->uri->segment(3).'/'.$owner->owner_id)) ?>" class="delete" data-resid="5" onclick="return confirm('Are you sure you want to delete?');"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                </tr>
+                                            <?php endforeach ?>
+                                    </tbody>
+                                </table>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="well-sm well">
+                        <table class="table table-bordered">
+                            <th colspan="2">Establishment Location
+                                <div class="pull-right">
+                                    <button type="button" id="btn-editEstablismentLocation" class="btn btn-xs btn-primary">Edit</button>
+                                </div>
+                            </th>
+                            <tr>
+                                <td>
+                                    City
+                                </td>
+                                <td>
+                                    <?php echo($restaurants->city) ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Area
+                                </td>
+                                <td>
+                                    <?php echo($restaurants->area) ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Street
+                                </td>
+                                <td>
+                                    <?php echo($restaurants->street) ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Landmark
+                                </td>
+                                <td>
+                                    <?php echo($restaurants->landmark) ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Others(Building's Name)
+                                </td>
+                                <td>
+                                   
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="well-sm well">
-                    <table class="table table-bordered">
-                        <th colspan="2">Owner's or manager Restaurant Number
-                            <div class="pull-right">
-                                <button type="button" id="btn-editrmnumber" class="btn btn-xs btn-primary">Edit</button>
-                            </div>
-                        </th>
-                        <tr>
-                            <td>
-                                Name
-                            </td>
-                            <td>
-                                <?php echo($owners[0]->name) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Designation
-                            </td>
-                            <td>
-                                <?php echo($owners[0]->designation) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Mobile 1
-                            </td>
-                            <td>
-                                <?php echo($owners[0]->mobile1) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Mobile 2
-                            </td>
-                            <td>
-                                <?php echo($owners[0]->mobile2) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Land line1
-                            </td>
-                            <td>
-                                <?php echo($owners[0]->landline1?'01'.$owners[0]->landline1:'') ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Land line2
-                            </td>
-                            <td>
-                                <?php echo($owners[0]->landline2?'01'.$owners[0]->landline2:'') ?>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="well-sm well">
-                    <table class="table table-bordered">
-                        <th colspan="2">Establishment Location
-                            <div class="pull-right">
-                                <button type="button" id="btn-editEstablismentLocation" class="btn btn-xs btn-primary">Edit</button>
-                            </div>
-                        </th>
-                        <tr>
-                            <td>
-                                City
-                            </td>
-                            <td>
-                                <?php echo($restaurants->city) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Area
-                            </td>
-                            <td>
-                                <?php echo($restaurants->area) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Street
-                            </td>
-                            <td>
-                                <?php echo($restaurants->street) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Landmark
-                            </td>
-                            <td>
-                                <?php echo($restaurants->landmark) ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Others(Building's Name)
-                            </td>
-                            <td>
-                               
-                            </td>
-                        </tr>
-                    </table>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well-sm well clearfix">
+                        <b>Serves: </b> <span id="msg-serveswait" class="text-success " style="display:none">  </span><button type="button" id="btn_addServe" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus fa"></i>   Add New</button>
+                        <hr/>
+                        <div id="serve_checkbox">
+                            <?php foreach ($serves as $ser) {
+                                ?>
+                                <div class="col-md-2">
+                                    <label class="checkbox-inline">
+                                            <!-- <input type="checkbox" name="serves[]"
+                                                   value="<?php echo $ser->serves_id ?>"><?php echo $ser->serves_name ?> -->
+                                                  <?php 
+                                                  $data = array(
+                                                    'name'        => 'serves[]',
+                                                    'class'          => 'serves',
+                                                    'value'       => $ser->serves_id,
+                                                    'checked'     => $ser->res_id?TRUE:FALSE
+                                                    );
+
+                                                   ?>
+                                                   <?php echo form_checkbox($data); ?><?php echo $ser->serves_name ?>
+
+                                        </label>
+                                </div>
+                                <?php
+                            } ?>
+                            <?php echo form_error('serves'); ?>
+                            
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well-sm well">
-                    <b>Serves: </b> <span id="msg-serveswait" class="text-success " style="display:none">  </span><button type="button" id="btn_addServe" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus fa"></i>   Add New</button>
-                    <div id="serve_checkbox">
-                        <?php foreach ($serves as $ser) {
-                            ?>
-                            <label class="checkbox-inline">
-                                <!-- <input type="checkbox" name="serves[]"
-                                       value="<?php echo $ser->serves_id ?>"><?php echo $ser->serves_name ?> -->
-                                      <?php 
-                                      $data = array(
-                                        'name'        => 'serves[]',
-                                        'class'          => 'serves',
-                                        'value'       => $ser->serves_id,
-                                        'checked'     => $ser->res_id?TRUE:FALSE
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="well-sm well">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>
+
+                                </th>
+                                <th>
+                                    Opening Time
+                                </th>
+                                <th>
+                                    Closing Time
+                                </th>
+                            </tr>
+                            
+                            <?php foreach ($service_time as $st): ?>
+                               
+                                <?php if ($st['first']->day==1): ?>
+                                    <tr>
+                                        <td>Sunday</td>
+                                        <td>
+                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                        <td>
+                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                    </tr>
+                                <?php endif ?>
+                                <?php if ($st['first']->day==2): ?>
+                                    <tr>
+                                        <td>Monday</td>
+                                        <td>
+                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                        <td>
+                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                    </tr>
+                                <?php endif ?>
+                                <?php if ($st['first']->day==3): ?>
+                                    <tr>
+                                        <td>Tuesday</td>
+                                        <td>
+                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                        <td>
+                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                             <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                    </tr>
+                                <?php endif ?>
+                                <?php if ($st['first']->day==4): ?>
+                                    <tr>
+                                        <td>Wednesday</td>
+                                        <td>
+                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                        <td>
+                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                             <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                    </tr>
+                                <?php endif ?>
+                                <?php if ($st['first']->day==5): ?>
+                                    <tr>
+                                        <td>Thursday</td>
+                                        <td>
+                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                        <td>
+                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                             <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                    </tr>
+                                <?php endif ?>
+                                <?php if ($st['first']->day==6): ?>
+                                    <tr>
+                                        <td>Friday</td>
+                                        <td>
+                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                        <td>
+                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                             <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                    </tr>
+                                <?php endif ?>
+                                <?php if ($st['first']->day==7): ?>
+                                    <tr>
+                                        <td>Saturday</td>
+                                        <td>
+                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                        <td>
+                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                             <?php if ($st['second']): ?>
+                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                    </tr>
+                                <?php endif ?>
+                            <?php endforeach ?>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="well-sm well">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th colspan="2">
+                                    Cost(Lunch, dinner or breakfast) for two
+                                </th>
+                            </tr>
+                            <?php foreach ($res_costs as $topic) {
+                                ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $topic->topic ?>
+                                    </td>
+                                    <td>
+                                        <?php echo($topic->cost) ?>
+                                    </td>
+                                </tr>
+                                <?php
+
+                            } ?>
+                            <!-- <tr>
+                                <td>
+                                    <b>Total</b>
+                                </td>
+                                <td>
+                                   <input type="number" class="form-control" disabled="" name="total" id="total" value="0">
+                                </td>
+                            </tr> -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well-sm well">
+                        <b> Parking :</b><span id="msg-parkingWait" class="text-success" style="display:none">  </span>
+                        <label class="checkbox-inline">
+                            <input type="radio" id="parking_yes" class="parking" name="res_parking"
+                                   value="1" <?php echo($restaurants->parking?'checked':'') ?>>Yes
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" id="parking_no" class="parking" name="res_parking" value="0" <?php echo($restaurants->parking?'':'checked') ?>>No
+                        </label>
+                        <hr/>
+
+                        <label class="checkbox-inline">
+                            <input type="checkbox" class="parking_options" id='res_parking2' name="res_parking2"
+                                   value="2" <?php echo($restaurants->parking_two?'checked':'') ?>>Two Wheeler
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" class="parking_options" id="res_parking4" name="res_parking4"
+                                   value="4" <?php echo($restaurants->parking_four?'checked':'') ?>>Four Wheeler
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well-sm well clearfix" id="estd_checkbox">
+                        <b> Establishment Type:</b> <span id="msg-estdTypeWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_establishmentType" class="btn btn-sm btn-info"> Add New</button></span>
+                        <hr/>
+                        <?php foreach ($est_type as $est): ?>
+                         <div class="col-md-2">
+                              <label class="checkbox-inline">
+                             <?php 
+                                $data = array(
+                                    'name'        => 'establishment_type[]',
+                                    'class'          => 'estd_type',
+                                    'value'       =>$est->type_id ,
+                                    'checked'     => $est->res_id?TRUE:FALSE
+                                    );
+
+                                   ?>
+                                <?php echo form_checkbox($data); ?><?php echo $est->type ?>
+                                </label>
+                         </div>
+                        <?php endforeach ?>
+                       
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well-sm well clearfix" id="facility_checkbox">
+                        <b> Facilities :</b><span id="msg-facilityWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_facilities" class="btn btn-sm btn-info"> Add New</button></span>
+                        <hr/>
+
+                        <?php foreach ($facilities as $fac): ?>
+                            <div class="col-md-2">
+                                <label class="checkbox-inline">
+                                 <?php 
+                                    $data = array(
+                                        'name'        => 'facilities[]',
+                                        'class'          => 'facility',
+                                        'value'       =>$fac->facilities_id ,
+                                        'checked'     => $fac->res_id?TRUE:FALSE
                                         );
 
                                        ?>
-                                       <?php echo form_checkbox($data); ?><?php echo $ser->serves_name ?>
-
-                            </label>
-                            <?php
-                        } ?>
-                        <?php echo form_error('serves'); ?>
-                        
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="well-sm well">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>
-
-                            </th>
-                            <th>
-                                Opening Time
-                            </th>
-                            <th>
-                                Closing Time
-                            </th>
-                        </tr>
-                        
-                        <?php foreach ($service_time as $st): ?>
-                           
-                            <?php if ($st['first']->day==1): ?>
-                                <tr>
-                                    <td>Sunday</td>
-                                    <td>
-                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
-                                        <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                    <td>
-                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
-                                        <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                </tr>
-                            <?php endif ?>
-                            <?php if ($st['first']->day==2): ?>
-                                <tr>
-                                    <td>Monday</td>
-                                    <td>
-                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
-                                        <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                    <td>
-                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
-                                        <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                </tr>
-                            <?php endif ?>
-                            <?php if ($st['first']->day==3): ?>
-                                <tr>
-                                    <td>Tuesday</td>
-                                    <td>
-                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
-                                        <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                    <td>
-                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
-                                         <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                </tr>
-                            <?php endif ?>
-                            <?php if ($st['first']->day==4): ?>
-                                <tr>
-                                    <td>Wednesday</td>
-                                    <td>
-                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
-                                        <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                    <td>
-                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
-                                         <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                </tr>
-                            <?php endif ?>
-                            <?php if ($st['first']->day==5): ?>
-                                <tr>
-                                    <td>Thursday</td>
-                                    <td>
-                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
-                                        <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                    <td>
-                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
-                                         <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                </tr>
-                            <?php endif ?>
-                            <?php if ($st['first']->day==6): ?>
-                                <tr>
-                                    <td>Friday</td>
-                                    <td>
-                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
-                                        <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                    <td>
-                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
-                                         <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                </tr>
-                            <?php endif ?>
-                            <?php if ($st['first']->day==7): ?>
-                                <tr>
-                                    <td>Saturday</td>
-                                    <td>
-                                        <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
-                                        <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                    <td>
-                                        <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
-                                         <?php if ($st['second']): ?>
-                                            <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                </tr>
-                            <?php endif ?>
+                                    <?php echo form_checkbox($data); ?><?php echo $fac->facility ?>
+                                </label>
+                            </div>
                         <?php endforeach ?>
-                    </table>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="well-sm well">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th colspan="2">
-                                Cost(Lunch, dinner or breakfast) for two
-                            </th>
-                        </tr>
-                        <?php foreach ($res_costs as $topic) {
-                            ?>
-                            <tr>
-                                <td>
-                                    <?php echo $topic->topic ?>
-                                </td>
-                                <td>
-                                    <?php echo($topic->cost) ?>
-                                </td>
-                            </tr>
-                            <?php
-
-                        } ?>
-                        <!-- <tr>
-                            <td>
-                                <b>Total</b>
-                            </td>
-                            <td>
-                               <input type="number" class="form-control" disabled="" name="total" id="total" value="0">
-                            </td>
-                        </tr> -->
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well-sm well">
-                    <b> Parking :</b>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="res_parking"
-                               value="1">Yes
-                    </label>
-                    <hr/>
-
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="res_parking2"
-                               value="1">Two Wheeler
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="res_parking4"
-                               value="1">Four Wheeler
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well-sm well" id="estd_checkbox">
-                    <b> Establishment Type:</b> <span id="msg-estdTypeWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_establishmentType" class="btn btn-sm btn-info"> Add New</button></span>
-                    <hr/>
-                    <?php foreach ($est_type as $est): ?>
-                        <label class="checkbox-inline">
-                         <?php 
-                            $data = array(
-                                'name'        => 'establishment_type[]',
-                                'class'          => 'estd_type',
-                                'value'       =>$est->type_id ,
-                                'checked'     => $est->res_id?TRUE:FALSE
-                                );
-
-                               ?>
-                            <?php echo form_checkbox($data); ?><?php echo $est->type ?>
-                            </label>
-                    <?php endforeach ?>
-                   
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well-sm well" id="facility_checkbox">
-                    <b> Facilities :</b><span id="msg-facilityWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_facilities" class="btn btn-sm btn-info"> Add New</button></span>
-                    <hr/>
-
-                    <?php foreach ($facilities as $fac): ?>
-                        <label class="checkbox-inline">
-                         <?php 
-                            $data = array(
-                                'name'        => 'facilities[]',
-                                'class'          => 'facility',
-                                'value'       =>$fac->facilities_id ,
-                                'checked'     => $fac->res_id?TRUE:FALSE
-                                );
-
-                               ?>
-                            <?php echo form_checkbox($data); ?><?php echo $fac->facility ?>
-                            </label>
-                    <?php endforeach ?>
-                   
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well-sm well">
-                    <b> Offers: </b>
-                    <hr/>
-                    <label class="checkbox-inline">
-                        <input type="radio" name="serves[]" value="yes"> Yes
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="radio" name="serves[]" value="yes"> No
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="radio" name="serves[]" value="yes"> Occasional
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well-sm well">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>
-
-                            </th>
-                            <th>
-                                Start Time
-                            </th>
-                            <th>
-                                End Time
-                            </th>
-                        </tr>
                        
-                         <?php foreach ($happy_hours as $hh): ?>
-                            
-                                <tr>
-                                    <td><?php switch ($hh['first']->day) {
-                                        case '1':
-                                            echo("sunday");
-                                            break;
-                                        case '2':
-                                            echo("Monday");
-                                            break;
-                                        case '3':
-                                            echo("Tuesday");
-                                            break;
-                                        case '4':
-                                            echo('Wednesday');
-                                            break;
-                                        case '5':
-                                            echo('Thursday');
-                                            break;
-                                        case '6':
-                                            echo('Friday');
-                                            break;
-                                        case '7':
-                                            echo('Saturday');
-                                            break;
-                                    } ?>
-                                    </td>
-                                    <td>
-                                        <?php echo($hh['first']->start_time?$hh['first']->start_time:'-- -- --') ?>
-                                        <?php if ($hh['second']): ?>
-                                            <br/><br/><?php echo($hh['second']->start_time?$hh['second']->start_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                    <td>
-                                        <?php echo($hh['first']->end_time?$hh['first']->end_time:'-- -- --') ?>
-                                        <?php if ($hh['second']): ?>
-                                            <br/><br/><?php echo($hh['second']->end_time?$hh['second']->end_time:'-- -- --') ?>
-                                        <?php endif ?>
-                                    </td>
-                                </tr>
-                          
-                            
-                            
-                        <?php endforeach ?>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well-sm well" id="cousin_checkbox">
-                    <b> Cousins by Country :</b><span id="msg-cousinByCountryWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
-                    <hr/>
-                    <?php foreach ($cousins as $Cousin): ?>
-                        <label class="checkbox-inline">
-                         <?php 
-                            $data = array(
-                                'name'        => 'cousins[]',
-                                'class'          => 'cousins',
-                                'value'       =>$Cousin->cousin_id ,
-                                'checked'     => $Cousin->res_id?TRUE:FALSE
-                                );
-
-                               ?>
-                            <?php echo form_checkbox($data); ?><?php echo $Cousin->cousin ?>
-                            </label>
-                    <?php endforeach ?>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well-sm well">
-                    <b> Cousins by Food :</b>
-                    <span id="msg-cousinByFoodWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
-                    <hr/>
-                     <?php foreach ($foods as $food): ?>
-                        <label class="checkbox-inline">
-                         <?php 
-                            $data = array(
-                                'name'        => 'foods[]',
-                                'class'          => 'foods',
-                                'value'       =>$food->food_id  ,
-                                'checked'     => $food->res_id?TRUE:FALSE
-                                );
-
-                               ?>
-                            <?php echo form_checkbox($data); ?><?php echo $food->food ?>
-                            </label>
-                    <?php endforeach ?>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well-sm well" id="populardish_checkbox">
-                    <b> Popular Dish:</b><span id="msg-popDishWait" class="text-success" style="display:none">  </span><span class="pull-right"> <button type="button" id="btn_addPopDish" class="btn btn-sm btn-info"><i class="fa fa-plus fa"></i> Add New</button></span>
-                    <hr/>
-                     <?php foreach ($pop_dishes as $pop): ?>
-                        <label class="checkbox-inline">
-                         <?php 
-                            $data = array(
-                                'name'        => 'pop_dishes[]',
-                                'class'          => 'pop_dishes',
-                                'value'       =>$pop->pop_dishes_id ,
-                                'checked'     => $pop->res_id?TRUE:FALSE
-                                );
-
-                               ?>
-                            <?php echo form_checkbox($data); ?><?php echo $pop->pop_dishes ?>
-                            </label>
-                    <?php endforeach ?>
-                </div>
-            </div>
-        </div>
-
-        <div class="row" style="padding: 15px">
-            <div class="col-md-12">
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <label>Remarks</label>
-                        <textarea name="res_remarks" class="form-control"></textarea>
+                        
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <button type="submit" class="btn btn-sm btn-primary">Save</button>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well-sm well">
+                        <b> Offers: </b>
+                        <hr/>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="serves[]" value="yes"> Yes
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="serves[]" value="yes"> No
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="serves[]" value="yes"> Occasional
+                        </label>
+                    </div>
+                </div>
             </div>
-        </div>
-    </form>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well-sm well">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>
+
+                                </th>
+                                <th>
+                                    Start Time
+                                </th>
+                                <th>
+                                    End Time
+                                </th>
+                            </tr>
+                           
+                             <?php foreach ($happy_hours as $hh): ?>
+                                
+                                    <tr>
+                                        <td><?php switch ($hh['first']->day) {
+                                            case '1':
+                                                echo("sunday");
+                                                break;
+                                            case '2':
+                                                echo("Monday");
+                                                break;
+                                            case '3':
+                                                echo("Tuesday");
+                                                break;
+                                            case '4':
+                                                echo('Wednesday');
+                                                break;
+                                            case '5':
+                                                echo('Thursday');
+                                                break;
+                                            case '6':
+                                                echo('Friday');
+                                                break;
+                                            case '7':
+                                                echo('Saturday');
+                                                break;
+                                        } ?>
+                                        </td>
+                                        <td>
+                                            <?php echo($hh['first']->start_time?$hh['first']->start_time:'-- -- --') ?>
+                                            <?php if ($hh['second']): ?>
+                                                <br/><br/><?php echo($hh['second']->start_time?$hh['second']->start_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                        <td>
+                                            <?php echo($hh['first']->end_time?$hh['first']->end_time:'-- -- --') ?>
+                                            <?php if ($hh['second']): ?>
+                                                <br/><br/><?php echo($hh['second']->end_time?$hh['second']->end_time:'-- -- --') ?>
+                                            <?php endif ?>
+                                        </td>
+                                    </tr>
+                              
+                                
+                                
+                            <?php endforeach ?>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well-sm well clearfix" id="cousin_checkbox">
+                        <b> Cousins by Country :</b><span id="msg-cousinByCountryWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
+                        <hr/>
+                        <?php foreach ($cousins as $Cousin): ?>
+                            <div class="col-md-2">
+                                <label class="checkbox-inline">
+                                 <?php 
+                                    $data = array(
+                                        'name'        => 'cousins[]',
+                                        'class'          => 'cousins',
+                                        'value'       =>$Cousin->cousin_id ,
+                                        'checked'     => $Cousin->res_id?TRUE:FALSE
+                                        );
+
+                                       ?>
+                                    <?php echo form_checkbox($data); ?><?php echo $Cousin->cousin ?>
+                                    </label>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well-sm well clearfix">
+                        <b> Cousins by Food :</b>
+                        <span id="msg-cousinByFoodWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
+                        <hr/>
+                         <?php foreach ($foods as $food): ?>
+                            <div class="col-md-2">
+                                <label class="checkbox-inline">
+                                 <?php 
+                                    $data = array(
+                                        'name'        => 'foods[]',
+                                        'class'          => 'foods',
+                                        'value'       =>$food->food_id  ,
+                                        'checked'     => $food->res_id?TRUE:FALSE
+                                        );
+
+                                       ?>
+                                    <?php echo form_checkbox($data); ?><?php echo $food->food ?>
+                                    </label>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well-sm well clearfix" id="populardish_checkbox">
+                        <b> Popular Dish:</b><span id="msg-popDishWait" class="text-success" style="display:none">  </span><span class="pull-right"> <button type="button" id="btn_addPopDish" class="btn btn-sm btn-info"><i class="fa fa-plus fa"></i> Add New</button></span>
+                        <hr/>
+                         <?php foreach ($pop_dishes as $pop): ?>
+                            <div class="col-md-2">
+                                <label class="checkbox-inline">
+                                 <?php 
+                                    $data = array(
+                                        'name'        => 'pop_dishes[]',
+                                        'class'          => 'pop_dishes',
+                                        'value'       =>$pop->pop_dishes_id ,
+                                        'checked'     => $pop->res_id?TRUE:FALSE
+                                        );
+
+                                       ?>
+                                    <?php echo form_checkbox($data); ?><?php echo $pop->pop_dishes ?>
+                                    </label>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="padding: 15px">
+                <div class="col-md-12">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label>Remarks</label>
+                            <textarea name="res_remarks" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                    <div class="clearfix">
+                    
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <!-- </div> -->
 <style>
     hr {
@@ -995,36 +1014,7 @@
                                 <?php echo form_error('owners_mobile2'); ?>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                Land line1
-                            </td>
-                            <td>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">01</span>
-                                    <input type="number" name="owners_landline1" id="owners_landline1" maxlength="8" oninput="maxLengthCheck(this)"
-                                       value="<?php echo set_value('owners_landline1') ?>"
-                                       class="form-control">
-                                       <span></span>
-                                </div>
-                                <?php echo form_error('owners_landline1'); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Land line2
-                            </td>
-                            <td>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">01</span>
-                                    <input type="number" name="owners_landline2" id="owners_landline2" maxlength="8" oninput="maxLengthCheck(this)"
-                                       value="<?php echo set_value('owners_landline2') ?>"
-                                       class="form-control">
-                                       <span></span>
-                                </div>
-                                <?php echo form_error('owners_landline2'); ?>
-                            </td>
-                        </tr>
+                        <input type="hidden" name="partner_id" id="partner_id" value="">
                     </table>
                 </form>
                 </div>
@@ -1195,8 +1185,139 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modal-addOwner">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add new owner</h4>
+            </div>
+            <div class="modal-body">
+                <div class="well-sm well">
+                    <form id="form-addNewOwner">
+                        
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" name="owners_name" id="owners_name" placeholder="Input Name">
+                            <span></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Designition</label>
+                            <input type="text" class="form-control" name="owners_designation" id="owners_designation" placeholder="Input Designition">
+                            <span></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Mobile 1</label>
+                            <input type="number" class="form-control" name="owners_mobile1" id="owners_mobile1" placeholder="Input Mobile Number">
+                            <span></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Mobile 2</label>
+                            <input type="number" class="form-control" name="owners_mobile2" id="owners_mobile2" placeholder="Input Mobile Number">
+                            <span></span>
+                        </div>
+                        <input type="hidden" name="restaurant_id" value="<?php echo($this->uri->segment(3)) ?>">
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btn-ownerAddNew">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
+
+    parking_check();
+
     $(document).ready(function() {
+
+        $('#btn-ownerAddNew').click(function() {
+            $(this).prop('disabled',true);
+            $(this).text('Please Wait....');
+            $.ajax({
+                url: '<?php echo(site_url("owner/add")) ?>',
+                type: 'POST',
+                dataType: 'json',
+                data: $('#form-addNewOwner').serialize()
+            })
+            .done(function(data) {
+                console.log(data);
+                if (data.status==true) {
+                  $("html, body").animate({ scrollTop: 0 }, "slow");
+                  location.reload();
+
+                }else{
+                       $('#btn-ownerAddNew').prop('disabled',false);
+                       $('#btn-ownerAddNew').text('Save');
+                        $.each(data, function(index, val) {
+                            $('#form-addNewOwner'+' #'+val.error_string).next().html(val.input_error);
+                            $('#form-addNewOwner'+' #'+val.error_string).parent().addClass('has-error');
+                        });
+
+
+                }
+                console.log("success");
+            })
+            .fail(function() {
+                $('#btn-ownerAddNew').prop('disabled',true);
+                $('#btn-ownerAddNew').text('Save');
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+            
+        });
+/*==============================================================*/
+        $('#btn-addOwner').click(function() {
+            $('#modal-addOwner').modal('show');
+        });
+/* =================================================================*/
+        var parking_2=0;
+        var parking_4=0;
+
+        $('.parking_options').change(function() {
+            parking_status ();
+            var is_to=0;
+            if ($(this).is(':checked')) 
+            {
+                is_to=1;
+            }
+
+            $(this).prop('disabled',true);
+            $('#msg-parkingWait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
+            $('#msg-parkingWait').show();
+            $.ajax({
+                url: '<?php echo(site_url("restaurants/update_parking")) ?>/'+'<?php echo $this->uri->segment(3); ?>/'+is_to+'/'+$(this).attr('name'),
+                type: 'POST',
+                data: {},
+            })
+            .done(function(data) {
+                $('#msg-parkingWait').html("Update Successfully");
+                setTimeout(function() {
+                    $('#msg-parkingWait').hide();
+                }, 1000);
+                console.log("success");
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                $('.parking_options').prop('disabled',false);
+                console.log("complete");
+            });
+            
+
+        });
+
+/*=====================================================*/
+
+        $('.parking').click(function() {
+            parking_check();
+        });
 
     var res_id='<?php echo($this->uri->segment(3)) ?>';
 
@@ -1404,10 +1525,11 @@
 /*====================================================================================*/
        /* restaurants manager edit contact model*/
 
-        $('#btn-editrmnumber').click(function() {
-            $(this).text('please wait......');
+        $('.btn-ownerEdit').click(function() {
+            var partner_id=$(this).data('partnerid');
+            
             $.ajax({
-                url: '<?php echo(site_url("restaurants/view_owners")) ?>/'+res_id,
+                url: '<?php echo(site_url("restaurants/view_owners")) ?>/'+res_id+'/'+partner_id,
                 dataType: 'json'
             
             })
@@ -1415,18 +1537,17 @@
 
                $('#mdl-mrnumber').modal('show');
 
-               $('#owners_name').val(data[0].name);
-               $('#owners_designation').val(data[0].designation);
-               $('#owners_mobile1').val(data[0].mobile1);
-               $('#owners_mobile2').val(data[0].mobile2);
-               $('#owners_landline1').val(data[0].landline1);
-               $('#owners_landline2').val(data[0].landline2);
+               $('#owners_name').val(data.name);
+               $('#owners_designation').val(data.designation);
+               $('#owners_mobile1').val(data.mobile1);
+               $('#owners_mobile2').val(data.mobile2);
+               $('#partner_id').val(partner_id);
             })
             .fail(function() {
                 console.log("error");
             })
             .always(function() {
-                $('#btn-editrmnumber').text('Edit');
+                
             });
             
            
@@ -2062,6 +2183,33 @@
         .fail(function() {
             console.log("error");
         });
+    }
+
+    function parking_check() 
+    {
+        if ($('#parking_yes').is(':checked'))
+        {
+            $('.parking_options').parent('label').show();
+        }
+        else
+        {
+            $('.parking_options').prop('checked',false);
+            $('.parking_options').parent('label').hide();
+           
+        }
+    }
+
+    function parking_status () {
+        var count=('.parking_options:checked').length;
+        if (count<1)
+        {
+            alert('hello'+count);
+           $('.parking_options').parent('label').hide();
+        }
+        else
+        {
+            $('.parking_options').parent('label').show();
+        }
     }
 
 

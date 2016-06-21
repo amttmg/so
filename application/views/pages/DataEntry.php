@@ -211,7 +211,7 @@
                             </td>
                             <td>
                                 <div class="form-group input-group">
-                                    <span class="input-group-addon">28.</span>
+                                    <span class="input-group-addon">27.</span>
                                     <input type="number" name="res_lat" value="<?php echo set_value('res_lat') ?>"
                                        class="form-control">
                                 </div>
@@ -224,7 +224,7 @@
                             </td>
                             <td>
                                 <div class="form-group input-group">
-                                    <span class="input-group-addon">84.</span>
+                                    <span class="input-group-addon">85.</span>
                                     <input type="number" name="res_lon" value="<?php echo set_value('res_lon') ?>"
                                        class="form-control">
                                 </div>
@@ -317,7 +317,7 @@
        
         <div class="row">
             <div class="col-md-12">
-                <div class="well-sm well">
+                <div class="well-sm well clearfix">
                     <b>Serves: </b><button type="button" id="btn_addServe" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus fa"></i>   Add New</button>
                     <div class="clearfix">
                     
@@ -325,10 +325,11 @@
                     <div id="serve_checkbox">
                         <?php foreach ($serves as $ser) {
                             ?>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="serves[]"
-                                       value="<?php echo $ser->serves_id ?>"><?php echo $ser->serves_name ?>
-                            </label>
+                            <div class="col-md-2">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="serves[]" value="<?php echo $ser->serves_id ?>"><?php echo $ser->serves_name ?>
+                                </label>
+                            </div>
                             <?php
                         } ?>
                         <?php echo form_error('serves'); ?>
@@ -474,7 +475,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well-sm well" id="estd_checkbox">
+                <div class="well-sm well clearfix" id="estd_checkbox">
                     <b> Establishment Type:</b> <span class="pull-right"><button type="button" id="btn_establishmentType" class="btn btn-sm btn-info"> Add New</button></span>
                     <div class="clearfix">
                     
@@ -482,10 +483,12 @@
                     <hr/>
                     <?php foreach ($establishment_types as $est) {
                         ?>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" name="establishment_type[]"
-                                   value="<?php echo $est->type_id ?>"><?php echo $est->type ?>
-                        </label>
+                        <div class="col-md-2">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="establishment_type[]"
+                                       value="<?php echo $est->type_id ?>"><?php echo $est->type ?>
+                            </label>
+                        </div>
                         <?php
                     } ?>
                    
@@ -495,7 +498,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well-sm well" id="facility_checkbox">
+                <div class="well-sm well clearfix" id="facility_checkbox">
                     <b> Facilities :</b><span class="pull-right"><button type="button" id="btn_facilities" class="btn btn-sm btn-info"> Add New</button></span>
                     <div class="clearfix">
                     
@@ -503,10 +506,12 @@
                     <hr/>
                     <?php foreach ($facilities as $fac) {
                         ?>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" name="facilities[]"
-                                   value="<?php echo $fac->facilities_id ?>"><?php echo $fac->facility ?>
-                        </label>
+                        <div class="col-md-2">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="facilities[]"
+                                       value="<?php echo $fac->facilities_id ?>"><?php echo $fac->facility ?>
+                            </label>
+                        </div>
                         <?php
                     } ?>
                     
@@ -602,18 +607,21 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well-sm well" id="cousin_checkbox">
+                <div class="well-sm well clearfix" id="cousin_checkbox">
                     <b> Cousins by Country :</b><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
                     <div class="clearfix">
                     
                     </div>
+                    <?php echo(form_error('cousins')); ?>
                     <hr/>
                     <?php foreach ($cousins as $Cousin) {
                         ?>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" name="cousins[]"
-                                   value="<?php echo $Cousin->cousin_id ?>"><?php echo $Cousin->cousin ?>
-                        </label>
+                        <div class="col-md-2">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="cousins[]"
+                                       value="<?php echo $Cousin->cousin_id ?>"><?php echo $Cousin->cousin ?>
+                            </label>
+                        </div>
                         <?php
                     } ?>
                     
@@ -623,7 +631,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well-sm well">
+                <div class="well-sm well clearfix">
                     <b> Cousins by Food :</b>
                     <div class="clearfix">
                     
@@ -631,10 +639,12 @@
                     <hr/>
                     <?php foreach ($foods as $food) {
                         ?>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" name="foods[]"
-                                   value="<?php echo $food->food_id ?>"><?php echo $food->food ?>
-                        </label>
+                        <div class="col-md-2">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="foods[]"
+                                       value="<?php echo $food->food_id ?>"><?php echo $food->food ?>
+                            </label>
+                        </div>
                         <?php
                     } ?>
                 </div>
@@ -643,7 +653,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="well-sm well" id="populardish_checkbox">
+                <div class="well-sm well clearfix" id="populardish_checkbox">
                     <b> Popular Dish:</b><span class="pull-right"> <button type="button" id="btn_addPopDish" class="btn btn-sm btn-info"><i class="fa fa-plus fa"></i> Add New</button></span>
                     <div class="clearfix">
                     
@@ -651,10 +661,12 @@
                     <hr/>
                     <?php foreach ($pop_dishes as $pop) {
                         ?>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" name="pop_dishes[]"
-                                   value="<?php echo $pop->pop_dishes_id ?>"><?php echo $pop->pop_dishes ?>
-                        </label>
+                        <div class="col-md-2">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="pop_dishes[]"
+                                       value="<?php echo $pop->pop_dishes_id ?>"><?php echo $pop->pop_dishes ?>
+                            </label>
+                        </div>
                         <?php
                     } ?>
                    

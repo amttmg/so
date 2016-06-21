@@ -46,7 +46,7 @@ class Restaurants extends CI_Controller {
 		$data['service_time']=$this->service_time->getBy(array('res_id',$restaurant_id));
 		$data['happy_hours']=$this->happy_hour->getBy(array('res_id',$restaurant_id));
 		$data['res_costs']=$this->res_estimate_cost->getBy(array('res_id',$restaurant_id));
-		$data['owners']=$this->owner->getBy(array('res_id',$restaurant_id));
+		$data['owners']=$this->owner->getAll(array('res_id',$restaurant_id));
 		$data['facilities']=$this->res_facility->getBy(array('res_id',$restaurant_id));
 		//$data['content'] = $this->load->view('pages/restaurant/details',$data, true);
         $this->load->_render_page('pages/restaurant/details', $data);
@@ -59,9 +59,9 @@ class Restaurants extends CI_Controller {
 		$master['status'] = True;
 		$data             = array();
 		$master           = array();
-        $this->form_validation->set_rules('res_mobile1', 'Mobile', 'trim|required|max_length[12]');
+        $this->form_validation->set_rules('res_mobile1', 'Mobile', 'trim|max_length[12]');
         $this->form_validation->set_rules('res_mobile2', 'Mobile', 'trim|max_length[12]');
-        $this->form_validation->set_rules('res_landline1', 'fieldlabel', 'trim|required|max_length[12]');
+        $this->form_validation->set_rules('res_landline1', 'fieldlabel', 'trim|max_length[12]');
         $this->form_validation->set_rules('res_landline2', 'fieldlabel', 'trim|max_length[12]');
 		if ($this->form_validation->run() == True) 
 		{
@@ -144,8 +144,8 @@ class Restaurants extends CI_Controller {
 		$master['status'] = True;
 		$data             = array();
 		$master           = array();
-        $this->form_validation->set_rules('est_city', 'Establishment City', 'trim|max_length[30]');
-        $this->form_validation->set_rules('est_area', 'Establishment Area', 'trim|max_length[30]');
+        $this->form_validation->set_rules('est_city', 'Establishment City', 'trim|required|max_length[30]');
+        $this->form_validation->set_rules('est_area', 'Establishment Area', 'trim|required|max_length[30]');
         $this->form_validation->set_rules('est_street', 'Establishment Street', 'trim|max_length[30]');
         $this->form_validation->set_rules('est_landmark', 'Establishment Landmark', 'trim|max_length[30]');
         $this->form_validation->set_rules('est_other', 'Establishment Other', 'trim|max_length[30]');
@@ -188,9 +188,11 @@ class Restaurants extends CI_Controller {
 		echo $this->res->getBy(array('res_id',$id),true);
 	}
 
-	public function view_owners($id)
+	public function view_owners($id,$owner_id)
 	{
-		echo $this->owner->getBy(array('res_id',$id),true);
+		$this->load->model('M_owner','owner');
+		echo $this->owner->owner_belogns_to_restaurants($id,$owner_id);
+		//echo $this->owner->getBy(array('res_id',$id),true);
 	}
 
 	public function owner_entryform()
@@ -201,7 +203,23 @@ class Restaurants extends CI_Controller {
 	public function delete($res_id)
 	{
 		$this->res->delete($res_id);
+		$this->session->set_flashdata('message', 'Restaurat deleted successfully ');
 		redirect('restaurants','refresh');
+	}
+
+	public function update_parking($res_id,$status,$data)
+	{
+		if ($data==='res_parking2') 
+		{
+			$this->db->where('res_id',$res_id);
+			$this->db->update('tbl_restaurants',array('parking_two'=>$status));
+		}
+		else
+		{
+			$this->db->where('res_id',$res_id);
+			$this->db->update('tbl_restaurants',array('parking_four'=>$status));
+		}
+		echo("success");
 	}
 
 }

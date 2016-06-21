@@ -40,24 +40,26 @@ class dataentry extends CI_Controller
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('res_name', 'Restaurent Name', 'required');
-        $this->form_validation->set_rules('res_mobile1', 'Mobile Number', 'required');
-        $this->form_validation->set_rules('res_landline1', 'Land Line Number', 'required');
+        $this->form_validation->set_rules('res_mobile1', 'Mobile Number','trim|max_length[12]');
+        $this->form_validation->set_rules('res_landline1', 'Land Line Number', 'trim|max_length[12]');
        /* $this->form_validation->set_rules('owners_name', 'Owners Name', 'required');
         $this->form_validation->set_rules('owners_designation', 'Designation', 'required');
         $this->form_validation->set_rules('owners_mobile1', 'Mobile', 'required');
         $this->form_validation->set_rules('owners_landline1', 'Landline', 'required');*/
 
-        $this->form_validation->set_rules('res_lat', 'Latitude', 'required');
-        $this->form_validation->set_rules('res_lon', 'Longitude', 'required');
-        $this->form_validation->set_rules('est_city', 'City', 'required');
-        $this->form_validation->set_rules('est_area', 'Area', 'required');
-        $this->form_validation->set_rules('est_street', 'Street', 'required');
-        $this->form_validation->set_rules('est_landmark', 'Landmark', 'required');
-
+        $this->form_validation->set_rules('res_lat', 'Latitude', 'trim|required|max_length[12]');
+        $this->form_validation->set_rules('res_lon', 'Longitude', 'trim|required|max_length[12]');
+        $this->form_validation->set_rules('est_city', 'City', 'trim|required|max_length[50]');
+        $this->form_validation->set_rules('est_area', 'Area', 'trim|required|max_length[50]');
+        $this->form_validation->set_rules('est_street', 'Street', 'trim|max_length[100]');
+        $this->form_validation->set_rules('est_landmark', 'Landmark', 'trim|max_length[100]');
+        $this->form_validation->set_rules('cousins','Cusins','callback_cusin_check');
 
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         //
+        
         if ($this->form_validation->run() == FALSE) {
+           
             $dt['serves'] = $this->master->getServes();
             $dt['estimate_cost_topic'] = $this->master->getEstimate_cost_topic();
             $dt['establishment_types'] = $this->master->getEstablishment_type();
@@ -84,5 +86,18 @@ class dataentry extends CI_Controller
             redirect('dataentry');
         }
 
+    }
+
+    public function cusin_check()
+    {
+       if (isset($_POST['cousins']) || isset($_POST['foods'])) 
+       {
+            return true;
+       }
+       else
+       {
+         $this->form_validation->set_message('cusin_check','At least one cusine by country or cusine by food is required !');
+         return false;
+       }
     }
 }
