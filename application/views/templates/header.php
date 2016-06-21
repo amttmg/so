@@ -20,6 +20,7 @@
     <!-- Custom CSS -->
     <link href="<?php echo(base_url('assets/templates')) ?>//dist/css/sb-admin-2.css" rel="stylesheet">
 
+    <link href="<?php echo(base_url('assets/css/jquery.timepicker.css')) ?>" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="<?php echo(base_url('assets/templates')) ?>//bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="<?php echo base_url('assets/js/jQuery-2.1.4.min.js') ?>"></script>

@@ -50,5 +50,5 @@
             $('#message').empty();
         });
         
-    $('.start_time').timepicker();
+    $('.time').timepicker();
 </script>
