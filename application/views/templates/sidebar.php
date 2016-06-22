@@ -55,6 +55,19 @@
                         <li>
                             <a href="<?php echo(site_url("restaurants")) ?>"><i class="fa fa-table fa-fw"></i>Restaurants</a>
                         </li>
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"> </i>Master Entry<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>
+                                    <a href="<?php echo(site_url('serve')) ?>">Serves</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo(site_url('establishment_type')) ?>">Establishment Types</a>
+                                </li>
+                                
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

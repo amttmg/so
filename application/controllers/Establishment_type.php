@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Establishment_type extends CI_Controller {
 
+	public function index()
+	{
+		$this->load->model('M_establishment_type','estd');
+		$data['estds']=$this->estd->getAll();
+		$this->load->_render_page('pages/establishments/index',$data);
+	}
+
 	public function add()
 	{
 		$this->load->library('form_validation');
@@ -29,6 +36,7 @@ class Establishment_type extends CI_Controller {
 
 				$master['data']=$result;
 			}
+			$this->session->flashdata('message','Saved successfully !');
 			$master['status']  = True;
 			$master['message'] ="successfully saved data";
 		}
@@ -63,6 +71,14 @@ class Establishment_type extends CI_Controller {
 			$data['status']=false;
 		}
 		echo(json_encode($data));
+	}
+
+	public function delete($id)
+	{
+		$this->db->where('type_id',$id);
+		$this->db->update('establishment_type',array('status'=>0));
+		$this->session->set_flashdata('message', 'Updated Successfully !');
+		redirect('establishment_type','refresh');
 	}
 
 }
