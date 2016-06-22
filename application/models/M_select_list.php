@@ -19,9 +19,13 @@ class M_select_list extends CI_Model
         $this->db->order_by($value);
         $result = $this->db->get($tbl)->result_array();
         $data = "<select $attr>";
-        $data .= "<option>Please Select</option>";
+        $data .= "<option value=''>Please Select</option>";
         foreach ($result as $r) {
-            $data .= "<option value='$r[$key]'" . ($r[$key] == $selected) ? 'selected' : '' . ">$r[$value]</option>";
+            if ($r[$key] == $selected) {
+                $data .= "<option selected value='$r[$key]'>$r[$value]</option>";
+            } else {
+                $data .= "<option value='$r[$key]'>$r[$value]</option>";
+            }
         }
         $data .= "</select>";
         return $data;
