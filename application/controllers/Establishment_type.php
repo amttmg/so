@@ -36,7 +36,7 @@ class Establishment_type extends CI_Controller {
 
 				$master['data']=$result;
 			}
-			$this->session->flashdata('message','Saved successfully !');
+			$this->session->set_flashdata('message','Saved successfully !');
 			$master['status']  = True;
 			$master['message'] ="successfully saved data";
 		}

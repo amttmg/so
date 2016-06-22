@@ -64,6 +64,9 @@
                                 <li>
                                     <a href="<?php echo(site_url('establishment_type')) ?>">Establishment Types</a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo(site_url('facility')) ?>">Facilities</a>
+                                </li>
                                 
                             </ul>
                             <!-- /.nav-second-level -->
