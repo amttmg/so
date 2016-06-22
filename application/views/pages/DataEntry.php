@@ -49,7 +49,7 @@
                                 <input maxlength="10" oninput="maxLengthCheck(this)" type="number" class="form-control"
                                        name="res_mobile1"
                                        value="<?php echo set_value('res_mobile1') ?>"
-                                    >
+                                >
                             </div>
                             <?php echo form_error('res_mobile1'); ?>
 
@@ -268,12 +268,13 @@
                             City
                         </td>
                         <td>
-                            <input list="est_city" id="city_suggest" name="est_city"
-                                   value="<?php echo set_value('est_city') ?>"
+                            <!--<input list="est_city" id="city_suggest" name="est_city"
+                                   value="<?php /*echo set_value('est_city') */ ?>"
                                    class="form-control">
                             <datalist id="est_city">
 
-                            </datalist>
+                            </datalist>-->
+                            <?php echo $cityDropdown ?>
                             <?php echo form_error('est_city'); ?>
                         </td>
                     </tr>
@@ -282,12 +283,15 @@
                             Area
                         </td>
                         <td>
-                            <input list="est_area" name="est_area" id="area_suggest"
-                                   value="<?php echo set_value('est_area') ?>"
+                            <!-- <input list="est_area" name="est_area" id="area_suggest"
+                                   value="<?php /*echo set_value('est_area') */ ?>"
                                    class="form-control">
                             <datalist id="est_area">
 
-                            </datalist>
+                            </datalist>-->
+                            <div id="est_area_div">
+                                <?php echo $areaDropdown ?>
+                            </div>
                             <?php echo form_error('est_area'); ?>
                         </td>
                     </tr>
@@ -296,8 +300,11 @@
                             Street
                         </td>
                         <td>
-                            <input type="text" name="est_street" value="<?php echo set_value('est_street') ?>"
-                                   class="form-control">
+                            <!--  <input type="text" name="est_street" value="<?php /*echo set_value('est_street') */ ?>"
+                                   class="form-control">-->
+                            <div id="est_street_div">
+                                <?php echo $streetDropdown ?>
+                            </div>
                             <?php echo form_error('est_street'); ?>
                         </td>
                     </tr>
@@ -1048,10 +1055,10 @@
         $('#btn-addMoreOwner').click(function () {
             $(this).text('Please wait.....');
             $.ajax({
-                url: '<?php echo(site_url("restaurants/owner_entryform")) ?>',
-                dataType: 'html'
+                    url: '<?php echo(site_url("restaurants/owner_entryform")) ?>',
+                    dataType: 'html'
 
-            })
+                })
                 .done(function (data) {
                     $('#btn-addMoreOwner').text('Add More owner');
                     $('#containerOwner').html(data);
@@ -1121,16 +1128,16 @@
         /*=================================================================================*/
         $('#city_suggest').keyup(function () {
             $.ajax({
-                url: '<?php echo(site_url("place/suggest")) ?>',
-                type: 'POST',
-                dataType: 'html',
-                data: $(this).val(),
-                success: function (data) {
+                    url: '<?php echo(site_url("place/suggest")) ?>',
+                    type: 'POST',
+                    dataType: 'html',
+                    data: $(this).val(),
+                    success: function (data) {
 
-                    $('#est_city').empty();
-                    $('#est_city').append(data);
-                }
-            })
+                        $('#est_city').empty();
+                        $('#est_city').append(data);
+                    }
+                })
                 .done(function () {
                     console.log("success");
                 })
@@ -1145,16 +1152,16 @@
         /*=======================================================================================*/
         $('#area_suggest').keyup(function () {
             $.ajax({
-                url: '<?php echo(site_url("place/suggest")) ?>',
-                type: 'POST',
-                dataType: 'html',
-                data: $(this).val(),
-                success: function (data) {
+                    url: '<?php echo(site_url("place/suggest")) ?>',
+                    type: 'POST',
+                    dataType: 'html',
+                    data: $(this).val(),
+                    success: function (data) {
 
-                    $('#est_area').empty();
-                    $('#est_area').append(data);
-                }
-            })
+                        $('#est_area').empty();
+                        $('#est_area').append(data);
+                    }
+                })
                 .done(function () {
                     console.log("success");
                 })
@@ -1192,32 +1199,32 @@
         disable_button(button_id, 'Saving');
 
         $.ajax({
-            url: '<?php echo(site_url("serve/add")) ?>',
-            dataType: 'json',
-            type: 'post',
-            data: $('#' + form_id).serialize(),
-            success: function (data) {
-                console.log(data);
-                if (data.status === true) {
-                    enable_button(button_id, 'Save');
-                    var temp_checkbox = '<label class="checkbox-inline">';
-                    temp_checkbox += '<input type="checkbox" name="serves[]" value="' + data.data.serves_id + '">' + data.data.serves_name + '</label>';
+                url: '<?php echo(site_url("serve/add")) ?>',
+                dataType: 'json',
+                type: 'post',
+                data: $('#' + form_id).serialize(),
+                success: function (data) {
+                    console.log(data);
+                    if (data.status === true) {
+                        enable_button(button_id, 'Save');
+                        var temp_checkbox = '<label class="checkbox-inline">';
+                        temp_checkbox += '<input type="checkbox" name="serves[]" value="' + data.data.serves_id + '">' + data.data.serves_name + '</label>';
 
-                    $('#serve_checkbox').append(temp_checkbox);
-                    $('#' + form_id)[0].reset();
-                    $('#mdl-addserve').modal('hide');
+                        $('#serve_checkbox').append(temp_checkbox);
+                        $('#' + form_id)[0].reset();
+                        $('#mdl-addserve').modal('hide');
 
+                    }
+                    else {
+                        $.each(data, function (index, val) {
+                            $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                            $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                        });
+
+                        enable_button(button_id, 'Save');
+                    }
                 }
-                else {
-                    $.each(data, function (index, val) {
-                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
-                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
-                    });
-
-                    enable_button(button_id, 'Save');
-                }
-            }
-        })
+            })
 
             .fail(function () {
 
@@ -1229,34 +1236,34 @@
         disable_button(button_id, 'Saving');
 
         $.ajax({
-            url: '<?php echo(site_url("establishment_type/add")) ?>',
-            dataType: 'json',
-            type: 'post',
-            data: $('#' + form_id).serialize(),
-            success: function (data) {
-                console.log(data);
-                if (data.status == true) {
-                    enable_button(button_id, 'Save');
+                url: '<?php echo(site_url("establishment_type/add")) ?>',
+                dataType: 'json',
+                type: 'post',
+                data: $('#' + form_id).serialize(),
+                success: function (data) {
+                    console.log(data);
+                    if (data.status == true) {
+                        enable_button(button_id, 'Save');
 
-                    var temp_checkbox = '<label class="checkbox-inline">';
-                    temp_checkbox += '<input type="checkbox" name="establishment_type[]" value="' + data.data.type_id + '">' + data.data.type + '</label>';
+                        var temp_checkbox = '<label class="checkbox-inline">';
+                        temp_checkbox += '<input type="checkbox" name="establishment_type[]" value="' + data.data.type_id + '">' + data.data.type + '</label>';
 
-                    $('#estd_checkbox').append(temp_checkbox);
-                    $('#' + form_id)[0].reset();
-                    $('#mdl_establishmentType').modal('hide');
+                        $('#estd_checkbox').append(temp_checkbox);
+                        $('#' + form_id)[0].reset();
+                        $('#mdl_establishmentType').modal('hide');
+
+                    }
+                    else {
+                        $.each(data, function (index, val) {
+                            $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                            $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                        });
+
+                        enable_button(button_id, 'Save');
+                    }
 
                 }
-                else {
-                    $.each(data, function (index, val) {
-                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
-                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
-                    });
-
-                    enable_button(button_id, 'Save');
-                }
-
-            }
-        })
+            })
 
             .fail(function () {
 
@@ -1268,34 +1275,34 @@
         disable_button(button_id, 'Saving');
 
         $.ajax({
-            url: '<?php echo(site_url("facility/add")) ?>',
-            dataType: 'json',
-            type: 'post',
-            data: $('#' + form_id).serialize(),
-            success: function (data) {
-                console.log(data);
-                if (data.status == true) {
+                url: '<?php echo(site_url("facility/add")) ?>',
+                dataType: 'json',
+                type: 'post',
+                data: $('#' + form_id).serialize(),
+                success: function (data) {
+                    console.log(data);
+                    if (data.status == true) {
 
-                    enable_button(button_id, 'Save');
+                        enable_button(button_id, 'Save');
 
-                    var temp_checkbox = '<label class="checkbox-inline">';
-                    temp_checkbox += '<input type="checkbox" name="facility[]" value="' + data.data.facilities_id + '">' + data.data.facility + '</label>';
+                        var temp_checkbox = '<label class="checkbox-inline">';
+                        temp_checkbox += '<input type="checkbox" name="facility[]" value="' + data.data.facilities_id + '">' + data.data.facility + '</label>';
 
-                    $('#facility_checkbox').append(temp_checkbox);
-                    $('#' + form_id)[0].reset();
-                    $('#mdl_facility').modal('hide');
+                        $('#facility_checkbox').append(temp_checkbox);
+                        $('#' + form_id)[0].reset();
+                        $('#mdl_facility').modal('hide');
 
+                    }
+                    else {
+                        $.each(data, function (index, val) {
+                            $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                            $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                        });
+
+                        enable_button(button_id, 'Save');
+                    }
                 }
-                else {
-                    $.each(data, function (index, val) {
-                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
-                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
-                    });
-
-                    enable_button(button_id, 'Save');
-                }
-            }
-        })
+            })
 
             .fail(function () {
 
@@ -1307,33 +1314,33 @@
         disable_button(button_id, 'Saving');
 
         $.ajax({
-            url: '<?php echo(site_url("Cousin/add")) ?>',
-            dataType: 'json',
-            type: 'post',
-            data: $('#' + form_id).serialize(),
-            success: function (data) {
-                console.log(data);
-                if (data.status == true) {
-                    enable_button(button_id, 'Save');
-                    var temp_checkbox = '<label class="checkbox-inline">';
-                    temp_checkbox += '<input type="checkbox" name="cousins[]" value="' + data.data.cousin_id + '">' + data.data.cousin + '</label>';
+                url: '<?php echo(site_url("Cousin/add")) ?>',
+                dataType: 'json',
+                type: 'post',
+                data: $('#' + form_id).serialize(),
+                success: function (data) {
+                    console.log(data);
+                    if (data.status == true) {
+                        enable_button(button_id, 'Save');
+                        var temp_checkbox = '<label class="checkbox-inline">';
+                        temp_checkbox += '<input type="checkbox" name="cousins[]" value="' + data.data.cousin_id + '">' + data.data.cousin + '</label>';
 
-                    $('#cousin_checkbox').append(temp_checkbox);
-                    $('#' + form_id)[0].reset();
-                    $('#mdl_cousin').modal('hide');
+                        $('#cousin_checkbox').append(temp_checkbox);
+                        $('#' + form_id)[0].reset();
+                        $('#mdl_cousin').modal('hide');
+
+                    }
+                    else {
+                        $.each(data, function (index, val) {
+                            $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                            $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                        });
+
+                        enable_button(button_id, 'Save');
+                    }
 
                 }
-                else {
-                    $.each(data, function (index, val) {
-                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
-                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
-                    });
-
-                    enable_button(button_id, 'Save');
-                }
-
-            }
-        })
+            })
 
             .fail(function () {
 
@@ -1345,33 +1352,33 @@
         disable_button(button_id, 'Saving');
 
         $.ajax({
-            url: '<?php echo(site_url("pop_dish/add")) ?>',
-            dataType: 'json',
-            type: 'post',
-            data: $('#' + form_id).serialize(),
-            success: function (data) {
-                if (data.status == true) {
-                    enable_button(button_id, 'Save');
+                url: '<?php echo(site_url("pop_dish/add")) ?>',
+                dataType: 'json',
+                type: 'post',
+                data: $('#' + form_id).serialize(),
+                success: function (data) {
+                    if (data.status == true) {
+                        enable_button(button_id, 'Save');
 
-                    var temp_checkbox = '<label class="checkbox-inline">';
-                    temp_checkbox += '<input type="checkbox" name="pop_dishes[]" value="' + data.data.pop_dishes_id + '">' + data.data.pop_dishes + '</label>';
+                        var temp_checkbox = '<label class="checkbox-inline">';
+                        temp_checkbox += '<input type="checkbox" name="pop_dishes[]" value="' + data.data.pop_dishes_id + '">' + data.data.pop_dishes + '</label>';
 
-                    $('#populardish_checkbox').append(temp_checkbox);
-                    $('#' + form_id)[0].reset();
-                    $('#mdl_populardish').modal('hide');
+                        $('#populardish_checkbox').append(temp_checkbox);
+                        $('#' + form_id)[0].reset();
+                        $('#mdl_populardish').modal('hide');
+                    }
+                    else {
+                        $.each(data, function (index, val) {
+                            $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                            $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                        });
+
+                        enable_button(button_id, 'Save');
+                    }
+
+
                 }
-                else {
-                    $.each(data, function (index, val) {
-                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
-                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
-                    });
-
-                    enable_button(button_id, 'Save');
-                }
-
-
-            }
-        })
+            })
 
             .fail(function () {
 
@@ -1412,11 +1419,11 @@
     function add_costTopic(button_id, table_name='') {
         disable_button(button_id, 'Saving..........');
         $.ajax({
-            url: '<?php echo(site_url("cost_topic/add")) ?>',
-            type: 'POST',
-            dataType: 'json',
-            data: $('#form-costTopic').serialize(),
-        })
+                url: '<?php echo(site_url("cost_topic/add")) ?>',
+                type: 'POST',
+                dataType: 'json',
+                data: $('#form-costTopic').serialize(),
+            })
             .done(function (data) {
 
                 if (data.status == true) {
@@ -1462,5 +1469,25 @@
     }
 
 
+</script>
+<script>
+    $('#est_city').change(function () {
+        var city = $(this).val();
+        $.ajax({
+            url: '<?php echo base_url('dataentry/getAreaDropDown/') ?>/' + city,
+            success: function (data) {
+                $('#est_area_div').html(data);
+            }
+        })
+    });
+    $('body').on('change', '#est_area', function () {
+        var area = $(this).val();
+        $.ajax({
+            url: '<?php echo base_url('dataentry/getStreetDropDown/') ?>/' + area,
+            success: function (data) {
+                $('#est_street_div').html(data);
+            }
+        })
+    })
 </script>
 
