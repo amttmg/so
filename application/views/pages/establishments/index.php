@@ -20,7 +20,7 @@
 				<button type="button" id="btn-addEstdType" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp&nbspAdd New</button>
 			</div>
 			<div class="panel-body">
-				<table class="table table-bordered table-hover">
+				<table class="table table-bordered table-hover" id="table-datatable">
 					<thead>
 						<tr>
 							<th>Sn.</th>
@@ -104,10 +104,13 @@
 		</div>
 	</div>
 </div>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 
+		$('#table-datatable').DataTable({
+	        "responsive": true
+	    });
+	    
 		$('.delete').click(function() {
 			var estdid=$(this).data('estdid');
 			var url='<?php echo(site_url()) ?>/establishment_type/delete/'+estdid;
@@ -175,6 +178,7 @@
 	            $('#'+id).text(text);
 	         };
 	    }
+
 
 		
 	});
