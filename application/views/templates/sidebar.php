@@ -74,6 +74,10 @@
                                 <li>
                                     <a href="<?php echo(site_url('cuisine/byfood')) ?>">Cuisine By food</a>
                                 </li>
+
+                                <li>
+                                    <a href="<?php echo(site_url('city')) ?>">City</a>
+                                </li>
                                 
                             </ul>
                             <!-- /.nav-second-level -->
