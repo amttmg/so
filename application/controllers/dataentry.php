@@ -38,7 +38,6 @@ class dataentry extends CI_Controller
 
     public function insert()
     {
-
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
 
@@ -110,12 +109,12 @@ class dataentry extends CI_Controller
         echo $this->select->getSelectList('tbl_city', '', 'id', 'name', 'name="est_city" class="form-control"');
     }
 
-    public function getAreaDropDown($city_id)
+    public function getAreaDropDown($city_id='')
     {
         echo $this->select->getSelectList('tbl_area', array('city_id' => $city_id), 'id', 'name', 'id="est_area" name="est_area" class="form-control"');
     }
 
-    public function getStreetDropDown($area_id)
+    public function getStreetDropDown($area_id='')
     {
         echo $this->select->getSelectList('tbl_street', array('area_id' => $area_id), 'id', 'name', 'id="est_street" name="est_street" class="form-control"');
     }

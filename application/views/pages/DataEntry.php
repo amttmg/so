@@ -783,8 +783,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well-sm well clearfix" id="populardish_checkbox">
-                <b> Popular Dish:</b><span class="pull-right"> <button type="button" id="btn_addPopDish"
-                                                                       class="btn btn-sm btn-info"><i
+                <b>Popular Dish:</b><input type="text" id="searchtxt"> <span class="pull-right"> <button type="button"
+                                                                                                         id="btn_addPopDish"
+                                                                                                         class="btn btn-sm btn-info">
+                        <i
                             class="fa fa-plus fa"></i> Add New
                     </button></span>
 
@@ -792,9 +794,10 @@
 
                 </div>
                 <hr/>
+
                 <?php foreach ($pop_dishes as $pop) {
                     ?>
-                    <div class="col-md-2">
+                    <div class="col-md-2 chk">
                         <label class="checkbox-inline">
                             <input type="checkbox" name="pop_dishes[]"
                                    value="<?php echo $pop->pop_dishes_id ?>"><?php echo $pop->pop_dishes ?>
@@ -806,7 +809,21 @@
             </div>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <b>Multiple Outlets</b>
+                <hr>
+                <label class="checkbox-inline">
+                    <input class="multi_outlets" type="radio" name="multiple_outlets" value="1">Yes
+                </label>
+                <label class="checkbox-inline">
+                    <input class="multi_outlets" checked type="radio" name="multiple_outlets" value="0">No
+                </label>
+                <input style="display: none" id="outlets_no" type="number" name="outlets_no">
+            </div>
+        </div>
+    </div>
     <div class="row" style="padding: 15px">
         <div class="col-md-12">
             <div class="form-horizontal">
@@ -990,10 +1007,9 @@
     </div>
 </div>
 <style>
-    #all_text span
-    {
-        text-decoration:underline;
-        background-color:yellow;
+    #all_text span {
+        text-decoration: underline;
+        background-color: yellow;
     }
 </style>
 <script>
@@ -1057,8 +1073,8 @@
             $('.time').timepicker();
         });
 
-        $('#searchfor').keyup(function(){
-            $( "body" ).find(":contains($(this).val())").closest('input').css( "color", "red" );
+        $('#searchfor').keyup(function () {
+            $("body").find(":contains($(this).val())").closest('input').css("color", "red");
         });
         /*======================================================================================*/
         $('.addservetime').click(function () {
@@ -1539,6 +1555,17 @@
                 $('#est_street_div').html(data);
             }
         })
+    })
+</script>
+<script>
+    $(".multi_outlets").change(function () {
+        var v = $(this).val();
+        if(v==0){
+            $('#outlets_no').val(0);
+            $('#outlets_no').hide();
+        }else{
+            $('#outlets_no').show();
+        }
     })
 </script>
 
