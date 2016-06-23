@@ -484,7 +484,8 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="well-sm well">
+                    <div class="well-sm well clearfix">
+                        <form id="form-updateParking">
                         <b> Parking :</b><span id="msg-parkingWait" class="text-success" style="display:none">  </span>
                         <label class="checkbox-inline">
                             <input type="radio" id="parking_yes" class="parking" name="res_parking"
@@ -504,6 +505,9 @@
                             <input type="checkbox" class="parking_options" id="res_parking4" name="res_parking4"
                                    value="4" <?php echo($restaurants->parking_four ? 'checked' : '') ?>>Four Wheeler
                         </label>
+                        <button type="button" id="btn-updateParking" style="display:none" class="btn btb-sm btn-primary pull-right">Update</button>
+                        <br>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -1314,6 +1318,39 @@
     parking_check();
 
     $(document).ready(function () {
+
+        $('#btn-updateParking').click(function() {
+            $(this).text('Updating.......');
+            $(this).prop('disabled',true);
+
+            $.ajax({
+                url: '<?php echo site_url("parking/update/".$this->uri->segment(3)) ?>',
+                type: 'POST',
+                data: $('#form-updateParking').serialize()
+            })
+            .done(function(data) {
+
+                $('#btn-updateParking').text('Update Successfully !');
+                setTimeout(function () {
+                    $('#btn-updateParking').text('Update');
+                }, 1000);
+                 $('#btn-updateParking').prop('disabled',false);
+                console.log("success");
+            })
+            .fail(function(data) {
+                console.log("error");
+            })
+            .always(function() {
+                
+               
+                console.log("complete");
+            });
+            
+        });
+        $('.parking').change(function() {
+
+            $('#btn-updateParking').show();
+        });
 
         $('#btn-ownerAddNew').click(function () {
             $(this).prop('disabled', true);

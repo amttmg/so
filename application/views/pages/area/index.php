@@ -106,7 +106,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Area Name</label>
-                        <input type="text" name="area" id="area" class="form-control" value="">
+                        <input type="text" name="area" id="area" class="form-control" placeholder="Area Name" value="">
                         <span></span>
                     </div>
 
