@@ -82,6 +82,7 @@ class master extends CI_Model
                 $sql .= ' and ' . $key . '=' . $val;
             }
         }
+        $sql.=" order by pop_dishes";
         return $this->mdb->getResult($sql);
     }
 }
