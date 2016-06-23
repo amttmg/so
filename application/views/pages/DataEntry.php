@@ -695,7 +695,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well-sm well clearfix" id="cousin_checkbox">
-                <b> Cousins by Country :</b><span class="pull-right"><button type="button" id="btn_addCousin"
+                <b> Cuisine by Country :</b><span class="pull-right"><button type="button" id="btn_addCousin"
                                                                              class="btn btn-sm btn-info "><i
                             class="fa fa-plus fa"></i> Add New
                     </button></span>
@@ -723,7 +723,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well-sm well clearfix">
-                <b> Cousins by Food :</b>
+                <b> Cuisine by Food :</b>
 
                 <div class="clearfix">
 

@@ -67,6 +67,9 @@
                                 <li>
                                     <a href="<?php echo(site_url('facility')) ?>">Facilities</a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo(site_url('cuisine')) ?>">Cuisine By Country</a>
+                                </li>
                                 
                             </ul>
                             <!-- /.nav-second-level -->
