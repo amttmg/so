@@ -613,7 +613,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="well-sm well clearfix" id="cousin_checkbox">
-                        <b> Cousins by Country :</b><span id="msg-cousinByCountryWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
+                        <b> Cuisine by Country :</b><span id="msg-cousinByCountryWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
                         <hr/>
                         <?php foreach ($cousins as $Cousin): ?>
                             <div class="col-md-2">
@@ -638,7 +638,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="well-sm well clearfix">
-                        <b> Cousins by Food :</b>
+                        <b> Cuisine by Food :</b>
                         <span id="msg-cousinByFoodWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
                         <hr/>
                          <?php foreach ($foods as $food): ?>

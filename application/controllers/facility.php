@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Facility extends CI_Controller {
 
+	public function index()
+	{
+		$this->load->model('M_facility','facility');
+		$data['facilities']=$this->facility->getAll();
+		$this->load->_render_page('pages/facility/index',$data);
+	}
+
 	public function add()
 	{
 		$this->load->library('form_validation');
@@ -31,6 +38,7 @@ class Facility extends CI_Controller {
 				$master['data']=$result;
 
 			}
+			$this->session->set_flashdata('message', 'Saved Successfully !');
 			$master['status']  = True;
 			$master['message'] ="successfully saved data";
 
@@ -66,6 +74,14 @@ class Facility extends CI_Controller {
 			$data['status']=false;
 		}
 		echo(json_encode($data));
+	}
+
+	public function delete($id)
+	{
+		$this->db->where('facilities_id',$id);
+		$this->db->update('tbl_facilities',array('status'=>0));
+		$this->session->set_flashdata('message', 'Updated Successfully !');
+		redirect('facility','refresh');
 	}
 
 }

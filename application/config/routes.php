@@ -53,3 +53,4 @@ $route['default_controller'] = 'dataentry';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['login']['post']='login/check';
+$route['cuisine']='cousin/index';
