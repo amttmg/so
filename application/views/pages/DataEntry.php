@@ -49,7 +49,7 @@
                                 <input maxlength="10" oninput="maxLengthCheck(this)" type="number" class="form-control"
                                        name="res_mobile1"
                                        value="<?php echo set_value('res_mobile1') ?>"
-                                >
+                                    >
                             </div>
                             <?php echo form_error('res_mobile1'); ?>
 
@@ -365,7 +365,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="well-sm well">
-                <b>Happy Hours</b>
+
                 <br/>
                 <table class="table table-bordered">
                     <tr>
@@ -381,14 +381,18 @@
                     </tr>
                     <tr>
                         <td>if same all weeks</td>
-                        <td><input id="open_time_all" type="text" class="form-control time"></td>
-                        <td><input id="close_time_all" type="text" class="form-control time"></td>
+                        <td><input id="open_time_all" type="time" class="form-control time" data-time-format="H:i:s">
+                        </td>
+                        <td><input id="close_time_all" type="time" class="form-control time" data-time-format="H:i:s">
+                        </td>
 
                     </tr>
                     <tr>
                         <td>Sunday</td>
-                        <td><input name="servtime[1][open]" type="text" class="form-control open_time time"></td>
-                        <td><input name="servtime[1][close]" type="text" class="form-control close_time time"></td>
+                        <td><input name="servtime[1][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="servtime[1][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary addservetime" data-position="1">New
                                 Time
@@ -397,8 +401,10 @@
                     </tr>
                     <tr>
                         <td>Monday</td>
-                        <td><input name="servtime[2][open]" type="text" class="form-control open_time time"></td>
-                        <td><input name="servtime[2][close]" type="text" class="form-control close_time time"></td>
+                        <td><input name="servtime[2][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="servtime[2][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary  addservetime" data-position="2">New
                                 Time
@@ -407,8 +413,10 @@
                     </tr>
                     <tr>
                         <td>Tuesday</td>
-                        <td><input name="servtime[3][open]" type="text" class="form-control open_time time"></td>
-                        <td><input name="servtime[3][close]" type="text" class="form-control close_time time"></td>
+                        <td><input name="servtime[3][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="servtime[3][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary addservetime" data-position="3">New
                                 Time
@@ -417,8 +425,10 @@
                     </tr>
                     <tr>
                         <td>Wednesday</td>
-                        <td><input name="servtime[4][open]" type="text" class="form-control open_time time"></td>
-                        <td><input name="servtime[4][close]" type="text" class="form-control close_time time"></td>
+                        <td><input name="servtime[4][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="servtime[4][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary addservetime" data-position="4">New
                                 Time
@@ -427,8 +437,10 @@
                     </tr>
                     <tr>
                         <td>Thursday</td>
-                        <td><input name="servtime[5][open]" type="text" class="form-control open_time time"></td>
-                        <td><input name="servtime[5][close]" type="text" class="form-control close_time time"></td>
+                        <td><input name="servtime[5][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="servtime[5][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary addservetime" data-position="5">New
                                 Time
@@ -437,8 +449,10 @@
                     </tr>
                     <tr>
                         <td>Friday</td>
-                        <td><input name="servtime[6][open]" type="text" class="form-control open_time time"></td>
-                        <td><input name="servtime[6][close]" type="text" class="form-control close_time time"></td>
+                        <td><input name="servtime[6][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="servtime[6][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary addservetime" data-position="6">New
                                 Time
@@ -448,8 +462,10 @@
 
                     <tr>
                         <td>Saturday</td>
-                        <td><input name="servtime[7][open]" type="text" class="form-control open_time time"></td>
-                        <td><input name="servtime[7][close]" type="text" class="form-control close_time time"></td>
+                        <td><input name="servtime[7][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="servtime[7][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary addservetime" data-position="7">New
                                 Time
@@ -529,25 +545,27 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well-sm well clearfix" id="estd_checkbox">
-                <b> Establishment Type:</b> <span class="pull-right"><button type="button" id="btn_establishmentType"
-                                                                             class="btn btn-sm btn-info"> Add New
+                <b> Establishment Type:</b><input type="text" id="searchfor"> <span class="pull-right"><button
+                        type="button" id="btn_establishmentType"
+                        class="btn btn-sm btn-info"> Add New
                     </button></span>
 
                 <div class="clearfix">
 
                 </div>
                 <hr/>
-                <?php foreach ($establishment_types as $est) {
-                    ?>
-                    <div class="col-md-2">
-                        <label class="checkbox-inline">
-                            <input type="checkbox" name="establishment_type[]"
-                                   value="<?php echo $est->type_id ?>"><?php echo $est->type ?>
-                        </label>
-                    </div>
-                    <?php
-                } ?>
-
+                <div id="all_text">
+                    <?php foreach ($establishment_types as $est) {
+                        ?>
+                        <div class="col-md-2">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="establishment_type[]"
+                                       value="<?php echo $est->type_id ?>"><?php echo $est->type ?>
+                            </label>
+                        </div>
+                        <?php
+                    } ?>
+                </div>
             </div>
         </div>
     </div>
@@ -601,6 +619,9 @@
             <div class="well-sm well">
                 <table class="table table-bordered">
                     <tr>
+                        <th colspan="3" style="text-align: center">Happy Hours</th>
+                    </tr>
+                    <tr>
                         <th>
 
                         </th>
@@ -613,13 +634,17 @@
                     </tr>
                     <tr>
                         <td>if same all weeks</td>
-                        <td><input type="text" class="form-control time" id="start_time_all"></td>
-                        <td><input type="text" class="form-control time" id="end_time_all"></td>
+                        <td><input type="time" class="form-control time" id="start_time_all" data-time-format="H:i:s">
+                        </td>
+                        <td><input type="time" class="form-control time" id="end_time_all" data-time-format="H:i:s">
+                        </td>
                     </tr>
                     <tr>
                         <td>Sunday</td>
-                        <td><input name="happyhours[1][start]" type="text" class="form-control time start_time"></td>
-                        <td><input name="happyhours[1][end]" type="text" class="form-control time end_time"></td>
+                        <td><input name="happyhours[1][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="happyhours[1][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="1">New
                                 Time
@@ -628,8 +653,10 @@
                     </tr>
                     <tr>
                         <td>Monday</td>
-                        <td><input name="happyhours[2][start]" type="text" class="time form-control start_time"></td>
-                        <td><input name="happyhours[2][end]" type="text" class="time form-control end_time"></td>
+                        <td><input name="happyhours[2][start]" type="time" class="time form-control start_time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="happyhours[2][end]" type="time" class="time form-control end_time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="2">New
                                 Time
@@ -638,8 +665,10 @@
                     </tr>
                     <tr>
                         <td>Tuesday</td>
-                        <td><input name="happyhours[3][start]" type="text" class="time form-control start_time"></td>
-                        <td><input name="happyhours[3][end]" type="text" class="time form-control end_time"></td>
+                        <td><input name="happyhours[3][start]" type="time" class="time form-control start_time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="happyhours[3][end]" type="time" class="time form-control end_time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="3">New
                                 Time
@@ -648,8 +677,10 @@
                     </tr>
                     <tr>
                         <td>Wednesday</td>
-                        <td><input name="happyhours[4][start]" type="text" class="form-control start_time time"></td>
-                        <td><input name="happyhours[4][end]" type="text" class="form-control end_time time"></td>
+                        <td><input name="happyhours[4][start]" type="time" class="form-control start_time time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="happyhours[4][end]" type="time" class="form-control end_time time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="4">New
                                 Time
@@ -658,8 +689,10 @@
                     </tr>
                     <tr>
                         <td>Thursday</td>
-                        <td><input name="happyhours[5][start]" type="text" class="form-control start_time time"></td>
-                        <td><input name="happyhours[5][end]" type="text" class="form-control end_time time"></td>
+                        <td><input name="happyhours[5][start]" type="time" class="form-control start_time time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="happyhours[5][end]" type="time" class="form-control end_time time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="5">New
                                 Time
@@ -668,8 +701,10 @@
                     </tr>
                     <tr>
                         <td>Friday</td>
-                        <td><input name="happyhours[6][start]" type="text" class="form-control start_time time"></td>
-                        <td><input name="happyhours[6][end]" type="text" class="form-control end_time time"></td>
+                        <td><input name="happyhours[6][start]" type="time" class="form-control start_time time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="happyhours[6][end]" type="time" class="form-control end_time time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="6">New
                                 Time
@@ -679,8 +714,10 @@
 
                     <tr>
                         <td>Saturday</td>
-                        <td><input name="happyhours[7][start]" type="text" class="form-control start_time time"></td>
-                        <td><input name="happyhours[7][end]" type="text" class="form-control end_time time"></td>
+                        <td><input name="happyhours[7][start]" type="time" class="form-control start_time time"
+                                   data-time-format="H:i:s"></td>
+                        <td><input name="happyhours[7][end]" type="time" class="form-control end_time time"
+                                   data-time-format="H:i:s"></td>
                         <td>
                             <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="7">New
                                 Time
@@ -952,6 +989,13 @@
         </div>
     </div>
 </div>
+<style>
+    #all_text span
+    {
+        text-decoration:underline;
+        background-color:yellow;
+    }
+</style>
 <script>
     parking_check();
     $(document).ready(function () {
@@ -1009,6 +1053,13 @@
             $(this).hide('slow', function () {
             });
         });
+        $(document).on('focus', ".time", function () {
+            $('.time').timepicker();
+        });
+
+        $('#searchfor').keyup(function(){
+            $( "body" ).find(":contains($(this).val())").closest('input').css( "color", "red" );
+        });
         /*======================================================================================*/
         $('.addservetime').click(function () {
             var temp = $(this).closest('tr').find('td').eq(1).html();
@@ -1055,10 +1106,10 @@
         $('#btn-addMoreOwner').click(function () {
             $(this).text('Please wait.....');
             $.ajax({
-                    url: '<?php echo(site_url("restaurants/owner_entryform")) ?>',
-                    dataType: 'html'
+                url: '<?php echo(site_url("restaurants/owner_entryform")) ?>',
+                dataType: 'html'
 
-                })
+            })
                 .done(function (data) {
                     $('#btn-addMoreOwner').text('Add More owner');
                     $('#containerOwner').html(data);
@@ -1128,16 +1179,16 @@
         /*=================================================================================*/
         $('#city_suggest').keyup(function () {
             $.ajax({
-                    url: '<?php echo(site_url("place/suggest")) ?>',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: $(this).val(),
-                    success: function (data) {
+                url: '<?php echo(site_url("place/suggest")) ?>',
+                type: 'POST',
+                dataType: 'html',
+                data: $(this).val(),
+                success: function (data) {
 
-                        $('#est_city').empty();
-                        $('#est_city').append(data);
-                    }
-                })
+                    $('#est_city').empty();
+                    $('#est_city').append(data);
+                }
+            })
                 .done(function () {
                     console.log("success");
                 })
@@ -1152,16 +1203,16 @@
         /*=======================================================================================*/
         $('#area_suggest').keyup(function () {
             $.ajax({
-                    url: '<?php echo(site_url("place/suggest")) ?>',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: $(this).val(),
-                    success: function (data) {
+                url: '<?php echo(site_url("place/suggest")) ?>',
+                type: 'POST',
+                dataType: 'html',
+                data: $(this).val(),
+                success: function (data) {
 
-                        $('#est_area').empty();
-                        $('#est_area').append(data);
-                    }
-                })
+                    $('#est_area').empty();
+                    $('#est_area').append(data);
+                }
+            })
                 .done(function () {
                     console.log("success");
                 })
@@ -1176,19 +1227,19 @@
 
     });
     /*=============================================================================*/
-    $('#open_time_all').change(function () {
+    $('#open_time_all').focusout(function () {
         $('.open_time').val($(this).val());
-    })
-    $('#close_time_all').change(function () {
+    });
+    $('#close_time_all').focusout(function () {
         $('.close_time').val($(this).val());
-    })
+    });
 
-    $('#start_time_all').change(function () {
+    $('#start_time_all').focusout(function () {
         $('.start_time').val($(this).val());
-    })
-    $('#end_time_all').change(function () {
+    });
+    $('#end_time_all').focusout(function () {
         $('.end_time').val($(this).val());
-    })
+    });
     /*================================================================================*/
     function maxLengthCheck(object) {
         if (object.value.length > object.maxLength)
@@ -1199,32 +1250,32 @@
         disable_button(button_id, 'Saving');
 
         $.ajax({
-                url: '<?php echo(site_url("serve/add")) ?>',
-                dataType: 'json',
-                type: 'post',
-                data: $('#' + form_id).serialize(),
-                success: function (data) {
-                    console.log(data);
-                    if (data.status === true) {
-                        enable_button(button_id, 'Save');
-                        var temp_checkbox = '<label class="checkbox-inline">';
-                        temp_checkbox += '<input type="checkbox" name="serves[]" value="' + data.data.serves_id + '">' + data.data.serves_name + '</label>';
+            url: '<?php echo(site_url("serve/add")) ?>',
+            dataType: 'json',
+            type: 'post',
+            data: $('#' + form_id).serialize(),
+            success: function (data) {
+                console.log(data);
+                if (data.status === true) {
+                    enable_button(button_id, 'Save');
+                    var temp_checkbox = '<label class="checkbox-inline">';
+                    temp_checkbox += '<input type="checkbox" name="serves[]" value="' + data.data.serves_id + '">' + data.data.serves_name + '</label>';
 
-                        $('#serve_checkbox').append(temp_checkbox);
-                        $('#' + form_id)[0].reset();
-                        $('#mdl-addserve').modal('hide');
+                    $('#serve_checkbox').append(temp_checkbox);
+                    $('#' + form_id)[0].reset();
+                    $('#mdl-addserve').modal('hide');
 
-                    }
-                    else {
-                        $.each(data, function (index, val) {
-                            $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
-                            $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
-                        });
-
-                        enable_button(button_id, 'Save');
-                    }
                 }
-            })
+                else {
+                    $.each(data, function (index, val) {
+                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                    });
+
+                    enable_button(button_id, 'Save');
+                }
+            }
+        })
 
             .fail(function () {
 
@@ -1236,34 +1287,34 @@
         disable_button(button_id, 'Saving');
 
         $.ajax({
-                url: '<?php echo(site_url("establishment_type/add")) ?>',
-                dataType: 'json',
-                type: 'post',
-                data: $('#' + form_id).serialize(),
-                success: function (data) {
-                    console.log(data);
-                    if (data.status == true) {
-                        enable_button(button_id, 'Save');
+            url: '<?php echo(site_url("establishment_type/add")) ?>',
+            dataType: 'json',
+            type: 'post',
+            data: $('#' + form_id).serialize(),
+            success: function (data) {
+                console.log(data);
+                if (data.status == true) {
+                    enable_button(button_id, 'Save');
 
-                        var temp_checkbox = '<label class="checkbox-inline">';
-                        temp_checkbox += '<input type="checkbox" name="establishment_type[]" value="' + data.data.type_id + '">' + data.data.type + '</label>';
+                    var temp_checkbox = '<label class="checkbox-inline">';
+                    temp_checkbox += '<input type="checkbox" name="establishment_type[]" value="' + data.data.type_id + '">' + data.data.type + '</label>';
 
-                        $('#estd_checkbox').append(temp_checkbox);
-                        $('#' + form_id)[0].reset();
-                        $('#mdl_establishmentType').modal('hide');
-
-                    }
-                    else {
-                        $.each(data, function (index, val) {
-                            $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
-                            $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
-                        });
-
-                        enable_button(button_id, 'Save');
-                    }
+                    $('#estd_checkbox').append(temp_checkbox);
+                    $('#' + form_id)[0].reset();
+                    $('#mdl_establishmentType').modal('hide');
 
                 }
-            })
+                else {
+                    $.each(data, function (index, val) {
+                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                    });
+
+                    enable_button(button_id, 'Save');
+                }
+
+            }
+        })
 
             .fail(function () {
 
@@ -1275,34 +1326,34 @@
         disable_button(button_id, 'Saving');
 
         $.ajax({
-                url: '<?php echo(site_url("facility/add")) ?>',
-                dataType: 'json',
-                type: 'post',
-                data: $('#' + form_id).serialize(),
-                success: function (data) {
-                    console.log(data);
-                    if (data.status == true) {
+            url: '<?php echo(site_url("facility/add")) ?>',
+            dataType: 'json',
+            type: 'post',
+            data: $('#' + form_id).serialize(),
+            success: function (data) {
+                console.log(data);
+                if (data.status == true) {
 
-                        enable_button(button_id, 'Save');
+                    enable_button(button_id, 'Save');
 
-                        var temp_checkbox = '<label class="checkbox-inline">';
-                        temp_checkbox += '<input type="checkbox" name="facility[]" value="' + data.data.facilities_id + '">' + data.data.facility + '</label>';
+                    var temp_checkbox = '<label class="checkbox-inline">';
+                    temp_checkbox += '<input type="checkbox" name="facility[]" value="' + data.data.facilities_id + '">' + data.data.facility + '</label>';
 
-                        $('#facility_checkbox').append(temp_checkbox);
-                        $('#' + form_id)[0].reset();
-                        $('#mdl_facility').modal('hide');
+                    $('#facility_checkbox').append(temp_checkbox);
+                    $('#' + form_id)[0].reset();
+                    $('#mdl_facility').modal('hide');
 
-                    }
-                    else {
-                        $.each(data, function (index, val) {
-                            $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
-                            $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
-                        });
-
-                        enable_button(button_id, 'Save');
-                    }
                 }
-            })
+                else {
+                    $.each(data, function (index, val) {
+                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                    });
+
+                    enable_button(button_id, 'Save');
+                }
+            }
+        })
 
             .fail(function () {
 
@@ -1314,33 +1365,33 @@
         disable_button(button_id, 'Saving');
 
         $.ajax({
-                url: '<?php echo(site_url("Cousin/add")) ?>',
-                dataType: 'json',
-                type: 'post',
-                data: $('#' + form_id).serialize(),
-                success: function (data) {
-                    console.log(data);
-                    if (data.status == true) {
-                        enable_button(button_id, 'Save');
-                        var temp_checkbox = '<label class="checkbox-inline">';
-                        temp_checkbox += '<input type="checkbox" name="cousins[]" value="' + data.data.cousin_id + '">' + data.data.cousin + '</label>';
+            url: '<?php echo(site_url("Cousin/add")) ?>',
+            dataType: 'json',
+            type: 'post',
+            data: $('#' + form_id).serialize(),
+            success: function (data) {
+                console.log(data);
+                if (data.status == true) {
+                    enable_button(button_id, 'Save');
+                    var temp_checkbox = '<label class="checkbox-inline">';
+                    temp_checkbox += '<input type="checkbox" name="cousins[]" value="' + data.data.cousin_id + '">' + data.data.cousin + '</label>';
 
-                        $('#cousin_checkbox').append(temp_checkbox);
-                        $('#' + form_id)[0].reset();
-                        $('#mdl_cousin').modal('hide');
-
-                    }
-                    else {
-                        $.each(data, function (index, val) {
-                            $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
-                            $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
-                        });
-
-                        enable_button(button_id, 'Save');
-                    }
+                    $('#cousin_checkbox').append(temp_checkbox);
+                    $('#' + form_id)[0].reset();
+                    $('#mdl_cousin').modal('hide');
 
                 }
-            })
+                else {
+                    $.each(data, function (index, val) {
+                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                    });
+
+                    enable_button(button_id, 'Save');
+                }
+
+            }
+        })
 
             .fail(function () {
 
@@ -1352,33 +1403,33 @@
         disable_button(button_id, 'Saving');
 
         $.ajax({
-                url: '<?php echo(site_url("pop_dish/add")) ?>',
-                dataType: 'json',
-                type: 'post',
-                data: $('#' + form_id).serialize(),
-                success: function (data) {
-                    if (data.status == true) {
-                        enable_button(button_id, 'Save');
+            url: '<?php echo(site_url("pop_dish/add")) ?>',
+            dataType: 'json',
+            type: 'post',
+            data: $('#' + form_id).serialize(),
+            success: function (data) {
+                if (data.status == true) {
+                    enable_button(button_id, 'Save');
 
-                        var temp_checkbox = '<label class="checkbox-inline">';
-                        temp_checkbox += '<input type="checkbox" name="pop_dishes[]" value="' + data.data.pop_dishes_id + '">' + data.data.pop_dishes + '</label>';
+                    var temp_checkbox = '<label class="checkbox-inline">';
+                    temp_checkbox += '<input type="checkbox" name="pop_dishes[]" value="' + data.data.pop_dishes_id + '">' + data.data.pop_dishes + '</label>';
 
-                        $('#populardish_checkbox').append(temp_checkbox);
-                        $('#' + form_id)[0].reset();
-                        $('#mdl_populardish').modal('hide');
-                    }
-                    else {
-                        $.each(data, function (index, val) {
-                            $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
-                            $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
-                        });
-
-                        enable_button(button_id, 'Save');
-                    }
-
-
+                    $('#populardish_checkbox').append(temp_checkbox);
+                    $('#' + form_id)[0].reset();
+                    $('#mdl_populardish').modal('hide');
                 }
-            })
+                else {
+                    $.each(data, function (index, val) {
+                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                    });
+
+                    enable_button(button_id, 'Save');
+                }
+
+
+            }
+        })
 
             .fail(function () {
 
@@ -1419,11 +1470,11 @@
     function add_costTopic(button_id, table_name='') {
         disable_button(button_id, 'Saving..........');
         $.ajax({
-                url: '<?php echo(site_url("cost_topic/add")) ?>',
-                type: 'POST',
-                dataType: 'json',
-                data: $('#form-costTopic').serialize(),
-            })
+            url: '<?php echo(site_url("cost_topic/add")) ?>',
+            type: 'POST',
+            dataType: 'json',
+            data: $('#form-costTopic').serialize(),
+        })
             .done(function (data) {
 
                 if (data.status == true) {
