@@ -20,7 +20,7 @@
 				<button type="button" id="btn-addServe" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp&nbspAdd New</button>
 			</div>
 			<div class="panel-body">
-				<table class="table table-bordered table-hover">
+				<table class="table table-bordered table-hover" id="table-datatable">
 					<thead>
 						<tr>
 							<th>Sn.</th>
@@ -108,6 +108,10 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+
+		$('#table-datatable').DataTable({
+	        "responsive": true
+	    });
 
 		$('.delete').click(function() {
 			var serveid=$(this).data('serveid');

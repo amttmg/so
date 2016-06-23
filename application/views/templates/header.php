@@ -15,14 +15,15 @@
     <link href="<?php echo(base_url('assets/templates')) ?>/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="<?php echo(base_url('assets/templates')) ?>//bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="<?php echo(base_url('assets/templates')) ?>/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
+    <link href="<?php echo(base_url('assets/templates')) ?>/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="<?php echo(base_url('assets/templates')) ?>//dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="<?php echo(base_url('assets/templates')) ?>/dist/css/sb-admin-2.css" rel="stylesheet">
 
     <link href="<?php echo(base_url('assets/css/jquery.timepicker.css')) ?>" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="<?php echo(base_url('assets/templates')) ?>//bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo(base_url('assets/templates')) ?>/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="<?php echo base_url('assets/js/jQuery-2.1.4.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery.timepicker.min.js') ?>"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

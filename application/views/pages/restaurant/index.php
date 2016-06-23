@@ -12,7 +12,7 @@
 				<h3 class="panel-title">Restaurants Detail</h3>
 			</div>
 			<div class="panel-body">
-				<table class="table table-hover">
+				<table class="table table-hover" id="table-datatable">
 					<thead>
 						<tr>
 							<th>Sn.</th>
@@ -81,5 +81,12 @@
 		var url='<?php echo(site_url()) ?>/restaurants/delete/'+res_id;
 		$('#btn-delete').attr('href',url);
 		$('#modal-delete').modal('show');
+	});
+
+	$(document).ready(function() {
+		
+		$('#table-datatable').DataTable({
+	        "responsive": true
+	    });
 	});
 </script>

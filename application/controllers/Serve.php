@@ -134,7 +134,7 @@ class Serve extends CI_Controller {
 	{
 		$this->db->where('serves_id',$id);
 		$this->db->update('tbl_serves',array('status'=>0));
-		$this->session->set_flashdata('message', 'Updated Successfully !');
+		$this->session->set_flashdata('message', 'Delete Successfully !');
 		redirect('serve','refresh');
 	}
 
