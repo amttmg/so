@@ -78,6 +78,9 @@
                                 <li>
                                     <a href="<?php echo(site_url('city')) ?>">City</a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo(site_url('area')) ?>">Area</a>
+                                </li>
                                 
                             </ul>
                             <!-- /.nav-second-level -->

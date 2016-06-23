@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<h1>Facilities</h1>
+		<h1>Cuisine By Country</h1>
 	</div>
 </div>
 <?php if ($this->session->flashdata('message')): ?>
@@ -24,7 +24,7 @@
 					<thead>
 						<tr>
 							<th>Sn.</th>
-							<th>Facility Name</th>
+							<th>Cuisine By Country</th>
 							<th>Action</th>
 						</tr>
 					</thead>

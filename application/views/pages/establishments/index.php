@@ -24,7 +24,7 @@
 					<thead>
 						<tr>
 							<th>Sn.</th>
-							<th>Serve Name</th>
+							<th>Establishment Type</th>
 							<th>Action</th>
 						</tr>
 					</thead>

@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<h1>Cuisine By Food</h1>
+		<h1>Cities</h1>
 	</div>
 </div>
 <?php if ($this->session->flashdata('message')): ?>
@@ -17,26 +17,26 @@
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<button type="button" id="btn_addCousin" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp&nbspAdd New</button>
+				<button type="button" id="btn_addCity" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp&nbspAdd New</button>
 			</div>
 			<div class="panel-body">
 				<table class="table table-bordered table-hover" id="table-datatable">
 					<thead>
 						<tr>
 							<th>Sn.</th>
-							<th>Cousine By food</th>
+							<th>City</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php $count=1; ?>
-						<?php foreach ($c_by_foods as $food): ?>
+						<?php foreach ($cities as $city): ?>
 							<tr>
 								<td>
 									<?php echo($count); $count++; ?>
 								</td>
 								<td>
-									<?php echo($food->food); ?>
+									<?php echo($city->name); ?>
 								</td>
 								<td width="30px">
 									<div class="btn-group">
@@ -49,7 +49,7 @@
 	                                        	<a href="#"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
 	                                        </li>
 	                                        <li>
-	                                        	<a href="#" class="delete" data-fid="<?php echo($food->id) ?>"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
+	                                        	<a href="#" class="delete" data-fid="<?php echo($city->id) ?>"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
 	                                        </li>
 	                                    </ul>
 	                                </div>
@@ -81,25 +81,25 @@
 	</div>
 </div>
 
-<div class="modal fade" id="mdl_cousin">
+<div class="modal fade" id="mdl_city">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Facility</h4>
+				<h4 class="modal-title">City</h4>
 			</div>
 			 <div class="modal-body">
-                <form action="" method="POST" id="cousin_form">
+                <form action="" method="POST" id="city_form">
                     <div class="form-group">
-                        <label for="">Cousin</label>
-                        <input type="text" name="cousin_name" class="form-control" id="cousin_name" placeholder="Cousin Name">
+                        <label for="">City Name</label>
+                        <input type="text" name="city" class="form-control" id="city" placeholder="City Name">
                         <span></span>
                     </div>
                   
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btn_cousinsave" class="btn btn-primary">Save</button>
+                <button type="button" id="btn_citySave" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
 		</div>
@@ -115,18 +115,18 @@
 
 		$('.delete').click(function() {
 			var fid=$(this).data('fid');
-			var url='<?php echo(site_url()) ?>/cuisine/deletebyfood/'+fid;
+			var url='<?php echo(site_url()) ?>/city/delete/'+fid;
 			$('#btn-delete').attr('href',url);
 			$('#modal-delete').modal('show');
 		});
 
-		 $('#btn_addCousin').click(function() 
+		 $('#btn_addCity').click(function() 
 	      {
-	            $('#mdl_cousin').modal('show');
+	            $('#mdl_city').modal('show');
 	      });
 
-		 $('#btn_cousinsave').click(function() {
-          	insertIntoCousins('cousin_form','btn_cousinsave','btn_addCousin');
+		 $('#btn_citySave').click(function() {
+          	insertIntoCousins('city_form','btn_citySave','btn_addCity');
        	});
 
 		function insertIntoCousins(form_id,button_id,cousin_id)
@@ -134,7 +134,7 @@
 	        disable_button(button_id,'Saving');
 
 	        $.ajax({
-	            url: '<?php echo(site_url("Cousin/add_cousinebyfood")) ?>',
+	            url: '<?php echo(site_url("city/add")) ?>',
 	            dataType:'json',
 	            type:'post',
 	            data:$('#'+form_id).serialize(),
