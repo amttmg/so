@@ -1,7 +1,7 @@
 <!-- <div class="container" style="background-color: #f0f0f0"> -->
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <form method="post" action="<?php echo base_url('index.php/dataentry/insert') ?>">
+        <form method="post" action="<?php echo base_url('index.php/dataentry/insert') ?>">
             <?php if ($this->session->flashdata('flashSuccess')): ?>
                 <div class="alert alert-success" style="margin-top: 10px">
                     <b>
@@ -38,10 +38,12 @@
                     <div class="well-sm well">
                         <table class="table table-bordered">
                             <tr>
-                                <th colspan="2">Establishment's Contact Number 
-                                <div class="pull-right">
-                                    <button type="button" id="btn-estdcontactedit" class="btn btn-xs btn-primary">Edit</button>
-                                </div>
+                                <th colspan="2">Establishment's Contact Number
+                                    <div class="pull-right">
+                                        <button type="button" id="btn-estdcontactedit" class="btn btn-xs btn-primary">
+                                            Edit
+                                        </button>
+                                    </div>
                                 </th>
                             </tr>
                             <tr>
@@ -65,7 +67,7 @@
                                     Land line1
                                 </td>
                                 <td>
-                                    <?php echo($restaurants->landline1?'01'.$restaurants->landline1:'') ?>
+                                    <?php echo($restaurants->landline1 ? '01' . $restaurants->landline1 : '') ?>
                                 </td>
                             </tr>
                             <tr>
@@ -73,7 +75,7 @@
                                     Land line2
                                 </td>
                                 <td>
-                                    <?php echo($restaurants->landline2?'01'.$restaurants->landline2:'') ?>
+                                    <?php echo($restaurants->landline2 ? '01' . $restaurants->landline2 : '') ?>
                                 </td>
                             </tr>
                             <tr>
@@ -81,7 +83,7 @@
                                     Website
                                 </td>
                                 <td>
-                                    <?php echo($restaurants->website?'www.'.$restaurants->website:'') ?>
+                                    <?php echo($restaurants->website ? 'www.' . $restaurants->website : '') ?>
                                 </td>
                             </tr>
                             <tr>
@@ -99,7 +101,9 @@
                         <table class="table table-bordered">
                             <th colspan="2">Map(Coordinates)
                                 <div class="pull-right">
-                                    <button type="button" id="btn-editmapcoordinate" class="btn btn-xs btn-primary">Edit</button>
+                                    <button type="button" id="btn-editmapcoordinate" class="btn btn-xs btn-primary">
+                                        Edit
+                                    </button>
                                 </div>
                             </th>
                             <tr>
@@ -107,7 +111,7 @@
                                     Latitude
                                 </td>
                                 <td>
-                                    <?php echo('27.'.$restaurants->lat) ?>
+                                    <?php echo('27.' . $restaurants->lat) ?>
                                 </td>
                             </tr>
                             <tr>
@@ -115,7 +119,7 @@
                                     Longitude
                                 </td>
                                 <td>
-                                    <?php echo('85.'.$restaurants->lon) ?>
+                                    <?php echo('85.' . $restaurants->lon) ?>
                                 </td>
                             </tr>
                             <tr>
@@ -124,8 +128,8 @@
                                 </td>
                                 <td>
                                     <!-- <input type="checkbox" name="res_map" value="1"> -->
-                                   
-                                    <?php echo($restaurants->google_map?"Yes":"No") ?>
+
+                                    <?php echo($restaurants->google_map ? "Yes" : "No") ?>
 
                                 </td>
                             </tr>
@@ -137,50 +141,60 @@
                         <table class="table table-bordered">
                             <th colspan="2">Owner's or manager Restaurant Number
                                 <div class="pull-right">
-                                    <button type="button" id="btn-addOwner"  class="btn btn-xs btn-primary"><span class="fa fa-plus"></span>&nbsp&nbspAdd</button>
+                                    <button type="button" id="btn-addOwner" class="btn btn-xs btn-primary"><span
+                                            class="fa fa-plus"></span>&nbsp&nbspAdd
+                                    </button>
                                 </div>
                             </th>
                             <tr>
                                 <table class="table table-hover">
                                     <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Desinition</th>
-                                            <th>Mobile no.</th>
-                                            <th>Action</th>
-                                        </tr>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Desinition</th>
+                                        <th>Mobile no.</th>
+                                        <th>Action</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                       
-                                            <?php foreach ($owners as $owner): ?>
-                                                <tr>
-                                                <td>
-                                                    <?php echo($owner->name); ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo($owner->designation) ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo($owner->mobile1) ?>
-                                                </td>
-                                                <td>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                            Action
-                                                            <span class="caret"></span>
-                                                        </button>
-                                                        <ul class="dropdown-menu pull-right" role="menu">
-                                                            <li>
-                                                                <a href="#" class="btn-ownerEdit" data-partnerid="<?php echo $owner->owner_id ?>"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="<?php echo(site_url('owner/delete/'.$this->uri->segment(3).'/'.$owner->owner_id)) ?>" class="delete" data-resid="5" onclick="return confirm('Are you sure you want to delete?');"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                </tr>
-                                            <?php endforeach ?>
+
+                                    <?php foreach ($owners as $owner): ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo($owner->name); ?>
+                                            </td>
+                                            <td>
+                                                <?php echo($owner->designation) ?>
+                                            </td>
+                                            <td>
+                                                <?php echo($owner->mobile1) ?>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle"
+                                                            data-toggle="dropdown" aria-expanded="false">
+                                                        Action
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu pull-right" role="menu">
+                                                        <li>
+                                                            <a href="#" class="btn-ownerEdit"
+                                                               data-partnerid="<?php echo $owner->owner_id ?>"><label
+                                                                    class="text-success"><i
+                                                                        class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="<?php echo(site_url('owner/delete/' . $this->uri->segment(3) . '/' . $owner->owner_id)) ?>"
+                                                               class="delete" data-resid="5"
+                                                               onclick="return confirm('Are you sure you want to delete?');"><label
+                                                                    class="text-warning"><i
+                                                                        class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
                                     </tbody>
                                 </table>
                             </tr>
@@ -190,7 +204,9 @@
                         <table class="table table-bordered">
                             <th colspan="2">Establishment Location
                                 <div class="pull-right">
-                                    <button type="button" id="btn-editEstablismentLocation" class="btn btn-xs btn-primary">Edit</button>
+                                    <button type="button" id="btn-editEstablismentLocation"
+                                            class="btn btn-xs btn-primary">Edit
+                                    </button>
                                 </div>
                             </th>
                             <tr>
@@ -230,7 +246,7 @@
                                     Others(Building's Name)
                                 </td>
                                 <td>
-                                   
+
                                 </td>
                             </tr>
                         </table>
@@ -241,32 +257,35 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="well-sm well clearfix">
-                        <b>Serves: </b> <span id="msg-serveswait" class="text-success " style="display:none">  </span><button type="button" id="btn_addServe" class="btn btn-sm btn-info pull-right"><i class="fa fa-plus fa"></i>   Add New</button>
+                        <b>Serves: </b> <span id="msg-serveswait" class="text-success " style="display:none">  </span>
+                        <button type="button" id="btn_addServe" class="btn btn-sm btn-info pull-right"><i
+                                class="fa fa-plus fa"></i> Add New
+                        </button>
                         <hr/>
                         <div id="serve_checkbox">
                             <?php foreach ($serves as $ser) {
                                 ?>
                                 <div class="col-md-2">
                                     <label class="checkbox-inline">
-                                            <!-- <input type="checkbox" name="serves[]"
+                                        <!-- <input type="checkbox" name="serves[]"
                                                    value="<?php echo $ser->serves_id ?>"><?php echo $ser->serves_name ?> -->
-                                                  <?php 
-                                                  $data = array(
-                                                    'name'        => 'serves[]',
-                                                    'class'          => 'serves',
-                                                    'value'       => $ser->serves_id,
-                                                    'checked'     => $ser->res_id?TRUE:FALSE
-                                                    );
+                                        <?php
+                                        $data = array(
+                                            'name' => 'serves[]',
+                                            'class' => 'serves',
+                                            'value' => $ser->serves_id,
+                                            'checked' => $ser->res_id ? TRUE : FALSE
+                                        );
 
-                                                   ?>
-                                                   <?php echo form_checkbox($data); ?><?php echo $ser->serves_name ?>
+                                        ?>
+                                        <?php echo form_checkbox($data); ?><?php echo $ser->serves_name ?>
 
-                                        </label>
+                                    </label>
                                 </div>
                                 <?php
                             } ?>
                             <?php echo form_error('serves'); ?>
-                            
+
                         </div>
                     </div>
 
@@ -288,124 +307,138 @@
                                     Closing Time
                                 </th>
                             </tr>
-                            
+
                             <?php foreach ($service_time as $st): ?>
-                               
-                                <?php if ($st['first']->day==1): ?>
+
+                                <?php if ($st['first']->day == 1): ?>
                                     <tr>
                                         <td>Sunday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
                                 <?php endif ?>
-                                <?php if ($st['first']->day==2): ?>
+                                <?php if ($st['first']->day == 2): ?>
                                     <tr>
                                         <td>Monday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
+                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
                                 <?php endif ?>
-                                <?php if ($st['first']->day==3): ?>
+                                <?php if ($st['first']->day == 3): ?>
                                     <tr>
                                         <td>Tuesday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
-                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
                                 <?php endif ?>
-                                <?php if ($st['first']->day==4): ?>
+                                <?php if ($st['first']->day == 4): ?>
                                     <tr>
                                         <td>Wednesday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
-                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
                                 <?php endif ?>
-                                <?php if ($st['first']->day==5): ?>
+                                <?php if ($st['first']->day == 5): ?>
                                     <tr>
                                         <td>Thursday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
-                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
                                 <?php endif ?>
-                                <?php if ($st['first']->day==6): ?>
+                                <?php if ($st['first']->day == 6): ?>
                                     <tr>
                                         <td>Friday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
-                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
                                 <?php endif ?>
-                                <?php if ($st['first']->day==7): ?>
+                                <?php if ($st['first']->day == 7): ?>
                                     <tr>
                                         <td>Saturday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time?$st['first']->opening_time:'-- -- --') ?>
+                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->opening_time?$st['second']->opening_time:'-- -- --') ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time?$st['first']->closing_time:'-- -- --') ?>
-                                             <?php if ($st['second']): ?>
-                                                <br/><br/><?php echo($st['second']->closing_time?$st['second']->closing_time:'-- -- --') ?>
+                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
+                                            <?php if ($st['second']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -422,7 +455,8 @@
                                     Cost(Lunch, dinner or breakfast) for two
                                 </th>
                             </tr>
-                            <?php foreach ($res_costs as $topic) {
+                            <?php $total = 0;
+                            foreach ($res_costs as $topic) {
                                 ?>
                                 <tr>
                                     <td>
@@ -433,16 +467,16 @@
                                     </td>
                                 </tr>
                                 <?php
-
+                                $total += $topic->cost;
                             } ?>
-                            <!-- <tr>
+                            <tr>
                                 <td>
                                     <b>Total</b>
                                 </td>
                                 <td>
-                                   <input type="number" class="form-control" disabled="" name="total" id="total" value="0">
+                                   <b><?php echo $total ?></b>
                                 </td>
-                            </tr> -->
+                            </tr>
                         </table>
                     </div>
                 </div>
@@ -454,20 +488,21 @@
                         <b> Parking :</b><span id="msg-parkingWait" class="text-success" style="display:none">  </span>
                         <label class="checkbox-inline">
                             <input type="radio" id="parking_yes" class="parking" name="res_parking"
-                                   value="1" <?php echo($restaurants->parking?'checked':'') ?>>Yes
+                                   value="1" <?php echo($restaurants->parking ? 'checked' : '') ?>>Yes
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" id="parking_no" class="parking" name="res_parking" value="0" <?php echo($restaurants->parking?'':'checked') ?>>No
+                            <input type="radio" id="parking_no" class="parking" name="res_parking"
+                                   value="0" <?php echo($restaurants->parking ? '' : 'checked') ?>>No
                         </label>
                         <hr/>
 
                         <label class="checkbox-inline">
                             <input type="checkbox" class="parking_options" id='res_parking2' name="res_parking2"
-                                   value="2" <?php echo($restaurants->parking_two?'checked':'') ?>>Two Wheeler
+                                   value="2" <?php echo($restaurants->parking_two ? 'checked' : '') ?>>Two Wheeler
                         </label>
                         <label class="checkbox-inline">
                             <input type="checkbox" class="parking_options" id="res_parking4" name="res_parking4"
-                                   value="4" <?php echo($restaurants->parking_four?'checked':'') ?>>Four Wheeler
+                                   value="4" <?php echo($restaurants->parking_four ? 'checked' : '') ?>>Four Wheeler
                         </label>
                     </div>
                 </div>
@@ -476,25 +511,28 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="well-sm well clearfix" id="estd_checkbox">
-                        <b> Establishment Type:</b> <span id="msg-estdTypeWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_establishmentType" class="btn btn-sm btn-info"> Add New</button></span>
+                        <b> Establishment Type:</b> <span id="msg-estdTypeWait" class="text-success"
+                                                          style="display:none">  </span><span class="pull-right"><button
+                                type="button" id="btn_establishmentType" class="btn btn-sm btn-info"> Add New
+                            </button></span>
                         <hr/>
                         <?php foreach ($est_type as $est): ?>
-                         <div class="col-md-2">
-                              <label class="checkbox-inline">
-                             <?php 
-                                $data = array(
-                                    'name'        => 'establishment_type[]',
-                                    'class'          => 'estd_type',
-                                    'value'       =>$est->type_id ,
-                                    'checked'     => $est->res_id?TRUE:FALSE
+                            <div class="col-md-2">
+                                <label class="checkbox-inline">
+                                    <?php
+                                    $data = array(
+                                        'name' => 'establishment_type[]',
+                                        'class' => 'estd_type',
+                                        'value' => $est->type_id,
+                                        'checked' => $est->res_id ? TRUE : FALSE
                                     );
 
-                                   ?>
-                                <?php echo form_checkbox($data); ?><?php echo $est->type ?>
+                                    ?>
+                                    <?php echo form_checkbox($data); ?><?php echo $est->type ?>
                                 </label>
-                         </div>
+                            </div>
                         <?php endforeach ?>
-                       
+
                     </div>
                 </div>
             </div>
@@ -502,27 +540,30 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="well-sm well clearfix" id="facility_checkbox">
-                        <b> Facilities :</b><span id="msg-facilityWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_facilities" class="btn btn-sm btn-info"> Add New</button></span>
+                        <b> Facilities :</b><span id="msg-facilityWait" class="text-success"
+                                                  style="display:none">  </span><span class="pull-right"><button
+                                type="button" id="btn_facilities" class="btn btn-sm btn-info"> Add New
+                            </button></span>
                         <hr/>
 
                         <?php foreach ($facilities as $fac): ?>
                             <div class="col-md-2">
                                 <label class="checkbox-inline">
-                                 <?php 
+                                    <?php
                                     $data = array(
-                                        'name'        => 'facilities[]',
-                                        'class'          => 'facility',
-                                        'value'       =>$fac->facilities_id ,
-                                        'checked'     => $fac->res_id?TRUE:FALSE
-                                        );
+                                        'name' => 'facilities[]',
+                                        'class' => 'facility',
+                                        'value' => $fac->facilities_id,
+                                        'checked' => $fac->res_id ? TRUE : FALSE
+                                    );
 
-                                       ?>
+                                    ?>
                                     <?php echo form_checkbox($data); ?><?php echo $fac->facility ?>
                                 </label>
                             </div>
                         <?php endforeach ?>
-                       
-                        
+
+
                     </div>
                 </div>
             </div>
@@ -560,11 +601,11 @@
                                     End Time
                                 </th>
                             </tr>
-                           
-                             <?php foreach ($happy_hours as $hh): ?>
-                                
-                                    <tr>
-                                        <td><?php switch ($hh['first']->day) {
+
+                            <?php foreach ($happy_hours as $hh): ?>
+
+                                <tr>
+                                    <td><?php switch ($hh['first']->day) {
                                             case '1':
                                                 echo("sunday");
                                                 break;
@@ -587,23 +628,24 @@
                                                 echo('Saturday');
                                                 break;
                                         } ?>
-                                        </td>
-                                        <td>
-                                            <?php echo($hh['first']->start_time?$hh['first']->start_time:'-- -- --') ?>
-                                            <?php if ($hh['second']): ?>
-                                                <br/><br/><?php echo($hh['second']->start_time?$hh['second']->start_time:'-- -- --') ?>
-                                            <?php endif ?>
-                                        </td>
-                                        <td>
-                                            <?php echo($hh['first']->end_time?$hh['first']->end_time:'-- -- --') ?>
-                                            <?php if ($hh['second']): ?>
-                                                <br/><br/><?php echo($hh['second']->end_time?$hh['second']->end_time:'-- -- --') ?>
-                                            <?php endif ?>
-                                        </td>
-                                    </tr>
-                              
-                                
-                                
+                                    </td>
+                                    <td>
+                                        <?php echo($hh['first']->start_time ? $hh['first']->start_time : '-- -- --') ?>
+                                        <?php if ($hh['second']): ?>
+                                            <br/>
+                                            <br/><?php echo($hh['second']->start_time ? $hh['second']->start_time : '-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
+                                    <td>
+                                        <?php echo($hh['first']->end_time ? $hh['first']->end_time : '-- -- --') ?>
+                                        <?php if ($hh['second']): ?>
+                                            <br/>
+                                            <br/><?php echo($hh['second']->end_time ? $hh['second']->end_time : '-- -- --') ?>
+                                        <?php endif ?>
+                                    </td>
+                                </tr>
+
+
                             <?php endforeach ?>
                         </table>
                     </div>
@@ -613,22 +655,26 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="well-sm well clearfix" id="cousin_checkbox">
-                        <b> Cuisine by Country :</b><span id="msg-cousinByCountryWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
+                        <b> Cuisine by Country :</b><span id="msg-cousinByCountryWait" class="text-success"
+                                                          style="display:none">  </span><span class="pull-right"><button
+                                type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i
+                                    class="fa fa-plus fa"></i> Add New
+                            </button></span>
                         <hr/>
                         <?php foreach ($cousins as $Cousin): ?>
                             <div class="col-md-2">
                                 <label class="checkbox-inline">
-                                 <?php 
+                                    <?php
                                     $data = array(
-                                        'name'        => 'cousins[]',
-                                        'class'          => 'cousins',
-                                        'value'       =>$Cousin->cousin_id ,
-                                        'checked'     => $Cousin->res_id?TRUE:FALSE
-                                        );
+                                        'name' => 'cousins[]',
+                                        'class' => 'cousins',
+                                        'value' => $Cousin->cousin_id,
+                                        'checked' => $Cousin->res_id ? TRUE : FALSE
+                                    );
 
-                                       ?>
+                                    ?>
                                     <?php echo form_checkbox($data); ?><?php echo $Cousin->cousin ?>
-                                    </label>
+                                </label>
                             </div>
                         <?php endforeach ?>
                     </div>
@@ -639,22 +685,25 @@
                 <div class="col-md-12">
                     <div class="well-sm well clearfix">
                         <b> Cuisine by Food :</b>
-                        <span id="msg-cousinByFoodWait" class="text-success" style="display:none">  </span><span class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i class="fa fa-plus fa"></i> Add New</button></span>
+                        <span id="msg-cousinByFoodWait" class="text-success" style="display:none">  </span><span
+                            class="pull-right"><button type="button" id="btn_addCousin" class="btn btn-sm btn-info "><i
+                                    class="fa fa-plus fa"></i> Add New
+                            </button></span>
                         <hr/>
-                         <?php foreach ($foods as $food): ?>
+                        <?php foreach ($foods as $food): ?>
                             <div class="col-md-2">
                                 <label class="checkbox-inline">
-                                 <?php 
+                                    <?php
                                     $data = array(
-                                        'name'        => 'foods[]',
-                                        'class'          => 'foods',
-                                        'value'       =>$food->food_id  ,
-                                        'checked'     => $food->res_id?TRUE:FALSE
-                                        );
+                                        'name' => 'foods[]',
+                                        'class' => 'foods',
+                                        'value' => $food->food_id,
+                                        'checked' => $food->res_id ? TRUE : FALSE
+                                    );
 
-                                       ?>
+                                    ?>
                                     <?php echo form_checkbox($data); ?><?php echo $food->food ?>
-                                    </label>
+                                </label>
                             </div>
                         <?php endforeach ?>
                     </div>
@@ -664,22 +713,26 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="well-sm well clearfix" id="populardish_checkbox">
-                        <b> Popular Dish:</b><span id="msg-popDishWait" class="text-success" style="display:none">  </span><span class="pull-right"> <button type="button" id="btn_addPopDish" class="btn btn-sm btn-info"><i class="fa fa-plus fa"></i> Add New</button></span>
+                        <b> Popular Dish:</b><span id="msg-popDishWait" class="text-success"
+                                                   style="display:none">  </span><span class="pull-right"> <button
+                                type="button" id="btn_addPopDish" class="btn btn-sm btn-info"><i
+                                    class="fa fa-plus fa"></i> Add New
+                            </button></span>
                         <hr/>
-                         <?php foreach ($pop_dishes as $pop): ?>
+                        <?php foreach ($pop_dishes as $pop): ?>
                             <div class="col-md-2">
                                 <label class="checkbox-inline">
-                                 <?php 
+                                    <?php
                                     $data = array(
-                                        'name'        => 'pop_dishes[]',
-                                        'class'          => 'pop_dishes',
-                                        'value'       =>$pop->pop_dishes_id ,
-                                        'checked'     => $pop->res_id?TRUE:FALSE
-                                        );
+                                        'name' => 'pop_dishes[]',
+                                        'class' => 'pop_dishes',
+                                        'value' => $pop->pop_dishes_id,
+                                        'checked' => $pop->res_id ? TRUE : FALSE
+                                    );
 
-                                       ?>
+                                    ?>
                                     <?php echo form_checkbox($data); ?><?php echo $pop->pop_dishes ?>
-                                    </label>
+                                </label>
                             </div>
                         <?php endforeach ?>
                     </div>
@@ -701,7 +754,7 @@
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-sm btn-primary">Save</button>
                     <div class="clearfix">
-                    
+
                     </div>
                 </div>
             </div>
@@ -732,7 +785,8 @@
 
                     <div class="form-group">
                         <label for="">label</label>
-                        <input type="text" name="serve_name" id="serve_name" class="form-control" placeholder="Input Serve Type">
+                        <input type="text" name="serve_name" id="serve_name" class="form-control"
+                               placeholder="Input Serve Type">
                         <span></span>
                     </div>
                 </form>
@@ -753,10 +807,11 @@
                 <h4 class="modal-title">Add new establishment type</h4>
             </div>
             <div class="modal-body">
-                <form action="" method="POST"  id="estd_typeform">
+                <form action="" method="POST" id="estd_typeform">
                     <div class="form-group">
                         <label for="">Establishment Type</label>
-                        <input type="text" name="estd_type" id="estd_type" class="form-control" placeholder="Input Establishment Type">
+                        <input type="text" name="estd_type" id="estd_type" class="form-control"
+                               placeholder="Input Establishment Type">
                         <span></span>
                     </div>
                 </form>
@@ -778,13 +833,14 @@
             </div>
             <div class="modal-body">
                 <form action="" method="POST" role="" id="facility_form">
-                    
+
                     <div class="form-group">
                         <label for="">Facility</label>
-                        <input type="text" name="facility_name" id="facility_name" class="form-control" id="" placeholder="Input Facility">
+                        <input type="text" name="facility_name" id="facility_name" class="form-control" id=""
+                               placeholder="Input Facility">
                         <span></span>
                     </div>
-        
+
                 </form>
             </div>
             <div class="modal-footer">
@@ -806,10 +862,11 @@
                 <form action="" method="POST" id="cousin_form">
                     <div class="form-group">
                         <label for="">Cousin</label>
-                        <input type="text" name="cousin_name" class="form-control" id="cousin_name" placeholder="Cousin Name">
+                        <input type="text" name="cousin_name" class="form-control" id="cousin_name"
+                               placeholder="Cousin Name">
                         <span></span>
                     </div>
-                  
+
                 </form>
             </div>
             <div class="modal-footer">
@@ -853,96 +910,105 @@
             </div>
             <div class="modal-body">
                 <div class="well-sm well">
-                  <form id="form-establishment">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th colspan="2">Establishment's Contact Number</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                Mobile 1
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <input maxlength="8" oninput="maxLengthCheck(this)" type="number" class="form-control" name="res_mobile1"
-                                           value="<?php echo set_value('res_mobile1') ?>" id="res_mobile1"
-                                           >
-                                           <span></span>
-                                     </div>
+                    <form id="form-establishment">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th colspan="2">Establishment's Contact Number</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Mobile 1
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input maxlength="8" oninput="maxLengthCheck(this)" type="number"
+                                               class="form-control" name="res_mobile1"
+                                               value="<?php echo set_value('res_mobile1') ?>" id="res_mobile1"
+                                            >
+                                        <span></span>
+                                    </div>
                                     <?php echo form_error('res_mobile1'); ?>
-                              
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Mobile 2
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <input name="res_mobile2" type="number" maxlength="8" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_mobile2') ?>" type="text"
-                                       class="form-control phone" id="res_mobile2">
-                                       <span></span>
-                                </div>
-                                <?php echo form_error('res_mobile2'); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Land line1
-                            </td>
-                            <td>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">01</span>
-                                    <input type="number" name="res_landline1" id="res_landline1" maxlength="10" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_landline1') ?>"
-                                       class="form-control">
-                                       <span></span>
-                                   </div>
-                                <?php echo form_error('res_landline1'); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Land line2
-                            </td>
-                            <td>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">01</span>
-                                    <input type="number" name="res_landline2" id="res_landline2" maxlength="10" oninput="maxLengthCheck(this)" value="<?php echo set_value('res_landline2') ?>"
-                                       class="form-control">
-                                    <span></span>
-                                </div>
-                                <?php echo form_error('res_landline2'); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Website
-                            </td>
-                            <td>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">www.</span>
-                                    <input type="text" name="res_website" id="res_website" value="<?php echo set_value('res_website') ?>"
-                                       class="form-control">
-                                       <span></span>
-                                   </div>
-                                <?php echo form_error('res_website'); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Email
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <span></span>
-                                    <input type="text" name="res_email" id="res_email" value="<?php echo set_value('res_email') ?>" class="form-control">
-                                       <span></span>
-                                </div>
-                                <?php echo form_error('res_email'); ?>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Mobile 2
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="res_mobile2" type="number" maxlength="8"
+                                               oninput="maxLengthCheck(this)"
+                                               value="<?php echo set_value('res_mobile2') ?>" type="text"
+                                               class="form-control phone" id="res_mobile2">
+                                        <span></span>
+                                    </div>
+                                    <?php echo form_error('res_mobile2'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Land line1
+                                </td>
+                                <td>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">01</span>
+                                        <input type="number" name="res_landline1" id="res_landline1" maxlength="10"
+                                               oninput="maxLengthCheck(this)"
+                                               value="<?php echo set_value('res_landline1') ?>"
+                                               class="form-control">
+                                        <span></span>
+                                    </div>
+                                    <?php echo form_error('res_landline1'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Land line2
+                                </td>
+                                <td>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">01</span>
+                                        <input type="number" name="res_landline2" id="res_landline2" maxlength="10"
+                                               oninput="maxLengthCheck(this)"
+                                               value="<?php echo set_value('res_landline2') ?>"
+                                               class="form-control">
+                                        <span></span>
+                                    </div>
+                                    <?php echo form_error('res_landline2'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Website
+                                </td>
+                                <td>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">www.</span>
+                                        <input type="text" name="res_website" id="res_website"
+                                               value="<?php echo set_value('res_website') ?>"
+                                               class="form-control">
+                                        <span></span>
+                                    </div>
+                                    <?php echo form_error('res_website'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Email
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <span></span>
+                                        <input type="text" name="res_email" id="res_email"
+                                               value="<?php echo set_value('res_email') ?>" class="form-control">
+                                        <span></span>
+                                    </div>
+                                    <?php echo form_error('res_email'); ?>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">
@@ -962,61 +1028,65 @@
             </div>
             <div class="modal-body">
                 <div class="well-sm well">
-                <form id="form-ownerManagerResNumber">
-                    <table class="table table-bordered">
-                        <th colspan="2">Owner's or manager Restaurant Number</th>
-                        <tr>
-                            <td>
-                                Name
-                            </td>
-                            <td>
-                                <input type="text" name="owners_name" id="owners_name" value="<?php echo set_value('owners_name') ?>"
-                                       class="form-control">
-                                       <span></span>
-                                <?php echo form_error('owners_name'); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Designation
-                            </td>
-                            <td>
-                                <input type="text" name="owners_designation" id="owners_designation"
-                                       value="<?php echo set_value('owners_designation') ?>" class="form-control">
-                                <span></span>
-                                <?php echo form_error('owners_designation'); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Mobile 1
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <input type="number" name="owners_mobile1" id="owners_mobile1" maxlength="8" oninput="maxLengthCheck(this)" value="<?php echo set_value('owners_mobile1') ?>"
-                                       class="form-control">
+                    <form id="form-ownerManagerResNumber">
+                        <table class="table table-bordered">
+                            <th colspan="2">Owner's or manager Restaurant Number</th>
+                            <tr>
+                                <td>
+                                    Name
+                                </td>
+                                <td>
+                                    <input type="text" name="owners_name" id="owners_name"
+                                           value="<?php echo set_value('owners_name') ?>"
+                                           class="form-control">
                                     <span></span>
-                                </div>
-                                <?php echo form_error('owners_mobile1'); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Mobile 2
-                            </td>
-                            <td>
-                                <div class="form-group">
-                                    <input type="number" name="owners_mobile2" id="owners_mobile2" maxlength="8" oninput="maxLengthCheck(this)"
-                                       value="<?php echo set_value('owners_mobile2') ?>"
-                                       class="form-control">
-                                       <span></span>
-                                </div>
-                                <?php echo form_error('owners_mobile2'); ?>
-                            </td>
-                        </tr>
-                        <input type="hidden" name="partner_id" id="partner_id" value="">
-                    </table>
-                </form>
+                                    <?php echo form_error('owners_name'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Designation
+                                </td>
+                                <td>
+                                    <input type="text" name="owners_designation" id="owners_designation"
+                                           value="<?php echo set_value('owners_designation') ?>" class="form-control">
+                                    <span></span>
+                                    <?php echo form_error('owners_designation'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Mobile 1
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="number" name="owners_mobile1" id="owners_mobile1" maxlength="8"
+                                               oninput="maxLengthCheck(this)"
+                                               value="<?php echo set_value('owners_mobile1') ?>"
+                                               class="form-control">
+                                        <span></span>
+                                    </div>
+                                    <?php echo form_error('owners_mobile1'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Mobile 2
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="number" name="owners_mobile2" id="owners_mobile2" maxlength="8"
+                                               oninput="maxLengthCheck(this)"
+                                               value="<?php echo set_value('owners_mobile2') ?>"
+                                               class="form-control">
+                                        <span></span>
+                                    </div>
+                                    <?php echo form_error('owners_mobile2'); ?>
+                                </td>
+                            </tr>
+                            <input type="hidden" name="partner_id" id="partner_id" value="">
+                        </table>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">
@@ -1035,58 +1105,60 @@
                 <h4 class="modal-title">Edit Map(Coordinates)</h4>
             </div>
             <div class="modal-body">
-                 <div class="well-sm well">
-                 <form id="form-mapCoordinates">
-                    <table class="table table-bordered">
-                        <th colspan="2">Map(Coordinates)</th>
-                        <tr>
-                            <td>
-                                Latitude
-                            </td>
-                            <td>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">28.</span>
-                                    <input type="text" name="res_lat" id="res_lat" value="<?php echo set_value('res_lat') ?>"
-                                       class="form-control">
-                                       <span></span>
-                                </div>
-                                <?php echo form_error('res_lat'); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Longitude
-                            </td>
-                            <td>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">84.</span>
-                                    <input type="text" name="res_lon" id="res_lon" value="<?php echo set_value('res_lon') ?>"
-                                       class="form-control">
-                                       <span></span>
-                                </div>
-                                <?php echo form_error('res_lon'); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Present in google Map
-                            </td>
-                            <td>
-                                <!-- <input type="checkbox" name="res_map" value="1"> -->
-                                <div class="form-group">
-                                    <label class="radio-inline">
-                                        <input type="radio" name="res_map" id="map_yes" value="1" >Yes
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="res_map" id="map_no" value="0">No
-                                    </label>
-                                    
-                                </div>
-                                <?php echo form_error('res_map'); ?>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
+                <div class="well-sm well">
+                    <form id="form-mapCoordinates">
+                        <table class="table table-bordered">
+                            <th colspan="2">Map(Coordinates)</th>
+                            <tr>
+                                <td>
+                                    Latitude
+                                </td>
+                                <td>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">28.</span>
+                                        <input type="text" name="res_lat" id="res_lat"
+                                               value="<?php echo set_value('res_lat') ?>"
+                                               class="form-control">
+                                        <span></span>
+                                    </div>
+                                    <?php echo form_error('res_lat'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Longitude
+                                </td>
+                                <td>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">84.</span>
+                                        <input type="text" name="res_lon" id="res_lon"
+                                               value="<?php echo set_value('res_lon') ?>"
+                                               class="form-control">
+                                        <span></span>
+                                    </div>
+                                    <?php echo form_error('res_lon'); ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Present in google Map
+                                </td>
+                                <td>
+                                    <!-- <input type="checkbox" name="res_map" value="1"> -->
+                                    <div class="form-group">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="res_map" id="map_yes" value="1">Yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="res_map" id="map_no" value="0">No
+                                        </label>
+
+                                    </div>
+                                    <?php echo form_error('res_map'); ?>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">
@@ -1115,13 +1187,14 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input list="est_city" id="city_suggest" name="est_city" value="" class="form-control">
-                                           <span></span>
+                                        <input list="est_city" id="city_suggest" name="est_city" value=""
+                                               class="form-control">
+                                        <span></span>
                                     </div>
-                                           <datalist id="est_city">
-                                               
-                                           </datalist>
-                                    
+                                    <datalist id="est_city">
+
+                                    </datalist>
+
                                 </td>
                             </tr>
                             <tr>
@@ -1130,13 +1203,14 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input list="est_area" name="est_area" id="area_suggest" value="<?php echo set_value('est_area') ?>" class="form-control">
+                                        <input list="est_area" name="est_area" id="area_suggest"
+                                               value="<?php echo set_value('est_area') ?>" class="form-control">
                                         <span></span>
                                     </div>
                                     <datalist id="est_area">
-                                               
+
                                     </datalist>
-                                   
+
                                 </td>
                             </tr>
                             <tr>
@@ -1145,8 +1219,9 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input type="text" name="est_street" id="est_street" value="<?php echo set_value('est_street') ?>"
-                                           class="form-control">
+                                        <input type="text" name="est_street" id="est_street"
+                                               value="<?php echo set_value('est_street') ?>"
+                                               class="form-control">
                                         <span></span>
                                 </td>
                             </tr>
@@ -1156,8 +1231,9 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input type="text" name="est_landmark" id="est_landmark" value="<?php echo set_value('est_landmark') ?>"
-                                           class="form-control">
+                                        <input type="text" name="est_landmark" id="est_landmark"
+                                               value="<?php echo set_value('est_landmark') ?>"
+                                               class="form-control">
                                         <span></span>
                                     </div>
                                 </td>
@@ -1168,8 +1244,9 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input type="text" name="est_other" id="est_other" value="<?php echo set_value('est_other') ?>"
-                                           class="form-control">
+                                        <input type="text" name="est_other" id="est_other"
+                                               value="<?php echo set_value('est_other') ?>"
+                                               class="form-control">
                                         <span></span>
                                     </div>
                                 </td>
@@ -1179,7 +1256,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btn-updateEstdLocation" class="btn btn-primary">Update </button>
+                <button type="button" id="btn-updateEstdLocation" class="btn btn-primary">Update</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -1196,25 +1273,29 @@
             <div class="modal-body">
                 <div class="well-sm well">
                     <form id="form-addNewOwner">
-                        
+
                         <div class="form-group">
                             <label for="">Name</label>
-                            <input type="text" class="form-control" name="owners_name" id="owners_name" placeholder="Input Name">
+                            <input type="text" class="form-control" name="owners_name" id="owners_name"
+                                   placeholder="Input Name">
                             <span></span>
                         </div>
                         <div class="form-group">
                             <label for="">Designition</label>
-                            <input type="text" class="form-control" name="owners_designation" id="owners_designation" placeholder="Input Designition">
+                            <input type="text" class="form-control" name="owners_designation" id="owners_designation"
+                                   placeholder="Input Designition">
                             <span></span>
                         </div>
                         <div class="form-group">
                             <label for="">Mobile 1</label>
-                            <input type="number" class="form-control" name="owners_mobile1" id="owners_mobile1" placeholder="Input Mobile Number">
+                            <input type="number" class="form-control" name="owners_mobile1" id="owners_mobile1"
+                                   placeholder="Input Mobile Number">
                             <span></span>
                         </div>
                         <div class="form-group">
                             <label for="">Mobile 2</label>
-                            <input type="number" class="form-control" name="owners_mobile2" id="owners_mobile2" placeholder="Input Mobile Number">
+                            <input type="number" class="form-control" name="owners_mobile2" id="owners_mobile2"
+                                   placeholder="Input Mobile Number">
                             <span></span>
                         </div>
                         <input type="hidden" name="restaurant_id" value="<?php echo($this->uri->segment(3)) ?>">
@@ -1232,10 +1313,10 @@
 
     parking_check();
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
-        $('#btn-ownerAddNew').click(function() {
-            $(this).prop('disabled',true);
+        $('#btn-ownerAddNew').click(function () {
+            $(this).prop('disabled', true);
             $(this).text('Please Wait....');
             $.ajax({
                 url: '<?php echo(site_url("owner/add")) ?>',
@@ -1243,534 +1324,509 @@
                 dataType: 'json',
                 data: $('#form-addNewOwner').serialize()
             })
-            .done(function(data) {
-                console.log(data);
-                if (data.status==true) {
-                  $("html, body").animate({ scrollTop: 0 }, "slow");
-                  location.reload();
+                .done(function (data) {
+                    console.log(data);
+                    if (data.status == true) {
+                        $("html, body").animate({scrollTop: 0}, "slow");
+                        location.reload();
 
-                }else{
-                       $('#btn-ownerAddNew').prop('disabled',false);
-                       $('#btn-ownerAddNew').text('Save');
-                        $.each(data, function(index, val) {
-                            $('#form-addNewOwner'+' #'+val.error_string).next().html(val.input_error);
-                            $('#form-addNewOwner'+' #'+val.error_string).parent().addClass('has-error');
+                    } else {
+                        $('#btn-ownerAddNew').prop('disabled', false);
+                        $('#btn-ownerAddNew').text('Save');
+                        $.each(data, function (index, val) {
+                            $('#form-addNewOwner' + ' #' + val.error_string).next().html(val.input_error);
+                            $('#form-addNewOwner' + ' #' + val.error_string).parent().addClass('has-error');
                         });
 
 
-                }
-                console.log("success");
-            })
-            .fail(function() {
-                $('#btn-ownerAddNew').prop('disabled',true);
-                $('#btn-ownerAddNew').text('Save');
-                console.log("error");
-            })
-            .always(function() {
-                console.log("complete");
-            });
-            
+                    }
+                    console.log("success");
+                })
+                .fail(function () {
+                    $('#btn-ownerAddNew').prop('disabled', true);
+                    $('#btn-ownerAddNew').text('Save');
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                });
+
         });
-/*==============================================================*/
-        $('#btn-addOwner').click(function() {
+        /*==============================================================*/
+        $('#btn-addOwner').click(function () {
             $('#modal-addOwner').modal('show');
         });
-/* =================================================================*/
-        var parking_2=0;
-        var parking_4=0;
+        /* =================================================================*/
+        var parking_2 = 0;
+        var parking_4 = 0;
 
-        $('.parking_options').change(function() {
-            parking_status ();
-            var is_to=0;
-            if ($(this).is(':checked')) 
-            {
-                is_to=1;
+        $('.parking_options').change(function () {
+            parking_status();
+            var is_to = 0;
+            if ($(this).is(':checked')) {
+                is_to = 1;
             }
 
-            $(this).prop('disabled',true);
+            $(this).prop('disabled', true);
             $('#msg-parkingWait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
             $('#msg-parkingWait').show();
             $.ajax({
-                url: '<?php echo(site_url("restaurants/update_parking")) ?>/'+'<?php echo $this->uri->segment(3); ?>/'+is_to+'/'+$(this).attr('name'),
+                url: '<?php echo(site_url("restaurants/update_parking")) ?>/' + '<?php echo $this->uri->segment(3); ?>/' + is_to + '/' + $(this).attr('name'),
                 type: 'POST',
                 data: {},
             })
-            .done(function(data) {
-                $('#msg-parkingWait').html("Update Successfully");
-                setTimeout(function() {
-                    $('#msg-parkingWait').hide();
-                }, 1000);
-                console.log("success");
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                $('.parking_options').prop('disabled',false);
-                console.log("complete");
-            });
-            
+                .done(function (data) {
+                    $('#msg-parkingWait').html("Update Successfully");
+                    setTimeout(function () {
+                        $('#msg-parkingWait').hide();
+                    }, 1000);
+                    console.log("success");
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    $('.parking_options').prop('disabled', false);
+                    console.log("complete");
+                });
+
 
         });
 
-/*=====================================================*/
+        /*=====================================================*/
 
-        $('.parking').click(function() {
+        $('.parking').click(function () {
             parking_check();
         });
 
-    var res_id='<?php echo($this->uri->segment(3)) ?>';
+        var res_id = '<?php echo($this->uri->segment(3)) ?>';
 
-    $('#btn-updateEstdLocation').click(function() {
-        $(this).text('Updating..........');
-        $(this).prop('disabled',true);
-        $.ajax({
-            url: '<?php echo(site_url("restaurants/update_estd_location")) ?>/'+res_id,
-            type: 'POST',
-            dataType: 'json',
-            data: $('#form-estdLocation').serialize(),
-        })
-        .done(function(data) {
+        $('#btn-updateEstdLocation').click(function () {
+            $(this).text('Updating..........');
+            $(this).prop('disabled', true);
+            $.ajax({
+                url: '<?php echo(site_url("restaurants/update_estd_location")) ?>/' + res_id,
+                type: 'POST',
+                dataType: 'json',
+                data: $('#form-estdLocation').serialize(),
+            })
+                .done(function (data) {
 
-            if (data.status==true) {
-                $("html, body").animate({ scrollTop: 0 }, "slow");
-                location.reload();
+                    if (data.status == true) {
+                        $("html, body").animate({scrollTop: 0}, "slow");
+                        location.reload();
 
-                }else{
+                    } else {
 
-                        $.each(data, function(index, val) {
-                            $('#form-estdLocation'+' #'+val.error_string).next().html(val.input_error);
-                            $('#form-estdLocation'+' #'+val.error_string).parent().addClass('has-error');
+                        $.each(data, function (index, val) {
+                            $('#form-estdLocation' + ' #' + val.error_string).next().html(val.input_error);
+                            $('#form-estdLocation' + ' #' + val.error_string).parent().addClass('has-error');
                         });
 
 
-                }
-            
-        })
-        .fail(function() {
-            $('#btn-updateEstdLocation').text('Update');
-            $('#btn-updateEstdLocation').prop('disabled',false);
-        })
-        .always(function() {
-            console.log("complete");
+                    }
+
+                })
+                .fail(function () {
+                    $('#btn-updateEstdLocation').text('Update');
+                    $('#btn-updateEstdLocation').prop('disabled', false);
+                })
+                .always(function () {
+                    console.log("complete");
+                });
+
         });
-        
-    });
-/*========================================================================*/
-    $('#btn-editEstablismentLocation').click(function() {
-        $(this).text('Please wait.....');
-        $.ajax({
-            url: '<?php echo(site_url("restaurants/view_estdcontact")) ?>/'+res_id,
-            dataType: 'json'
-          
-        })
-        .done(function(data) {
-            $('#mdl-establishmentLocation').modal('show');
-            $('#city_suggest').val(data.city);
-            $('#area_suggest').val(data.area);
-            $('#est_street').val(data.street);
-            $('#est_landmark').val(data.landmark);
-            $('#est_other').val(data.other);
-           
-        })
-        .fail(function() {
-            console.log("error");
-        })
-        .always(function() {
-            $('#btn-editEstablismentLocation').text('Edit');
+        /*========================================================================*/
+        $('#btn-editEstablismentLocation').click(function () {
+            $(this).text('Please wait.....');
+            $.ajax({
+                url: '<?php echo(site_url("restaurants/view_estdcontact")) ?>/' + res_id,
+                dataType: 'json'
+
+            })
+                .done(function (data) {
+                    $('#mdl-establishmentLocation').modal('show');
+                    $('#city_suggest').val(data.city);
+                    $('#area_suggest').val(data.area);
+                    $('#est_street').val(data.street);
+                    $('#est_landmark').val(data.landmark);
+                    $('#est_other').val(data.other);
+
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    $('#btn-editEstablismentLocation').text('Edit');
+                });
+
+
         });
-        
-        
-    });
-/*=============================================================================*/
-        $('#btn-updateMapCoordinate').click(function() {
-            $(this).prop('disabled',true);
+        /*=============================================================================*/
+        $('#btn-updateMapCoordinate').click(function () {
+            $(this).prop('disabled', true);
             $(this).text('Updating.........');
 
             $.ajax({
-                url: '<?php echo(site_url("restaurants/update_coordinate")) ?>/'+res_id,
+                url: '<?php echo(site_url("restaurants/update_coordinate")) ?>/' + res_id,
                 type: 'POST',
                 dataType: 'json',
                 data: $('#form-mapCoordinates').serialize()
             })
-            .done(function(data) {
-                if (data.status==true) {
-                  $("html, body").animate({ scrollTop: 0 }, "slow");
-                  location.reload();
+                .done(function (data) {
+                    if (data.status == true) {
+                        $("html, body").animate({scrollTop: 0}, "slow");
+                        location.reload();
 
-                }else{
-                        $('#btn-updateMapCoordinate').prop('disabled',false);
-                        $.each(data, function(index, val) {
-                            $('#form-mapCoordinates'+' #'+val.error_string).next().html(val.input_error);
-                            $('#form-mapCoordinates'+' #'+val.error_string).parent().addClass('has-error');
+                    } else {
+                        $('#btn-updateMapCoordinate').prop('disabled', false);
+                        $.each(data, function (index, val) {
+                            $('#form-mapCoordinates' + ' #' + val.error_string).next().html(val.input_error);
+                            $('#form-mapCoordinates' + ' #' + val.error_string).parent().addClass('has-error');
                         });
 
 
-                }
-            })
-            .fail(function() {
-                console.log("error");
-                $('#btn-updateMapCoordinate').prop('disabled',false);
-            })
-            .always(function() {
-                
-            });
-            
+                    }
+                })
+                .fail(function () {
+                    console.log("error");
+                    $('#btn-updateMapCoordinate').prop('disabled', false);
+                })
+                .always(function () {
+
+                });
+
         });
-/*==================================================================================*/
-        $('#btn-updateOwnerManagerResNumber').click(function() {
+        /*==================================================================================*/
+        $('#btn-updateOwnerManagerResNumber').click(function () {
             $(this).text('Updating.....');
-            $(this).prop('disabled',true);
+            $(this).prop('disabled', true);
             $.ajax({
-                url: '<?php echo(site_url("owner/update")) ?>/'+res_id,
+                url: '<?php echo(site_url("owner/update")) ?>/' + res_id,
                 type: 'POST',
                 dataType: 'json',
-                data:$('#form-ownerManagerResNumber').serialize()
+                data: $('#form-ownerManagerResNumber').serialize()
             })
-            .done(function(data) {
-                 if (data.status==true) {
-                  $("html, body").animate({ scrollTop: 0 }, "slow");
-                  location.reload();
+                .done(function (data) {
+                    if (data.status == true) {
+                        $("html, body").animate({scrollTop: 0}, "slow");
+                        location.reload();
 
-                }else{
+                    } else {
 
-                        $.each(data, function(index, val) {
-                            $('#form-ownerManagerResNumber'+' #'+val.error_string).next().html(val.input_error);
-                            $('#form-ownerManagerResNumber'+' #'+val.error_string).parent().addClass('has-error');
+                        $.each(data, function (index, val) {
+                            $('#form-ownerManagerResNumber' + ' #' + val.error_string).next().html(val.input_error);
+                            $('#form-ownerManagerResNumber' + ' #' + val.error_string).parent().addClass('has-error');
                         });
 
 
-                }
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                $('#btn-updateOwnerManagerResNumber').text('Update');
-                $('#btn-updateOwnerManagerResNumber').prop('disabled',false);
-            });
-            
-            
+                    }
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    $('#btn-updateOwnerManagerResNumber').text('Update');
+                    $('#btn-updateOwnerManagerResNumber').prop('disabled', false);
+                });
+
+
         });
 
-/* ==============================================================================*/
-        $('#btn-updateEstdNumber').click(function() 
-        {
-          $(this).text('Updating...........');
-          $(this).prop('disabled',true);
-          $.ajax({
-              url: '<?php echo(site_url("restaurants/update_estd_contact")) ?>/'+res_id,
-              type: 'POST',
-              dataType: 'json',
-              data:$('#form-establishment').serialize()
-          })
-          .done(function(data) {
-              if (data.status==true) {
-                $("html, body").animate({ scrollTop: 0 }, "slow");
-                location.reload();
+        /* ==============================================================================*/
+        $('#btn-updateEstdNumber').click(function () {
+            $(this).text('Updating...........');
+            $(this).prop('disabled', true);
+            $.ajax({
+                url: '<?php echo(site_url("restaurants/update_estd_contact")) ?>/' + res_id,
+                type: 'POST',
+                dataType: 'json',
+                data: $('#form-establishment').serialize()
+            })
+                .done(function (data) {
+                    if (data.status == true) {
+                        $("html, body").animate({scrollTop: 0}, "slow");
+                        location.reload();
 
-                }else{
+                    } else {
 
-                        $.each(data, function(index, val) {
-                            $('#form-establishment'+' #'+val.error_string).next().html(val.input_error);
-                            $('#form-establishment'+' #'+val.error_string).parent().addClass('has-error');
+                        $.each(data, function (index, val) {
+                            $('#form-establishment' + ' #' + val.error_string).next().html(val.input_error);
+                            $('#form-establishment' + ' #' + val.error_string).parent().addClass('has-error');
                         });
 
 
-                }
-          })
-          .always(function(){
-            $('#btn-updateEstdNumber').text('Update');
-            $('#btn-updateEstdNumber').prop('disabled',false);
-          })
-          .fail(function() {
-              console.log("error");
-          });
-          
+                    }
+                })
+                .always(function () {
+                    $('#btn-updateEstdNumber').text('Update');
+                    $('#btn-updateEstdNumber').prop('disabled', false);
+                })
+                .fail(function () {
+                    console.log("error");
+                });
+
         });
-/*=======================================================================================*/
-        $('#btn-estdcontactedit').click(function() {
+        /*=======================================================================================*/
+        $('#btn-estdcontactedit').click(function () {
             $(this).text('please wait.......');
             $.ajax({
-                url: '<?php echo(site_url("restaurants/view_estdcontact")) ?>/'+res_id,
+                url: '<?php echo(site_url("restaurants/view_estdcontact")) ?>/' + res_id,
                 dataType: 'json'
             })
-            .done(function(data) {
-                if (data) 
-                {
-                    $('#mdl-estdcontact').modal('show');
-                   
-                    $('#form-establishment #res_mobile1').val(data.mobile1);
-                    $('#form-establishment #res_mobile2').val(data.mobile2);
-                    $('#form-establishment #res_landline1').val(data.landline1);
-                    $('#form-establishment #res_landline2').val(data.landline2);
-                    $('#form-establishment #res_website').val(data.website);
-                    $('#form-establishment #res_email').val(data.email);
+                .done(function (data) {
+                    if (data) {
+                        $('#mdl-estdcontact').modal('show');
 
-                }
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                $('#btn-estdcontactedit').text('Edit');
-            });
-            
-           
-           
-            
+                        $('#form-establishment #res_mobile1').val(data.mobile1);
+                        $('#form-establishment #res_mobile2').val(data.mobile2);
+                        $('#form-establishment #res_landline1').val(data.landline1);
+                        $('#form-establishment #res_landline2').val(data.landline2);
+                        $('#form-establishment #res_website').val(data.website);
+                        $('#form-establishment #res_email').val(data.email);
+
+                    }
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    $('#btn-estdcontactedit').text('Edit');
+                });
+
 
         });
 
-/*====================================================================================*/
-       /* restaurants manager edit contact model*/
+        /*====================================================================================*/
+        /* restaurants manager edit contact model*/
 
-        $('.btn-ownerEdit').click(function() {
-            var partner_id=$(this).data('partnerid');
-            
+        $('.btn-ownerEdit').click(function () {
+            var partner_id = $(this).data('partnerid');
+
             $.ajax({
-                url: '<?php echo(site_url("restaurants/view_owners")) ?>/'+res_id+'/'+partner_id,
+                url: '<?php echo(site_url("restaurants/view_owners")) ?>/' + res_id + '/' + partner_id,
                 dataType: 'json'
-            
-            })
-            .done(function(data) {
 
-               $('#mdl-mrnumber').modal('show');
+            })
+                .done(function (data) {
 
-               $('#owners_name').val(data.name);
-               $('#owners_designation').val(data.designation);
-               $('#owners_mobile1').val(data.mobile1);
-               $('#owners_mobile2').val(data.mobile2);
-               $('#partner_id').val(partner_id);
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                
-            });
-            
-           
+                    $('#mdl-mrnumber').modal('show');
+
+                    $('#owners_name').val(data.name);
+                    $('#owners_designation').val(data.designation);
+                    $('#owners_mobile1').val(data.mobile1);
+                    $('#owners_mobile2').val(data.mobile2);
+                    $('#partner_id').val(partner_id);
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+
+                });
+
+
         });
 
-        $('#btn-editmapcoordinate').click(function() {
+        $('#btn-editmapcoordinate').click(function () {
             $(this).text('Please wait....');
             $.ajax({
-                url: '<?php echo(site_url("restaurants/view_estdcontact")) ?>/'+res_id,
+                url: '<?php echo(site_url("restaurants/view_estdcontact")) ?>/' + res_id,
                 dataType: 'json'
-               
+
             })
-            .done(function(data) {
+                .done(function (data) {
 
-                $('#modal-mapcoordinate').modal('show');
-                $('#form-mapCoordinates #res_lat').val(data.lat);
-                $('#form-mapCoordinates #res_lon').val(data.lon);
-                
-                if (data.google_map==='1')
-                {
-                    $('#form-mapCoordinates #map_yes').prop('checked',true);
-                }
-                else
-                {
-                    $('#form-mapCoordinates #map_no').prop('checked',true);
-                }
-            })
-            .fail(function() {
-                console.log(data);
-            })
-            .always(function() {
-                $('#btn-editmapcoordinate').text('Edit');
-            });
-            
-           
+                    $('#modal-mapcoordinate').modal('show');
+                    $('#form-mapCoordinates #res_lat').val(data.lat);
+                    $('#form-mapCoordinates #res_lon').val(data.lon);
+
+                    if (data.google_map === '1') {
+                        $('#form-mapCoordinates #map_yes').prop('checked', true);
+                    }
+                    else {
+                        $('#form-mapCoordinates #map_no').prop('checked', true);
+                    }
+                })
+                .fail(function () {
+                    console.log(data);
+                })
+                .always(function () {
+                    $('#btn-editmapcoordinate').text('Edit');
+                });
+
+
         });
-/*===============================================================================*/
-        $('body').on('change','.pop_dishes',function(){
-            
-            if (!$(this).is(':checked')) 
-            {
-                
-               update_res_popdishes(res_id,$(this).val(),0);
+        /*===============================================================================*/
+        $('body').on('change', '.pop_dishes', function () {
+
+            if (!$(this).is(':checked')) {
+
+                update_res_popdishes(res_id, $(this).val(), 0);
             }
-            if ($(this).is(':checked')) 
-            {
-                update_res_popdishes(res_id,$(this).val(),1);
+            if ($(this).is(':checked')) {
+                update_res_popdishes(res_id, $(this).val(), 1);
             }
         });
 
-        $('body').on('change','.foods',function(){
-           
-           if (!$(this).is(':checked')) 
-            {
-                
-               update_res_cousinbyfood(res_id,$(this).val(),0);
+        $('body').on('change', '.foods', function () {
+
+            if (!$(this).is(':checked')) {
+
+                update_res_cousinbyfood(res_id, $(this).val(), 0);
             }
-            if ($(this).is(':checked')) 
-            {
-                update_res_cousinbyfood(res_id,$(this).val(),1);
+            if ($(this).is(':checked')) {
+                update_res_cousinbyfood(res_id, $(this).val(), 1);
             }
         });
-        $('body').on('change','.cousins',function(){
-            if (!$(this).is(':checked')) 
-            {
-                
-                update_res_cousin(res_id,$(this).val(),0);
+        $('body').on('change', '.cousins', function () {
+            if (!$(this).is(':checked')) {
+
+                update_res_cousin(res_id, $(this).val(), 0);
             }
-            if ($(this).is(':checked')) 
-            {
-                update_res_cousin(res_id,$(this).val(),1);
+            if ($(this).is(':checked')) {
+                update_res_cousin(res_id, $(this).val(), 1);
             }
         });
 
-        $('body').on('change','.serves',function() {
+        $('body').on('change', '.serves', function () {
 
-           
-           if (!$(this).is(':checked')) 
-           {
-                
-                update_res_serve(res_id,$(this).val(),0);
+
+            if (!$(this).is(':checked')) {
+
+                update_res_serve(res_id, $(this).val(), 0);
             }
-            if ($(this).is(':checked')) 
-            {
-                update_res_serve(res_id,$(this).val(),1);
+            if ($(this).is(':checked')) {
+                update_res_serve(res_id, $(this).val(), 1);
             }
         });
 
-        $('body').on('change','.estd_type',function(){
+        $('body').on('change', '.estd_type', function () {
 
-           var res_id='<?php echo($this->uri->segment(3)) ?>';
-           if (!$(this).is(':checked')) 
-           {
-                
-                update_res_estd_type(res_id,$(this).val(),0);
+            var res_id = '<?php echo($this->uri->segment(3)) ?>';
+            if (!$(this).is(':checked')) {
+
+                update_res_estd_type(res_id, $(this).val(), 0);
             }
-            if ($(this).is(':checked')) 
-            {
-                update_res_estd_type(res_id,$(this).val(),1);
+            if ($(this).is(':checked')) {
+                update_res_estd_type(res_id, $(this).val(), 1);
             }
         })
 
-        $('body').on('change','.facility',function(){
-            
-           var res_id='<?php echo($this->uri->segment(3)) ?>';
-           if (!$(this).is(':checked')) 
-           {
-                update_res_facility(res_id,$(this).val(),0);
+        $('body').on('change', '.facility', function () {
+
+            var res_id = '<?php echo($this->uri->segment(3)) ?>';
+            if (!$(this).is(':checked')) {
+                update_res_facility(res_id, $(this).val(), 0);
             }
-            if ($(this).is(':checked')) 
-            {
-                update_res_facility(res_id,$(this).val(),1);
+            if ($(this).is(':checked')) {
+                update_res_facility(res_id, $(this).val(), 1);
             }
         })
 
 
-/*=======================================================================================
-*/        total();
+        /*=======================================================================================
+         */
+        total();
 
-       $('.estimate_cost_topic').keyup(function() {
+        $('.estimate_cost_topic').keyup(function () {
 
-          total();
-       });
+            total();
+        });
 
-       $('#btn_servesave').click(function() {
-          insertIntoServe('serve_form','btn_servesave','serve_checkbox');
-       });
+        $('#btn_servesave').click(function () {
+            insertIntoServe('serve_form', 'btn_servesave', 'serve_checkbox');
+        });
 
-       $('#btn_estdtypesave').click(function() {
-           insertIntoEstType('estd_typeform','btn_estdtypesave','btn_establishmentType')
-       });
+        $('#btn_estdtypesave').click(function () {
+            insertIntoEstType('estd_typeform', 'btn_estdtypesave', 'btn_establishmentType')
+        });
 
-       $('#btn_facilitysave').click(function() 
-       {
-          insertIntoFacilitis('facility_form','btn_facilitysave','btn_facilities')
-       });
+        $('#btn_facilitysave').click(function () {
+            insertIntoFacilitis('facility_form', 'btn_facilitysave', 'btn_facilities')
+        });
 
-       $('#btn_cousinsave').click(function() {
+        $('#btn_cousinsave').click(function () {
 
-          insertIntoCousins('cousin_form','btn_cousinsave','btn_addCousin');
-       });
+            insertIntoCousins('cousin_form', 'btn_cousinsave', 'btn_addCousin');
+        });
 
-       $('#btn_popDishSave').click(function() 
-       {
-           insertIntoPopularDish('popdishform','btn_popDishSave','btn_addPopDish')
-       });
-/*==============================================================*/
+        $('#btn_popDishSave').click(function () {
+            insertIntoPopularDish('popdishform', 'btn_popDishSave', 'btn_addPopDish')
+        });
+        /*==============================================================*/
 
-        $('#btn_addPopDish').click(function() {
+        $('#btn_addPopDish').click(function () {
 
             $('#mdl_populardish').modal('show');
         });
 
-        $('#btn_addCousin').click(function() 
-        {
+        $('#btn_addCousin').click(function () {
             $('#mdl_cousin').modal('show');
         });
 
-        $('#btn_facilities').click(function() 
-        {
+        $('#btn_facilities').click(function () {
             $('#mdl_facility').modal('show');
         });
 
-       $('#btn_establishmentType').click(function() {
+        $('#btn_establishmentType').click(function () {
 
-           $('#mdl_establishmentType').modal('show');
-       });
-        
-        $('#btn_addServe').click(function() {
+            $('#mdl_establishmentType').modal('show');
+        });
+
+        $('#btn_addServe').click(function () {
             $('#mdl-addserve').modal('show');
-        });    
-/*=================================================================================*/
-        $('#city_suggest').keyup(function() {
+        });
+        /*=================================================================================*/
+        $('#city_suggest').keyup(function () {
             $.ajax({
                 url: '<?php echo(site_url("place/suggest")) ?>',
                 type: 'POST',
-                dataType:'html',
+                dataType: 'html',
                 data: $(this).val(),
-                success:function(data)
-                {
-                   
+                success: function (data) {
+
                     $('#est_city').empty();
                     $('#est_city').append(data);
                 }
             })
-            .done(function() {
-                console.log("success");
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                console.log("complete");
-            });
-            
+                .done(function () {
+                    console.log("success");
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                });
+
         });
 
-        $('#area_suggest').keyup(function() {
+        $('#area_suggest').keyup(function () {
             $.ajax({
                 url: '<?php echo(site_url("place/suggest")) ?>',
                 type: 'POST',
-                dataType:'html',
+                dataType: 'html',
                 data: $(this).val(),
-                success:function(data)
-                {
-                   
+                success: function (data) {
+
                     $('#est_area').empty();
                     $('#est_area').append(data);
                 }
             })
-            .done(function() {
-                console.log("success");
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                console.log("complete");
-            });
-            
+                .done(function () {
+                    console.log("success");
+                })
+                .fail(function () {
+                    console.log("error");
+                })
+                .always(function () {
+                    console.log("complete");
+                });
+
         });
     });
-/*=============================================================================*/
+    /*=============================================================================*/
     $('#open_time_all').change(function () {
         $('.open_time').val($(this).val());
     })
@@ -1784,430 +1840,395 @@
     $('#end_time_all').change(function () {
         $('.end_time').val($(this).val());
     })
-/*================================================================================*/
-    function maxLengthCheck(object)
-    {
+    /*================================================================================*/
+    function maxLengthCheck(object) {
         if (object.value.length > object.maxLength)
-        object.value = object.value.slice(0, object.maxLength)
+            object.value = object.value.slice(0, object.maxLength)
     }
 
-    function insertIntoServe(form_id,button_id,serve_id)
-    {
-        disable_button(button_id,'Saving');
+    function insertIntoServe(form_id, button_id, serve_id) {
+        disable_button(button_id, 'Saving');
 
         $.ajax({
             url: '<?php echo(site_url("serve/add")) ?>',
-            dataType:'json',
-            type:'post',
-            data:$('#'+form_id).serialize(),
-            success:function(data)
-            {
+            dataType: 'json',
+            type: 'post',
+            data: $('#' + form_id).serialize(),
+            success: function (data) {
                 console.log(data);
-                if(data.status===true)
-                {
-                    enable_button(button_id,'Save');
-                    var temp_checkbox='<label class="checkbox-inline">';
-                        temp_checkbox+='<input type="checkbox" name="serves[]" class="serves" value="'+data.data.serves_id+'">'+data.data.serves_name+'</label>';
-                        
+                if (data.status === true) {
+                    enable_button(button_id, 'Save');
+                    var temp_checkbox = '<label class="checkbox-inline">';
+                    temp_checkbox += '<input type="checkbox" name="serves[]" class="serves" value="' + data.data.serves_id + '">' + data.data.serves_name + '</label>';
+
                     $('#serve_checkbox').append(temp_checkbox);
-                    $('#'+form_id)[0].reset();
+                    $('#' + form_id)[0].reset();
                     $('#mdl-addserve').modal('hide');
 
                 }
-                else
-                {
-                        $.each(data, function(index, val) {
-                             $('#'+form_id+' #'+val.error_string).next().html(val.input_error);
-                            $('#'+form_id+' #'+val.error_string).parent().parent().addClass('has-error');
-                        });
+                else {
+                    $.each(data, function (index, val) {
+                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                    });
 
-                    enable_button(button_id,'Save');
-                }     
+                    enable_button(button_id, 'Save');
+                }
             }
         })
-        
-        .fail(function() {
 
-            enable_button(button_id,'Save');
-        });
+            .fail(function () {
+
+                enable_button(button_id, 'Save');
+            });
     }
 
-    function insertIntoEstType(form_id,button_id,estd_typeid)
-    {
-        disable_button(button_id,'Saving');
+    function insertIntoEstType(form_id, button_id, estd_typeid) {
+        disable_button(button_id, 'Saving');
 
         $.ajax({
             url: '<?php echo(site_url("establishment_type/add")) ?>',
-            dataType:'json',
-            type:'post',
-            data:$('#'+form_id).serialize(),
-            success:function(data)
-            {
+            dataType: 'json',
+            type: 'post',
+            data: $('#' + form_id).serialize(),
+            success: function (data) {
                 console.log(data);
-                if (data.status==true) 
-                {
-                    enable_button(button_id,'Save');
+                if (data.status == true) {
+                    enable_button(button_id, 'Save');
 
-                    var temp_checkbox='<label class="checkbox-inline">';
-                        temp_checkbox+='<input type="checkbox" name="establishment_type[]" value="'+data.data.type_id+'">'+data.data.type+'</label>';
-                    
+                    var temp_checkbox = '<label class="checkbox-inline">';
+                    temp_checkbox += '<input type="checkbox" name="establishment_type[]" value="' + data.data.type_id + '">' + data.data.type + '</label>';
+
                     $('#estd_checkbox').append(temp_checkbox);
-                    $('#'+form_id)[0].reset();
+                    $('#' + form_id)[0].reset();
                     $('#mdl_establishmentType').modal('hide');
-                    
-                }
-                else
-                {
-                     $.each(data, function(index, val) {
-                             $('#'+form_id+' #'+val.error_string).next().html(val.input_error);
-                            $('#'+form_id+' #'+val.error_string).parent().parent().addClass('has-error');
-                        });
 
-                    enable_button(button_id,'Save');
                 }
-                
+                else {
+                    $.each(data, function (index, val) {
+                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                    });
+
+                    enable_button(button_id, 'Save');
+                }
+
             }
         })
-        
-        .fail(function() {
 
-            enable_button(button_id,'Save');
-        });
+            .fail(function () {
+
+                enable_button(button_id, 'Save');
+            });
     }
 
-    function insertIntoFacilitis(form_id,button_id,facility_id)
-    {
-        disable_button(button_id,'Saving');
+    function insertIntoFacilitis(form_id, button_id, facility_id) {
+        disable_button(button_id, 'Saving');
 
         $.ajax({
             url: '<?php echo(site_url("facility/add")) ?>',
-            dataType:'json',
-            type:'post',
-            data:$('#'+form_id).serialize(),
-            success:function(data)
-            {
+            dataType: 'json',
+            type: 'post',
+            data: $('#' + form_id).serialize(),
+            success: function (data) {
                 console.log(data);
-                if (data.status==true) 
-                {
+                if (data.status == true) {
 
-                    enable_button(button_id,'Save');
+                    enable_button(button_id, 'Save');
 
-                    var temp_checkbox='<label class="checkbox-inline">';
-                        temp_checkbox+='<input type="checkbox" name="facility[]" value="'+data.data.facilities_id+'">'+data.data.facility+'</label>';
-                  
+                    var temp_checkbox = '<label class="checkbox-inline">';
+                    temp_checkbox += '<input type="checkbox" name="facility[]" value="' + data.data.facilities_id + '">' + data.data.facility + '</label>';
+
                     $('#facility_checkbox').append(temp_checkbox);
-                    $('#'+form_id)[0].reset();
+                    $('#' + form_id)[0].reset();
                     $('#mdl_facility').modal('hide');
-                    
-                }
-                else
-                {
-                     $.each(data, function(index, val) {
-                             $('#'+form_id+' #'+val.error_string).next().html(val.input_error);
-                            $('#'+form_id+' #'+val.error_string).parent().parent().addClass('has-error');
-                        });
 
-                    enable_button(button_id,'Save');
+                }
+                else {
+                    $.each(data, function (index, val) {
+                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                    });
+
+                    enable_button(button_id, 'Save');
                 }
             }
         })
-        
-        .fail(function() {
 
-            enable_button(button_id,'Save');
-        });
+            .fail(function () {
+
+                enable_button(button_id, 'Save');
+            });
     }
 
-    function insertIntoCousins(form_id,button_id,cousin_id)
-    {
-        disable_button(button_id,'Saving');
+    function insertIntoCousins(form_id, button_id, cousin_id) {
+        disable_button(button_id, 'Saving');
 
         $.ajax({
             url: '<?php echo(site_url("Cousin/add")) ?>',
-            dataType:'json',
-            type:'post',
-            data:$('#'+form_id).serialize(),
-            success:function(data)
-            {
+            dataType: 'json',
+            type: 'post',
+            data: $('#' + form_id).serialize(),
+            success: function (data) {
                 console.log(data);
-                if (data.status==true)
-                {
-                    enable_button(button_id,'Save');
-                    var temp_checkbox='<label class="checkbox-inline">';
-                        temp_checkbox+='<input type="checkbox" name="cousins[]" value="'+data.data.cousin_id+'">'+data.data.cousin+'</label>';
-                    
-                    $('#cousin_checkbox').append(temp_checkbox);
-                     $('#'+form_id)[0].reset();
-                    $('#mdl_cousin').modal('hide');
-                   
-                }
-                else
-                {
-                    $.each(data, function(index, val) {
-                             $('#'+form_id+' #'+val.error_string).next().html(val.input_error);
-                            $('#'+form_id+' #'+val.error_string).parent().parent().addClass('has-error');
-                        });
+                if (data.status == true) {
+                    enable_button(button_id, 'Save');
+                    var temp_checkbox = '<label class="checkbox-inline">';
+                    temp_checkbox += '<input type="checkbox" name="cousins[]" value="' + data.data.cousin_id + '">' + data.data.cousin + '</label>';
 
-                    enable_button(button_id,'Save');
+                    $('#cousin_checkbox').append(temp_checkbox);
+                    $('#' + form_id)[0].reset();
+                    $('#mdl_cousin').modal('hide');
+
                 }
-               
+                else {
+                    $.each(data, function (index, val) {
+                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                    });
+
+                    enable_button(button_id, 'Save');
+                }
+
             }
         })
-        
-        .fail(function() {
 
-            enable_button(button_id,'Add New');
-        });
+            .fail(function () {
+
+                enable_button(button_id, 'Add New');
+            });
     }
 
-    function insertIntoPopularDish(form_id,button_id,dish_id)
-    {
-        disable_button(button_id,'Saving');
+    function insertIntoPopularDish(form_id, button_id, dish_id) {
+        disable_button(button_id, 'Saving');
 
         $.ajax({
             url: '<?php echo(site_url("pop_dish/add")) ?>',
-            dataType:'json',
-            type:'post',
-            data:$('#'+form_id).serialize(),
-            success:function(data)
-            {
-               if (data.status==true)
-                {
-                    enable_button(button_id,'Save');
+            dataType: 'json',
+            type: 'post',
+            data: $('#' + form_id).serialize(),
+            success: function (data) {
+                if (data.status == true) {
+                    enable_button(button_id, 'Save');
 
-                    var temp_checkbox='<label class="checkbox-inline">';
-                        temp_checkbox+='<input type="checkbox" name="pop_dishes[]" value="'+data.data.pop_dishes_id+'">'+data.data.pop_dishes+'</label>';
-                    
+                    var temp_checkbox = '<label class="checkbox-inline">';
+                    temp_checkbox += '<input type="checkbox" name="pop_dishes[]" value="' + data.data.pop_dishes_id + '">' + data.data.pop_dishes + '</label>';
+
                     $('#populardish_checkbox').append(temp_checkbox);
-                    $('#'+form_id)[0].reset();
+                    $('#' + form_id)[0].reset();
                     $('#mdl_populardish').modal('hide');
                 }
-                else
-                {
-                     $.each(data, function(index, val) {
-                             $('#'+form_id+' #'+val.error_string).next().html(val.input_error);
-                            $('#'+form_id+' #'+val.error_string).parent().parent().addClass('has-error');
-                        });
+                else {
+                    $.each(data, function (index, val) {
+                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                    });
 
-                    enable_button(button_id,'Save');
+                    enable_button(button_id, 'Save');
                 }
-                
-                    
+
+
             }
         })
-        
-        .fail(function() {
 
-            enable_button(button_id,'Save');
-        });
+            .fail(function () {
+
+                enable_button(button_id, 'Save');
+            });
     }
 
-    function disable_button (id,text='')
-    {
-        $('#'+id).prop('disabled', true);
-        if (text!='')
-         {
-            $('#'+id).text(text+'...........');
-         };
+    function disable_button(id, text='') {
+        $('#' + id).prop('disabled', true);
+        if (text != '') {
+            $('#' + id).text(text + '...........');
+        }
+        ;
     }
 
-    function enable_button (id,text='')
-    {
-        $('#'+id).prop('disabled', false);
-        if (text!='')
-         {
-            $('#'+id).text(text);
-         };
+    function enable_button(id, text='') {
+        $('#' + id).prop('disabled', false);
+        if (text != '') {
+            $('#' + id).text(text);
+        }
+        ;
     }
 
-    function total()
-    {
-        var temp=0;
-        $('input[name^="estimate_cost_topic"]').each(function() {
-            var val=$(this).val();
-            if (val) 
-            {
-                 temp=temp+parseFloat(val);
-            };
-           
+    function total() {
+        var temp = 0;
+        $('input[name^="estimate_cost_topic"]').each(function () {
+            var val = $(this).val();
+            if (val) {
+                temp = temp + parseFloat(val);
+            }
+            ;
+
         });
         $('#total').val(temp.toFixed(2));
-        
+
     }
 
 
-    function update_res_estd_type (res_id,estd_id,status) 
-    {
-        $('.estd_type').prop('disabled',true);
+    function update_res_estd_type(res_id, estd_id, status) {
+        $('.estd_type').prop('disabled', true);
         $('#msg-estdTypeWait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
         $('#msg-estdTypeWait').show();
         $.ajax({
-            url: '<?php echo(site_url("establishment_type/update_res_estdtype")) ?>/'+res_id+'/'+estd_id+'/'+status,
+            url: '<?php echo(site_url("establishment_type/update_res_estdtype")) ?>/' + res_id + '/' + estd_id + '/' + status,
             type: 'POST',
             dataType: 'json'
         })
-        .done(function(data) {
-            $('#msg-estdTypeWait').html('Update Successfully !!');
-            setTimeout(function() {
-                $('#msg-estdTypeWait').hide();
-                $('.estd_type').prop('disabled',false);
-            }, 1000); 
-            console.log(data);
-        })
-        .always(function(){
+            .done(function (data) {
+                $('#msg-estdTypeWait').html('Update Successfully !!');
+                setTimeout(function () {
+                    $('#msg-estdTypeWait').hide();
+                    $('.estd_type').prop('disabled', false);
+                }, 1000);
+                console.log(data);
+            })
+            .always(function () {
 
-        })
-        .fail(function() {
-            console.log("error");
-        });
-        
+            })
+            .fail(function () {
+                console.log("error");
+            });
+
     }
 
-    function update_res_serve (res_id,serve_id,status) 
-    {
-        $('.serves').prop('disabled',true);
+    function update_res_serve(res_id, serve_id, status) {
+        $('.serves').prop('disabled', true);
         $('#msg-serveswait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
         $('#msg-serveswait').show();
-         $.ajax({
-            url: '<?php echo(site_url("serve/update_res_serves")) ?>/'+res_id+'/'+serve_id+'/'+status,
+        $.ajax({
+            url: '<?php echo(site_url("serve/update_res_serves")) ?>/' + res_id + '/' + serve_id + '/' + status,
             type: 'POST',
             dataType: 'json'
         })
-        .done(function(data) {
+            .done(function (data) {
 
-            $('#msg-serveswait').html('Update Successfully !!');
+                $('#msg-serveswait').html('Update Successfully !!');
 
-            setTimeout(function() {
-                $('#msg-serveswait').hide();
-                $('.serves').prop('disabled',false);
-            }, 1000);
-           
-            console.log(data);
-        })
-        .fail(function() {
-            console.log("error");
-        });
+                setTimeout(function () {
+                    $('#msg-serveswait').hide();
+                    $('.serves').prop('disabled', false);
+                }, 1000);
+
+                console.log(data);
+            })
+            .fail(function () {
+                console.log("error");
+            });
     }
 
-    function update_res_facility (res_id,facility_id,status) 
-    {
-        $('.facility').prop('disabled',true);
+    function update_res_facility(res_id, facility_id, status) {
+        $('.facility').prop('disabled', true);
         $('#msg-facilityWait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
         $('#msg-facilityWait').show();
-         $.ajax({
-            url: '<?php echo(site_url("facility/update_res_facility")) ?>/'+res_id+'/'+facility_id+'/'+status,
+        $.ajax({
+            url: '<?php echo(site_url("facility/update_res_facility")) ?>/' + res_id + '/' + facility_id + '/' + status,
             type: 'POST',
             dataType: 'json'
         })
-        .done(function(data) {
-            $('#msg-facilityWait').html('Update Successfully !!');
+            .done(function (data) {
+                $('#msg-facilityWait').html('Update Successfully !!');
 
-            setTimeout(function() {
-                $('#msg-facilityWait').hide();
-                $('.facility').prop('disabled',false);
-            }, 1000);
-            console.log(data);
-        })
-        .fail(function() {
-            console.log("error");
-        });
+                setTimeout(function () {
+                    $('#msg-facilityWait').hide();
+                    $('.facility').prop('disabled', false);
+                }, 1000);
+                console.log(data);
+            })
+            .fail(function () {
+                console.log("error");
+            });
     }
 
-    function update_res_cousin(res_id,cousin_id,status)
-    {
-        $('.cousins').prop('disabled',true);
+    function update_res_cousin(res_id, cousin_id, status) {
+        $('.cousins').prop('disabled', true);
         $('#msg-cousinByCountryWait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
         $('#msg-cousinByCountryWait').show();
-         $.ajax({
-            url: '<?php echo(site_url("cousin/update_res_cousin")) ?>/'+res_id+'/'+cousin_id+'/'+status,
+        $.ajax({
+            url: '<?php echo(site_url("cousin/update_res_cousin")) ?>/' + res_id + '/' + cousin_id + '/' + status,
             type: 'POST',
             dataType: 'json'
         })
-        .done(function(data) {
-            $('#msg-cousinByCountryWait').html('Update Successfully !!');
+            .done(function (data) {
+                $('#msg-cousinByCountryWait').html('Update Successfully !!');
 
-            setTimeout(function() {
-                $('#msg-cousinByCountryWait').hide();
-                $('.cousins').prop('disabled',false);
-            }, 1000);
-            console.log(data);
-        })
-        .fail(function() {
-            console.log("error");
-        });
+                setTimeout(function () {
+                    $('#msg-cousinByCountryWait').hide();
+                    $('.cousins').prop('disabled', false);
+                }, 1000);
+                console.log(data);
+            })
+            .fail(function () {
+                console.log("error");
+            });
     }
 
-    function update_res_cousinbyfood(res_id,cousin_id,status) 
-    {
-        $('.foods').prop('disabled',true);
+    function update_res_cousinbyfood(res_id, cousin_id, status) {
+        $('.foods').prop('disabled', true);
         $('#msg-cousinByFoodWait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
         $('#msg-cousinByFoodWait').show();
-         $.ajax({
-            url: '<?php echo(site_url("cousin/update_res_cousinbyfood")) ?>/'+res_id+'/'+cousin_id+'/'+status,
+        $.ajax({
+            url: '<?php echo(site_url("cousin/update_res_cousinbyfood")) ?>/' + res_id + '/' + cousin_id + '/' + status,
             type: 'POST',
             dataType: 'json'
         })
-        .done(function(data) {
-            $('#msg-cousinByFoodWait').html('Update Successfully !!');
+            .done(function (data) {
+                $('#msg-cousinByFoodWait').html('Update Successfully !!');
 
-            setTimeout(function() {
-                $('#msg-cousinByFoodWait').hide();
-                $('.foods').prop('disabled',false);
-            }, 1000);
-            console.log(data);
-        })
-        .fail(function() {
-            console.log("error");
-        });
+                setTimeout(function () {
+                    $('#msg-cousinByFoodWait').hide();
+                    $('.foods').prop('disabled', false);
+                }, 1000);
+                console.log(data);
+            })
+            .fail(function () {
+                console.log("error");
+            });
     }
 
-    function update_res_popdishes(res_id,dish_id,status) 
-    {
-        $('.pop_dishes').prop('disabled',true);
+    function update_res_popdishes(res_id, dish_id, status) {
+        $('.pop_dishes').prop('disabled', true);
         $('#msg-popDishWait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
         $('#msg-popDishWait').show();
-         $.ajax({
-            url: '<?php echo(site_url("pop_dish/update_res_popdish")) ?>/'+res_id+'/'+dish_id+'/'+status,
+        $.ajax({
+            url: '<?php echo(site_url("pop_dish/update_res_popdish")) ?>/' + res_id + '/' + dish_id + '/' + status,
             type: 'POST',
             dataType: 'json'
         })
-        .done(function(data) {
-            $('#msg-popDishWait').html('Update Successfully !!');
+            .done(function (data) {
+                $('#msg-popDishWait').html('Update Successfully !!');
 
-            setTimeout(function() {
-                $('#msg-popDishWait').hide();
-                $('.pop_dishes').prop('disabled',false);
-            }, 1000);
-            console.log(data);
-        })
-        .fail(function() {
-            console.log("error");
-        });
+                setTimeout(function () {
+                    $('#msg-popDishWait').hide();
+                    $('.pop_dishes').prop('disabled', false);
+                }, 1000);
+                console.log(data);
+            })
+            .fail(function () {
+                console.log("error");
+            });
     }
 
-    function parking_check() 
-    {
-        if ($('#parking_yes').is(':checked'))
-        {
+    function parking_check() {
+        if ($('#parking_yes').is(':checked')) {
             $('.parking_options').parent('label').show();
         }
-        else
-        {
-            $('.parking_options').prop('checked',false);
+        else {
+            $('.parking_options').prop('checked', false);
             $('.parking_options').parent('label').hide();
-           
+
         }
     }
 
-    function parking_status () {
-        var count=('.parking_options:checked').length;
-        if (count<1)
-        {
-            alert('hello'+count);
-           $('.parking_options').parent('label').hide();
+    function parking_status() {
+        var count = ('.parking_options:checked').length;
+        if (count < 1) {
+            alert('hello' + count);
+            $('.parking_options').parent('label').hide();
         }
-        else
-        {
+        else {
             $('.parking_options').parent('label').show();
         }
     }
