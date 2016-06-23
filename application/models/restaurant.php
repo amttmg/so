@@ -8,15 +8,17 @@
  */
 class restaurant extends CI_Model
 {
-    var $table_name='tbl_restaurants';
-    var $current_time='';
-    var $user_id='';
+    var $table_name = 'tbl_restaurants';
+    var $current_time = '';
+    var $user_id = '';
+
     public function __construct()
     {
         parent::__construct();
-        $this->current_time=getCurrentDateTime();
-        $this->user_id=$this->session->userdata('userid');
+        $this->current_time = getCurrentDateTime();
+        $this->user_id = $this->session->userdata('userid');
     }
+
     function add()
     {
         $res_name = $this->input->post('res_name');
@@ -36,7 +38,8 @@ class restaurant extends CI_Model
         $parking = $this->input->post('res_parking');
         $parking_two = $this->input->post('res_parking2');
         $parking_four = $this->input->post('res_parking4');
-
+        $multi_outlets = $this->input->post('multiple_outlets');
+        $outlets_no = $this->input->post('outlets_no');
         $newtbl_restaurants = array(
             'res_name' => $res_name,
             'area' => $area,
@@ -55,8 +58,10 @@ class restaurant extends CI_Model
             'parking' => $parking,
             'parking_two' => $parking_two,
             'parking_four' => $parking_four,
-            'created_at'=>$this->current_time,
-            'user_id'=>$this->user_id
+            'created_at' => $this->current_time,
+            'user_id' => $this->user_id,
+            'multiple_outlets'=>$multi_outlets,
+            'outlets_no'=>$outlets_no
         );
 
         $this->db->insert('tbl_restaurants', $newtbl_restaurants);
@@ -97,7 +102,7 @@ class restaurant extends CI_Model
                     'day' => $day,
                     'opening_time' => $serv['open'],
                     'closing_time' => $serv['close'],
-                    'position'=>2,
+                    'position' => 2,
                     'status' => 1,
                 );
                 $this->db->insert('tbl_service_time', $newtbl_service_time);
@@ -123,7 +128,7 @@ class restaurant extends CI_Model
         $mobile2 = $this->input->post('owners_mobile2');
         $landline1 = $this->input->post('owners_landline1');
         $landline2 = $this->input->post('owners_landline2');
-        
+
         foreach ($name as $key => $value) {
 
             $newtbl_owners = array(
@@ -136,9 +141,9 @@ class restaurant extends CI_Model
                 'res_id' => $res_id,
             );
             $this->db->insert('tbl_owners', $newtbl_owners);
-           
+
         }
-        
+
 
         $establishment_type = $this->input->post('establishment_type');
         if (is_array($establishment_type)) {
@@ -185,7 +190,7 @@ class restaurant extends CI_Model
                     'day' => $day,
                     'start_time' => $hours['start'],
                     'end_time' => $hours['end'],
-                    'position'=>2,
+                    'position' => 2,
                     'status' => 1,
                 );
                 $this->db->insert('tbl_happy_hours', $newtbl_happy_hours);
@@ -195,10 +200,10 @@ class restaurant extends CI_Model
         $cousins = $this->input->post('cousins');
         if (is_array($cousins)) {
             foreach ($cousins as $cousin) {
-                $newtbl_res_cousins= array(
-                    'res_id'=> $res_id,
-                    'cousin_id'=> $cousin,
-                    'status'=> 1,
+                $newtbl_res_cousins = array(
+                    'res_id' => $res_id,
+                    'cousin_id' => $cousin,
+                    'status' => 1,
                 );
                 $this->db->insert('tbl_res_cousins', $newtbl_res_cousins);
             }
@@ -206,10 +211,10 @@ class restaurant extends CI_Model
         $foods = $this->input->post('foods');
         if (is_array($foods)) {
             foreach ($foods as $food) {
-                $newtbl_res_foods= array(
-                    'res_id'=> $res_id,
-                    'food_id'=> $food,
-                    'status'=> 1,
+                $newtbl_res_foods = array(
+                    'res_id' => $res_id,
+                    'food_id' => $food,
+                    'status' => 1,
                 );
                 $this->db->insert('tbl_res_foods', $newtbl_res_foods);
             }
@@ -217,63 +222,54 @@ class restaurant extends CI_Model
         $pop_dishes = $this->input->post('pop_dishes');
         if (is_array($pop_dishes)) {
             foreach ($pop_dishes as $dishes) {
-                $newtbl_res_pop_dishes= array(
-                    'res_id'=> $res_id,
-                    'pop_dishes_id'=> $dishes,
-                    'status'=> 1,
+                $newtbl_res_pop_dishes = array(
+                    'res_id' => $res_id,
+                    'pop_dishes_id' => $dishes,
+                    'status' => 1,
                 );
                 $this->db->insert('tbl_res_pop_dishes', $newtbl_res_pop_dishes);
             }
         }
     }
 
-    public function getAll($order_by='',$json=false)
+    public function getAll($order_by = '', $json = false)
     {
-        if ($order_by=='') 
-        {
-            $this->db->order_by('res_id','desc');
-        }
-        else
-        {
-            $this->db->order_by($order_by[0],$order_by[1]);
+        if ($order_by == '') {
+            $this->db->order_by('res_id', 'desc');
+        } else {
+            $this->db->order_by($order_by[0], $order_by[1]);
         }
 
         $this->db->from($this->table_name);
-        $this->db->where('status',1);
-        $result_data= $this->db->get()->result();
+        $this->db->where('status', 1);
+        $result_data = $this->db->get()->result();
 
-        if ($json==true)
-        {
-           return json_encode($result_data);
-        }
-        else
-        {
+        if ($json == true) {
+            return json_encode($result_data);
+        } else {
             return $result_data;
         }
     }
 
-    public function getBy($data,$json=false)
+    public function getBy($data, $json = false)
     {
-         $this->db->from($this->table_name);
-         $this->db->where($data[0],$data[1]);
-         $this->db->where('status',1);
-        $result_data=$this->db->get()->row();
-        if ($json==false) 
-        {
+        $this->db->from($this->table_name);
+        $this->db->where($data[0], $data[1]);
+        $this->db->where('status', 1);
+        $result_data = $this->db->get()->row();
+        if ($json == false) {
             return $result_data;
-        }
-        else
-        {
+        } else {
             return json_encode($result_data);
         }
 
-       
+
     }
 
     public function delete($res_id)
     {
-        $this->db->where('res_id',$res_id);
-        $this->db->update($this->table_name,array('status'=>0));
+        $this->db->where('res_id', $res_id);
+        $this->db->update($this->table_name, array('status' => 0));
     }
 
 }
