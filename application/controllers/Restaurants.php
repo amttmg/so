@@ -227,6 +227,48 @@ class Restaurants extends CI_Controller {
 		echo("success");
 	}
 
+	public function datatables()
+	{
+		
+		$list = $this->res->get_datatables();
+		$data = array();
+		$no = $_POST['start'];
+		foreach ($list as $res) {
+			$no++;
+			$row = array();
+			$row[]=$no;
+			$row[]=$res->res_name;
+			$row[] = $res->area;
+			$row[] = $res->street;
+			$row[] = $res->landmark;
+			$row[]='<div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        Action
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li>
+                                        	<a href="'.site_url('restaurants/details/'.$res->res_id).'"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp&nbspEdit</label></a>
+                                        </li>
+                                        <li>
+                                        	<a href="#" class="delete" data-resid="'.$res->res_id.'"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp&nbspDelete</label></a>
+                                        </li>
+                                    </ul>
+                                </div>';
+		
+			$data[] = $row;
+		}
+
+		$output = array(
+						"draw" => $_POST['draw'],
+						"recordsTotal" => $this->res->count_all(),
+						"recordsFiltered" => $this->res->count_filtered(),
+						"data" => $data,
+				);
+		//output to json format
+		echo json_encode($output);
+	}
+
 }
 
 /* End of file restaurant.php */
