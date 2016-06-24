@@ -97,7 +97,12 @@ class Restaurants extends CI_Controller {
 		echo(json_encode($master));
 
 	}
-
+	 public function update_name($res_id)
+	 {
+	 	$this->db->where('res_id',$res_id);
+	 	$this->db->update('tbl_restaurants',array('res_name'=>$this->input->post('name')));
+	 	$this->session->set_flashdata('message', 'Update Successfully !');
+	 }
 	public function update_coordinate($id)
 	{
 		$this->load->library('form_validation');
