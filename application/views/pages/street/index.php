@@ -17,26 +17,30 @@
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<button type="button" id="btn_addCity" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp&nbspAdd New</button>
+				<button type="button" id="btn_addStreet" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp&nbspAdd New</button>
 			</div>
 			<div class="panel-body">
 				<table class="table table-bordered table-hover" id="table-datatable">
 					<thead>
 						<tr>
 							<th>Sn.</th>
-							<th>City</th>
+							<th>Area</th>
+							<th>Street</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php $count=1; ?>
-						<?php foreach ($cities as $city): ?>
+						<?php foreach ($streets as $s): ?>
 							<tr>
 								<td>
 									<?php echo($count); $count++; ?>
 								</td>
 								<td>
-									<?php echo($city->name); ?>
+									<?php echo($s->area) ?>
+								</td>
+								<td>
+									<?php echo($s->name); ?>
 								</td>
 								<td width="30px">
 									<div class="btn-group">
@@ -49,7 +53,7 @@
 	                                        	<a href="#"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
 	                                        </li>
 	                                        <li>
-	                                        	<a href="#" class="delete" data-fid="<?php echo($city->id) ?>"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
+	                                        	<a href="#" class="delete" data-fid="<?php echo($s->id) ?>"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
 	                                        </li>
 	                                    </ul>
 	                                </div>
@@ -86,20 +90,30 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">City</h4>
+				<h4 class="modal-title">Street</h4>
 			</div>
 			 <div class="modal-body">
-                <form action="" method="POST" id="city_form">
+                <form action="" method="POST" id="street_form">
                     <div class="form-group">
-                        <label for="">City Name <span class="text-danger">*</span></label>
-                        <input type="text" name="city" class="form-control" id="city" placeholder="City Name">
+                    	<label>Area Name <span class="text-danger">*</span></label>
+                        <select name="area" id="area" class="form-control" required="required">
+                        	<option value="0">Select Area</option>
+                        	<?php foreach ($areas as $a): ?>
+                        		<option value="<?php echo($a->area_id) ?>"><?php echo($a->area) ?></option>
+                        	<?php endforeach ?>
+                        </select>
                         <span></span>
+                    </div>
+                    <div class="form-group">
+                    	<label>Street Name <span class="text-danger">*</span></label>
+                    	<input type="text" name="street" id="street" class="form-control" placeholder="Street Name" >
+                    	<span></span>
                     </div>
                   
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btn_citySave" class="btn btn-primary">Save</button>
+                <button type="button" id="btn_streetSave" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
 		</div>
@@ -115,26 +129,26 @@
 
 		$('.delete').click(function() {
 			var fid=$(this).data('fid');
-			var url='<?php echo(site_url()) ?>/city/delete/'+fid;
+			var url='<?php echo(site_url()) ?>/street/delete/'+fid;
 			$('#btn-delete').attr('href',url);
 			$('#modal-delete').modal('show');
 		});
 
-		 $('#btn_addCity').click(function() 
+		 $('#btn_addStreet').click(function() 
 	      {
 	            $('#mdl_city').modal('show');
 	      });
 
-		 $('#btn_citySave').click(function() {
-          	insertIntoCousins('city_form','btn_citySave','btn_addCity');
+		 $('#btn_streetSave').click(function() {
+          	insertIntoStreet('street_form','btn_streetSave','btn_addStreet');
        	});
 
-		function insertIntoCousins(form_id,button_id,cousin_id)
+		function insertIntoStreet(form_id,button_id,cousin_id)
 	    {
 	        disable_button(button_id,'Saving');
 
 	        $.ajax({
-	            url: '<?php echo(site_url("city/add")) ?>',
+	            url: '<?php echo(site_url("street/add")) ?>',
 	            dataType:'json',
 	            type:'post',
 	            data:$('#'+form_id).serialize(),

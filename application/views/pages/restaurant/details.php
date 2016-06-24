@@ -486,17 +486,17 @@
                 <div class="col-md-12">
                     <div class="well-sm well clearfix">
                         <form id="form-updateParking">
-                        <b> Parking :</b><span id="msg-parkingWait" class="text-success" style="display:none">  </span>
-                        <label class="checkbox-inline">
-                            <input type="radio" id="parking_yes" class="parking" name="res_parking"
-                                   value="1" <?php echo($restaurants->parking ? 'checked' : '') ?>>Yes
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="radio" id="parking_no" class="parking" name="res_parking"
-                                   value="0" <?php echo($restaurants->parking ? '' : 'checked') ?>>No
-                        </label>
-                        <hr/>
-
+                            <b> Parking :</b><span id="msg-parkingWait" class="text-success" style="display:none">  </span>
+                            <label class="checkbox-inline">
+                                <input type="radio" id="parking_yes" class="parking" name="res_parking"
+                                       value="1" <?php echo($restaurants->parking ? 'checked' : '') ?>>Yes
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="radio" id="parking_no" class="parking" name="res_parking"
+                                       value="0" <?php echo($restaurants->parking ? '' : 'checked') ?>>No
+                            </label>
+                            <hr/>
+                       </form>
                         <label class="checkbox-inline">
                             <input type="checkbox" class="parking_options" id='res_parking2' name="res_parking2"
                                    value="2" <?php echo($restaurants->parking_two ? 'checked' : '') ?>>Two Wheeler
@@ -507,7 +507,7 @@
                         </label>
                         <button type="button" id="btn-updateParking" style="display:none" class="btn btb-sm btn-primary pull-right">Update</button>
                         <br>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
@@ -1322,7 +1322,7 @@
         $('#btn-updateParking').click(function() {
             $(this).text('Updating.......');
             $(this).prop('disabled',true);
-
+            var res_p=$()
             $.ajax({
                 url: '<?php echo site_url("parking/update/".$this->uri->segment(3)) ?>',
                 type: 'POST',
