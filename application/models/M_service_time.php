@@ -12,7 +12,6 @@ class M_service_time extends CI_Model
         $this->db->where($data[0], $data[1]);
         $this->db->where('position', 1);
         $result_data = $this->db->get()->result();
-        print_r($result_data);
         if ($json == false) {
             $master = array();
             foreach ($result_data as $time) {
