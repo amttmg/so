@@ -210,6 +210,21 @@
 
     </div>
     <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <b>Multiple Outlets</b>
+                <hr>
+                <label class="checkbox-inline">
+                    <input class="multi_outlets" type="radio" name="multiple_outlets" value="1">Yes
+                </label>
+                <label class="checkbox-inline">
+                    <input class="multi_outlets" checked type="radio" name="multiple_outlets" value="0">No
+                </label>
+                <input style="display: none" id="outlets_no" type="number" name="outlets_no">
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <div class="well-sm well">
                 <table class="table table-bordered">
@@ -809,21 +824,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="well well-sm">
-                <b>Multiple Outlets</b>
-                <hr>
-                <label class="checkbox-inline">
-                    <input class="multi_outlets" type="radio" name="multiple_outlets" value="1">Yes
-                </label>
-                <label class="checkbox-inline">
-                    <input class="multi_outlets" checked type="radio" name="multiple_outlets" value="0">No
-                </label>
-                <input style="display: none" id="outlets_no" type="number" name="outlets_no">
-            </div>
-        </div>
-    </div>
+
     <div class="row" style="padding: 15px">
         <div class="col-md-12">
             <div class="form-horizontal">
