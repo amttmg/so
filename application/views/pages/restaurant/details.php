@@ -1,7 +1,6 @@
 <!-- <div class="container" style="background-color: #f0f0f0"> -->
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <form method="post" action="<?php echo base_url('index.php/dataentry/insert') ?>">
             <?php if ($this->session->flashdata('flashSuccess')): ?>
                 <div class="alert alert-success" style="margin-top: 10px">
                     <b>
@@ -22,17 +21,46 @@
                 <div class="col-md-12">
                     <table class="table table-bordered">
                         <tr>
-                            <th>Restaurant Name</th>
+                        <th>Restaurant Name <button type="button" id="btn-editRname" class="btn btn-sm btn-primary pull-right"><i class="fa fa-edit fa"></i>&nbsp&nbspEdit</button></th>
                         </tr>
                         <tr>
                             <td>
-                                <h1><?php echo($restaurants->res_name) ?></h1>
+                                <h1 id="res_name"><?php echo($restaurants->res_name)  ?></h1>
                             </td>
                         </tr>
                     </table>
                 </div>
             </div>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#btn-editRname').click(function() {
+                        $('#restaurant_name').val($('#res_name').text());
+                        $('#modal-updateRestaurantName').modal('show');
+                    });
 
+                    $('#btn-updateRestaurantName').click(function() {
+                        $(this).text('Updating.......');
+                        $(this).prop('disabled',true);
+                        $.ajax({
+                            url: '<?php echo(site_url("restaurants/update_name/".$this->uri->segment(3))) ?>',
+                            type: 'POST',
+                            data: {name:$('#restaurant_name').val()}
+                        })
+                        .done(function() {
+                            location.reload(true);
+                        })
+                        .fail(function() {
+                            $('#btn-updateRestaurantName').text('error')
+                            .addClass('btn-danger');
+                            console.log("error");
+                        })
+                        .always(function() {
+                            console.log("complete");
+                        });
+                        
+                    });
+                });
+            </script>
             <div class="row">
                 <div class="col-md-6">
                     <div class="well-sm well">
@@ -41,7 +69,7 @@
                                 <th colspan="2">Establishment's Contact Number
                                     <div class="pull-right">
                                         <button type="button" id="btn-estdcontactedit" class="btn btn-xs btn-primary">
-                                            Edit
+                                            <i class="fa fa-edit fa"></i>&nbsp&nbspEdit
                                         </button>
                                     </div>
                                 </th>
@@ -102,6 +130,7 @@
                             <th colspan="2">Map(Coordinates)
                                 <div class="pull-right">
                                     <button type="button" id="btn-editmapcoordinate" class="btn btn-xs btn-primary">
+                                        <i class="fa fa-edit fa"></i>&nbsp&nbsp
                                         Edit
                                     </button>
                                 </div>
@@ -205,7 +234,7 @@
                             <th colspan="2">Establishment Location
                                 <div class="pull-right">
                                     <button type="button" id="btn-editEstablismentLocation"
-                                            class="btn btn-xs btn-primary">Edit
+                                            class="btn btn-xs btn-primary"><i class="fa fa-edit fa"></i>&nbsp&nbspEdit
                                     </button>
                                 </div>
                             </th>
@@ -486,17 +515,17 @@
                 <div class="col-md-12">
                     <div class="well-sm well clearfix">
                         <form id="form-updateParking">
-                        <b> Parking :</b><span id="msg-parkingWait" class="text-success" style="display:none">  </span>
-                        <label class="checkbox-inline">
-                            <input type="radio" id="parking_yes" class="parking" name="res_parking"
-                                   value="1" <?php echo($restaurants->parking ? 'checked' : '') ?>>Yes
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="radio" id="parking_no" class="parking" name="res_parking"
-                                   value="0" <?php echo($restaurants->parking ? '' : 'checked') ?>>No
-                        </label>
-                        <hr/>
-
+                            <b> Parking :</b><span id="msg-parkingWait" class="text-success" style="display:none">  </span>
+                            <label class="checkbox-inline">
+                                <input type="radio" id="parking_yes" class="parking" name="res_parking"
+                                       value="1" <?php echo($restaurants->parking ? 'checked' : '') ?>>Yes
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="radio" id="parking_no" class="parking" name="res_parking"
+                                       value="0" <?php echo($restaurants->parking ? '' : 'checked') ?>>No
+                            </label>
+                            <hr/>
+                       </form>
                         <label class="checkbox-inline">
                             <input type="checkbox" class="parking_options" id='res_parking2' name="res_parking2"
                                    value="2" <?php echo($restaurants->parking_two ? 'checked' : '') ?>>Two Wheeler
@@ -507,7 +536,7 @@
                         </label>
                         <button type="button" id="btn-updateParking" style="display:none" class="btn btb-sm btn-primary pull-right">Update</button>
                         <br>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
@@ -753,16 +782,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <button type="submit" class="btn btn-sm btn-primary">Save</button>
-                    <div class="clearfix">
-
-                    </div>
-                </div>
-            </div>
-        </form>
     </div>
 </div>
 <!-- </div> -->
@@ -1313,6 +1332,27 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="modal-updateRestaurantName">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Update Form</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Restaurant Name</label>
+                    <input type="text" name="restaurant_name" id="restaurant_name" class="form-control" value="">
+                    <span></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn-updateRestaurantName" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
 
     parking_check();
@@ -1322,7 +1362,7 @@
         $('#btn-updateParking').click(function() {
             $(this).text('Updating.......');
             $(this).prop('disabled',true);
-
+            var res_p=$()
             $.ajax({
                 url: '<?php echo site_url("parking/update/".$this->uri->segment(3)) ?>',
                 type: 'POST',

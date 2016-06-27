@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Area extends CI_Controller {
+class Street extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->model('M_street','street');
 		$this->load->model('M_area','area');
-		$this->load->model('M_city','city');
-		$data['area']=$this->area->getAll();
-		$data['cities']=$this->city->getAll();
-		$this->load->_render_page('pages/area/index',$data);
+		$data['streets']=$this->street->getAll();
+		$data['areas']=$this->area->getAll();
+		$this->load->_render_page('pages/street/index',$data);
 	}
 
 	public function add()
@@ -18,19 +18,18 @@ class Area extends CI_Controller {
 		$master['status'] = True;
 		$data             = array();
 		$master           = array();
-        $this->form_validation->set_rules('city', 'City Name', 'trim|required|max_length[65]|callback_validate_dropdown');
-        $this->form_validation->set_rules('area', 'Area Name', 'trim|required|max_length[300]');
+        $this->form_validation->set_rules('street', 'Street Name', 'trim|required|max_length[65]|is_unique[tbl_street.name]');
+        $this->form_validation->set_rules('area', 'Area Name', 'trim|required|max_length[60]|callback_validate_dropdown');
         $this->form_validation->set_error_delimiters('<p class="text-danger">', '</>');
 		
 		if ($this->form_validation->run() == True) 
 		{
 			
 			$data=array(
-				'name'=>$this->input->post('area'),
-				'city_id'=>$this->input->post('city'),
+				'name'=>$this->input->post('street'),
+				'area_id'=>$this->input->post('area')
 				);
-			$this->db->insert('tbl_area',$data);
-
+			$this->db->insert('tbl_street',$data);
 			$this->session->set_flashdata('message', 'Saved Successfully !');
 			$master['status']  = True;
 			$master['message'] ="successfully saved data";
@@ -52,24 +51,24 @@ class Area extends CI_Controller {
 		echo(json_encode($master));
 	}
 
-	public function delete($id)
-	{
-		$this->db->where('id',$id);
-		$this->db->update('tbl_area',array('status'=>0));
-		$this->session->set_flashdata('message', 'Delete Successfully !');
-		redirect('area','refresh');
-	}
-
 	public function validate_dropdown($value)
     {
         if ($value == '0') {
-            $this->form_validation->set_message('validate_dropdown', 'The {field} is required');
+            $this->form_validation->set_message('validate_dropdown', 'The {field} field is required');
             return false;
         }
         return true;
     }
 
+	public function delete($id)
+	{
+		$this->db->where('id',$id);
+		$this->db->update('tbl_street',array('status'=>0));
+		$this->session->set_flashdata('message', 'Delete Successfully !');
+		redirect('street','refresh');
+	}
+
 }
 
-/* End of file Area.php */
-/* Location: ./application/controllers/Area.php */
+/* End of file Street.php */
+/* Location: ./application/controllers/Street.php */

@@ -24,32 +24,7 @@
 						</tr>
 					</thead>
 					<tbody>
-					<?php $count=1 ?>
-						<?php foreach ($restaurants as $restaurant): ?>
-							<tr>
-							<td><?php echo($count); $count++; ?></td>
-							<td><?php echo($restaurant->res_name) ?></td>
-							<td><?php echo($restaurant->area) ?></td>
-							<td><?php echo($restaurant->street) ?></td>
-							<td><?php echo($restaurant->landmark) ?></td>
-							<td>
-								<div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        Action
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li>
-                                        	<a href="<?php echo(site_url('restaurants/details/'.$restaurant->res_id)) ?>"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp&nbspEdit</label></a>
-                                        </li>
-                                        <li>
-                                        	<a href="#" class="delete" data-resid="<?php echo $restaurant->res_id ?>"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp&nbspDelete</label></a>
-                                        </li>
-                                    </ul>
-                                </div>
-							</td>
-							</tr>
-						<?php endforeach ?>
+					
 					</tbody>
 				</table>
 			</div>
@@ -76,7 +51,7 @@
 </div>
 
 <script type="text/javascript">
-	$('.delete').click(function() {
+	$('body').on('click','.delete',function() {
 		var res_id=$(this).data('resid');
 		var url='<?php echo(site_url()) ?>/restaurants/delete/'+res_id;
 		$('#btn-delete').attr('href',url);
@@ -85,8 +60,27 @@
 
 	$(document).ready(function() {
 		
-		$('#table-datatable').DataTable({
-	        "responsive": true
+		
+
+		   $('#table-datatable').DataTable({
+
+		        "processing": true, //Feature control the processing indicator.
+		        "serverSide": true, //Feature control DataTables' server-side processing mode.
+		        "order": [], //Initial no order.
+		        // Load data for the table's content from an Ajax source
+		        "ajax": {
+		            "url": "<?php echo site_url('restaurants/datatables')?>",
+		            "type": "POST"
+		        },
+		        //Set column definition initialisation properties.
+		        "columnDefs": [
+		            {
+		                "targets": [-1, -2], //last column
+		                "orderable": false, //set not orderable
+		            },
+		        ],
+
+
 	    });
 	});
 </script>

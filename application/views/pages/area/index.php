@@ -95,7 +95,7 @@
 			 <div class="modal-body">
                 <form action="" method="POST" id="area_form">
                     <div class="form-group">
-                    	<label>City</label>
+                    	<label>City <span class="text-danger">*</span></label>
                     	<select name="city" id="city" class="form-control" required="required">
 	                    	<option value="0">Please select city</option>
 	                    	<?php foreach ($cities as $city): ?>
@@ -105,7 +105,7 @@
 	                    <span></span>
                     </div>
                     <div class="form-group">
-                        <label for="">Area Name</label>
+                        <label for="">Area Name <span class="text-danger">*</span></label>
                         <input type="text" name="area" id="area" class="form-control" placeholder="Area Name" value="">
                         <span></span>
                     </div>

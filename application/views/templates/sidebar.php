@@ -81,6 +81,9 @@
                                 <li>
                                     <a href="<?php echo(site_url('area')) ?>">Area</a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo(site_url('street')) ?>">Street</a>
+                                </li>
                                 
                             </ul>
                             <!-- /.nav-second-level -->
