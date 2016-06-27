@@ -106,7 +106,7 @@ class restaurant extends CI_Model
                     'day' => $day,
                     'opening_time' => $serv['open'],
                     'closing_time' => $serv['close'],
-                    'position' => 2,
+                    'position' => 3,
                     'status' => 1,
                 );
                 $this->db->insert('tbl_service_time', $newtbl_service_time);

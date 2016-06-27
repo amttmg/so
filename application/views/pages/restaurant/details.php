@@ -348,12 +348,20 @@
                                                 <br/>
                                                 <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? $st['third']->opening_time : '-- -- --') ?>
+                                            <?php endif ?>
                                         </td>
                                         <td>
                                             <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
                                                 <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? $st['third']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -367,12 +375,20 @@
                                                 <br/>
                                                 <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? $st['third']->opening_time : '-- -- --') ?>
+                                            <?php endif ?>
                                         </td>
                                         <td>
                                             <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
                                                 <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? $st['third']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -386,12 +402,20 @@
                                                 <br/>
                                                 <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? $st['third']->opening_time : '-- -- --') ?>
+                                            <?php endif ?>
                                         </td>
                                         <td>
                                             <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
                                                 <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? $st['third']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -405,12 +429,20 @@
                                                 <br/>
                                                 <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? $st['third']->opening_time : '-- -- --') ?>
+                                            <?php endif ?>
                                         </td>
                                         <td>
                                             <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
                                                 <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? $st['third']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -424,12 +456,20 @@
                                                 <br/>
                                                 <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? $st['third']->opening_time : '-- -- --') ?>
+                                            <?php endif ?>
                                         </td>
                                         <td>
                                             <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
                                                 <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? $st['third']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -443,12 +483,20 @@
                                                 <br/>
                                                 <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? $st['third']->opening_time : '-- -- --') ?>
+                                            <?php endif ?>
                                         </td>
                                         <td>
                                             <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
                                                 <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? $st['third']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -462,12 +510,20 @@
                                                 <br/>
                                                 <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '-- -- --') ?>
                                             <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? $st['third']->opening_time : '-- -- --') ?>
+                                            <?php endif ?>
                                         </td>
                                         <td>
                                             <?php echo($st['first']->closing_time ? $st['first']->closing_time : '-- -- --') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
                                                 <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '-- -- --') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? $st['third']->closing_time : '-- -- --') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
