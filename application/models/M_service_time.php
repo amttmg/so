@@ -37,6 +37,45 @@ class M_service_time extends CI_Model {
        
     }
 
+    public function update($res_id)
+    {
+        $this->db->trans_start();
+
+        $this->db->where('res_id',$res_id);
+        $this->db->delete('tbl_service_time');
+
+        $srv_time = $this->input->post('servtime');
+        if (is_array($srv_time)) {
+            foreach ($srv_time as $day => $serv) {
+                $newtbl_service_time = array(
+                    'res_id' => $res_id,
+                    'day' => $day,
+                    'opening_time' => $serv['open'],
+                    'closing_time' => $serv['close'],
+                    'status' => 1,
+                );
+                $this->db->insert('tbl_service_time', $newtbl_service_time);
+            }
+        }
+
+        $srv_time = $this->input->post('servtime1');
+
+        if (is_array($srv_time)) {
+            foreach ($srv_time as $day => $serv) {
+                $newtbl_service_time = array(
+                    'res_id' => $res_id,
+                    'day' => $day,
+                    'opening_time' => $serv['open'],
+                    'closing_time' => $serv['close'],
+                    'position' => 2,
+                    'status' => 1,
+                );
+                $this->db->insert('tbl_service_time', $newtbl_service_time);
+            }
+        }
+        $this->db->trans_complete();
+    }
+
 	
 
 }
