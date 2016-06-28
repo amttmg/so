@@ -106,13 +106,26 @@ class restaurant extends CI_Model
                     'day' => $day,
                     'opening_time' => $serv['open'],
                     'closing_time' => $serv['close'],
+                    'position' => 3,
+                    'status' => 1,
+                );
+                $this->db->insert('tbl_service_time', $newtbl_service_time);
+            }
+        }
+        $srv_time = $this->input->post('servtime2');
+        if (is_array($srv_time)) {
+            foreach ($srv_time as $day => $serv) {
+                $newtbl_service_time = array(
+                    'res_id' => $res_id,
+                    'day' => $day,
+                    'opening_time' => $serv['open'],
+                    'closing_time' => $serv['close'],
                     'position' => 2,
                     'status' => 1,
                 );
                 $this->db->insert('tbl_service_time', $newtbl_service_time);
             }
         }
-
         $estimate_cost_topic = $this->input->post('estimate_cost_topic');
         if (is_array($estimate_cost_topic)) {
             foreach ($estimate_cost_topic as $topic_id => $val) {

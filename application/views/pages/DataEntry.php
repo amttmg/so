@@ -210,6 +210,21 @@
 
     </div>
     <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <b>Multiple Outlets</b>
+                <hr>
+                <label class="checkbox-inline">
+                    <input class="multi_outlets" type="radio" name="multiple_outlets" value="1">Yes
+                </label>
+                <label class="checkbox-inline">
+                    <input class="multi_outlets" checked type="radio" name="multiple_outlets" value="0">No
+                </label>
+                <input style="display: none" id="outlets_no" type="number" name="outlets_no">
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <div class="well-sm well">
                 <table class="table table-bordered">
@@ -381,95 +396,185 @@
                     </tr>
                     <tr>
                         <td>if same all weeks</td>
-                        <td><input id="open_time_all" type="time" class="form-control time" data-time-format="H:i:s">
+                        <td>
+                            <input id="open_time_all" type="time" class="form-control time" data-time-format="H:i:s">
+                            <input id="open_time_all1" type="time" class="form-control time" data-time-format="H:i:s">
+                            <input id="open_time_all2" type="time" class="form-control time" data-time-format="H:i:s">
                         </td>
-                        <td><input id="close_time_all" type="time" class="form-control time" data-time-format="H:i:s">
+                        <td>
+                            <input id="close_time_all" type="time" class="form-control time" data-time-format="H:i:s">
+                            <input id="close_time_all1" type="time" class="form-control time" data-time-format="H:i:s">
+                            <input id="close_time_all2" type="time" class="form-control time" data-time-format="H:i:s">
                         </td>
 
                     </tr>
                     <tr>
                         <td>Sunday</td>
-                        <td><input name="servtime[1][open]" type="time" class="form-control open_time time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="servtime[1][close]" type="time" class="form-control close_time time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary addservetime" data-position="1">New
-                                Time
-                            </button>
+                            <input name="servtime[1][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[1][open]" type="time" class="form-control open_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[1][open]" type="time" class="form-control open_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <input name="servtime[1][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[1][close]" type="time" class="form-control close_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[1][close]" type="time" class="form-control close_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="1">New
+                                 Time
+                             </button>-->
                         </td>
                     </tr>
                     <tr>
                         <td>Monday</td>
-                        <td><input name="servtime[2][open]" type="time" class="form-control open_time time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="servtime[2][close]" type="time" class="form-control close_time time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary  addservetime" data-position="2">New
+                            <input name="servtime[2][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[2][open]" type="time" class="form-control open_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[2][open]" type="time" class="form-control open_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <input name="servtime[2][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[2][close]" type="time" class="form-control close_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[2][close]" type="time" class="form-control close_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <!--<button type="button" class="btn btn-xs btn-primary  addservetime" data-position="2">New
                                 Time
-                            </button>
+                            </button>-->
                         </td>
                     </tr>
                     <tr>
                         <td>Tuesday</td>
-                        <td><input name="servtime[3][open]" type="time" class="form-control open_time time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="servtime[3][close]" type="time" class="form-control close_time time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary addservetime" data-position="3">New
-                                Time
-                            </button>
+                            <input name="servtime[3][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[3][open]" type="time" class="form-control open_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[3][open]" type="time" class="form-control open_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <input name="servtime[3][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[3][close]" type="time" class="form-control close_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[3][close]" type="time" class="form-control close_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="3">New
+                                 Time
+                             </button>-->
                         </td>
                     </tr>
                     <tr>
                         <td>Wednesday</td>
-                        <td><input name="servtime[4][open]" type="time" class="form-control open_time time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="servtime[4][close]" type="time" class="form-control close_time time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary addservetime" data-position="4">New
-                                Time
-                            </button>
+                            <input name="servtime[4][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[4][open]" type="time" class="form-control open_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[4][open]" type="time" class="form-control open_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <input name="servtime[4][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[4][close]" type="time" class="form-control close_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[4][close]" type="time" class="form-control close_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <!--  <button type="button" class="btn btn-xs btn-primary addservetime" data-position="4">New
+                                  Time
+                              </button>-->
                         </td>
                     </tr>
                     <tr>
                         <td>Thursday</td>
-                        <td><input name="servtime[5][open]" type="time" class="form-control open_time time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="servtime[5][close]" type="time" class="form-control close_time time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary addservetime" data-position="5">New
-                                Time
-                            </button>
+                            <input name="servtime[5][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[5][open]" type="time" class="form-control open_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[5][open]" type="time" class="form-control open_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <input name="servtime[5][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[5][close]" type="time" class="form-control close_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[5][close]" type="time" class="form-control close_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="5">New
+                                 Time
+                             </button>-->
                         </td>
                     </tr>
                     <tr>
                         <td>Friday</td>
-                        <td><input name="servtime[6][open]" type="time" class="form-control open_time time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="servtime[6][close]" type="time" class="form-control close_time time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary addservetime" data-position="6">New
-                                Time
-                            </button>
+                            <input name="servtime[6][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[6][open]" type="time" class="form-control open_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[6][open]" type="time" class="form-control open_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <input name="servtime[6][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[6][close]" type="time" class="form-control close_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[6][close]" type="time" class="form-control close_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="6">New
+                                 Time
+                             </button>-->
                         </td>
                     </tr>
 
                     <tr>
                         <td>Saturday</td>
-                        <td><input name="servtime[7][open]" type="time" class="form-control open_time time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="servtime[7][close]" type="time" class="form-control close_time time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary addservetime" data-position="7">New
-                                Time
-                            </button>
+                            <input name="servtime[7][open]" type="time" class="form-control open_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[7][open]" type="time" class="form-control open_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[7][open]" type="time" class="form-control open_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <input name="servtime[7][close]" type="time" class="form-control close_time time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime1[7][close]" type="time" class="form-control close_time1 time"
+                                   data-time-format="H:i:s">
+                            <input name="servtime2[7][close]" type="time" class="form-control close_time2 time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="7">New
+                                 Time
+                             </button>-->
                         </td>
                     </tr>
                 </table>
@@ -809,21 +914,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="well well-sm">
-                <b>Multiple Outlets</b>
-                <hr>
-                <label class="checkbox-inline">
-                    <input class="multi_outlets" type="radio" name="multiple_outlets" value="1">Yes
-                </label>
-                <label class="checkbox-inline">
-                    <input class="multi_outlets" checked type="radio" name="multiple_outlets" value="0">No
-                </label>
-                <input style="display: none" id="outlets_no" type="number" name="outlets_no">
-            </div>
-        </div>
-    </div>
+
     <div class="row" style="padding: 15px">
         <div class="col-md-12">
             <div class="form-horizontal">
@@ -980,7 +1071,6 @@
         </div>
     </div>
 </div>
-
 
 <div class="modal fade" id="mdl-costTopic">
     <div class="modal-dialog">
@@ -1249,7 +1339,22 @@
     $('#close_time_all').focusout(function () {
         $('.close_time').val($(this).val());
     });
+    /*=============================================================================*/
 
+    $('#open_time_all1').focusout(function () {
+        $('.open_time1').val($(this).val());
+    });
+    $('#close_time_all1').focusout(function () {
+        $('.close_time1').val($(this).val());
+    });
+    /*=============================================================================*/
+    $('#open_time_all2').focusout(function () {
+        $('.open_time2').val($(this).val());
+    });
+    $('#close_time_all2').focusout(function () {
+        $('.close_time2').val($(this).val());
+    });
+    /*=============================================================================*/
     $('#start_time_all').focusout(function () {
         $('.start_time').val($(this).val());
     });
@@ -1560,10 +1665,10 @@
 <script>
     $(".multi_outlets").change(function () {
         var v = $(this).val();
-        if(v==0){
+        if (v == 0) {
             $('#outlets_no').val(0);
             $('#outlets_no').hide();
-        }else{
+        } else {
             $('#outlets_no').show();
         }
     })

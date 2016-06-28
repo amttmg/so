@@ -344,17 +344,25 @@
                                     <tr>
                                         <td>Sunday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '') ?>
+                                            <?php echo($st['first']->opening_time ? date('h:i:s a',strtotime($st['first']->opening_time)) : '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '') ?>
+                                                <br/><?php echo($st['second']->opening_time ? date('h:i:s a',strtotime($st['second']->opening_time)) : '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? date('h:i:s a',strtotime($st['third']->opening_time)) : '') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '') ?>
+                                            <?php echo($st['first']->closing_time ? date('h:i:s a',strtotime($st['first']->closing_time)) : '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '') ?>
+                                                <br/><?php echo($st['second']->closing_time ? date('h:i:s a',strtotime($st['second']->closing_time)) : '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? date('h:i:s a',strtotime($st['third']->closing_time)) : '') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -363,17 +371,25 @@
                                     <tr>
                                         <td>Monday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '') ?>
+                                            <?php echo($st['first']->opening_time ? date('h:i:s a',strtotime($st['first']->opening_time)) : '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '') ?>
+                                                <br/><?php echo($st['second']->opening_time ? date('h:i:s a',strtotime($st['second']->opening_time)) : '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? date('h:i:s a',strtotime($st['third']->opening_time)) : '') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '') ?>
+                                            <?php echo($st['first']->closing_time ? date('h:i:s a',strtotime($st['first']->closing_time)) : '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '') ?>
+                                                <br/><?php echo($st['second']->closing_time ? date('h:i:s a',strtotime($st['second']->closing_time )): '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? date('h:i:s a',strtotime($st['third']->closing_time )): '') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -382,17 +398,25 @@
                                     <tr>
                                         <td>Tuesday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '') ?>
+                                            <?php echo($st['first']->opening_time ? date('h:i:s a',strtotime($st['first']->opening_time)) : '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '') ?>
+                                                <br/><?php echo($st['second']->opening_time ? date('h:i:s a',strtotime($st['second']->opening_time)) : '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? date('h:i:s a',strtotime($st['third']->opening_time)) : '') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '') ?>
+                                            <?php echo($st['first']->closing_time ? date('h:i:s a',strtotime($st['first']->closing_time)) : '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '') ?>
+                                                <br/><?php echo($st['second']->closing_time ? date('h:i:s a',strtotime($st['second']->closing_time)) : '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? date('h:i:s a',strtotime($st['third']->closing_time)) : '') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -401,17 +425,25 @@
                                     <tr>
                                         <td>Wednesday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '') ?>
+                                            <?php echo($st['first']->opening_time ? date('h:i:s a',strtotime($st['first']->opening_time)) : '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '') ?>
+                                                <br/><?php echo($st['second']->opening_time ? date('h:i:s a',strtotime($st['second']->opening_time)) : '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? date('h:i:s a',strtotime($st['third']->opening_time)) : '') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '') ?>
+                                            <?php echo($st['first']->closing_time ? date('h:i:s a',strtotime($st['first']->closing_time)) : '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '') ?>
+                                                <br/><?php echo($st['second']->closing_time ? date('h:i:s a',strtotime($st['second']->closing_time)) : '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? date('h:i:s a',strtotime($st['third']->closing_time)) : '') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -420,17 +452,25 @@
                                     <tr>
                                         <td>Thursday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '') ?>
+                                            <?php echo($st['first']->opening_time ? date('h:i:s a',strtotime($st['first']->opening_time)) : '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '') ?>
+                                                <br/><?php echo($st['second']->opening_time ? date('h:i:s a',strtotime($st['second']->opening_time)) : '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? date('h:i:s a',strtotime($st['third']->opening_time)) : '') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '') ?>
+                                            <?php echo($st['first']->closing_time ? date('h:i:s a',strtotime($st['first']->closing_time)) : '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '') ?>
+                                                <br/><?php echo($st['second']->closing_time ? date('h:i:s a',strtotime($st['second']->closing_time)) : '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? date('h:i:s a',strtotime($st['third']->closing_time)) : '') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -439,17 +479,25 @@
                                     <tr>
                                         <td>Friday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '') ?>
+                                            <?php echo($st['first']->opening_time ? date('h:i:s a',strtotime($st['first']->opening_time)): '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '') ?>
+                                                <br/><?php echo($st['second']->opening_time ? date('h:i:s a',strtotime($st['second']->opening_time)) : '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? date('h:i:s a',strtotime($st['third']->opening_time)) : '') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '') ?>
+                                            <?php echo($st['first']->closing_time ? date('h:i:s a',strtotime($st['first']->closing_time)) : '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '') ?>
+                                                <br/><?php echo($st['second']->closing_time ? date('h:i:s a',$st['second']->closing_time) : '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? date('h:i:s a',strtotime($st['third']->closing_time)) : '') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -458,17 +506,25 @@
                                     <tr>
                                         <td>Saturday</td>
                                         <td>
-                                            <?php echo($st['first']->opening_time ? $st['first']->opening_time : '') ?>
+                                            <?php echo($st['first']->opening_time ? date('h:i:s a',strtotime($st['first']->opening_time)) : '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->opening_time ? $st['second']->opening_time : '') ?>
+                                                <br/><?php echo($st['second']->opening_time ? date('h:i:s a',strtotime($st['second']->opening_time)) : '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->opening_time ? date('h:i:s a',strtotime($st['third']->opening_time)) : '') ?>
                                             <?php endif ?>
                                         </td>
                                         <td>
-                                            <?php echo($st['first']->closing_time ? $st['first']->closing_time : '') ?>
+                                            <?php echo($st['first']->closing_time ? date('h:i:s a',strtotime($st['first']->closing_time)) : '') ?>
                                             <?php if ($st['second']): ?>
                                                 <br/>
-                                                <br/><?php echo($st['second']->closing_time ? $st['second']->closing_time : '') ?>
+                                                <br/><?php echo($st['second']->closing_time ? date('h:i:s a',strtotime($st['second']->closing_time)) : '') ?>
+                                            <?php endif ?>
+                                            <?php if ($st['third']): ?>
+                                                <br/>
+                                                <br/><?php echo($st['third']->closing_time ? date('h:i:s a',strtotime($st['third']->closing_time)) : '') ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
@@ -672,17 +728,27 @@
                                         } ?>
                                     </td>
                                     <td>
-                                        <?php echo($hh['first']->start_time ? $hh['first']->start_time : '') ?>
-                                        <?php if ($hh['second']): ?>
-                                            <br/>
-                                            <br/><?php echo($hh['second']->start_time ? $hh['second']->start_time : '') ?>
+                                        <?php echo($hh['first']->start_time ?date('h:i:s a',strtotime($hh['first']->start_time)) : '') ?>
+                                        <?php if (!empty($hh['second'])): ?>
+                                            
+                                            <br/><?php echo($hh['second']->start_time ? date('h:i:s a',strtotime($hh['second']->start_time )): '') ?>
+                                        <?php endif ?>
+
+                                        <?php if (!empty($hh['third'])): ?>
+                                           
+                                            <br/><?php echo($hh['third']->start_time ? date('h:i:s a',strtotime($hh['third']->start_time )): '') ?>
                                         <?php endif ?>
                                     </td>
                                     <td>
-                                        <?php echo($hh['first']->end_time ? $hh['first']->end_time : '') ?>
-                                        <?php if ($hh['second']): ?>
-                                            <br/>
-                                            <br/><?php echo($hh['second']->end_time ? $hh['second']->end_time : '') ?>
+                                        <?php echo($hh['first']->end_time ? date('h:i:s a',strtotime($hh['first']->end_time)) : '') ?>
+                                        <?php if (!empty($hh['second'])): ?>
+                                           
+                                            <br/><?php echo($hh['second']->end_time ? date('h:i:s a',strtotime($hh['second']->end_time)) : '') ?>
+                                        <?php endif ?>
+
+                                        <?php if (!empty($hh['third'])): ?>
+                                           
+                                            <br/><?php echo($hh['third']->end_time ? date('h:i:s a',strtotime($hh['third']->end_time)) : '') ?>
                                         <?php endif ?>
                                     </td>
                                 </tr>
@@ -1401,6 +1467,9 @@
                                             <br/>
                                             <input name="servtime1[1][open]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second']? $st['second']->opening_time : '') ?>">
+                                            <br/>
+                                            <input name="servtime2[1][open]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third']? $st['third']->opening_time : '') ?>">
                                         </td>
                                         <td>
                                             <input name="servtime[1][close]" type="time" class="form-control open_time time"
@@ -1408,7 +1477,9 @@
                                             <br/>
                                             <input name="servtime1[1][close]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second'] ? $st['second']->closing_time : '') ?>">
-                                            
+                                            <br/>
+                                            <input name="servtime2[1][close]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
                                         </td>
                                     </tr>
                                 <?php endif ?>
@@ -1421,6 +1492,9 @@
                                             <br/>
                                             <input name="servtime1[2][open]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second']? $st['second']->opening_time : '') ?>">
+                                            <br/>
+                                            <input name="servtime2[2][open]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third']? $st['third']->opening_time : '') ?>">
                                         </td>
                                         <td>
                                             <input name="servtime[2][close]" type="time" class="form-control open_time time"
@@ -1428,7 +1502,9 @@
                                             <br/>
                                             <input name="servtime1[2][close]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second'] ? $st['second']->closing_time : '') ?>">
-                                            
+                                            <br/>
+                                            <input name="servtime2[2][close]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
                                         </td>
                                     </tr>
                                 <?php endif ?>
@@ -1441,6 +1517,9 @@
                                             <br/>
                                             <input name="servtime1[3][open]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second']? $st['second']->opening_time : '') ?>">
+                                            <br/>
+                                            <input name="servtime2[3][open]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third']? $st['third']->opening_time : '') ?>">
                                         </td>
                                         <td>
                                             <input name="servtime[3][close]" type="time" class="form-control open_time time"
@@ -1448,7 +1527,9 @@
                                             <br/>
                                             <input name="servtime1[3][close]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second'] ? $st['second']->closing_time : '') ?>">
-                                            
+                                            <br/>
+                                            <input name="servtime2[3][close]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
                                         </td>
                                     </tr>
                                 <?php endif ?>
@@ -1461,6 +1542,9 @@
                                             <br/>
                                             <input name="servtime1[4][open]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second']? $st['second']->opening_time : '') ?>">
+                                            <br/>
+                                            <input name="servtime2[4][open]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third']? $st['third']->opening_time : '') ?>">
                                         </td>
                                         <td>
                                             <input name="servtime[4][close]" type="time" class="form-control open_time time"
@@ -1468,6 +1552,9 @@
                                             <br/>
                                             <input name="servtime1[4][close]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second'] ? $st['second']->closing_time : '') ?>">
+                                            <br/>
+                                            <input name="servtime2[4][close]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
                                             
                                         </td>
                                     </tr>
@@ -1481,6 +1568,9 @@
                                             <br/>
                                             <input name="servtime1[5][open]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second']? $st['second']->opening_time : '') ?>">
+                                            <br/>
+                                            <input name="servtime2[5][open]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third']? $st['third']->opening_time : '') ?>">
                                         </td>
                                         <td>
                                             <input name="servtime[5][close]" type="time" class="form-control open_time time"
@@ -1488,6 +1578,9 @@
                                             <br/>
                                             <input name="servtime1[5][close]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second'] ? $st['second']->closing_time : '') ?>">
+                                            <br/>
+                                            <input name="servtime2[5][close]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
                                             
                                         </td>
                                     </tr>
@@ -1501,6 +1594,9 @@
                                             <br/>
                                             <input name="servtime1[6][open]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second']? $st['second']->opening_time : '') ?>">
+                                            <br/>
+                                            <input name="servtime2[6][open]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third']? $st['third']->opening_time : '') ?>">
                                         </td>
                                         <td>
                                             <input name="servtime[6][close]" type="time" class="form-control open_time time"
@@ -1508,6 +1604,9 @@
                                             <br/>
                                             <input name="servtime1[6][close]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second'] ? $st['second']->closing_time : '') ?>">
+                                            <br/>
+                                            <input name="servtime2[6][close]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
                                             
                                         </td>
                                     </tr>
@@ -1521,6 +1620,9 @@
                                             <br/>
                                             <input name="servtime1[7][open]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second']? $st['second']->opening_time : '') ?>">
+                                            <br/>
+                                            <input name="servtime2[7][open]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third']? $st['third']->opening_time : '') ?>">
                                         </td>
                                         <td>
                                             <input name="servtime[7][close]" type="time" class="form-control open_time time"
@@ -1528,138 +1630,68 @@
                                             <br/>
                                             <input name="servtime1[7][close]" type="time" class="form-control open_time time"
                                             data-time-format="H:i:s" value="<?php echo($st['second'] ? $st['second']->closing_time : '') ?>">
+                                            <br/>
+                                            <input name="servtime2[7][close]" type="time" class="form-control open_time time"
+                                            data-time-format="H:i:s" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
                                             
                                         </td>
                                     </tr>
                                 <?php endif ?>
                             <?php endforeach ?>
                    <?php else: ?>
-                        <tr>
-                            <td>Sunday</td>
-                            <td>
-                                <input name="servtime[1][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[1][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                            </td>
-                            <td>
-                                <input name="servtime[1][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[1][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Monday</td>
-                            <td>
-                                <input name="servtime[2][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[2][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                            </td>
-                            <td>
-                                <input name="servtime[2][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[2][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Tuesday</td>
-                            <td>
-                                <input name="servtime[3][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[3][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                            </td>
-                            <td>
-                                <input name="servtime[3][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[3][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Wednesday</td>
-                            <td>
-                                <input name="servtime[4][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[4][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                            </td>
-                            <td>
-                                <input name="servtime[4][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[4][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Sunday</td>
-                            <td>
-                                <input name="servtime[5][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[5][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                            </td>
-                            <td>
-                                <input name="servtime[5][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[5][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Sunday</td>
-                            <td>
-                                <input name="servtime[6][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[6][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                            </td>
-                            <td>
-                                <input name="servtime[6][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[6][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Sunday</td>
-                            <td>
-                                <input name="servtime[7][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[7][open]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                            </td>
-                            <td>
-                                <input name="servtime[7][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                <br/>
-                                <input name="servtime1[7][close]" type="time" class="form-control open_time time"
-                                data-time-format="H:i:s" >
-                                
-                            </td>
-                        </tr>
+                        <?php
+                            $days=array('1','2','3','4','5','6','7'); 
+                         ?>
+                        <?php foreach ($days as $day): ?>
+                            <tr>
+                                <td><?php switch ($day) {
+                                        case '1':
+                                            echo("sunday");
+                                            break;
+                                        case '2':
+                                            echo("Monday");
+                                            break;
+                                        case '3':
+                                            echo("Tuesday");
+                                            break;
+                                        case '4':
+                                            echo('Wednesday');
+                                            break;
+                                        case '5':
+                                            echo('Thursday');
+                                            break;
+                                        case '6':
+                                            echo('Friday');
+                                            break;
+                                        case '7':
+                                            echo('Saturday');
+                                            break;
+                                    } ?>
+                                </td>
+                                <td>
+                                    <input name="servtime[<?php echo($day) ?>][open]" type="time" class="form-control open_time time"
+                                    data-time-format="H:i:s" >
+                                    <br/>
+                                    <input name="servtime1[<?php echo($day) ?>][open]" type="time" class="form-control open_time time"
+                                    data-time-format="H:i:s" >
+                                    <br/>
+                                    <input name="servtime2[<?php echo($day) ?>][open]" type="time" class="form-control open_time time"
+                                    data-time-format="H:i:s" >
+                                </td>
+                                <td>
+                                    <input name="servtime[<?php echo($day) ?>][close]" type="time" class="form-control open_time time"
+                                    data-time-format="H:i:s" >
+                                    <br/>
+                                    <input name="servtime1[<?php echo($day) ?>][close]" type="time" class="form-control open_time time"
+                                    data-time-format="H:i:s" >
+                                    <br/>
+                                    <input name="servtime2[<?php echo($day) ?>][close]" type="time" class="form-control open_time time"
+                                    data-time-format="H:i:s" >
+                                    
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                        
                    <?php endif ?>
 
                     
@@ -1702,53 +1734,244 @@
                     <?php if ($happy_hours): ?>
                         <?php foreach ($happy_hours as $hh): ?>
 
-                            <tr>
-                                <td><?php switch ($hh['first']->day) {
-                                        case '1':
-                                            echo("sunday");
-                                            break;
-                                        case '2':
-                                            echo("Monday");
-                                            break;
-                                        case '3':
-                                            echo("Tuesday");
-                                            break;
-                                        case '4':
-                                            echo('Wednesday');
-                                            break;
-                                        case '5':
-                                            echo('Thursday');
-                                            break;
-                                        case '6':
-                                            echo('Friday');
-                                            break;
-                                        case '7':
-                                            echo('Saturday');
-                                            break;
-                                    } ?>
-                                </td>
-                                <td>
-                                <input name="happyhours[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time start_time"
-                                       data-time-format="H:i:s" value="<?php echo($hh['first']->start_time ? $hh['first']->start_time : '') ?>">
-                                    
-        
-                                        <br/>
-                                        <input name="happyhours1[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
-                                       data-time-format="H:i:s" value="<?php echo(isset($hh['second']->start_time) ? $hh['second']->start_time : '') ?>">
+                            
+                                    <?php if ($hh['first']->day == 1): ?>
+                                    <tr>
+                                        <td>Sunday</td>
+                                    <td>
+                                        <input name="happyhours[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time start_time"
+                                           data-time-format="H:i:s" value="<?php echo($hh['first']->start_time ? $hh['first']->start_time : '') ?>">
                                         
-                                    
-                                </td>
+            
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->start_time) ? $hh['second']->start_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->start_time) ? $hh['third']->start_time : '') ?>">
+                                            
+                                        
+                                    </td>
 
-                                <td>
-                                <input name="happyhours[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
-                                       data-time-format="H:i:s" value="<?php echo($hh['first']->end_time ? $hh['first']->end_time : '') ?>">
-                                    
-                                        <br/>
-                                        <input name="happyhours1[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
-                                       data-time-format="H:i:s" value="<?php echo(isset($hh['second']->end_time )? $hh['second']->end_time : '') ?>">
+                                    <td>
+                                            <input name="happyhours[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                            data-time-format="H:i:s" value="<?php echo($hh['first']->end_time ? $hh['first']->end_time : '') ?>">
                                         
-                                </td>
-                            </tr>
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->end_time )? $hh['second']->end_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
+                                            
+                                    </td>
+                               
+                                </tr>
+                            <?php endif ?>
+
+                            <?php if ($hh['first']->day == 2): ?>
+                                    <tr>
+                                        <td>Monday</td>
+                                    <td>
+                                    <input name="happyhours[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time start_time"
+                                           data-time-format="H:i:s" value="<?php echo($hh['first']->start_time ? $hh['first']->start_time : '') ?>">
+                                        
+            
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->start_time) ? $hh['second']->start_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->start_time) ? $hh['third']->start_time : '') ?>">
+                                            
+                                        
+                                    </td>
+
+                                    <td>
+                                            <input name="happyhours[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo($hh['first']->end_time ? $hh['first']->end_time : '') ?>">
+                                        
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->end_time )? $hh['second']->end_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
+                                            
+                                    </td>
+                               
+                                </tr>
+                            <?php endif ?>
+
+                            <?php if ($hh['first']->day == 3): ?>
+                                    <tr>
+                                        <td>Tuesday</td>
+                                    <td>
+                                            <input name="happyhours[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time start_time"
+                                           data-time-format="H:i:s" value="<?php echo($hh['first']->start_time ? $hh['first']->start_time : '') ?>">
+                                        
+            
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->start_time) ? $hh['second']->start_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->start_time) ? $hh['third']->start_time : '') ?>">
+                                            
+                                        
+                                    </td>
+
+                                    <td>
+                                        <input name="happyhours[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo($hh['first']->end_time ? $hh['first']->end_time : '') ?>">
+                                        
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->end_time )? $hh['second']->end_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
+                                            
+                                    </td>
+                               
+                                </tr>
+                            <?php endif ?>
+
+                            <?php if ($hh['first']->day == 4): ?>
+                                    <tr>
+                                        <td>Wednesday</td>
+                                    <td>
+                                        <input name="happyhours[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time start_time"
+                                           data-time-format="H:i:s" value="<?php echo($hh['first']->start_time ? $hh['first']->start_time : '') ?>">
+                                        
+            
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->start_time) ? $hh['second']->start_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->start_time) ? $hh['third']->start_time : '') ?>">
+                                            
+                                        
+                                    </td>
+
+                                    <td>
+                                            <input name="happyhours[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo($hh['first']->end_time ? $hh['first']->end_time : '') ?>">
+                                        
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->end_time )? $hh['second']->end_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
+                                            
+                                    </td>
+                               
+                                </tr>
+                            <?php endif ?>
+
+                            <?php if ($hh['first']->day == 5): ?>
+                                    <tr>
+                                        <td>Thursday</td>
+                                    <td>
+                                        <input name="happyhours[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time start_time"
+                                           data-time-format="H:i:s" value="<?php echo($hh['first']->start_time ? $hh['first']->start_time : '') ?>">
+                                        
+            
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->start_time) ? $hh['second']->start_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->start_time) ? $hh['third']->start_time : '') ?>">
+                                            
+                                        
+                                    </td>
+
+                                    <td>
+                                            <input name="happyhours[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo($hh['first']->end_time ? $hh['first']->end_time : '') ?>">
+                                        
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->end_time )? $hh['second']->end_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
+                                            
+                                    </td>
+                               
+                                </tr>
+                            <?php endif ?>
+
+                            <?php if ($hh['first']->day == 6): ?>
+                                    <tr>
+                                        <td>Friday</td>
+                                    <td>
+                                    <input name="happyhours[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time start_time"
+                                           data-time-format="H:i:s" value="<?php echo($hh['first']->start_time ? $hh['first']->start_time : '') ?>">
+                                        
+            
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->start_time) ? $hh['second']->start_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->start_time) ? $hh['third']->start_time : '') ?>">
+                                            
+                                        
+                                    </td>
+
+                                    <td>
+                                    <input name="happyhours[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo($hh['first']->end_time ? $hh['first']->end_time : '') ?>">
+                                        
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->end_time )? $hh['second']->end_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
+                                            
+                                    </td>
+                               
+                                </tr>
+                            <?php endif ?>
+
+                            <?php if ($hh['first']->day == 7): ?>
+                                    <tr>
+                                        <td>Saturday</td>
+                                    <td>
+                                        <input name="happyhours[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time start_time"
+                                           data-time-format="H:i:s" value="<?php echo($hh['first']->start_time ? $hh['first']->start_time : '') ?>">
+                                        
+            
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->start_time) ? $hh['second']->start_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->start_time) ? $hh['third']->start_time : '') ?>">
+                                            
+                                        
+                                    </td>
+
+                                    <td>
+                                    <input name="happyhours[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo($hh['first']->end_time ? $hh['first']->end_time : '') ?>">
+                                        
+                                            <br/>
+                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['second']->end_time )? $hh['second']->end_time : '') ?>">
+                                           <br/>
+                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
+                                           data-time-format="H:i:s" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
+                                            
+                                    </td>
+                               
+                                </tr>
+                            <?php endif ?>
 
 
                         <?php endforeach ?>
@@ -1783,23 +2006,29 @@
                                 </td>
                                 <td>
                                 <input name="happyhours[<?php echo($day) ?>][start]" type="time" class="form-control time start_time"
-                                       data-time-format="H:i:s" value="" >
+                                       data-time-format="H:i:s"  >
                                     
         
                                         <br/>
                                         <input name="happyhours1[<?php echo($day) ?>][start]" type="time" class="form-control time end_time"
-                                       data-time-format="H:i:s" value="" >
+                                       data-time-format="H:i:s" >
+                                       <br/>
+                                        <input name="happyhours2[<?php echo($day) ?>][start]" type="time" class="form-control time end_time"
+                                       data-time-format="H:i:s" >
                                         
                                     
                                 </td>
 
                                 <td>
                                 <input name="happyhours[<?php echo($day) ?>][end]" type="time" class="form-control time end_time"
-                                       data-time-format="H:i:s" value="">
+                                       data-time-format="H:i:s" >
                                     
                                         <br/>
-                                        <input name="happyhours1[<?php ($day) ?>][end]" type="time" class="form-control time end_time"
-                                       data-time-format="H:i:s" value="">
+                                        <input name="happyhours1[<?php echo ($day) ?>][end]" type="time" class="form-control time end_time"
+                                       data-time-format="H:i:s">
+                                       <br/>
+                                        <input name="happyhours2[<?php echo ($day) ?>][end]" type="time" class="form-control time end_time"
+                                       data-time-format="H:i:s">
                                         
                                 </td>
                             </tr>

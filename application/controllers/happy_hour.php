@@ -25,42 +25,10 @@ class Happy_hour extends CI_Controller {
 	//Update one item
 	public function update( $res_id = NULL )
 	{
-		$this->db->trans_start();
-		$this->db->where('res_id',$res_id);
-		$this->db->delete('tbl_happy_hours');
-
-		$happyhours = $this->input->post('happyhours');
-        if (is_array($happyhours)) {
-            foreach ($happyhours as $day => $hours) {
-                $newtbl_happy_hours = array(
-                    'res_id' => $res_id,
-                    'day' => $day,
-                    'start_time' => $hours['start'],
-                    'end_time' => $hours['end'],
-                    'status' => 1,
-                );
-                $this->db->insert('tbl_happy_hours', $newtbl_happy_hours);
-            }
-        }
-
-        $happyhours = $this->input->post('happyhours1');
-        if (is_array($happyhours)) {
-            foreach ($happyhours as $day => $hours) {
-                $newtbl_happy_hours = array(
-                    'res_id' => $res_id,
-                    'day' => $day,
-                    'start_time' => $hours['start'],
-                    'end_time' => $hours['end'],
-                    'position' => 2,
-                    'status' => 1,
-                );
-                $this->db->insert('tbl_happy_hours', $newtbl_happy_hours);
-            }
-        }
-
-        $this->db->trans_complete();
-
-		$this->session->set_flashdata('message', 'Update Successfully');
+		
+		$this->load->model('M_happy_hour','hr');
+		$this->hr->update($res_id);
+		$this->session->set_flashdata('flashSuccess', 'Update Successfully !');
 		redirect('restaurants/details/'.$res_id,'refresh');
 	}
 
