@@ -68,6 +68,11 @@ class restaurant extends CI_Model
             'outlets_no'=>$outlets_no
         );
 
+        foreach ($_POST['offers'] as $key => $value) 
+        {
+            $newtbl_restaurants['offers']=$this->input->post('offerremarks');
+        }
+
         $this->db->insert('tbl_restaurants', $newtbl_restaurants);
         $res_id = $this->db->insert_id();
 
@@ -208,6 +213,21 @@ class restaurant extends CI_Model
                     'start_time' => $hours['start'],
                     'end_time' => $hours['end'],
                     'position' => 2,
+                    'status' => 1,
+                );
+                $this->db->insert('tbl_happy_hours', $newtbl_happy_hours);
+            }
+        }
+
+        $happyhours = $this->input->post('happyhours2');
+        if (is_array($happyhours)) {
+            foreach ($happyhours as $day => $hours) {
+                $newtbl_happy_hours = array(
+                    'res_id' => $res_id,
+                    'day' => $day,
+                    'start_time' => $hours['start'],
+                    'end_time' => $hours['end'],
+                    'position' => 3,
                     'status' => 1,
                 );
                 $this->db->insert('tbl_happy_hours', $newtbl_happy_hours);

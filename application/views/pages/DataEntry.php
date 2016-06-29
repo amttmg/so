@@ -707,18 +707,36 @@
                 <b> Offers: </b>
                 <hr/>
                 <label class="checkbox-inline">
-                    <input type="radio" name="serves[]" value="yes"> Yes
+                    <input type="radio" name="offers[]" class="offers" id="offers_yes" value="yes"> Yes
                 </label>
                 <label class="checkbox-inline">
-                    <input type="radio" name="serves[]" value="yes"> No
+                    <input type="radio" name="offers[]" class="offers" id="offers_no" value="no" checked> No
                 </label>
                 <label class="checkbox-inline">
-                    <input type="radio" name="serves[]" value="yes"> Occasional
+                    <input type="text" name="offerremarks" id="textBoxOfferRemarks" class="form-control">
                 </label>
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+            if ($('#offers_no').prop('checked')) 
+            {
+              $('#textBoxOfferRemarks').val('')
+                                       .hide();  
+            }
+            $('.offers').change(function() {
+                if ($('#offers_no').prop('checked')) 
+                {
+                  $('#textBoxOfferRemarks').val('')
+                                           .hide();  
+                }
+                else
+                {
+                    $('#textBoxOfferRemarks').show(); 
+                }
+            });
+        
+    </script>
     <div class="row">
         <div class="col-md-12">
             <div class="well-sm well">
@@ -746,87 +764,165 @@
                     </tr>
                     <tr>
                         <td>Sunday</td>
-                        <td><input name="happyhours[1][start]" type="time" class="form-control time start_time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="happyhours[1][end]" type="time" class="form-control time end_time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="1">New
-                                Time
-                            </button>
+                            <input name="happyhours[1][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[1][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[1][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
                         </td>
+                        <td>
+                            <input name="happyhours[1][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[1][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[1][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        
                     </tr>
                     <tr>
                         <td>Monday</td>
-                        <td><input name="happyhours[2][start]" type="time" class="time form-control start_time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="happyhours[2][end]" type="time" class="time form-control end_time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="2">New
-                                Time
-                            </button>
+                            <input name="happyhours[2][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[2][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[2][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <input name="happyhours[2][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[2][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[2][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
                         </td>
                     </tr>
                     <tr>
                         <td>Tuesday</td>
-                        <td><input name="happyhours[3][start]" type="time" class="time form-control start_time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="happyhours[3][end]" type="time" class="time form-control end_time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="3">New
-                                Time
-                            </button>
+                            <input name="happyhours[3][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[3][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[3][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <input name="happyhours[3][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[3][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[3][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
                         </td>
                     </tr>
                     <tr>
                         <td>Wednesday</td>
-                        <td><input name="happyhours[4][start]" type="time" class="form-control start_time time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="happyhours[4][end]" type="time" class="form-control end_time time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="4">New
-                                Time
-                            </button>
+                            <input name="happyhours[4][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[4][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[4][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <input name="happyhours[4][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[4][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[4][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
                         </td>
                     </tr>
                     <tr>
                         <td>Thursday</td>
-                        <td><input name="happyhours[5][start]" type="time" class="form-control start_time time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="happyhours[5][end]" type="time" class="form-control end_time time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="5">New
-                                Time
-                            </button>
+                            <input name="happyhours[5][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[5][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[5][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <input name="happyhours[5][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[5][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[5][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
                         </td>
                     </tr>
                     <tr>
                         <td>Friday</td>
-                        <td><input name="happyhours[6][start]" type="time" class="form-control start_time time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="happyhours[6][end]" type="time" class="form-control end_time time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="6">New
-                                Time
-                            </button>
+                            <input name="happyhours[6][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[6][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[6][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <input name="happyhours[6][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[6][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[6][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
                         </td>
                     </tr>
 
                     <tr>
                         <td>Saturday</td>
-                        <td><input name="happyhours[7][start]" type="time" class="form-control start_time time"
-                                   data-time-format="H:i:s"></td>
-                        <td><input name="happyhours[7][end]" type="time" class="form-control end_time time"
-                                   data-time-format="H:i:s"></td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary addhappyhrs" data-position="7">New
-                                Time
-                            </button>
+                            <input name="happyhours[7][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[7][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[7][start]" type="time" class="form-control time start_time"
+                                   data-time-format="H:i:s">
+                        </td>
+                        <td>
+                            <input name="happyhours[7][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours1[7][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
+                            <br/>
+                            <input name="happyhours2[7][end]" type="time" class="form-control time end_time"
+                                   data-time-format="H:i:s">
                         </td>
                     </tr>
                 </table>

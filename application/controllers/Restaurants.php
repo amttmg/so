@@ -45,7 +45,7 @@ class Restaurants extends CI_Controller {
 		$data['foods']=$this->res_food->getBy(array('res_id',$restaurant_id));
 		$data['service_time']=$this->service_time->getBy(array('res_id',$restaurant_id));
 		$data['happy_hours']=$this->happy_hour->getBy(array('res_id',$restaurant_id));
-		$data['res_costs']=$this->res_estimate_cost->getBy(array('res_id',$restaurant_id));
+		$data['res_costs']=$this->res_estimate_cost->getBy($restaurant_id);
 		$data['owners']=$this->owner->getAll(array('res_id',$restaurant_id));
 		$data['facilities']=$this->res_facility->getBy(array('res_id',$restaurant_id));
 		//$data['content'] = $this->load->view('pages/restaurant/details',$data, true);

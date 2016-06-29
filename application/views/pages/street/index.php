@@ -127,7 +127,7 @@
 	        "responsive": true
 	    });
 
-		$('.delete').click(function() {
+		$('body').on('click','.delete',function() {
 			var fid=$(this).data('fid');
 			var url='<?php echo(site_url()) ?>/street/delete/'+fid;
 			$('#btn-delete').attr('href',url);

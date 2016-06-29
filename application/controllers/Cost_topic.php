@@ -40,6 +40,27 @@ class Cost_topic extends CI_Controller {
 		echo(json_encode($master));
 	}
 
+	public function update($res_id='')
+	{
+		$this->db->where('res_id',$res_id);
+		$this->db->delete('tbl_res_estimate_cost');
+		$estimate_cost_topic = $this->input->post('estimate_cost_topic');
+        if (is_array($estimate_cost_topic)) {
+            foreach ($estimate_cost_topic as $topic_id => $val) {
+                $newtbl_res_estimate_cost = array(
+                	'topic_id'=>$topic_id,
+                	'res_id'=>$res_id,
+                    'cost' => $val,
+                    'status' => 1,
+                );
+                $this->db->insert('tbl_res_estimate_cost', $newtbl_res_estimate_cost);
+            }
+        }
+
+        $this->session->set_flashdata('flashSuccess', 'Update Successfully !');
+		redirect('restaurants/details/'.$res_id,'refresh');
+	}
+
 }
 
 /* End of file Cost_topic.php */

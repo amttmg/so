@@ -113,7 +113,7 @@
 	        "responsive": true
 	    });
 
-		$('.delete').click(function() {
+		$('body').on('click','.delete',function() {
 			var serveid=$(this).data('serveid');
 			var url='<?php echo(site_url()) ?>/serve/delete/'+serveid;
 			$('#btn-delete').attr('href',url);
