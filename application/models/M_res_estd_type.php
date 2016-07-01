@@ -13,6 +13,7 @@ class M_res_estd_type extends CI_Model {
         //$this->db->join('establishment_type','establishment_type.type_id=tbl_res_estd_type.type_id');
         //$this->db->where($data[0],$data[1]);
         $this->db->order_by('et.type','asc');
+        $this->db->where('et.status',1);
         $result_data=$this->db->get()->result();
         if ($json==false) 
         {

@@ -2760,7 +2760,7 @@
                     enable_button(button_id, 'Save');
 
                     var temp_checkbox = '<label class="checkbox-inline">';
-                    temp_checkbox += '<input type="checkbox" name="establishment_type[]" value="' + data.data.type_id + '">' + data.data.type + '</label>';
+                    temp_checkbox += '<input type="checkbox" name="establishment_type[]" class="estd_type" value="' + data.data.type_id + '">' + data.data.type + '</label>';
 
                     $('#estd_checkbox').append(temp_checkbox);
                     $('#' + form_id)[0].reset();
@@ -2800,7 +2800,7 @@
                     enable_button(button_id, 'Save');
 
                     var temp_checkbox = '<label class="checkbox-inline">';
-                    temp_checkbox += '<input type="checkbox" name="facility[]" value="' + data.data.facilities_id + '">' + data.data.facility + '</label>';
+                    temp_checkbox += '<input type="checkbox" name="facility[]" class="facility" value="' + data.data.facilities_id + '">' + data.data.facility + '</label>';
 
                     $('#facility_checkbox').append(temp_checkbox);
                     $('#' + form_id)[0].reset();
@@ -2837,7 +2837,7 @@
                 if (data.status == true) {
                     enable_button(button_id, 'Save');
                     var temp_checkbox = '<label class="checkbox-inline">';
-                    temp_checkbox += '<input type="checkbox" name="cousins[]" value="' + data.data.cousin_id + '">' + data.data.cousin + '</label>';
+                    temp_checkbox += '<input type="checkbox" name="cousins[]" class="cousins" value="' + data.data.cousin_id + '">' + data.data.cousin + '</label>';
 
                     $('#cousin_checkbox').append(temp_checkbox);
                     $('#' + form_id)[0].reset();
@@ -2875,7 +2875,7 @@
                     enable_button(button_id, 'Save');
 
                     var temp_checkbox = '<label class="checkbox-inline">';
-                    temp_checkbox += '<input type="checkbox" name="pop_dishes[]" value="' + data.data.pop_dishes_id + '">' + data.data.pop_dishes + '</label>';
+                    temp_checkbox += '<input type="checkbox" name="pop_dishes[]" class="pop_dishes" value="' + data.data.pop_dishes_id + '">' + data.data.pop_dishes + '</label>';
 
                     $('#populardish_checkbox').append(temp_checkbox);
                     $('#' + form_id)[0].reset();

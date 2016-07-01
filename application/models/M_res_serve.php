@@ -12,6 +12,7 @@ class M_res_serve extends CI_Model {
 		$this->db->select('rs.res_id,s.*');
         $this->db->from('tbl_serves as s');
         $this->db->join('(select * from tbl_res_serves where tbl_res_serves.res_id='.$data[1].' ) as rs','rs.serves_id=s.serves_id','left');
+        $this->db->where('s.status',1);
         if ($order_by) 
         {
         	 $this->db->order_by($order_by[0],$order_by[1]);

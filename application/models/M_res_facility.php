@@ -12,6 +12,7 @@ class M_res_facility extends CI_Model {
         $this->db->select('f.*,rf.res_id');
         $this->db->from('tbl_facilities as f');
         $this->db->join('(select * from tbl_res_facility where tbl_res_facility.res_id='.$data[1].' ) as rf','rf.facility_id=f.facilities_id','left');
+        $this->db->where('f.status',1);
         if ($order_by) 
         {
         	 $this->db->order_by($order_by[0],$order_by[1]);
@@ -20,6 +21,7 @@ class M_res_facility extends CI_Model {
         {
             $this->db->order_by('f.facility','asc');
         }
+
         $result_data=$this->db->get()->result();
         if ($json==false) 
         {

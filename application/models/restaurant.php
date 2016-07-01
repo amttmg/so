@@ -65,7 +65,8 @@ class restaurant extends CI_Model
             'created_at' => $this->current_time,
             'user_id' => $this->user_id,
             'multiple_outlets'=>$multi_outlets,
-            'outlets_no'=>$outlets_no
+            'outlets_no'=>$outlets_no,
+            'outletdetails'=>$this->input->post('outletdetails')
         );
 
         foreach ($_POST['offers'] as $key => $value) 

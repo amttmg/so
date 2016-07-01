@@ -12,6 +12,7 @@ class M_res_pop_dish extends CI_Model {
         $this->db->from('tbl_pop_dishes as pd');
         $this->db->join('(select * from tbl_res_pop_dishes where tbl_res_pop_dishes.res_id='.$data[1].' ) as rpd','rpd.pop_dishes_id=pd.pop_dishes_id','left');
         $this->db->order_by('pd.pop_dishes','asc');
+        $this->db->where('pd.status',1);
         $result_data=$this->db->get()->result();
         if ($json==false) 
         {

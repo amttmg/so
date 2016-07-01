@@ -215,12 +215,30 @@
                 <b>Multiple Outlets</b>
                 <hr>
                 <label class="checkbox-inline">
+                    <label></label>
                     <input class="multi_outlets" type="radio" name="multiple_outlets" value="1">Yes
                 </label>
                 <label class="checkbox-inline">
                     <input class="multi_outlets" checked type="radio" name="multiple_outlets" value="0">No
                 </label>
-                <input style="display: none" id="outlets_no" type="number" name="outlets_no">
+                <span id="outlets_no" style="display: none" >
+                     <label class="checkbox-inline">
+                         <label>No. of outlets</label>
+                     </label>
+                     <label class="checkbox-inline">
+                        <input  class="form-control" type="number" name="outlets_no">
+                    </label>
+                </span>
+               
+                <span style="display: none" id="otdetails">
+                    <label class="checkbox-inline">
+                        <label>&nbsp&nbspDetails</label>
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="text" name="outletdetails" id="outletdetails" class="form-control" value=""> 
+                    </label>
+                </span>
+                
             </div>
         </div>
     </div>
@@ -1764,8 +1782,10 @@
         if (v == 0) {
             $('#outlets_no').val(0);
             $('#outlets_no').hide();
+            $('#otdetails').hide();
         } else {
             $('#outlets_no').show();
+            $('#otdetails').show();
         }
     })
 </script>
