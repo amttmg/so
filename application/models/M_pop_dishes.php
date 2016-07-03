@@ -22,6 +22,13 @@ class M_pop_dishes extends CI_Model {
 
        
     }
+
+    public function getAll()
+    {
+        return $this->db->from('tbl_pop_dishes')
+                        ->where('status',1)
+                        ->get()->result();
+    }
 	
 
 }

@@ -3,6 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pop_dish extends CI_Controller {
 
+	public function index()
+	{
+		$this->load->model('M_pop_dishes','pop_dish');
+		$data['pop_dishes']=$this->pop_dish->getAll();
+		$this->load->_render_page('pages/pop_dish/index',$data);
+	}
+
+	public function delete($id)
+	{
+		$this->db->where('pop_dishes_id',$id);
+		$this->db->update('tbl_pop_dishes',array('status'=>0));
+		$this->session->set_flashdata('message', 'Delete Successfully !');
+		redirect('pop_dish','refresh');
+	}
+
 	public function add()
 	{
 		$this->load->library('form_validation');

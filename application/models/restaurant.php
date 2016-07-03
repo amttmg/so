@@ -13,7 +13,7 @@ class restaurant extends CI_Model
     var $user_id = '';
 
     var $table = 'tbl_restaurants';
-    var $column = array('res_name','area','street','city','landmark'); //set column field database for order and search
+    var $column = array('res_name','a.name','s.name','c.name','landmark'); //set column field database for order and search
     var $order = array('res_name'=>'asc');
 
     public function __construct()
@@ -48,6 +48,7 @@ class restaurant extends CI_Model
             'res_name' => $res_name,
             'area' => $area,
             'street' => $street,
+            'city'=>$this->input->post('est_city'),
             'landmark' => $landmark,
             'mobile1' => $mobile1,
             'mobile2' => $mobile2,
@@ -277,8 +278,9 @@ class restaurant extends CI_Model
         } else {
             $this->db->order_by($order_by[0], $order_by[1]);
         }
-
-        $this->db->from($this->table_name);
+        
+        $this->db->from('tbl_restaurants');
+       
         $this->db->where('status', 1);
         $result_data = $this->db->get()->result();
 
@@ -291,9 +293,15 @@ class restaurant extends CI_Model
 
     public function getBy($data, $json = false)
     {
-        $this->db->from($this->table_name);
-        $this->db->where($data[0], $data[1]);
-        $this->db->where('status', 1);
+       
+        
+        $this->db->select('res.*,c.name as res_city,a.name as res_area,s.name as res_street');
+        $this->db->from('tbl_restaurants as res');
+        $this->db->join('tbl_city as c','c.id=res.city','left');
+        $this->db->join('tbl_area as a','a.id=res.area','left');
+        $this->db->join('tbl_street as s','s.id=res.street','left');
+        $this->db->where('res.'.$data[0], $data[1]);
+        $this->db->where('res.status', 1);
         $result_data = $this->db->get()->row();
         if ($json == false) {
             return $result_data;
@@ -313,8 +321,13 @@ class restaurant extends CI_Model
     private function _get_datatables_query()
      {
         
-        $this->db->from($this->table);
-        $this->db->where('status',1);
+        
+        $this->db->select('res.*,c.name as res_city,a.name as res_area,s.name as res_street');
+        $this->db->from('tbl_restaurants as res');
+        $this->db->join('tbl_city as c','c.id=res.city','left');
+        $this->db->join('tbl_area as a','a.id=res.area','left');
+        $this->db->join('tbl_street as s','s.id=res.street','left');
+        $this->db->where('res.status', 1);
         $i = 0;
         /*$this->between_date('salesdate',$_POST['columns'][1]['search']['value'],$_POST['columns'][2]['search']['value']);
         $this->between_date('entry_date',$_POST['columns'][3]['search']['value'],$_POST['columns'][4]['search']['value']);*/

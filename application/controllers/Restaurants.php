@@ -37,6 +37,7 @@ class Restaurants extends CI_Controller {
 		{
 			show_404();
 		}
+		$this->load->model('m_select_list','select');
 		$data['restaurants']=$this->res->getBy(array('res_id',$restaurant_id));
 		$data['pop_dishes']=$this->res_pop_dish->getBy(array('res_id',$restaurant_id));
 		$data['est_type']=$this->res_estd_type->getBy(array('res_id',$restaurant_id));
@@ -46,6 +47,9 @@ class Restaurants extends CI_Controller {
 		$data['service_time']=$this->service_time->getBy(array('res_id',$restaurant_id));
 		$data['happy_hours']=$this->happy_hour->getBy(array('res_id',$restaurant_id));
 		$data['res_costs']=$this->res_estimate_cost->getBy($restaurant_id);
+		$data['cityDropdown'] = $this->select->getSelectList('tbl_city', '', 'id', 'name', 'id="est_city" name="est_city" class="form-control"');
+        $data['areaDropdown'] = $this->select->getSelectList('tbl_area', '', 'id', 'name', 'id="est_area" name="est_area" class="form-control"');
+        $data['streetDropdown'] = $this->select->getSelectList('tbl_street', '', 'id', 'name', 'id="est_street" name="est_street" class="form-control"');
 		$data['owners']=$this->owner->getAll(array('res_id',$restaurant_id));
 		$data['facilities']=$this->res_facility->getBy(array('res_id',$restaurant_id));
 		//$data['content'] = $this->load->view('pages/restaurant/details',$data, true);
@@ -238,8 +242,8 @@ class Restaurants extends CI_Controller {
 			$row = array();
 			$row[]=$no;
 			$row[]=$res->res_name;
-			$row[] = $res->area;
-			$row[] = $res->street;
+			$row[] = $res->res_area;
+			$row[] = $res->res_street;
 			$row[] = $res->landmark;
 			$row[]='<div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

@@ -243,7 +243,7 @@
                                     City
                                 </td>
                                 <td>
-                                    <?php echo($restaurants->city) ?>
+                                    <?php echo($restaurants->res_city) ?>
                                 </td>
                             </tr>
                             <tr>
@@ -251,7 +251,7 @@
                                     Area
                                 </td>
                                 <td>
-                                    <?php echo($restaurants->area) ?>
+                                    <?php echo($restaurants->res_area) ?>
                                 </td>
                             </tr>
                             <tr>
@@ -259,7 +259,7 @@
                                     Street
                                 </td>
                                 <td>
-                                    <?php echo($restaurants->street) ?>
+                                    <?php echo($restaurants->res_street) ?>
                                 </td>
                             </tr>
                             <tr>
@@ -1346,14 +1346,9 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input list="est_city" id="city_suggest" name="est_city" value=""
-                                               class="form-control">
+                                        <?php echo($cityDropdown) ?>
                                         <span></span>
                                     </div>
-                                    <datalist id="est_city">
-
-                                    </datalist>
-
                                 </td>
                             </tr>
                             <tr>
@@ -1361,15 +1356,13 @@
                                     Area
                                 </td>
                                 <td>
-                                    <div class="form-group">
-                                        <input list="est_area" name="est_area" id="area_suggest"
-                                               value="<?php echo set_value('est_area') ?>" class="form-control">
+                                    <div class="form-group" id="est_area_div">
+                                        <!-- <input list="est_area" name="est_area" id="area_suggest"
+                                               value="<?php echo set_value('est_area') ?>" class="form-control"> -->
+                                         <?php echo $areaDropdown ?>  
                                         <span></span>
                                     </div>
-                                    <datalist id="est_area">
-
-                                    </datalist>
-
+                                   
                                 </td>
                             </tr>
                             <tr>
@@ -1377,10 +1370,11 @@
                                     Street
                                 </td>
                                 <td>
-                                    <div class="form-group">
-                                        <input type="text" name="est_street" id="est_street"
+                                    <div class="form-group" id="est_street_div">
+                                        <!-- <input type="text" name="est_street" id="est_street"
                                                value="<?php echo set_value('est_street') ?>"
-                                               class="form-control">
+                                               class="form-control"> -->
+                                        <?php echo $streetDropdown ?>
                                         <span></span>
                                 </td>
                             </tr>
@@ -1421,7 +1415,26 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+    $('#est_city').change(function () {
+        var city = $(this).val();
+        $.ajax({
+            url: '<?php echo base_url('dataentry/getAreaDropDown/') ?>/' + city,
+            success: function (data) {
+                $('#est_area_div').html(data);
+            }
+        })
+    });
+    $('body').on('change', '#est_area', function () {
+        var area = $(this).val();
+        $.ajax({
+            url: '<?php echo base_url('dataentry/getStreetDropDown/') ?>/' + area,
+            success: function (data) {
+                $('#est_street_div').html(data);
+            }
+        })
+    })
+</script>
 <div class="modal fade" id="modal-addOwner">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -2282,6 +2295,8 @@
                     } else {
 
                         $.each(data, function (index, val) {
+                            $('#btn-updateEstdLocation').text('Update');
+                            $('#btn-updateEstdLocation').prop('disabled', false);
                             $('#form-estdLocation' + ' #' + val.error_string).next().html(val.input_error);
                             $('#form-estdLocation' + ' #' + val.error_string).parent().addClass('has-error');
                         });
@@ -2309,9 +2324,12 @@
             })
                 .done(function (data) {
                     $('#mdl-establishmentLocation').modal('show');
-                    $('#city_suggest').val(data.city);
-                    $('#area_suggest').val(data.area);
-                    $('#est_street').val(data.street);
+                    $('#est_city').val(data.city);
+                    $('#est_area').val(data.area);
+                    if (data.street) 
+                        {
+                            $('#est_street').val(data.street);
+                        }
                     $('#est_landmark').val(data.landmark);
                     $('#est_other').val(data.other);
 
