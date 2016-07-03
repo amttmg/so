@@ -10,7 +10,7 @@ class master extends CI_Model
 
     function getServes($parameters = '')
     {
-        $sql = "select * from tbl_serves where 1=1 ";
+        $sql = "select * from tbl_serves where status=1";
         if (is_array($parameters)) {
             foreach ($parameters as $key => $val) {
                 $sql .= ' and ' . $key . '=' . $val;
@@ -21,7 +21,7 @@ class master extends CI_Model
 
     function getEstimate_cost_topic($parameters = '')
     {
-        $sql = "select * from estimate_cost_topic where 1=1 ";
+        $sql = "select * from estimate_cost_topic where status=1 ";
         if (is_array($parameters)) {
             foreach ($parameters as $key => $val) {
                 $sql .= ' and ' . $key . '=' . $val;
@@ -32,7 +32,7 @@ class master extends CI_Model
 
     function getEstablishment_type($parameters = '')
     {
-        $sql = "select * from establishment_type where 1=1 ";
+        $sql = "select * from establishment_type where status=1 ";
         if (is_array($parameters)) {
             foreach ($parameters as $key => $val) {
                 $sql .= ' and ' . $key . '=' . $val;
@@ -43,7 +43,7 @@ class master extends CI_Model
 
     function getFacilities($parameters = '')
     {
-        $sql = "select * from tbl_facilities where 1=1 ";
+        $sql = "select * from tbl_facilities where status=1 ";
         if (is_array($parameters)) {
             foreach ($parameters as $key => $val) {
                 $sql .= ' and ' . $key . '=' . $val;
@@ -54,7 +54,7 @@ class master extends CI_Model
 
     function getCousins($parameters = '')
     {
-        $sql = "select * from tbl_cousins where 1=1 ";
+        $sql = "select * from tbl_cousins where status=1 ";
         if (is_array($parameters)) {
             foreach ($parameters as $key => $val) {
                 $sql .= ' and ' . $key . '=' . $val;
@@ -65,7 +65,7 @@ class master extends CI_Model
 
     function getFood($parameters = '')
     {
-        $sql = "select * from tbl_food where 1=1 ";
+        $sql = "select * from tbl_food where status=1 ";
         if (is_array($parameters)) {
             foreach ($parameters as $key => $val) {
                 $sql .= ' and ' . $key . '=' . $val;
@@ -76,7 +76,7 @@ class master extends CI_Model
 
     function getPop_dishes($parameters = '')
     {
-        $sql = "select * from tbl_pop_dishes where 1=1 ";
+        $sql = "select * from tbl_pop_dishes where status=1 ";
         if (is_array($parameters)) {
             foreach ($parameters as $key => $val) {
                 $sql .= ' and ' . $key . '=' . $val;

@@ -111,7 +111,7 @@
 	        "responsive": true
 	    });
 	    
-		$('.delete').click(function() {
+		$('body').on('click','.delete',function() {
 			var estdid=$(this).data('estdid');
 			var url='<?php echo(site_url()) ?>/establishment_type/delete/'+estdid;
 			$('#btn-delete').attr('href',url);
