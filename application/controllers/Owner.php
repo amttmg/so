@@ -19,6 +19,8 @@ class Owner extends CI_Controller {
         $this->form_validation->set_rules('owners_designation', 'Owner Designition', 'trim|required|max_length[65]');
         $this->form_validation->set_rules('owners_mobile1', 'Mobile', 'trim|max_length[12]');
         $this->form_validation->set_rules('owners_mobile2', 'Mobile', 'trim|max_length[12]');
+         $this->form_validation->set_rules('owners_landline1', 'Landline 1', 'trim|max_length[12]');
+        $this->form_validation->set_rules('owners_landline2', 'Landline 2', 'trim|max_length[12]');
         $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 		if ($this->form_validation->run() == True) 
 		{
@@ -28,6 +30,8 @@ class Owner extends CI_Controller {
 				'designation'=>$this->input->post('owners_designation'),
 				'mobile1'=>$this->input->post('owners_mobile1'),
 				'mobile2'=>$this->input->post('owners_mobile2'),
+				'landline1'=>$this->input->post('owners_landline1'),
+				'landline2'=>$this->input->post('owners_landline2'),
 				'res_id'=>$this->input->post('restaurant_id')
 				);
 			$this->db->insert('tbl_owners',$data);

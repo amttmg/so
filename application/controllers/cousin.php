@@ -96,6 +96,15 @@ class Cousin extends CI_Controller {
 			'food'=>$this->input->post('cousin_name')
 			);
 			$this->db->insert('tbl_food',$data);
+			if ($this->input->is_ajax_request()) 
+			{
+				$last_id=$this->db->insert_id();
+				$result=$this->db->where('food_id',$last_id)
+					          ->get('tbl_food')
+					          ->row();
+				$master['data']=$result;
+				
+			}
 			$this->session->set_flashdata('message', 'Cuisine by food saved successfully !');
 			$master['status']  = True;
 			$master['message'] ="successfully saved data";
