@@ -46,7 +46,7 @@
 	                                    </button>
 	                                    <ul class="dropdown-menu pull-right" role="menu">
 	                                        <li>
-	                                        	<a href="#"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
+	                                        	<a href="#" class="btn-edit" data-serveid="<?php echo($serve->serves_id) ?>"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
 	                                        </li>
 	                                        <li>
 	                                        	<a href="#" class="delete" data-serveid="<?php echo($serve->serves_id) ?>"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
@@ -63,6 +63,29 @@
 	</div>
 </div>
 
+<div class="modal fade" id="modal-update">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Update Serves</h4>
+			</div>
+			<div class="modal-body">
+				<form action="" id="update-serve_form">
+                    <div class="form-group">
+                        <label for="">Serve Name</label>
+                        <input type="text" name="serve_name" id="serve_name" class="form-control" placeholder="Input Serve Type">
+                        <span></span>
+                    </div>
+                </form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="btn-Update" class="btn btn-primary">Update</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="modal fade" id="modal-delete">
 	<div class="modal-dialog">
 		<div class="modal-content" style="margin-top:100px;">
@@ -108,10 +131,55 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		var serve_id='';
 		$('#table-datatable').DataTable({
 	        "responsive": true
 	    });
+
+		$('.btn-edit').click(function() {
+			serve_id=$(this).data('serveid');
+			$('#update-serve_form #serve_name').val($.trim($(this).closest('tr').find('td:eq(1)').text()));
+			$('#modal-update').modal('show');
+		});
+
+		$('#btn-Update').click(function() {
+			$('#btn-Update').text('Updating....');
+			$('#btn-Update').prop('disabled',true);
+			$.ajax({
+				url: '<?php echo(site_url("serve/update")) ?>/'+serve_id,
+				type: 'POST',
+				dataType: 'json',
+				data:$('#update-serve_form').serialize()
+			})
+			.done(function(data) {
+				if(data.status===true)
+                {
+                	$("html, body").animate({ scrollTop: 0 }, "slow");
+                    location.reload(true);
+
+                }
+                else
+                {
+                        $.each(data, function(index, val) {
+                             $('#update-serve_form'+' #'+val.error_string).next().html(val.input_error);
+                            $('#update-serve_form'+' #'+val.error_string).parent().parent().addClass('has-error');
+                        });
+                    $('#btn-Update').text('Update');
+					$('#btn-Update').prop('disabled',false);
+                }  
+				console.log("success");
+			})
+			.fail(function() {
+				alert('Something went wrong !');
+				 $('#btn-Update').text('Update');
+				$('#btn-Update').prop('disabled',false);
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
+		});
 
 		$('body').on('click','.delete',function() {
 			var serveid=$(this).data('serveid');

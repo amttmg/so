@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<h1>Cities</h1>
+		<h1>Street</h1>
 	</div>
 </div>
 <?php if ($this->session->flashdata('message')): ?>
@@ -50,7 +50,7 @@
 	                                    </button>
 	                                    <ul class="dropdown-menu pull-right" role="menu">
 	                                        <li>
-	                                        	<a href="#"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
+	                                        	<a href="#" class="btn-edit" data-areaid="<?php echo($s->area_id) ?>" data-streetid="<?php echo($s->id) ?>"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
 	                                        </li>
 	                                        <li>
 	                                        	<a href="#" class="delete" data-fid="<?php echo($s->id) ?>"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
@@ -67,6 +67,41 @@
 	</div>
 </div>
 
+
+<div class="modal fade" id="modal-update">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Update Street</h4>
+			</div>
+			<div class="modal-body">
+				<form action="" method="POST" id="update-street_form">
+                    <div class="form-group">
+                    	<label>Area Name <span class="text-danger">*</span></label>
+                        <select name="area" id="area" class="form-control" required="required">
+                        	<option value="0">Select Area</option>
+                        	<?php foreach ($areas as $a): ?>
+                        		<option value="<?php echo($a->area_id) ?>"><?php echo($a->area) ?></option>
+                        	<?php endforeach ?>
+                        </select>
+                        <span></span>
+                    </div>
+                    <div class="form-group">
+                    	<label>Street Name <span class="text-danger">*</span></label>
+                    	<input type="text" name="street" id="street" class="form-control" placeholder="Street Name" >
+                    	<span></span>
+                    </div>
+                  
+                </form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="btn-update" class="btn btn-primary">Update</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="modal fade" id="modal-delete">
 	<div class="modal-dialog">
 		<div class="modal-content" style="margin-top:100px;">
@@ -122,10 +157,58 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		var street_id='';
 		$('#table-datatable').DataTable({
 	        "responsive": true
 	    });
+
+	    $('body').on('click','.btn-edit',function() 
+		{
+			street_id=$(this).data('streetid');
+			$('#update-street_form #area').val($(this).data('areaid'));
+			$('#update-street_form #street').val($.trim($(this).closest('tr').find('td:eq(2)').text()));
+			$('#modal-update').modal('show');
+		});
+
+		$('#btn-update').click(function() {
+			$(this).text('Updating.......');
+			$(this).prop('disabled',true);
+			$.ajax({
+				url: '<?php echo(site_url("street/update")) ?>/'+street_id,
+				type: 'POST',
+				dataType: 'json',
+				data: $('#update-street_form').serialize()
+			})
+			.done(function(data) {
+				console.log("success");
+				if (data.status==true)
+	                {
+	                    $("html, body").animate({ scrollTop: 0 }, "slow");
+	                    location.reload(true);
+	                   
+	                }
+	                else
+	                {
+	                    $.each(data, function(index, val) {
+	                             $('#update-street_form'+' #'+val.error_string).next().html(val.input_error);
+	                            $('#update-street_form'+' #'+val.error_string).parent().parent().addClass('has-error');
+	                        });
+
+	                    $(this).text('Update');
+						$(this).prop('disabled',false);
+	                }
+			})
+			.fail(function() {
+				alert('Something went wrong !');
+				$(this).text('Update');
+			    $(this).prop('disabled',false);
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
+		});
 
 		$('body').on('click','.delete',function() {
 			var fid=$(this).data('fid');

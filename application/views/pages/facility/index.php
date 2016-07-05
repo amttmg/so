@@ -46,7 +46,7 @@
 	                                    </button>
 	                                    <ul class="dropdown-menu pull-right" role="menu">
 	                                        <li>
-	                                        	<a href="#"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
+	                                        	<a href="#" class="btn-edit" data-fid="<?php echo($facility->facilities_id) ?>" ><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
 	                                        </li>
 	                                        <li>
 	                                        	<a href="#" class="delete" data-fid="<?php echo($facility->facilities_id) ?>"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
@@ -63,6 +63,33 @@
 	</div>
 </div>
 
+
+<div class="modal fade" id="modal-Update">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Update Facility</h4>
+			</div>
+			<div class="modal-body">
+				<form action="" method="POST" role="" id="update-facility_form">
+                    
+                    <div class="form-group">
+                        <label for="">Facility</label>
+                        <input type="text" name="facility_name" id="facility_name" class="form-control" id="" placeholder="Input Facility">
+                        <span></span>
+                    </div>
+        
+                </form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="btn-update" class="btn btn-primary">Update</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				
+			</div>
+		</div>
+	</div>
+</div>
 <div class="modal fade" id="modal-delete">
 	<div class="modal-dialog">
 		<div class="modal-content" style="margin-top:100px;">
@@ -113,6 +140,53 @@
 		$('#table-datatable').DataTable({
 	        "responsive": true
 	    });
+
+	    var facility_id="";
+		$('body').on('click','.btn-edit',function(){
+			facility_id=$(this).data('fid');
+			$('#update-facility_form #facility_name').val($.trim($(this).closest('tr').find('td:eq(1)').text()));
+			$('#modal-Update').modal('show');
+		})
+
+		$('#btn-update').click(function() {
+			$('#btn-update').text('Updating......');
+			$('#btn-update').prop('disabled',true);
+			$.ajax({
+				url: '<?php echo(site_url("facility/update")) ?>/'+facility_id,
+				type: 'POST',
+				dataType: 'json',
+				data: $('#update-facility_form').serialize()
+			})
+			.done(function(data) {
+				 	if (data.status==true) 
+	                {
+
+	                    location.reload(true);
+	                    
+	                }
+	                else
+	                {
+	                     $.each(data, function(index, val) {
+	                             $('#update-facility_form'+' #'+val.error_string).next().html(val.input_error);
+	                            $('#update-facility_form'+' #'+val.error_string).parent().parent().addClass('has-error');
+	                        });
+	                     $('#btn-update').text('Update');
+							$('#btn-update').prop('disabled',false);
+	                    
+	                }
+				console.log("success");
+			})
+			.fail(function() {
+				alert('Something went wrong !');
+				$('#btn-update').text('Update');
+				$('#btn-update').prop('disabled',false);
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
+		});
 
 		$('body').on('click','.delete',function() {
 			var fid=$(this).data('fid');

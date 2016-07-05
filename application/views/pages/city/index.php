@@ -46,7 +46,7 @@
 	                                    </button>
 	                                    <ul class="dropdown-menu pull-right" role="menu">
 	                                        <li>
-	                                        	<a href="#"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
+	                                        	<a href="#" class="btn-edit" data-cityid="<?php echo($city->id) ?>"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
 	                                        </li>
 	                                        <li>
 	                                        	<a href="#" class="delete" data-fid="<?php echo($city->id) ?>"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
@@ -62,7 +62,6 @@
 		</div>
 	</div>
 </div>
-
 <div class="modal fade" id="modal-delete">
 	<div class="modal-dialog">
 		<div class="modal-content" style="margin-top:100px;">
@@ -80,7 +79,29 @@
 		</div>
 	</div>
 </div>
-
+<div class="modal fade" id="modal-update">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Update City</h4>
+			</div>
+			<div class="modal-body">
+				<form action="" method="POST" id="update-city_form">
+                    <div class="form-group">
+                        <label for="">City Name <span class="text-danger">*</span></label>
+                        <input type="text" name="city" class="form-control" id="city" placeholder="City Name">
+                        <span></span>
+                    </div>
+                </form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" id="btn-Update" class="btn btn-primary">Update</button>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="modal fade" id="mdl_city">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -108,10 +129,55 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		var city_id='';
 		$('#table-datatable').DataTable({
 	        "responsive": true
 	    });
+
+	    $('body').on('click','.btn-edit',function() {
+	    	city_id=$(this).data('cityid');
+			$('#update-city_form #city').val($.trim($(this).closest('tr').find('td:eq(1)').text()));
+			$('#modal-update').modal('show');
+		});
+
+		$('#btn-Update').click(function() {
+			$(this).text('Updating.......');
+			$(this).prop('disabled',true);
+			$.ajax({
+				url: '<?php echo(site_url("city/update")) ?>/'+city_id,
+				type: 'post',
+				dataType: 'json',
+				data: $('#update-city_form').serialize()
+			})
+			.done(function(data) {
+				console.log("success");
+				if (data.status==true)
+	                {
+	                    $("html, body").animate({ scrollTop: 0 }, "slow");
+	                    location.reload(true);
+	                   
+	                }
+	                else
+	                {
+	                    $.each(data, function(index, val) {
+	                             $('#update-city_form'+' #'+val.error_string).next().html(val.input_error);
+	                            $('#update-city_form'+' #'+val.error_string).parent().parent().addClass('has-error');
+	                        });
+	                    $('#btn-Update').text('Update');
+						$('#btn-Update').prop('disabled',false);
+	                }
+			})
+			.fail(function() {
+				alert('Something went wrong !');
+				$('#btn-Update').text('Update');
+				$('#btn-Update').prop('disabled',false);
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
+		});
 
 		$('body').on('click','.delete',function() {
 			var fid=$(this).data('fid');

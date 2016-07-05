@@ -69,11 +69,18 @@ class Serve extends CI_Controller {
 
 	public function update($id)
 	{
+		$is_unique='';
 		$this->load->library('form_validation');
 		$master['status'] = True;
 		$data             = array();
 		$master           = array();
-        $this->form_validation->set_rules('serve_name', 'Serve Name', 'trim|required|max_length[65]|is_unique[tbl_serves.serves_name]');
+		$srv=$this->db->where('serves_id',$id)->get('tbl_serves')->row()->serves_name;
+		
+		if ($this->input->post('serve_name')!=$srv) 
+		{
+			$is_unique='|is_unique[tbl_serves.serves_name]';
+		}
+        $this->form_validation->set_rules('serve_name', 'Serve Name', 'trim|required|max_length[65]'.$is_unique);
         $this->form_validation->set_error_delimiters('<p class="text-danger">', '</>');
 		
 		if ($this->form_validation->run() == True) 

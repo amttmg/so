@@ -57,6 +57,48 @@ class Establishment_type extends CI_Controller {
 		
 	}
 
+	public function update($id)
+	{
+		$this->load->library('form_validation');
+		$master['status'] = True;
+		$data             = array();
+		$master           = array();
+		
+		$est_type=$this->db->where('type_id',$id)->get('establishment_type')->row()->type;
+		$is_unique='';
+		if ($this->input->post('estd_type')!=$est_type) 
+		{
+			$is_unique='|is_unique[establishment_type.type]';
+		}
+        $this->form_validation->set_rules('estd_type', 'Establishment Type', 'trim|required|max_length[65]'.$is_unique);
+        $this->form_validation->set_error_delimiters('<p class="text-danger">', '</>');
+		
+		if ($this->form_validation->run() == True) 
+		{
+			$data=array(
+			'type'=>$this->input->post('estd_type')
+			);
+			$this->db->where('type_id',$id);
+			$this->db->update('establishment_type',$data);
+			$this->session->set_flashdata('message','Update successfully !');
+			$master['status']  = True;
+			$master['message'] ="successfully saved data";
+		}
+		else
+		{
+			$master['status'] = false;
+            foreach ($_POST as $key => $value) 
+            {
+				if (form_error($key) != '') 
+                {
+					$data['error_string'] = $key;
+					$data['input_error']  = form_error($key);
+					array_push($master, $data);
+                }
+            }
+		}
+		echo(json_encode($master));
+	}
 
 	public function update_res_estdtype($res_id,$estd_id,$status)
 	{

@@ -52,6 +52,55 @@ class Area extends CI_Controller {
 		echo(json_encode($master));
 	}
 
+	public function update($id)
+	{
+		$is_unique='';
+		$this->load->library('form_validation');
+		$master['status'] = True;
+		$data             = array();
+		$master           = array();
+
+		/*$ar=$this->db->where('id',$id)->get('tbl_serves')->row()->name;
+		
+		if ($this->input->post('name')!=$ar) 
+		{
+			$is_unique='|is_unique[tbl_serves.serves_name]';
+		}*/
+        $this->form_validation->set_rules('city', 'City Name', 'trim|required|max_length[65]|callback_validate_dropdown');
+        $this->form_validation->set_rules('area', 'Area Name', 'trim|required|max_length[300]');
+        $this->form_validation->set_error_delimiters('<p class="text-danger">', '</>');
+		
+		if ($this->form_validation->run() == True) 
+		{
+			
+			$data=array(
+				'name'=>$this->input->post('area'),
+				'city_id'=>$this->input->post('city'),
+				);
+			$this->db->where('id',$id);
+			$this->db->update('tbl_area',$data);
+
+			$this->session->set_flashdata('message', 'Update Successfully !');
+			$master['status']  = True;
+			$master['message'] ="successfully saved data";
+		} 
+		else 
+		{
+			$master['status'] = false;
+            foreach ($_POST as $key => $value) 
+            {
+				if (form_error($key) != '') 
+                {
+					$data['error_string'] = $key;
+					$data['input_error']  = form_error($key);
+					array_push($master, $data);
+                }
+            }
+		}
+
+		echo(json_encode($master));
+	}
+
 	public function delete($id)
 	{
 		$this->db->where('id',$id);

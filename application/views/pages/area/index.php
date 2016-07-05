@@ -50,7 +50,7 @@
 	                                    </button>
 	                                    <ul class="dropdown-menu pull-right" role="menu">
 	                                        <li>
-	                                        	<a href="#"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
+	                                        	<a href="#" class="btn-edit" data-cityid="<?php echo($a->city_id) ?>" data-areaid="<?php echo($a->area_id) ?>"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
 	                                        </li>
 	                                        <li>
 	                                        	<a href="#" class="delete" data-fid="<?php echo($a->area_id) ?>"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
@@ -67,6 +67,41 @@
 	</div>
 </div>
 
+<div class="modal fade" id="modal-edit">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Edit Area</h4>
+			</div>
+			<div class="modal-body">
+				 <form action="" method="POST" id="edit-areaForm">
+                    <div class="form-group">
+                    	<label>City <span class="text-danger">*</span></label>
+                    	<select name="city" id="city" class="form-control" required="required">
+	                    	<option value="0">Please select city</option>
+	                    	<?php foreach ($cities as $city): ?>
+	                    		<option value="<?php echo($city->id) ?>"><?php echo($city->name) ?></option>
+	                    	<?php endforeach ?>
+	                    </select>
+	                    <span></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Area Name <span class="text-danger">*</span></label>
+                        <input type="text" name="area" id="area" class="form-control" placeholder="Area Name" value="">
+                        <span></span>
+                    </div>
+
+                  
+                </form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="btn-update" class="btn btn-primary">Update</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="modal fade" id="modal-delete">
 	<div class="modal-dialog">
 		<div class="modal-content" style="margin-top:100px;">
@@ -124,8 +159,56 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
+		 var area_id="";
+
 		$('#table-datatable').DataTable({
 	        "responsive": true
+	    });
+
+	    $('body').on('click','.btn-edit',function() {
+	    	area_id=$(this).data('areaid');
+			$('#edit-areaForm #city').val($(this).data('cityid'));
+			$('#edit-areaForm #area').val($.trim($(this).closest('tr').find('td:eq(2)').text()));
+			$('#modal-edit').modal('show');
+
+		});
+
+	    $('#btn-update').click(function() {
+	    	$(this).text('Updating....');
+			$(this).prop('disabled',true);
+			$.ajax({
+				url: '<?php echo(site_url("area/update")) ?>/'+area_id,
+				type: 'POST',
+				dataType: 'json',
+				data:$('#edit-areaForm').serialize()
+			})
+			.done(function(data) {
+				console.log(data);
+                if (data.status==true)
+                {
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                    location.reload(true);
+                   
+                }
+                else
+                {
+                    $.each(data, function(index, val) {
+                             $('#edit-areaForm'+' #'+val.error_string).next().html(val.input_error);
+                            $('#edit-areaForm'+' #'+val.error_string).parent().parent().addClass('has-error');
+                        });
+
+                    $('#btn-update').text('Update');
+					$('#btn-update').prop('disabled',false);
+                }
+			})
+			.fail(function(data) {
+				alert('Something went wrong !');
+				$('#btn-update').text('Update');
+				$('#btn-update').prop('disabled',false);
+			})
+			.always(function() {
+				console.log("complete");
+			});
 	    });
 
 		$('body').on('click','.delete',function() {

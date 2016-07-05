@@ -46,7 +46,7 @@
 	                                    </button>
 	                                    <ul class="dropdown-menu pull-right" role="menu">
 	                                        <li>
-	                                        	<a href="#"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
+	                                        	<a href="#" class="btn-edit" data-estdid="<?php echo($est->type_id) ?>"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
 	                                        </li>
 	                                        <li>
 	                                        	<a href="#" class="delete" data-estdid="<?php echo($est->type_id) ?>"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
@@ -63,6 +63,29 @@
 	</div>
 </div>
 
+<div class="modal fade" id="modal-Update">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Update Establishment Type</h4>
+			</div>
+			<div class="modal-body">
+				 <form action="" method="POST"  id="update-estd_typeform">
+                    <div class="form-group">
+                        <label for="">Establishment Type</label>
+                        <input type="text" name="estd_type" id="estd_type" class="form-control" placeholder="Input Establishment Type">
+                        <span></span>
+                    </div>
+                </form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="btn-Update" class="btn btn-primary">Update</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="modal fade" id="modal-delete">
 	<div class="modal-dialog">
 		<div class="modal-content" style="margin-top:100px;">
@@ -110,6 +133,52 @@
 		$('#table-datatable').DataTable({
 	        "responsive": true
 	    });
+
+	    var estd_id=''; 
+		$('body').on('click','.btn-edit',function() {
+			estd_id=$(this).data('estdid');
+			$('#update-estd_typeform #estd_type').val($.trim($(this).closest('tr').find('td:eq(1)').text()));
+			$('#modal-Update').modal('show');
+		});
+
+		$('#btn-Update').click(function() {
+
+			$('#btn-Update').text('Updating....');
+			$('#btn-Update').prop('disabled',true);
+			$.ajax({
+				url: '<?php echo(site_url("establishment_type/update")) ?>/'+estd_id,
+				type: 'POST',
+				dataType: 'json',
+				data:$('#update-estd_typeform').serialize()
+			})
+			.done(function(data) {
+				console.log("success");
+				if (data.status==true) 
+                {
+                	$("html, body").animate({ scrollTop: 0 }, "slow");
+                    location.reload(true);
+                }
+                else
+                {
+                     $.each(data, function(index, val) {
+                             $('#update-estd_typeform'+' #'+val.error_string).next().html(val.input_error);
+                            $('#update-estd_typeform'+' #'+val.error_string).parent().parent().addClass('has-error');
+                        });
+
+                    $('#btn-Update').text('Update');
+					$('#btn-Update').prop('disabled',false);
+                }
+			})
+			.fail(function() {
+				$('#btn-Update').text('Update');
+				$('#btn-Update').prop('disabled',false);
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
+		});
 	    
 		$('body').on('click','.delete',function() {
 			var estdid=$(this).data('estdid');
