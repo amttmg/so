@@ -66,7 +66,7 @@ class Establishment_type extends CI_Controller {
 		
 		$est_type=$this->db->where('type_id',$id)->get('establishment_type')->row()->type;
 		$is_unique='';
-		if ($this->input->post('estd_type')!=$est_type) 
+		if (strtolower($this->input->post('estd_type'))!=strtolower($est_type)) 
 		{
 			$is_unique='|is_unique[establishment_type.type]';
 		}

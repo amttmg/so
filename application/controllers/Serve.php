@@ -76,7 +76,7 @@ class Serve extends CI_Controller {
 		$master           = array();
 		$srv=$this->db->where('serves_id',$id)->get('tbl_serves')->row()->serves_name;
 		
-		if ($this->input->post('serve_name')!=$srv) 
+		if (strtolower($this->input->post('serve_name'))!=strtolower($srv)) 
 		{
 			$is_unique='|is_unique[tbl_serves.serves_name]';
 		}

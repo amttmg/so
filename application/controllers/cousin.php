@@ -81,6 +81,91 @@ class Cousin extends CI_Controller {
 		
 	}
 
+	public function update_cuisine_by_country($id)
+	{
+		$this->load->library('form_validation');
+		$master['status'] = True;
+		$data             = array();
+		$master           = array();
+		$cuisine=$this->db->where('cousin_id',$id)->get('tbl_cousins')->row()->cousin;
+		$is_unique='';
+		if (strtolower($this->input->post('cousin_name'))!=strtolower($cuisine)) 
+		{
+			$is_unique='|is_unique[tbl_cousins.cousin]';
+		}
+        $this->form_validation->set_rules('cousin_name', 'Cousin Name', 'trim|required|max_length[65]'.$is_unique);
+        $this->form_validation->set_error_delimiters('<p class="text-danger">', '</>');
+		
+		if ($this->form_validation->run() == True) 
+		{
+			$data=array(
+			'cousin'=>$this->input->post('cousin_name')
+			);
+			$this->db->where('cousin_id',$id);
+			$this->db->update('tbl_cousins',$data);
+
+			$this->session->set_flashdata('message', 'Update Successfully !');
+			$master['status']  = True;
+			$master['message'] ="successfully saved data";
+		}
+		else
+		{
+			$master['status'] = false;
+            foreach ($_POST as $key => $value) 
+            {
+				if (form_error($key) != '') 
+                {
+					$data['error_string'] = $key;
+					$data['input_error']  = form_error($key);
+					array_push($master, $data);
+                }
+            }
+		}
+		echo(json_encode($master));
+	}
+
+	public function update_cuisine_by_food($id)
+	{
+		$this->load->library('form_validation');
+		$master['status'] = True;
+		$data             = array();
+		$master           = array();
+		$food=$this->db->where('food_id',$id)->get('tbl_food')->row()->food;
+		$is_unique='';
+		if (strtolower($this->input->post('cousin_name'))!=strtolower($food)) 
+		{
+			$is_unique='|is_unique[tbl_food.food]';
+		}
+        $this->form_validation->set_rules('cousin_name', 'Cuisine by food', 'trim|required|max_length[65]'.$is_unique);
+        $this->form_validation->set_error_delimiters('<p class="text-danger">', '</>');
+		
+		if ($this->form_validation->run() == True) 
+		{
+			$data=array(
+			'food'=>$this->input->post('cousin_name')
+			);
+			$this->db->where('food_id',$id);
+			$this->db->update('tbl_food',$data);
+			
+			$this->session->set_flashdata('message', 'Cuisine by food saved successfully !');
+			$master['status']  = True;
+			$master['message'] ="successfully saved data";
+		}
+		else
+		{
+			$master['status'] = false;
+            foreach ($_POST as $key => $value) 
+            {
+				if (form_error($key) != '') 
+                {
+					$data['error_string'] = $key;
+					$data['input_error']  = form_error($key);
+					array_push($master, $data);
+                }
+            }
+		}
+		echo(json_encode($master));
+	}
 	public function add_cousinebyfood()
 	{
 		$this->load->library('form_validation');

@@ -46,7 +46,7 @@
 	                                    </button>
 	                                    <ul class="dropdown-menu pull-right" role="menu">
 	                                        <li>
-	                                        	<a href="#"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
+	                                        	<a href="#" class="btn-edit" data-fid="<?php echo($cuisine->id) ?>" ><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Edit</label></a>
 	                                        </li>
 	                                        <li>
 	                                        	<a href="#" class="delete" data-fid="<?php echo($cuisine->id) ?>"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Delete</label></a>
@@ -62,7 +62,34 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	
+</script>
 
+<div class="modal fade" id="modal-update">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Update Cuisine By country</h4>
+			</div>
+			<div class="modal-body">
+				<form action="" method="POST" id="update-cousin_form">
+                    <div class="form-group">
+                        <label for="">Cousin</label>
+                        <input type="text" name="cousin_name" class="form-control" id="cousin_name" placeholder="Cousin Name">
+                        <span></span>
+                    </div>
+                </form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="btn-update" class="btn btn-primary">Update</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				
+			</div>
+		</div>
+	</div>
+</div>
 <div class="modal fade" id="modal-delete">
 	<div class="modal-dialog">
 		<div class="modal-content" style="margin-top:100px;">
@@ -108,11 +135,54 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		var cid='';
 		$('#table-datatable').DataTable({
 	        "responsive": true
 	    });
 
+		$('body').on('click', '.btn-edit', function() {
+			cid=$(this).data('fid');
+			$('#update-cousin_form #cousin_name').val($.trim($(this).closest('tr').find('td:eq(1)').text()));
+			$('#modal-update').modal('show');
+		});
+
+		$('#btn-update').click(function() {
+			$('#btn-update').text('Updating......');
+			$('#btn-update').prop('disabled',true);
+			$.ajax({
+				url: '<?php echo(site_url("cuisine/update_cuisine_by_country")) ?>/'+cid,
+				type: 'post',
+				dataType: 'json',
+				data:$('#update-cousin_form').serialize(),
+			})
+			.done(function(data) {
+				console.log("success");
+				if (data.status==true)
+	                {
+	                    $("html, body").animate({ scrollTop: 0 }, "slow");
+	                    location.reload(true);
+	                   
+	                }
+	                else
+	                {
+	                    $.each(data, function(index, val) {
+	                             $('#update-cousin_form'+' #'+val.error_string).next().html(val.input_error);
+	                            $('#update-cousin_form'+' #'+val.error_string).parent().parent().addClass('has-error');
+	                        });
+	                    $('#btn-update').text('Update');
+						$('#btn-update').prop('disabled',false);
+	                }
+			})
+			.fail(function() {
+				$('#btn-update').text('Update');
+				$('#btn-update').prop('disabled',false);
+				alert('Something went wrong !');
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
+		});
 		$('body').on('click','.delete',function() {
 			var fid=$(this).data('fid');
 			var url='<?php echo(site_url()) ?>/cuisine/deletebycountry/'+fid;

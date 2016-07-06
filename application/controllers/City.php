@@ -57,7 +57,7 @@ class City extends CI_Controller {
 
 		$city=$this->db->where('id',$id)->get('tbl_city')->row()->name;
 		$is_unique='';
-		if ($this->input->post('city')!=$city) 
+		if (strtolower($this->input->post('city'))!=strtolower($city)) 
 		{
 			$is_unique='|is_unique[tbl_city.name]';
 		}

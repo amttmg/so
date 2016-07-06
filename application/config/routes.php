@@ -57,4 +57,7 @@ $route['cuisine/bycountry']='cousin/by_country';
 $route['cuisine/byfood']='cousin/by_food';
 $route['cuisine/deletebycountry/(:num)']='cousin/deletebycountry/$1';
 $route['cuisine/deletebyfood/(:num)']='cousin/deletebyfood/$1';
+$route['cuisine/update_cuisine_by_country/(:num)']='cousin/update_cuisine_by_country/$1';
+$route['cuisine/update_cuisine_by_food/(:num)']='cousin/update_cuisine_by_food/$1';
+
 

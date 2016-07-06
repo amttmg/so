@@ -71,7 +71,7 @@ class Facility extends CI_Controller {
 
 		$fn=$this->db->where('facilities_id',$id)->get('tbl_facilities')->row()->facility;
 		$is_unique='';
-		if ($this->input->post('facility_name')!=$fn) 
+		if (strtolower($this->input->post('facility_name'))!=strtolower($fn)) 
 		{
 			$is_unique='|is_unique[tbl_facilities.facility]';
 		}
