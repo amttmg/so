@@ -1,3 +1,4 @@
+
 <!-- <div class="container" style="background-color: #f0f0f0"> -->
 <form method="post" action="<?php echo base_url('index.php/dataentry/insert') ?>">
     <?php if ($this->session->flashdata('flashSuccess')): ?>
@@ -668,11 +669,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well-sm well clearfix" id="estd_checkbox">
-                <b> Establishment Type:</b><input type="text" id="searchfor"> <span class="pull-right"><button
+                <b> Establishment Type:</b><span class="pull-right"><button
                         type="button" id="btn_establishmentType"
                         class="btn btn-sm btn-info"> Add New
                     </button></span>
-
+                    <label><input type="text" id="searchestd" class="form-control" placeholder="search"></label>
                 <div class="clearfix">
 
                 </div>
@@ -680,7 +681,7 @@
                 <div id="all_text">
                     <?php foreach ($establishment_types as $est) {
                         ?>
-                        <div class="col-md-2">
+                        <div class="col-md-2 cet">
                             <label class="checkbox-inline">
                                 <input type="checkbox" name="establishment_type[]"
                                        value="<?php echo $est->type_id ?>"><?php echo $est->type ?>
@@ -692,7 +693,28 @@
             </div>
         </div>
     </div>
+<script type="text/javascript">
+    (function ($) {
+      jQuery.expr[':'].Contains = function(a,i,m){
+          return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+      };
+     function filterestd () {
 
+         $('#searchestd').keyup(function() {
+         var filter = $(this).val();
+            // get the value of the input field so we can filter the results
+
+            $('.cet').find("label:not(:Contains(" + filter + "))").parent().slideUp();
+            $('.cet').find("label:Contains(" + filter + ")").parent().slideDown();
+        });
+
+     }
+     $(function () {
+        filterestd();
+      });
+    }
+    (jQuery));
+</script>
     <div class="row">
         <div class="col-md-12">
             <div class="well-sm well clearfix" id="facility_checkbox">
@@ -758,7 +780,14 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well-sm well">
-                <table class="table table-bordered">
+               <label class="switch">
+                  <input type="checkbox" id="chk-hh">
+                  <div class="slider"></div>
+                </label>
+                <span class="pull-center">
+                    <h3 id="hr_heading">Happy Hours</h3>
+                </span>
+                <table class="table table-bordered" id="tbl-happy_hours" style="display:none">
                     <tr>
                         <th colspan="3" style="text-align: center">Happy Hours</th>
                     </tr>
@@ -786,20 +815,20 @@
                             <input name="happyhours[1][start]" type="time" class="form-control time start_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[1][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours1[1][start]" type="time" class="form-control time start_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[1][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours2[1][start]" type="time" class="form-control time start_time2"
                                    data-time-format="H:i:s">
                         </td>
                         <td>
                             <input name="happyhours[1][end]" type="time" class="form-control time end_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[1][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours1[1][end]" type="time" class="form-control time end_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[1][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours2[1][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
                         </td>
                         
@@ -810,20 +839,20 @@
                             <input name="happyhours[2][start]" type="time" class="form-control time start_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[2][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours1[2][start]" type="time" class="form-control time start_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[2][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours2[2][start]" type="time" class="form-control time start_time2"
                                    data-time-format="H:i:s">
                         </td>
                         <td>
                             <input name="happyhours[2][end]" type="time" class="form-control time end_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[2][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours1[2][end]" type="time" class="form-control time end_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[2][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours2[2][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
                         </td>
                     </tr>
@@ -833,20 +862,20 @@
                             <input name="happyhours[3][start]" type="time" class="form-control time start_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[3][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours1[3][start]" type="time" class="form-control time start_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[3][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours2[3][start]" type="time" class="form-control time start_time2"
                                    data-time-format="H:i:s">
                         </td>
                         <td>
                             <input name="happyhours[3][end]" type="time" class="form-control time end_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[3][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours1[3][end]" type="time" class="form-control time end_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[3][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours2[3][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
                         </td>
                     </tr>
@@ -856,20 +885,20 @@
                             <input name="happyhours[4][start]" type="time" class="form-control time start_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[4][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours1[4][start]" type="time" class="form-control time start_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[4][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours2[4][start]" type="time" class="form-control time start_time2"
                                    data-time-format="H:i:s">
                         </td>
                         <td>
                             <input name="happyhours[4][end]" type="time" class="form-control time end_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[4][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours1[4][end]" type="time" class="form-control time end_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[4][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours2[4][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
                         </td>
                     </tr>
@@ -879,20 +908,20 @@
                             <input name="happyhours[5][start]" type="time" class="form-control time start_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[5][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours1[5][start]" type="time" class="form-control time start_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[5][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours2[5][start]" type="time" class="form-control time start_time2"
                                    data-time-format="H:i:s">
                         </td>
                         <td>
                             <input name="happyhours[5][end]" type="time" class="form-control time end_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[5][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours1[5][end]" type="time" class="form-control time end_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[5][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours2[5][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
                         </td>
                     </tr>
@@ -902,20 +931,20 @@
                             <input name="happyhours[6][start]" type="time" class="form-control time start_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[6][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours1[6][start]" type="time" class="form-control time start_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[6][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours2[6][start]" type="time" class="form-control time start_time2"
                                    data-time-format="H:i:s">
                         </td>
                         <td>
                             <input name="happyhours[6][end]" type="time" class="form-control time end_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[6][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours1[6][end]" type="time" class="form-control time end_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[6][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours2[6][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
                         </td>
                     </tr>
@@ -926,20 +955,20 @@
                             <input name="happyhours[7][start]" type="time" class="form-control time start_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[7][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours1[7][start]" type="time" class="form-control time start_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[7][start]" type="time" class="form-control time start_time"
+                            <input name="happyhours2[7][start]" type="time" class="form-control time start_time2"
                                    data-time-format="H:i:s">
                         </td>
                         <td>
                             <input name="happyhours[7][end]" type="time" class="form-control time end_time"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours1[7][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours1[7][end]" type="time" class="form-control time end_time1"
                                    data-time-format="H:i:s">
                             <br/>
-                            <input name="happyhours2[7][end]" type="time" class="form-control time end_time"
+                            <input name="happyhours2[7][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
                         </td>
                     </tr>
@@ -947,7 +976,20 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+    $('#chk-hh').change(function() {
+        if ($(this).prop('checked')) 
+        {
+            $('#hr_heading').hide();
+            $('#tbl-happy_hours').show();
+        }
+        else
+        {
+            $('#hr_heading').show();
+            $('#tbl-happy_hours').hide();
+        }
+    });
+    </script>
     <div class="row">
         <div class="col-md-12">
             <div class="well-sm well clearfix" id="cousin_checkbox">
@@ -978,16 +1020,19 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="well-sm well clearfix">
+            <div class="well-sm well clearfix" id="cuisineByFoodCheckBox">
                 <b> Cuisine by Food :</b>
-
+                <span id="msg-cousinByFoodWait" class="text-success" style="display:none">  </span><span
+                            class="pull-right"><button type="button" id="btn_addCousinByFood" class="btn btn-sm btn-info "><i
+                                    class="fa fa-plus fa"></i> Add New
+                            </button></span>
                 <div class="clearfix">
 
                 </div>
                 <hr/>
                 <?php foreach ($foods as $food) {
                     ?>
-                    <div class="col-md-2">
+                    <div class="col-md-2 cbf">
                         <label class="checkbox-inline">
                             <input type="checkbox" name="foods[]"
                                    value="<?php echo $food->food_id ?>"><?php echo $food->food ?>
@@ -998,17 +1043,21 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+        $('#btn_addCousinByFood').click(function() {
+            $('#mdl_cuisineByFood').modal('show');
+        });
+    </script>
     <div class="row">
         <div class="col-md-12">
             <div class="well-sm well clearfix" id="populardish_checkbox">
-                <b>Popular Dish:</b><input type="text" id="searchtxt"> <span class="pull-right"> <button type="button"
-                                                                                                         id="btn_addPopDish"
-                                                                                                         class="btn btn-sm btn-info">
-                        <i
-                            class="fa fa-plus fa"></i> Add New
-                    </button></span>
-
+                <b>Popular Dish:</b>
+                    <span class="pull-right"> 
+                        <button type="button" id="btn_addPopDish" class="btn btn-sm btn-info">
+                            <i class="fa fa-plus fa"></i> Add New
+                        </button>
+                    </span>
+                    &nbsp&nbsp<label><input type="text" id="searchtxt" placeholder="search" class="form-control"> </label>
                 <div class="clearfix">
 
                 </div>
@@ -1028,7 +1077,26 @@
             </div>
         </div>
     </div>
+<script type="text/javascript">
+    (function ($) {
+      jQuery.expr[':'].Contains = function(a,i,m){
+          return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+      };
+        function searchpopdish (argument) {
+           $('#searchtxt').keyup(function() {
+                 var filter = $(this).val();
+                    // get the value of the input field so we can filter the results
 
+                    $('.chk').find("label:not(:Contains(" + filter + "))").parent().slideUp();
+                    $('.chk').find("label:Contains(" + filter + ")").parent().slideDown();
+            });
+        }
+        $(function () {
+            searchpopdish();
+        });
+    }
+    (jQuery));
+</script>
     <div class="row" style="padding: 15px">
         <div class="col-md-12">
             <div class="form-horizontal">
@@ -1057,7 +1125,31 @@
         color: red;
     }
 </style>
+<div class="modal fade" id="mdl_cuisineByFood">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add new Cuisine By Food</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST" id="form-cuisineByFood">
+                    <div class="form-group">
+                        <label for="">Cousin By Food</label>
+                        <input type="text" name="cousin_name" class="form-control" id="cousin_name"
+                               placeholder="Cousin Name">
+                        <span></span>
+                    </div>
 
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn_cuisineByFoodSave" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="mdl-addserve">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -1356,7 +1448,10 @@
         $('#btn_servesave').click(function () {
             insertIntoServe('serve_form', 'btn_servesave', 'serve_checkbox');
         });
+        $('#btn_cuisineByFoodSave').click(function () {
 
+            insertIntoCuisineByFood('form-cuisineByFood', 'btn_cuisineByFoodSave', 'btn_addCousinByFood');
+        });
         $('#btn_estdtypesave').click(function () {
             insertIntoEstType('estd_typeform', 'btn_estdtypesave', 'btn_establishmentType')
         });
@@ -1479,6 +1574,43 @@
     function maxLengthCheck(object) {
         if (object.value.length > object.maxLength)
             object.value = object.value.slice(0, object.maxLength)
+    }
+    function insertIntoCuisineByFood(form_id, button_id, cousin_id) {
+        disable_button(button_id, 'Saving');
+
+        $.ajax({
+            url: '<?php echo(site_url("Cousin/add_cousinebyfood")) ?>',
+            dataType: 'json',
+            type: 'post',
+            data: $('#' + form_id).serialize(),
+            success: function (data) {
+                console.log(data);
+                if (data.status == true) {
+                    enable_button(button_id, 'Save');
+                    var temp_checkbox = '<label class="checkbox-inline">';
+                    temp_checkbox += '<input type="checkbox" name="foods[]" class="foods" value="' + data.data.food_id + '">' + data.data.food + '</label>';
+
+                    $('#cuisineByFoodCheckBox').append(temp_checkbox);
+                    $('#' + form_id)[0].reset();
+                    $('#mdl_cuisineByFood').modal('hide');
+
+                }
+                else {
+                    $.each(data, function (index, val) {
+                        $('#' + form_id + ' #' + val.error_string).next().html(val.input_error);
+                        $('#' + form_id + ' #' + val.error_string).parent().parent().addClass('has-error');
+                    });
+
+                    enable_button(button_id, 'Save');
+                }
+
+            }
+        })
+
+            .fail(function () {
+
+                enable_button(button_id, 'Add New');
+            });
     }
 
     function insertIntoServe(form_id, button_id, serve_id) {

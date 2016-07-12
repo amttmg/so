@@ -38,7 +38,7 @@ class restaurant extends CI_Model
         $google_map = $this->input->post('res_map');
         $website = $this->input->post('res_website');
         $email = $this->input->post('res_email');
-        $other = $this->input->post('res_remarks');
+        $remarks = $this->input->post('res_remarks');
         $parking = $this->input->post('res_parking');
         $parking_two = $this->input->post('res_parking2');
         $parking_four = $this->input->post('res_parking4');
@@ -59,7 +59,7 @@ class restaurant extends CI_Model
             'google_map' => $google_map,
             'website' => $website,
             'email' => $email,
-            'other' => $other,
+            'remarks' => $remarks,
             'parking' => $parking,
             'parking_two' => $parking_two,
             'parking_four' => $parking_four,

@@ -892,9 +892,10 @@
                                 type="button" id="btn_addPopDish" class="btn btn-sm btn-info"><i
                                     class="fa fa-plus fa"></i> Add New
                             </button></span>
+                            &nbsp&nbsp<label><input type="text" id="searchtxt" placeholder="Search" class="form-control"> </label>
                         <hr/>
                         <?php foreach ($pop_dishes as $pop): ?>
-                            <div class="col-md-2">
+                            <div class="col-md-2 cpd">
                                 <label class="checkbox-inline">
                                     <?php
                                     $data = array(
@@ -912,15 +913,53 @@
                     </div>
                 </div>
             </div>
-
+            <script type="text/javascript">
+                (function ($) {
+                  jQuery.expr[':'].Contains = function(a,i,m){
+                      return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+                  };
+                    function searchpopdish (argument) {
+                       $('#searchtxt').keyup(function() {
+                                    var filter = $(this).val();
+                                // get the value of the input field so we can filter the results
+                                    if (filter) 
+                                    {
+                                        $('.cpd').find("label:not(:Contains(" + filter + "))").parent().slideUp();
+                                        $('.cpd').find("label:Contains(" + filter + ")").parent().slideDown();
+                                    }
+                                    else
+                                    {
+                                        $('.cpd').slideDown();
+                                    }
+                                
+                        })
+                       .change(function() {
+                            $(this).keyup();
+                        });
+                    }
+                    $(function () {
+                        searchpopdish();
+                    });
+                }
+                (jQuery));
+            </script>
             <div class="row" style="padding: 15px">
                 <div class="col-md-12">
-                    <div class="form-horizontal">
-                        <div class="form-group">
-                            <label>Remarks</label>
-                            <textarea name="res_remarks" class="form-control"></textarea>
-                        </div>
-                    </div>
+                    <table class="table table-bordered" >
+                        <tbody>
+                            <tr>
+                                <th>
+                                    Remarks
+                                    <button type="button" id="btn-editRemarks" class="btn btn-sm btn-primary pull-right"><i class="fa fa-edit fa"></i>&nbsp;&nbsp;Edit</button>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                <h2 id="remarks"><?php echo($restaurants->remarks) ?></h2>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
     </div>
@@ -936,7 +975,28 @@
         color: red;
     }
 </style>
-
+<div class="modal fade" id="modal-remarks">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Update Remarks</h4>
+            </div>
+            <div class="modal-body">
+                <form id="form-remarks">
+                    <div class="form-group">
+                        <label for="">Remarks</label>
+                        <input type="text" name="remarks_name" class="form-control" id="remarks_name" placeholder="Input field">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                 <button type="button" id="btn-remarksUpdate" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="mdl-addserve">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -2257,6 +2317,35 @@
 
     $(document).ready(function () {
 
+         $('#btn-editRemarks').click(function() {
+        $('#form-remarks #remarks_name').val($('#remarks').text());
+        $('#modal-remarks').modal('show');
+    });
+
+        $('#btn-remarksUpdate').click(function() {
+            $(this).prop('disabled',true);
+            $(this).text('Updating.....');
+            $.ajax({
+                url: '<?php echo(site_url("restaurants/update_remarks")) ?>/'+'<?php echo $this->uri->segment(3); ?>',
+                type: 'POST',
+                data:$('#form-remarks').serialize()
+            })
+            .done(function() {
+                $("html, body").animate({scrollTop: 0}, "slow");
+                location.reload();
+            })
+            .fail(function(data) {
+                console.log(data);
+                $(this).prop('disabled',false);
+                $(this).text('Update');
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+            
+        });
+
         $('#btn-updateParking').click(function() {
             $(this).text('Updating.......');
             $(this).prop('disabled',true);
@@ -3028,7 +3117,7 @@
                 if (data.status == true) {
                     enable_button(button_id, 'Save');
                     var temp_checkbox = '<label class="checkbox-inline">';
-                    temp_checkbox += '<input type="checkbox" name="cousins[]" class="foods" value="' + data.data.food_id + '">' + data.data.food + '</label>';
+                    temp_checkbox += '<input type="checkbox" name="foods[]" class="foods" value="' + data.data.food_id + '">' + data.data.food + '</label>';
 
                     $('#cuisineByFoodCheckBox').append(temp_checkbox);
                     $('#' + form_id)[0].reset();

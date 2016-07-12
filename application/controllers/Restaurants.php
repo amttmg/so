@@ -55,7 +55,12 @@ class Restaurants extends CI_Controller {
 		//$data['content'] = $this->load->view('pages/restaurant/details',$data, true);
         $this->load->_render_page('pages/restaurant/details', $data);
 	}
-
+	public function update_remarks($res_id='')
+	{
+		$this->db->where('res_id',$res_id);
+		$this->db->update('tbl_restaurants',array('remarks'=>$this->input->post('remarks_name')));
+		$this->session->set_flashdata('flashSuccess', 'Remarks updated succcessfully !');
+	}
 	public function update_estd_contact($id)
 	{
 

@@ -18,7 +18,7 @@ class Street extends CI_Controller {
 		$master['status'] = True;
 		$data             = array();
 		$master           = array();
-        $this->form_validation->set_rules('street', 'Street Name', 'trim|required|max_length[65]|is_unique[tbl_street.name]');
+        $this->form_validation->set_rules('street', 'Street Name', 'trim|required|max_length[65]');
         $this->form_validation->set_rules('area', 'Area Name', 'trim|required|max_length[60]|callback_validate_dropdown');
         $this->form_validation->set_error_delimiters('<p class="text-danger">', '</>');
 		
