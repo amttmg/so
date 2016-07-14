@@ -161,7 +161,7 @@ class Restaurants extends CI_Controller {
         $this->form_validation->set_rules('est_city', 'Establishment City', 'trim|required|max_length[30]');
         $this->form_validation->set_rules('est_area', 'Establishment Area', 'trim|required|max_length[30]');
         $this->form_validation->set_rules('est_street', 'Establishment Street', 'trim|max_length[30]');
-        $this->form_validation->set_rules('est_landmark', 'Establishment Landmark', 'trim|max_length[30]');
+        $this->form_validation->set_rules('est_landmark', 'Establishment Landmark', 'trim|max_length[100]');
         $this->form_validation->set_rules('est_other', 'Establishment Other', 'trim|max_length[30]');
 		if ($this->form_validation->run() == True) 
 		{

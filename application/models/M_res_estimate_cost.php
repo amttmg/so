@@ -10,7 +10,7 @@ class M_res_estimate_cost extends CI_Model {
         $this->db->select('estimate_cost_topic.*,a.cost,a.res_id');
         $this->db->from('estimate_cost_topic');
         $this->db->join("(select *from tbl_res_estimate_cost where res_id='".$data."') as a",'a.topic_id=estimate_cost_topic.topic_id','left');
-        $this->db->order_by('estimate_cost_topic.topic','asc');
+        $this->db->order_by('estimate_cost_topic.order_by','asc');
         $this->db->where('estimate_cost_topic.status',1);
         //$this->db->group_by('estimate_cost_topic.topic');
         $result_data=$this->db->get()->result();

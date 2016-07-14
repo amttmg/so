@@ -196,7 +196,7 @@
                                                 <?php echo($owner->designation) ?>
                                             </td>
                                             <td>
-                                                <?php echo($owner->mobile1) ?>
+                                                <?php echo($owner->mobile1.', '.$owner->mobile2) ?>
                                             </td>
                                             <td>
                                                 <div class="btn-group">
