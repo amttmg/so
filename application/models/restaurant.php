@@ -67,7 +67,8 @@ class restaurant extends CI_Model
             'user_id' => $this->user_id,
             'multiple_outlets'=>$multi_outlets,
             'outlets_no'=>$outlets_no,
-            'outletdetails'=>$this->input->post('outletdetails')
+            'outletdetails'=>$this->input->post('outletdetails'),
+            'other_building'=>$this->input->post('est_other')
         );
 
         foreach ($_POST['offers'] as $key => $value) 

@@ -171,7 +171,7 @@ class Restaurants extends CI_Controller {
 				'area'=>$this->input->post('est_area'),
 				'street'=>$this->input->post('est_street'),
 				'landmark'=>$this->input->post('est_landmark'),
-				'other'=>$this->input->post('est_other')
+				'other_building'=>$this->input->post('est_other')
 				);
 			$this->db->where('res_id',$id);
 			$this->db->update('tbl_restaurants',$data);

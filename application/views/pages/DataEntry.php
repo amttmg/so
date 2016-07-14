@@ -704,8 +704,8 @@
          var filter = $(this).val();
             // get the value of the input field so we can filter the results
 
-            $('.cet').find("label:not(:Contains(" + filter + "))").parent().slideUp();
-            $('.cet').find("label:Contains(" + filter + ")").parent().slideDown();
+            $('.cet').find("label:not(:Contains(" + filter + "))").parent().hide();
+            $('.cet').find("label:Contains(" + filter + ")").parent().show();
         });
 
      }
@@ -977,6 +977,7 @@
         </div>
     </div>
     <script type="text/javascript">
+        $('.start_time1,.start_time2,.end_time1,.end_time2,#tbl-happy_hours br').remove();
     $('#chk-hh').change(function() {
         if ($(this).prop('checked')) 
         {
@@ -1087,8 +1088,8 @@
                  var filter = $(this).val();
                     // get the value of the input field so we can filter the results
 
-                    $('.chk').find("label:not(:Contains(" + filter + "))").parent().slideUp();
-                    $('.chk').find("label:Contains(" + filter + ")").parent().slideDown();
+                    $('.chk').find("label:not(:Contains(" + filter + "))").parent().hide();
+                    $('.chk').find("label:Contains(" + filter + ")").parent().show();
             });
         }
         $(function () {

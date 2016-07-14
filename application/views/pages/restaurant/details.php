@@ -275,7 +275,7 @@
                                     Others(Building's Name)
                                 </td>
                                 <td>
-
+                                <?php echo($restaurants->other_building) ?>
                                 </td>
                             </tr>
                         </table>
@@ -787,27 +787,11 @@
                                     </td>
                                     <td>
                                         <?php echo($hh['first']->start_time ?date('h:i a',strtotime($hh['first']->start_time)) : '') ?>
-                                        <?php if (!empty($hh['second'])): ?>
-                                            
-                                            <br/><?php echo($hh['second']->start_time ? date('h:i a',strtotime($hh['second']->start_time )): '') ?>
-                                        <?php endif ?>
-
-                                        <?php if (!empty($hh['third'])): ?>
-                                           
-                                            <br/><?php echo($hh['third']->start_time ? date('h:i a',strtotime($hh['third']->start_time )): '') ?>
-                                        <?php endif ?>
+                                        
                                     </td>
                                     <td>
                                         <?php echo($hh['first']->end_time ? date('h:i a',strtotime($hh['first']->end_time)) : '') ?>
-                                        <?php if (!empty($hh['second'])): ?>
-                                           
-                                            <br/><?php echo($hh['second']->end_time ? date('h:i a',strtotime($hh['second']->end_time)) : '') ?>
-                                        <?php endif ?>
-
-                                        <?php if (!empty($hh['third'])): ?>
-                                           
-                                            <br/><?php echo($hh['third']->end_time ? date('h:i a',strtotime($hh['third']->end_time)) : '') ?>
-                                        <?php endif ?>
+                                        
                                     </td>
                                 </tr>
 
@@ -924,12 +908,12 @@
                                 // get the value of the input field so we can filter the results
                                     if (filter) 
                                     {
-                                        $('.cpd').find("label:not(:Contains(" + filter + "))").parent().slideUp();
-                                        $('.cpd').find("label:Contains(" + filter + ")").parent().slideDown();
+                                        $('.cpd').find("label:not(:Contains(" + filter + "))").parent().hide();
+                                        $('.cpd').find("label:Contains(" + filter + ")").parent().show();
                                     }
                                     else
                                     {
-                                        $('.cpd').slideDown();
+                                        $('.cpd').show();
                                     }
                                 
                         })
@@ -1170,7 +1154,7 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input maxlength="8" oninput="maxLengthCheck(this)" type="number"
+                                        <input maxlength="12" oninput="maxLengthCheck(this)" type="number"
                                                class="form-control" name="res_mobile1"
                                                value="<?php echo set_value('res_mobile1') ?>" id="res_mobile1"
                                             >
@@ -1186,7 +1170,7 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input name="res_mobile2" type="number" maxlength="8"
+                                        <input name="res_mobile2" type="number" maxlength="12"
                                                oninput="maxLengthCheck(this)"
                                                value="<?php echo set_value('res_mobile2') ?>" type="text"
                                                class="form-control phone" id="res_mobile2">
@@ -1948,13 +1932,13 @@
                         <td>if same all weeks</td>
                         <td>
                             <input type="time" class="form-control time" id="start_time_all" data-time-format="H:i">
-                            <input type="time" class="form-control time" id="start_time_all1" data-time-format="H:i">
-                            <input type="time" class="form-control time" id="start_time_all2" data-time-format="H:i">
+                            <!-- <input type="time" class="form-control time" id="start_time_all1" data-time-format="H:i">
+                            <input type="time" class="form-control time" id="start_time_all2" data-time-format="H:i"> -->
                         </td>
                         <td>
                             <input type="time" class="form-control time" id="end_time_all" data-time-format="H:i">
-                            <input type="time" class="form-control time" id="end_time_all1" data-time-format="H:i">
-                            <input type="time" class="form-control time" id="end_time_all2" data-time-format="H:i">
+                            <!-- <input type="time" class="form-control time" id="end_time_all1" data-time-format="H:i">
+                            <input type="time" class="form-control time" id="end_time_all2" data-time-format="H:i"> -->
                         </td>
                     </tr>
                     <?php
@@ -1972,12 +1956,7 @@
                                            data-time-format="H:i" value="<?php echo($hh['first']->start_time ? $hh['first']->start_time : '') ?>">
                                         
             
-                                            <br/>
-                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time start_time1"
-                                           data-time-format="H:i" value="<?php echo(isset($hh['second']->start_time) ? $hh['second']->start_time : '') ?>">
-                                           <br/>
-                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][start]" type="time" class="form-control time start_time2"
-                                           data-time-format="H:i" value="<?php echo(isset($hh['third']->start_time) ? $hh['third']->start_time : '') ?>">
+                                            
                                             
                                         
                                     </td>
@@ -1986,12 +1965,7 @@
                                             <input name="happyhours[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time"
                                             data-time-format="H:i" value="<?php echo($hh['first']->end_time ? $hh['first']->end_time : '') ?>">
                                         
-                                            <br/>
-                                            <input name="happyhours1[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time1"
-                                           data-time-format="H:i" value="<?php echo(isset($hh['second']->end_time )? $hh['second']->end_time : '') ?>">
-                                           <br/>
-                                            <input name="happyhours2[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time2"
-                                           data-time-format="H:i" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
+                                            
                                             
                                     </td>
                                
@@ -2275,7 +2249,9 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+    $('.start_time1,.start_time2,.end_time1,.end_time2,#modal-editHappyHours br').remove();
+</script>
 <div class="modal fade" id="modal-editCostTopic">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -2514,12 +2490,13 @@
                     $('#mdl-establishmentLocation').modal('show');
                     $('#est_city').val(data.city);
                     $('#est_area').val(data.area);
+
                     if (data.street) 
                         {
                             $('#est_street').val(data.street);
                         }
                     $('#est_landmark').val(data.landmark);
-                    $('#est_other').val(data.other);
+                    $('#est_other').val(data.other_building);
 
                 })
                 .fail(function () {
