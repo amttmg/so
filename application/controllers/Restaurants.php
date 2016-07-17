@@ -51,7 +51,7 @@ class Restaurants extends CI_Controller {
         $data['areaDropdown'] = $this->select->getSelectList('tbl_area', '', 'id', 'name', 'id="est_area" name="est_area" class="form-control"');
         $data['streetDropdown'] = $this->select->getSelectList('tbl_street', '', 'id', 'name', 'id="est_street" name="est_street" class="form-control"');
 		$data['owners']=$this->owner->getAll(array('res_id',$restaurant_id));
-		$data['facilities']=$this->res_facility->getBy(array('res_id',$restaurant_id));
+		$data['facilities']=$this->res_facility->getBy(array('res_id',$restaurant_id),"");
 		//$data['content'] = $this->load->view('pages/restaurant/details',$data, true);
         $this->load->_render_page('pages/restaurant/details', $data);
 	}

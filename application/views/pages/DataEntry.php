@@ -449,7 +449,12 @@
                             <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="1">New
                                  Time
                              </button>-->
-                             <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
+                             <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>
+                                     Close this day
+                                 </label>
+                             </div>
                         </td>
                     </tr>
                     <tr>
@@ -474,7 +479,11 @@
                             <!--<button type="button" class="btn btn-xs btn-primary  addservetime" data-position="2">New
                                 Time
                             </button>-->
-                            <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
+                            <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>Close this day
+                                 </label>
+                             </div>
                         </td>
                     </tr>
                     <tr>
@@ -499,7 +508,12 @@
                             <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="3">New
                                  Time
                              </button>-->
-                             <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
+                             <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>
+                                     Close this day
+                                 </label>
+                             </div>
                         </td>
                     </tr>
                     <tr>
@@ -524,7 +538,12 @@
                             <!--  <button type="button" class="btn btn-xs btn-primary addservetime" data-position="4">New
                                   Time
                               </button>-->
-                              <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
+                              <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>
+                                     Close this day
+                                 </label>
+                             </div>
                         </td>
                     </tr>
                     <tr>
@@ -549,7 +568,12 @@
                             <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="5">New
                                  Time
                              </button>-->
-                             <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
+                             <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>
+                                     Close this day
+                                 </label>
+                             </div>
                         </td>
                     </tr>
                     <tr>
@@ -574,7 +598,12 @@
                             <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="6">New
                                  Time
                              </button>-->
-                             <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
+                             <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>
+                                     Close this day
+                                 </label>
+                             </div>
                         </td>
                     </tr>
 
@@ -600,17 +629,18 @@
                             <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="7">New
                                  Time
                              </button>-->
-                             <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
+                             <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>
+                                     Close this day
+                                 </label>
+                             </div>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
-        <script type="text/javascript">
-            $('.close_day').click(function() {
-                $(this).closest('tr').remove();
-            });
-        </script>
+        
         <div class="col-md-6">
             <div class="well-sm well">
                 <table class="table table-bordered" id="tbl-costTopic">
@@ -813,6 +843,9 @@
                         <th>
                             End Time
                         </th>
+                        <th>
+                            Action
+                        </th>
                     </tr>
                     <tr>
                         <td>if same all weeks</td>
@@ -820,6 +853,7 @@
                         </td>
                         <td><input type="time" class="form-control time" id="end_time_all" data-time-format="H:i:s">
                         </td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>Sunday</td>
@@ -842,6 +876,14 @@
                             <br/>
                             <input name="happyhours2[1][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
+                        </td>
+                        <td>
+                             <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>
+                                     Close this day
+                                 </label>
+                             </div>
                         </td>
                         
                     </tr>
@@ -867,6 +909,14 @@
                             <input name="happyhours2[2][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
                         </td>
+                        <td>
+                             <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>
+                                     Close this day
+                                 </label>
+                             </div>
+                        </td>
                     </tr>
                     <tr>
                         <td>Tuesday</td>
@@ -889,6 +939,14 @@
                             <br/>
                             <input name="happyhours2[3][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
+                        </td>
+                        <td>
+                             <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>
+                                     Close this day
+                                 </label>
+                             </div>
                         </td>
                     </tr>
                     <tr>
@@ -913,6 +971,14 @@
                             <input name="happyhours2[4][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
                         </td>
+                        <td>
+                             <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>
+                                     Close this day
+                                 </label>
+                             </div>
+                        </td>
                     </tr>
                     <tr>
                         <td>Thursday</td>
@@ -935,6 +1001,14 @@
                             <br/>
                             <input name="happyhours2[5][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
+                        </td>
+                        <td>
+                             <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>
+                                     Close this day
+                                 </label>
+                             </div>
                         </td>
                     </tr>
                     <tr>
@@ -959,6 +1033,14 @@
                             <input name="happyhours2[6][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
                         </td>
+                        <td>
+                             <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>
+                                     Close this day
+                                 </label>
+                             </div>
+                        </td>
                     </tr>
 
                     <tr>
@@ -982,6 +1064,14 @@
                             <br/>
                             <input name="happyhours2[7][end]" type="time" class="form-control time end_time2"
                                    data-time-format="H:i:s">
+                        </td>
+                        <td>
+                             <div class="checkbox">
+                                 <label>
+                                     <input type="checkbox" class="close_day" value="" checked>
+                                     Close this day
+                                 </label>
+                             </div>
                         </td>
                     </tr>
                 </table>
@@ -1324,6 +1414,21 @@
 <script>
     parking_check();
     $(document).ready(function () {
+
+         $('.close_day').change(function() {
+            //$(this).closest('tr').remove();
+            if ($(this).prop('checked')) 
+            {
+                $(this).closest('tr').find('.time').show();
+                
+            }
+            else
+            {
+                $(this).closest('tr').find('.time').hide().val('');
+               
+            }
+
+        });
 
         $('.parking').click(function () {
             parking_check();

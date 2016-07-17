@@ -1640,6 +1640,9 @@
                         <th>
                             Closing Time
                         </th>
+                        <th>
+                            Action
+                        </th>
                     </tr>
                     <tr>
                         <td>if same all weeks</td>
@@ -1681,6 +1684,14 @@
                                             <input name="servtime2[1][close]" type="time" class="form-control close_time2 time"
                                             data-time-format="H:i" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
                                         </td>
+                                        <td>
+                                             <div class="checkbox">
+                                                 <label>
+                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     Close this day
+                                                 </label>
+                                             </div>
+                                        </td>
                                     </tr>
                                 <?php endif ?>
                                 <?php if ($st['first']->day == 2): ?>
@@ -1706,6 +1717,14 @@
                                             <input name="servtime2[2][close]" type="time" class="form-control close_time2 time"
                                             data-time-format="H:i" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
                                         </td>
+                                        <td>
+                                             <div class="checkbox">
+                                                 <label>
+                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     Close this day
+                                                 </label>
+                                             </div>
+                                        </td>
                                     </tr>
                                 <?php endif ?>
                                 <?php if ($st['first']->day == 3): ?>
@@ -1730,6 +1749,14 @@
                                             <br/>
                                             <input name="servtime2[3][close]" type="time" class="form-control close_time2 time"
                                             data-time-format="H:i" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
+                                        </td>
+                                        <td>
+                                             <div class="checkbox">
+                                                 <label>
+                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     Close this day
+                                                 </label>
+                                             </div>
                                         </td>
                                     </tr>
                                 <?php endif ?>
@@ -1757,6 +1784,14 @@
                                             data-time-format="H:i" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
                                             
                                         </td>
+                                        <td>
+                                             <div class="checkbox">
+                                                 <label>
+                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     Close this day
+                                                 </label>
+                                             </div>
+                                        </td>
                                     </tr>
                                 <?php endif ?>
                                 <?php if ($st['first']->day == 5): ?>
@@ -1782,6 +1817,14 @@
                                             <input name="servtime2[5][close]" type="time" class="form-control close_time2 time"
                                             data-time-format="H:i" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
                                             
+                                        </td>
+                                        <td>
+                                             <div class="checkbox">
+                                                 <label>
+                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     Close this day
+                                                 </label>
+                                             </div>
                                         </td>
                                     </tr>
                                 <?php endif ?>
@@ -1809,6 +1852,14 @@
                                             data-time-format="H:i" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
                                             
                                         </td>
+                                        <td>
+                                             <div class="checkbox">
+                                                 <label>
+                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     Close this day
+                                                 </label>
+                                             </div>
+                                        </td>
                                     </tr>
                                 <?php endif ?>
                                 <?php if ($st['first']->day == 7): ?>
@@ -1834,6 +1885,14 @@
                                             <input name="servtime2[7][close]" type="time" class="form-control close_time2 time"
                                             data-time-format="H:i" value="<?php echo($st['third'] ? $st['third']->closing_time : '') ?>">
                                             
+                                        </td>
+                                        <td>
+                                             <div class="checkbox">
+                                                 <label>
+                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     Close this day
+                                                 </label>
+                                             </div>
                                         </td>
                                     </tr>
                                 <?php endif ?>
@@ -1927,6 +1986,9 @@
                         <th>
                             End Time
                         </th>
+                        <th>
+                            Action
+                        </th>
                     </tr>
                     <tr>
                         <td>if same all weeks</td>
@@ -1968,6 +2030,14 @@
                                             
                                             
                                     </td>
+                                    <td>
+                                         <div class="checkbox">
+                                             <label>
+                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 Close this day
+                                             </label>
+                                         </div>
+                                    </td>
                                
                                 </tr>
                             <?php endif ?>
@@ -2001,6 +2071,14 @@
                                             <input name="happyhours2[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time2"
                                            data-time-format="H:i" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
                                             
+                                    </td>
+                                    <td>
+                                         <div class="checkbox">
+                                             <label>
+                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 Close this day
+                                             </label>
+                                         </div>
                                     </td>
                                
                                 </tr>
@@ -2036,6 +2114,14 @@
                                            data-time-format="H:i" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
                                             
                                     </td>
+                                    <td>
+                                         <div class="checkbox">
+                                             <label>
+                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 Close this day
+                                             </label>
+                                         </div>
+                                    </td>
                                
                                 </tr>
                             <?php endif ?>
@@ -2069,6 +2155,14 @@
                                             <input name="happyhours2[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time2"
                                            data-time-format="H:i" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
                                             
+                                    </td>
+                                    <td>
+                                         <div class="checkbox">
+                                             <label>
+                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 Close this day
+                                             </label>
+                                         </div>
                                     </td>
                                
                                 </tr>
@@ -2104,6 +2198,14 @@
                                            data-time-format="H:i" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
                                             
                                     </td>
+                                    <td>
+                                         <div class="checkbox">
+                                             <label>
+                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 Close this day
+                                             </label>
+                                         </div>
+                                    </td>
                                
                                 </tr>
                             <?php endif ?>
@@ -2138,6 +2240,14 @@
                                            data-time-format="H:i" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
                                             
                                     </td>
+                                    <td>
+                                         <div class="checkbox">
+                                             <label>
+                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 Close this day
+                                             </label>
+                                         </div>
+                                    </td>
                                
                                 </tr>
                             <?php endif ?>
@@ -2171,6 +2281,14 @@
                                             <input name="happyhours2[<?php echo($hh['first']->day) ?>][end]" type="time" class="form-control time end_time2"
                                            data-time-format="H:i" value="<?php echo(isset($hh['third']->end_time )? $hh['third']->end_time : '') ?>">
                                             
+                                    </td>
+                                    <td>
+                                         <div class="checkbox">
+                                             <label>
+                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 Close this day
+                                             </label>
+                                         </div>
                                     </td>
                                
                                 </tr>
@@ -2292,6 +2410,21 @@
     parking_check();
 
     $(document).ready(function () {
+
+        $('.close_day').change(function() {
+            //$(this).closest('tr').remove();
+            if ($(this).prop('checked')) 
+            {
+                $(this).closest('tr').find('.time').show();
+                
+            }
+            else
+            {
+                $(this).closest('tr').find('.time').hide().val('');
+               
+            }
+
+        });
 
          $('#btn-editRemarks').click(function() {
         $('#form-remarks #remarks_name').val($('#remarks').text());

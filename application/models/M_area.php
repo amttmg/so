@@ -15,9 +15,8 @@ class M_area extends CI_Model {
 	{
 		return $this->db->from('tbl_area as a')
 						->select('a.name as area,c.name as city,a.id as area_id,c.id as city_id')
-					
 						->join('tbl_city as c','c.id=a.city_id','inner')
-				        ->order_by('c.name','asc')
+				        ->order_by('a.name','asc')
 				        ->where('a.status',1)
 				        ->get()->result();
 	}

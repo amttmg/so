@@ -17,10 +17,10 @@ class M_res_facility extends CI_Model {
         {
         	 $this->db->order_by($order_by[0],$order_by[1]);
         }
-        else
+        /*else
         {
             $this->db->order_by('f.facility','asc');
-        }
+        }*/
 
         $result_data=$this->db->get()->result();
         if ($json==false) 
