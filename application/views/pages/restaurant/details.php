@@ -1687,7 +1687,7 @@
                                         <td>
                                              <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     <input type="checkbox" class="close_day" value="">
                                                      Close this day
                                                  </label>
                                              </div>
@@ -1720,7 +1720,7 @@
                                         <td>
                                              <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     <input type="checkbox" class="close_day" value="">
                                                      Close this day
                                                  </label>
                                              </div>
@@ -1753,7 +1753,7 @@
                                         <td>
                                              <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     <input type="checkbox" class="close_day" value="">
                                                      Close this day
                                                  </label>
                                              </div>
@@ -1787,7 +1787,7 @@
                                         <td>
                                              <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     <input type="checkbox" class="close_day" value="">
                                                      Close this day
                                                  </label>
                                              </div>
@@ -1821,7 +1821,7 @@
                                         <td>
                                              <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     <input type="checkbox" class="close_day" value="">
                                                      Close this day
                                                  </label>
                                              </div>
@@ -1855,7 +1855,7 @@
                                         <td>
                                              <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     <input type="checkbox" class="close_day" value="">
                                                      Close this day
                                                  </label>
                                              </div>
@@ -1889,7 +1889,7 @@
                                         <td>
                                              <div class="checkbox">
                                                  <label>
-                                                     <input type="checkbox" class="close_day" value="" checked>
+                                                     <input type="checkbox" class="close_day" value="">
                                                      Close this day
                                                  </label>
                                              </div>
@@ -2033,7 +2033,7 @@
                                     <td>
                                          <div class="checkbox">
                                              <label>
-                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 <input type="checkbox" class="close_day" value="" >
                                                  Close this day
                                              </label>
                                          </div>
@@ -2075,7 +2075,7 @@
                                     <td>
                                          <div class="checkbox">
                                              <label>
-                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 <input type="checkbox" class="close_day" value="">
                                                  Close this day
                                              </label>
                                          </div>
@@ -2117,7 +2117,7 @@
                                     <td>
                                          <div class="checkbox">
                                              <label>
-                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 <input type="checkbox" class="close_day" value="">
                                                  Close this day
                                              </label>
                                          </div>
@@ -2159,7 +2159,7 @@
                                     <td>
                                          <div class="checkbox">
                                              <label>
-                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 <input type="checkbox" class="close_day" value="">
                                                  Close this day
                                              </label>
                                          </div>
@@ -2201,7 +2201,7 @@
                                     <td>
                                          <div class="checkbox">
                                              <label>
-                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 <input type="checkbox" class="close_day" value="">
                                                  Close this day
                                              </label>
                                          </div>
@@ -2243,7 +2243,7 @@
                                     <td>
                                          <div class="checkbox">
                                              <label>
-                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 <input type="checkbox" class="close_day" value="">
                                                  Close this day
                                              </label>
                                          </div>
@@ -2285,7 +2285,7 @@
                                     <td>
                                          <div class="checkbox">
                                              <label>
-                                                 <input type="checkbox" class="close_day" value="" checked>
+                                                 <input type="checkbox" class="close_day" value="">
                                                  Close this day
                                              </label>
                                          </div>
@@ -2415,13 +2415,11 @@
             //$(this).closest('tr').remove();
             if ($(this).prop('checked')) 
             {
-                $(this).closest('tr').find('.time').show();
-                
+                $(this).closest('tr').find('.time').hide().val('');
             }
             else
             {
-                $(this).closest('tr').find('.time').hide().val('');
-               
+               $(this).closest('tr').find('.time').show();
             }
 
         });
