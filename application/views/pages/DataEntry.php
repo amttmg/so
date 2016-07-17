@@ -449,6 +449,7 @@
                             <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="1">New
                                  Time
                              </button>-->
+                             <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
                         </td>
                     </tr>
                     <tr>
@@ -473,6 +474,7 @@
                             <!--<button type="button" class="btn btn-xs btn-primary  addservetime" data-position="2">New
                                 Time
                             </button>-->
+                            <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
                         </td>
                     </tr>
                     <tr>
@@ -497,6 +499,7 @@
                             <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="3">New
                                  Time
                              </button>-->
+                             <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
                         </td>
                     </tr>
                     <tr>
@@ -521,6 +524,7 @@
                             <!--  <button type="button" class="btn btn-xs btn-primary addservetime" data-position="4">New
                                   Time
                               </button>-->
+                              <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
                         </td>
                     </tr>
                     <tr>
@@ -545,6 +549,7 @@
                             <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="5">New
                                  Time
                              </button>-->
+                             <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
                         </td>
                     </tr>
                     <tr>
@@ -569,6 +574,7 @@
                             <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="6">New
                                  Time
                              </button>-->
+                             <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
                         </td>
                     </tr>
 
@@ -594,11 +600,17 @@
                             <!-- <button type="button" class="btn btn-xs btn-primary addservetime" data-position="7">New
                                  Time
                              </button>-->
+                             <button type="button" class="btn btn-sm btn-danger close_day"><i class="fa fa-close"></i>&nbsp&nbspClose</button>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
+        <script type="text/javascript">
+            $('.close_day').click(function() {
+                $(this).closest('tr').remove();
+            });
+        </script>
         <div class="col-md-6">
             <div class="well-sm well">
                 <table class="table table-bordered" id="tbl-costTopic">
