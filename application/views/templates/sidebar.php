@@ -77,6 +77,9 @@
                                 <li>
                                     <a href="<?php echo(site_url('pop_dish')) ?>">Popular Dishes</a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo(site_url('cost_for_two')) ?>">Cost For Two</a>
+                                </li>
 
                                 <li>
                                     <a href="<?php echo(site_url('city')) ?>">City</a>
