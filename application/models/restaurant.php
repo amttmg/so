@@ -13,7 +13,7 @@ class restaurant extends CI_Model
     var $user_id = '';
 
     var $table = 'tbl_restaurants';
-    var $column = array('res_name','a.name','s.name','c.name','landmark'); //set column field database for order and search
+    var $column = array('res_name','a.name','s.name','c.name','landmark','u.username'); //set column field database for order and search
     var $order = array('res_name'=>'asc');
 
     public function __construct()
@@ -323,11 +323,12 @@ class restaurant extends CI_Model
      {
         
         
-        $this->db->select('res.*,c.name as res_city,a.name as res_area,s.name as res_street');
+        $this->db->select('res.*,u.username,c.name as res_city,a.name as res_area,s.name as res_street');
         $this->db->from('tbl_restaurants as res');
         $this->db->join('tbl_city as c','c.id=res.city','left');
         $this->db->join('tbl_area as a','a.id=res.area','left');
         $this->db->join('tbl_street as s','s.id=res.street','left');
+        $this->db->join('users as u','u.id=res.user_id','left');
         $this->db->where('res.status', 1);
         $i = 0;
         /*$this->between_date('salesdate',$_POST['columns'][1]['search']['value'],$_POST['columns'][2]['search']['value']);

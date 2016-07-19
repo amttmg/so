@@ -106,6 +106,24 @@ class Restaurants extends CI_Controller {
 		echo(json_encode($master));
 
 	}
+
+	public function update_outlets($id='')
+	{
+		$data=array(
+			'multiple_outlets'=>$this->input->post('multiple_outlets'),
+			'outlets_no'=>$this->input->post('outlets_no'),
+			'outletdetails'=>$this->input->post('outletdetails')
+			);
+		$this->db->where('res_id',$id);
+		if ($this->db->update('tbl_restaurants',$data)) {
+			echo "success";
+		}
+		else
+		{
+			echo "error";
+		}
+
+	}
 	 public function update_name($res_id)
 	 {
 	 	$this->db->where('res_id',$res_id);
@@ -250,6 +268,7 @@ class Restaurants extends CI_Controller {
 			$row[] = $res->res_area;
 			$row[] = $res->res_street;
 			$row[] = $res->landmark;
+			$row[]=$res->username;
 			$row[]='<div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                         Action

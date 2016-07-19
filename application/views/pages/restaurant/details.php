@@ -15,8 +15,12 @@
                     </b>
                 </div>
             <?php endif ?>
-
-
+            <h1></h1>
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <span class="badge">Entered By :<?php echo($this->db->where('id',$restaurants->user_id)->get('users')->row()->username) ?></span>
+                </div>
+            </div>
             <div class="row" style="margin-top: 15px">
                 <div class="col-md-12">
                     <table class="table table-bordered">
@@ -282,7 +286,100 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well well-sm">
+                        <b>Multiple Outlets</b>
+                        <hr>
+                        <?php echo(form_open('restaurants/update_outlets',array('id'=>'form_multiple_outlets'))) ?>
+                        <label class="checkbox-inline">
+                            <label></label>
+                            <input class="multi_outlets" type="radio" name="multiple_outlets" value="1" <?php echo $restaurants->multiple_outlets?"checked":''; ?>>Yes
+                        </label>
+                        <label class="checkbox-inline">
+                            <input class="multi_outlets"  type="radio" name="multiple_outlets" value="0" <?php echo $restaurants->multiple_outlets?'':'checked'; ?>>No
+                        </label>
+                        <span id="outlets_no" style="" >
+                             <label class="checkbox-inline">
+                                 <label>No. of outlets</label>
+                             </label>
+                             <label class="checkbox-inline">
+                                <input  class="form-control" type="number" name="outlets_no" value="<?php echo($restaurants->outlets_no?$restaurants->outlets_no:'') ?>">
+                            </label>
+                        </span>
+                       
+                        <span style="" class="otdetails">
+                            <label class="checkbox-inline">
+                                <label>&nbsp&nbspDetails</label>
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="text" name="outletdetails" id="outletdetails" class="form-control" value="<?php echo($restaurants->outletdetails) ?>"> 
+                            </label>
+                        </span>
+                        <span style="">
+                            <label class="checkbox-inline">
+                            <button type="button" id="btn-outletsUpdate" class="btn btn-primary"><i class="glyphicon glyphicon-refresh"></i>&nbsp&nbspUpdate</button>
+                            </label>
+                        </span>
+                        <?php echo (form_close()) ?>
+                    </div>
+                </div>
+            </div>
+            <script>
+                var temp='<?php echo $restaurants->multiple_outlets;  ?>';
+                outlets(temp);
+                $(".multi_outlets").change(function () {
+                    
+                    var v = $(this).val();
+                    outlets(v);
+                })
 
+                $('#btn-outletsUpdate').click(function() {
+                    $('#btn-outletsUpdate').text('Please wait....');
+                    $('#btn-outletsUpdate').prop('disabled',true);
+                    $.ajax({
+                        url: '<?php echo(site_url("restaurants/update_outlets")) ?>/'+'<?php echo($this->uri->segment(3)) ?>',
+                        type: 'POST',
+                        data:$('#form_multiple_outlets').serialize(),
+                    })
+                    .done(function(data) {
+                        if (data=='success') 
+                        {
+                            var temp_el='';
+                           $('#btn-outletsUpdate').text('Update Successfully');
+                           setTimeout(function() {
+                                 $('#btn-outletsUpdate').html('<i class="glyphicon glyphicon-refresh"></i>&nbsp&nbspUpdate');
+                                 $('#btn-outletsUpdate').prop('disabled',false);
+                            }, 2000);
+                        }
+                        else
+                        {
+                            alert('error'+data);
+                        }
+                        console.log("success");
+                    })
+                    .fail(function(data) {
+                        alert('Something went wrong !');
+                        console.log("error");
+                    })
+                    .always(function() {
+                        console.log("complete");
+                    });
+                    
+                });
+
+                function outlets(v) 
+                {
+                   if (v == 0) {
+                        $('#outlets_no').val(0);
+                        $('#outlets_no').hide();
+                        $('.otdetails').hide();
+                    } else {
+                        $('#outlets_no').show();
+                        $('.otdetails').show();
+                    }
+                }
+            </script>
             <div class="row">
                 <div class="col-md-12">
                     <div class="well-sm well clearfix">
@@ -877,6 +974,15 @@
                                     class="fa fa-plus fa"></i> Add New
                             </button></span>
                             &nbsp&nbsp<label><input type="text" id="searchtxt" placeholder="Search" class="form-control"> </label>
+                            <label class="text-success">
+                                <div class="checkbox">
+                                    &nbsp&nbsp
+                                    <label>
+                                        <input type="checkbox" id="show_checked_items" value="">
+                                        Show Checked Items
+                                    </label>
+                                </div>
+                            </label>
                         <hr/>
                         <?php foreach ($pop_dishes as $pop): ?>
                             <div class="col-md-2 cpd">
@@ -926,6 +1032,18 @@
                     });
                 }
                 (jQuery));
+
+               $('#show_checked_items').change(function() {
+                   if ($(this).prop('checked'))
+                    {
+                        $('.pop_dishes').not(':checked').parent().parent().hide();
+                        $('.pop_dishes').is(':checked').parent().parent().show();
+                    }
+                    else
+                    {
+                        $('.pop_dishes').parent().parent().show();
+                    }
+               });
             </script>
             <div class="row" style="padding: 15px">
                 <div class="col-md-12">

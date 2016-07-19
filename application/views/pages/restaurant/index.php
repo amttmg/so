@@ -20,6 +20,7 @@
 							<th>Area</th>
 							<th>Street</th>
 							<th>Landmark</th>
+							<th>Entered By</th>
 							<th>Action</th>
 						</tr>
 					</thead>

@@ -1169,6 +1169,15 @@
                         </button>
                     </span>
                     &nbsp&nbsp<label><input type="text" id="searchtxt" placeholder="search" class="form-control"> </label>
+                    <label class="text-success">
+                        <div class="checkbox">
+                            &nbsp&nbsp
+                            <label>
+                                <input type="checkbox" id="show_checked_items" value="">
+                                Show Checked Items
+                            </label>
+                        </div>
+                    </label>
                 <div class="clearfix">
 
                 </div>
@@ -1178,7 +1187,7 @@
                     ?>
                     <div class="col-md-2 chk">
                         <label class="checkbox-inline">
-                            <input type="checkbox" name="pop_dishes[]"
+                            <input type="checkbox" name="pop_dishes[]" class="pop_dishes"
                                    value="<?php echo $pop->pop_dishes_id ?>"><?php echo $pop->pop_dishes ?>
                         </label>
                     </div>
@@ -1207,6 +1216,17 @@
         });
     }
     (jQuery));
+    $('#show_checked_items').change(function() {
+           if ($(this).prop('checked'))
+            {
+                $('.pop_dishes').not(':checked').parent().parent().hide();
+                $('.pop_dishes').is(':checked').parent().parent().show();
+            }
+            else
+            {
+                $('.pop_dishes').parent().parent().show();
+            }
+       });
 </script>
     <div class="row" style="padding: 15px">
         <div class="col-md-12">
