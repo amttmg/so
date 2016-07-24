@@ -691,18 +691,18 @@
                                        value="0" <?php echo($restaurants->parking ? '' : 'checked') ?>>No
                             </label>
                             <hr/>
-                       </form>
+                       
                         <label class="checkbox-inline">
-                            <input type="checkbox" class="parking_options" id='res_parking2' name="res_parking2"
+                            <input type="checkbox" class="parking_options" id='wheel2' name="wheel[]"
                                    value="2" <?php echo($restaurants->parking_two ? 'checked' : '') ?>>Two Wheeler
                         </label>
                         <label class="checkbox-inline">
-                            <input type="checkbox" class="parking_options" id="res_parking4" name="res_parking4"
+                            <input type="checkbox" class="parking_options" id="wheel4" name="wheel[]"
                                    value="4" <?php echo($restaurants->parking_four ? 'checked' : '') ?>>Four Wheeler
                         </label>
-                        <button type="button" id="btn-updateParking" style="display:none" class="btn btb-sm btn-primary pull-right">Update</button>
+                        <button type="button" id="btn-updateParking" class="btn btb-sm btn-primary pull-right">Update</button>
                         <br>
-                        
+                        </form>
                     </div>
                 </div>
             </div>
@@ -2655,31 +2655,6 @@
             if ($(this).is(':checked')) {
                 is_to = 1;
             }
-
-            $(this).prop('disabled', true);
-            $('#msg-parkingWait').html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Updating.....');
-            $('#msg-parkingWait').show();
-            $.ajax({
-                url: '<?php echo(site_url("restaurants/update_parking")) ?>/' + '<?php echo $this->uri->segment(3); ?>/' + is_to + '/' + $(this).attr('name'),
-                type: 'POST',
-                data: {},
-            })
-                .done(function (data) {
-                    $('#msg-parkingWait').html("Update Successfully");
-                    setTimeout(function () {
-                        $('#msg-parkingWait').hide();
-                    }, 1000);
-                    console.log("success");
-                })
-                .fail(function () {
-                    console.log("error");
-                })
-                .always(function () {
-                    $('.parking_options').prop('disabled', false);
-                    console.log("complete");
-                });
-
-
         });
 
         /*=====================================================*/
