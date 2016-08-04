@@ -30,7 +30,7 @@ class dataentry extends CI_Controller
         $dt['foods'] = $this->master->getFood();
         $dt['pop_dishes'] = $this->master->getPop_dishes();
         $dt['cityDropdown'] = $this->select->getSelectList('tbl_city', '', 'id', 'name', 'id="est_city" name="est_city" class="form-control"');
-        $dt['areaDropdown'] = $this->select->getSelectList('tbl_area', '', 'id', 'name', 'id="est_area" name="est_area" class="form-control"');
+        $dt['areaDropdown'] = $this->select->getSelectList('tbl_area', array('status'=>1), 'id', 'name', 'id="est_area" name="est_area" class="form-control"');
         $dt['streetDropdown'] = $this->select->getSelectList('tbl_street', '', 'id', 'name', 'id="est_street" name="est_street" class="form-control"');
         //$data['content'] = $this->load->view('pages/DataEntry', $dt, true);
         $this->load->_render_page('pages/DataEntry', $dt);
