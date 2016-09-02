@@ -9,11 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ScootSCOOT OUT DATA ENTRY FORM</title>
+    <title><?php echo($title?$title:'Scootout'); ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo(base_url('assets/templates')) ?>/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo(base_url('assets/imageview/magnific-popup.css')) ?>" rel="stylesheet">
+    <link href="<?php echo(base_url('assets')) ?>/css/style.css" rel="stylesheet">
 
+<link href="<?php echo(base_url('assets')) ?>/css/font-awesome.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
     <link href="<?php echo(base_url('assets/templates')) ?>/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
@@ -24,9 +27,14 @@
     <link href="<?php echo(base_url('assets/css/jquery.timepicker.css')) ?>" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="<?php echo(base_url('assets/templates')) ?>/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dropzone/dropzone.min.css') ?>">
+    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dropzone/basic.min.css') ?>">
+
     <script src="<?php echo base_url('assets/js/jQuery-2.1.4.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/jquery.timepicker.min.js') ?>"></script>
-   
+   <script type="text/javascript" src="<?php echo base_url('assets/dropzone/dropzone.min.js') ?>"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

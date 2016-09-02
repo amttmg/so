@@ -21,6 +21,7 @@
 							<th>Street</th>
 							<th>Landmark</th>
 							<th>Entered By</th>
+							<th>Entry date</th>
 							<th>Action</th>
 						</tr>
 					</thead>

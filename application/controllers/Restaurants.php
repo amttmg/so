@@ -180,7 +180,7 @@ class Restaurants extends CI_Controller {
         $this->form_validation->set_rules('est_area', 'Establishment Area', 'trim|required|max_length[30]');
         $this->form_validation->set_rules('est_street', 'Establishment Street', 'trim|max_length[30]');
         $this->form_validation->set_rules('est_landmark', 'Establishment Landmark', 'trim|max_length[100]');
-        $this->form_validation->set_rules('est_other', 'Establishment Other', 'trim|max_length[30]');
+        $this->form_validation->set_rules('est_other', 'Establishment Other', 'trim|max_length[100]');
 		if ($this->form_validation->run() == True) 
 		{
 			
@@ -269,6 +269,23 @@ class Restaurants extends CI_Controller {
 			$row[] = $res->res_street;
 			$row[] = $res->landmark;
 			$row[]=$res->username;
+			$row[]=date('D,F Y h:i:s',strtotime($res->created_at));
+			/*$images='';
+			$img=$this->db->order_by('id','desc')->get_where('restaurants_image',array('restaurant_id'=>$res->res_id))
+		                                         ->result();
+		    if ($img) 
+		    {
+		    	foreach ($img as $i) 
+			    {
+			    	$images.='<a href="#"><img src="'.base_url('uploads/restaurants/thumbnail/sm_'.$i->image_name).'" class="" style="width:30px;height:auto;"></a>';
+			    }
+		    }
+		    else
+		    {
+		    	$images='No image found';
+		    }
+
+		    $row[]=$images;*/
 			$row[]='<div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                         Action
@@ -277,6 +294,12 @@ class Restaurants extends CI_Controller {
                                     <ul class="dropdown-menu pull-right" role="menu">
                                         <li>
                                         	<a href="'.site_url('restaurants/details/'.$res->res_id).'"><label class="text-success"><i class="glyphicon glyphicon-edit"></i>&nbsp&nbspEdit</label></a>
+                                        </li>
+                                        <li>
+                                        	<a href="'.site_url('restaurant_image_upload/index/'.$res->res_id).'"><label class="text-success"><i class="glyphicon glyphicon-file"></i>&nbsp&nbspImage Upload</label></a>
+                                        </li>
+                                        <li>
+                                        	<a href="'.site_url('menu/image_upload/'.$res->res_id).'"><label class="text-warning"><i class="glyphicon glyphicon-file"></i>&nbsp&nbspMenu</label></a>
                                         </li>
                                         <li>
                                         	<a href="#" class="delete" data-resid="'.$res->res_id.'"><label class="text-warning"><i class="glyphicon glyphicon-trash"></i>&nbsp&nbspDelete</label></a>

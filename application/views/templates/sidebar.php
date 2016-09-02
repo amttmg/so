@@ -95,6 +95,10 @@
                             <!-- /.nav-second-level -->
                         </li>
                     </ul>
+                    <div class="center-block" style="text-align: center;
+    padding-top: 12px;">
+                        <iframe src="http://www.nepcal.com/clock_e2.php" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" style="border:none; overflow:hidden; width:120px; height:267px;" allowtransparency="true"></iframe>
+                    </div>
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>

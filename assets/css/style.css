@@ -1,0 +1,26 @@
+.delete_icon {
+    position: relative;
+    right: 11px;
+    float: right;
+    top: 21px;
+    padding-bottom: 1px;
+    color: #000;
+    background: #fff;
+    padding: 3px;
+    opacity: 0.95;
+}
+.delete_icon:hover {
+    position: relative;
+    right: 11px;
+    float: right;
+    top: 21px;
+    padding-bottom: 1px;
+    color: #fff;
+    background: #ff0000;
+    padding: 3px;
+    opacity: 0.95;
+}
+.img-thumbnail
+{
+	padding: 0px;
+}

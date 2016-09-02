@@ -13,7 +13,7 @@ class restaurant extends CI_Model
     var $user_id = '';
 
     var $table = 'tbl_restaurants';
-    var $column = array('res_name','a.name','s.name','c.name','landmark','u.username'); //set column field database for order and search
+    var $column = array('res_name','a.name','s.name','c.name','landmark','u.username','created_at'); //set column field database for order and search
     var $order = array('res_name'=>'asc');
 
     public function __construct()
@@ -386,7 +386,9 @@ class restaurant extends CI_Model
     public function count_all()
     {
         $this->db->from($this->table);
+        $this->db->where('status',true);
         return $this->db->count_all_results();
+
     }
 
 }
